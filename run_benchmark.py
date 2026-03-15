@@ -524,6 +524,9 @@ def start_server(config: dict) -> subprocess.Popen:
     if config.get("jinja"):
         cmd += ["--jinja"]
 
+    if config.get("chat_template_kwargs"):
+        cmd += ["--chat-template-kwargs", config["chat_template_kwargs"]]
+
     # Speculative decoding (draft model)
     draft = config.get("draft_model_path")
     if draft:
