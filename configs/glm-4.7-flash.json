@@ -1,0 +1,7 @@
+{
+  "name": "glm-4.7-flash",
+  "model_id": "mlx-community/GLM-4.7-Flash-4bit",
+  "gguf_path": "dummy",
+  "ctx_size": 32768,
+  "inference": {"temperature": 0.7, "top_p": 0.9, "max_tokens": 4096}
+}

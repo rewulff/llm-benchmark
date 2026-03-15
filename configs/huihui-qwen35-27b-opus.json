@@ -1,0 +1,7 @@
+{
+  "name": "huihui-qwen35-27b-opus",
+  "model_id": "vanch007/Huihui-Qwen3.5-27B-Claude-4.6-Opus-abliterated-mlx-4bit",
+  "gguf_path": "dummy",
+  "ctx_size": 32768,
+  "inference": {"temperature": 0.7, "top_p": 0.9, "max_tokens": 4096}
+}

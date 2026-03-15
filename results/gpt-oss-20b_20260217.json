@@ -1,0 +1,74 @@
+{
+  "model": "gpt-oss-20b",
+  "timestamp": "2026-02-17T15:54:29.408560",
+  "tests": {
+    "A1_file_write": {
+      "status": "PASS",
+      "time": 85.0
+    },
+    "A2_bug_fix": {
+      "status": "FAIL",
+      "time": 45.4
+    },
+    "A3_error_handling": {
+      "status": "FAIL",
+      "time": 66.3
+    },
+    "A4_large_read": {
+      "status": "FAIL",
+      "time": 33.3
+    },
+    "A5_large_edit": {
+      "status": "FAIL",
+      "time": 62.4
+    },
+    "B1_german_summary": {
+      "status": "PASS",
+      "time": 9.6,
+      "response": "Die Proxmox Virtual Environment (PVE) ist eine Open‑Source‑Virtualisierungsplattform auf Debian, die sowohl KVM‑VMs als auch LXC‑Container verwaltet, wobei die regelmäßige Wartung und insbesondere das Update‑Management von Host, VMs und Containern entscheidend für die Stabilität ist. Kernel‑Updates des Hosts erfordern einen Neustart und können Gäste beeinträchtigen; daher wird empfohlen, vor kritischen Aktualisierungen Snapshots zu erstellen, um bei Problemen zurückrollen zu können, besonders be"
+    },
+    "B2_log_analysis": {
+      "status": "PASS",
+      "time": 26.0,
+      "response": "**Proxmox‑Maintenance‑Log‑Analyse – 17. Februar 2026**\n\n| Abschnitt | Inhalt | Bemerkung |\n|-----------|--------|-----------|\n| **Start** | 02 : 00 : 01 | Routine‑Run gestartet auf Host `lab-pve-02` |\n| **Host‑Health** | CPU 12 %, RAM 45 %, Disk 62 % | Alles unterhalb der Schwellenwerte |\n| **Container‑Updates** | 5 CTs, 4 erfolgreich | CT 102 hatte temporären Timeout, CT 104 scheiterte |\n| **VM‑Snapshot** | VM 200 (win11) → `pre-update-20260217` | Snapshot erstellt, keine Fehler |\n| **Zusammenf"
+    },
+    "B3_statistics": {
+      "status": "PASS",
+      "time": 39.2,
+      "response": "## Überblick\n\n| Produkt | Gesamteinheiten 2025 | Durchschnitt /Monat | % Veränderung (Januar → Dezember) |\n|---------|---------------------|---------------------|-----------------------------------|\n| **A**   | **15 840**          | **1 320**           | **+25 %**                         |\n| **B**   | **12 450**          | **1 038**           | **+13 %**                         |\n| **C**   | **5 545**           | **462**             | **+24 %**                         |\n\n> **Produkt A** wächst s"
+    },
+    "B4_code_review": {
+      "status": "PASS",
+      "time": 45.6,
+      "issues_found": {
+        "sql_injection": true,
+        "eval": true,
+        "bare_except": true
+      },
+      "response": "Hier sind sämtliche **Sicherheitslücken** und **Bugs** (fehlerhafte Logik, fehlende Validierung, unsichere Operationen), die ich in der vorliegenden Funktion entdeckt habe.  \nIch nummeriere die Punkte, damit Sie sie leicht nachverfolgen können.\n\n| # | Problem | Warum es kritisch/bughaft ist | Mögliche Folgen | Tipp für Behebung |\n|---|---------|-------------------------------|-----------------|-------------------|\n| **1** | **SQL‑Injection (SELECT‑Statement)** | `db_conn.execute(\"SELECT * FROM u"
+    },
+    "C1_config_diff": {
+      "status": "PASS",
+      "time": 20.9,
+      "diffs_found": 8,
+      "response": "### 1. Server‑Konfiguration  \n\n| Einstellung | Config A | Config B | Unterschied / Erklärung |\n|-------------|----------|----------|--------------------------|\n| **host** | `0.0.0.0` | `127.0.0.1` | A lauscht auf allen Schnittstellen, B nur auf localhost – damit ist die Anwendung von außen nicht erreichbar. |\n| **port** | `8080` | `9090` | Port wurde geändert, vermutlich weil 9090 in B ein alternativer Dienstport ist oder um Konflikte mit anderen Services zu vermeiden. |\n| **workers** | `4` | `8"
+    },
+    "C2_decision_matrix": {
+      "status": "PASS",
+      "time": 18.6,
+      "response": "## Entscheidungsmatrix – Reverse‑Proxy‑Auswahl\n\n| Kriterium | Gewicht | Traefik (1–5) | Caddy (1–5) | Zoraxy (1–5) | Kommentar |\n|-----------|---------|---------------|-------------|--------------|-----------|\n| **Auto‑SSL (Let’s Encrypt)** | 1.0 | 5 | 5 | 5 | Alle drei unterstützen Let’s Encrypt nativ. |\n| **Web‑UI (Dashboard/GUI)** | 1.0 | 5 | 1 | 4 | Traefik hat ein voll funktionsfähiges Dashboard. Caddy hat kein natives UI; Zoraxy bietet ein leichtes UI. |\n| **Docker‑Support (Labels/Compose)"
+    },
+    "C3_root_cause": {
+      "status": "PASS",
+      "time": 10.2,
+      "response": "**Root‑Cause**  \nDurch das manuelle `pip install` als Root wurden die Dateien im virtuellen Environment (`/opt/searxng/venv/`) root‑ge­wen­tig, sodass die späteren Updates, die das Community‑Script als User *searxng* ausführt, keine Schreibrechte mehr besitzen.  \n\n**Lösung (max. 5 Sätze)**  \n1. Setze die Eigentümerschaft des gesamten Environments auf den Benutzer `searxng` (`chown -R searxng:searxng /opt/searxng/venv/`).  \n2. Passe die Berechtigungen von `/opt/searxng/` an, sodass `searxng` Schr"
+    }
+  },
+  "summary": {
+    "total": 12,
+    "passed": 8,
+    "failed": 4,
+    "pass_rate": "8/12 (66%)",
+    "total_time": 462.5
+  }
+}

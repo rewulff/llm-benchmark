@@ -1,0 +1,123 @@
+{
+  "model": "qwen3.5-2b-gguf-nojinja",
+  "timestamp": "2026-03-15T22:40:53.328245",
+  "tests": {
+    "B1_summary": {
+      "status": "FAIL",
+      "time": 39.9,
+      "response": ""
+    },
+    "B2_log_analysis": {
+      "status": "PASS",
+      "time": 34.3,
+      "response": "# Proxmox Maintenance Log Analysis Report\n\n**Log Date:** 2026-02-17  \n**Host:** lab-pve-02  \n**Maintenance Run Duration:** ~212 seconds (3 min 32 s)\n\n---\n\n## 1. Summary\n\nA Proxmox VE (PVE) maintenance run was initiated on host `lab-pve-02`. The process successfully completed 4 out of 5 container updates and successfully created a snapshot for 1 VM (VM 200). However, **one container update failed** due to a permission mismatch, which was identified as the primary blocker for the maintenance proce"
+    },
+    "B3_statistics": {
+      "status": "FAIL",
+      "time": 40.4,
+      "response": ""
+    },
+    "B4_code_review": {
+      "status": "FAIL",
+      "time": 40.2,
+      "issues_found": {
+        "sql_injection": false,
+        "eval": false,
+        "bare_except": false
+      },
+      "response": ""
+    },
+    "C1_config_diff": {
+      "status": "PASS",
+      "time": 22.2,
+      "diffs_found": 8,
+      "response": "Here is a detailed comparison of **Config A** (likely a development or local setup) and **Config B** (likely a production-ready setup).\n\n### Summary\n*   **Config A** is a lightweight, local development configuration (localhost, no SSL, basic logging).\n*   **Config B** is a production-grade configuration (secure SSL, database replication, environment variables, and logging rotation).\n\n### Detailed Differences\n\n#### 1. Server Configuration\n| Setting | Config A | Config B | Difference & Impact |\n| "
+    },
+    "C2_decision_matrix": {
+      "status": "FAIL",
+      "time": 40.1,
+      "response": ""
+    },
+    "C3_root_cause": {
+      "status": "FAIL",
+      "time": 40.3,
+      "response": ""
+    },
+    "D1_subtle_bug": {
+      "status": "FAIL",
+      "time": 40.3,
+      "response": ""
+    },
+    "D2_instruction_following": {
+      "status": "PASS",
+      "time": 34.2,
+      "checks": {
+        "five_items": true,
+        "no_lightweight": true,
+        "ends_correctly": true,
+        "words_ok": true
+      },
+      "response": "1. Containers share the same operating system kernel as host machines.\n2. Each application requires only a single dependency layer.\n3. Applications start faster than traditional virtual machines do.\n4. Resource usage remains constant regardless of workload changes.\n5. Scaling is more flexible and easier for teams to manage.\nEnd of list."
+    },
+    "D3_multi_step_calc": {
+      "status": "FAIL",
+      "time": 40.3,
+      "response": ""
+    },
+    "D4_long_context": {
+      "status": "PASS",
+      "time": 6.7,
+      "response": "Based on the configuration document, the **Prometheus** service has a known issue.\n\nThe issue is that the **retention policy is set to 90 days instead of the required 365 days**."
+    },
+    "D5_nuanced_review": {
+      "status": "FAIL",
+      "time": 40.4,
+      "issues_found": {
+        "negative_price": false,
+        "stock_mutation": false,
+        "missing_stock_check": false,
+        "discount_stacking": false,
+        "no_error_handling": false
+      },
+      "found": 0,
+      "response": ""
+    },
+    "E1_correlated_log": {
+      "status": "FAIL",
+      "time": 41.7,
+      "score": "0/6",
+      "checks": {
+        "grafana_critical": false,
+        "causal_chain": false,
+        "forgejo_disk": false,
+        "forgejo_502_benign": false,
+        "prioritization": false,
+        "grafana_investigate": false
+      },
+      "response": ""
+    },
+    "E2_dmarc_analysis": {
+      "status": "FAIL",
+      "time": 41.0,
+      "score": "0/7",
+      "checks": {
+        "spoofing_detected": false,
+        "rfc1918": false,
+        "dkim_failure_legit": false,
+        "policy_upgrade": false,
+        "google_legit": false,
+        "single_probe": false,
+        "fix_internal": false
+      },
+      "response": ""
+    }
+  },
+  "summary": {
+    "total": 14,
+    "passed": 4,
+    "failed": 10,
+    "pass_rate": "4/14 (28%)",
+    "total_time": 502.0,
+    "quality_score": "4/25"
+  }
+}

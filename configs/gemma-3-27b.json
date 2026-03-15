@@ -1,0 +1,14 @@
+{
+  "name": "gemma-3-27b",
+  "gguf_path": "~/models/manager/gemma-3-27b-it-q4_k_m.gguf",
+  "ctx_size": 65536,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "max_tokens": 4096
+  },
+  "notes": "Dense 27B. Google QAT Q4_0 (Quantization-Aware-Trained). Native 128K ctx, aber 32K fuer Benchmark. Google-offiziell: temp=1.0, top_p=0.95. Fuer Code: temp=0.2."
+}

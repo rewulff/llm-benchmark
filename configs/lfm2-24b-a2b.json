@@ -1,0 +1,15 @@
+{
+  "name": "lfm2-24b-a2b",
+  "gguf_path": "~/Models/manager/LFM2-24B-A2B-Q5_K_M.gguf",
+  "ctx_size": 32768,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 0.1,
+    "top_k": 50,
+    "repetition_penalty": 1.05,
+    "max_tokens": 4096
+  },
+  "notes": "Liquid AI MoE 24B/2B aktiv. Hybrid Attention+Convolution. Offiziell: temp=0.1, top_k=50, rep_penalty=1.05. Nativ max 32K Context."
+}

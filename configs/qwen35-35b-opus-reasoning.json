@@ -1,0 +1,7 @@
+{
+  "name": "qwen3.5-35b-opus-reasoning",
+  "model_id": "Jackrong/MLX-Qwen3.5-35B-A3B-Claude-4.6-Opus-Reasoning-Distilled-8bit",
+  "gguf_path": "dummy",
+  "ctx_size": 32768,
+  "inference": {"temperature": 0.7, "top_p": 0.9, "max_tokens": 4096}
+}

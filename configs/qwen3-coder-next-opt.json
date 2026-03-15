@@ -1,0 +1,15 @@
+{
+  "name": "qwen3-coder-next-80b-opt",
+  "gguf_path": "~/models/manager/Qwen3-Coder-Next-UD-IQ3_XXS/Qwen3-Coder-Next-UD-IQ3_XXS.gguf",
+  "ctx_size": 65536,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 40,
+    "max_tokens": 4096
+  },
+  "notes": "Qwen3-Coder-Next 80B MoE (10/512 experts), IQ3_XXS 30GB, OFFICIAL settings, 64K ctx"
+}

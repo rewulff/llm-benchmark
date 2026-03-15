@@ -1,0 +1,25 @@
+{
+  "model": "qwen3-coder-30b-omlx",
+  "timestamp": "2026-02-27T14:40:40.735283",
+  "tests": {
+    "A1_file_write": {
+      "status": "PASS",
+      "time": 61.0
+    },
+    "A2_bug_fix": {
+      "status": "PASS",
+      "time": 22.4
+    },
+    "A3_error_handling": {
+      "status": "PASS",
+      "time": 281.9
+    }
+  },
+  "summary": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "pass_rate": "3/3 (100%)",
+    "total_time": 365.3
+  }
+}

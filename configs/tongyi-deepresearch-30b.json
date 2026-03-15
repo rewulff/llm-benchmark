@@ -1,0 +1,14 @@
+{
+  "name": "tongyi-deepresearch-30b",
+  "gguf_path": "~/.cache/llmfit/models/Tongyi-DeepResearch-30B-A3B.Q4_K_M.gguf",
+  "ctx_size": 32768,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "max_tokens": 4096
+  },
+  "notes": "Tongyi-DeepResearch-30B-A3B MoE, Q4_K_M, 17.3GB GGUF"
+}

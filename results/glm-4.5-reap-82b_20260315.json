@@ -1,0 +1,18 @@
+{
+  "model": "glm-4.5-reap-82b",
+  "timestamp": "2026-03-15T19:15:14.472282",
+  "tests": {
+    "B1_summary": {
+      "status": "FAIL",
+      "time": 15.2,
+      "response": ""
+    }
+  },
+  "summary": {
+    "total": 1,
+    "passed": 0,
+    "failed": 1,
+    "pass_rate": "0/1 (0%)",
+    "total_time": 15.2
+  }
+}

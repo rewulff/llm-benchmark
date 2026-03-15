@@ -1,0 +1,16 @@
+{
+  "name": "qwen3-30b",
+  "gguf_path": "~/models/manager/qwen3-30b-a3b-q4_k_m.gguf",
+  "ctx_size": 65536,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repetition_penalty": 1.05,
+    "max_tokens": 4096
+  },
+  "notes": "MoE 30B/3B aktiv. General-purpose (NICHT Coder). Native 32K ctx. Qwen-offiziell: temp=0.7, top_p=0.8, top_k=20. presence_penalty=1.5 empfohlen fuer GGUF aber nicht in llama-server inference settings."
+}

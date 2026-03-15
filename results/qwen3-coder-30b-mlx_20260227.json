@@ -1,0 +1,33 @@
+{
+  "model": "qwen3-coder-30b-mlx",
+  "timestamp": "2026-02-27T12:59:17.241021",
+  "tests": {
+    "A1_file_write": {
+      "status": "PASS",
+      "time": 92.6
+    },
+    "A2_bug_fix": {
+      "status": "PASS",
+      "time": 10.7
+    },
+    "A3_error_handling": {
+      "status": "PASS",
+      "time": 472.6
+    },
+    "A4_large_read": {
+      "status": "PASS",
+      "time": 10.3
+    },
+    "A5_large_edit": {
+      "status": "ERROR: Error in generating model output:\nlitellm.InternalServerError: InternalServerError: OpenAIException - Connection error.",
+      "time": 0
+    }
+  },
+  "summary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 1,
+    "pass_rate": "4/5 (80%)",
+    "total_time": 586.2
+  }
+}

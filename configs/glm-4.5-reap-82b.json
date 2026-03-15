@@ -1,0 +1,14 @@
+{
+  "name": "glm-4.5-reap-82b",
+  "gguf_path": "~/.cache/llmfit/models/GLM-4.5-Air-REAP-82B-A12B-IQ3_XS.gguf",
+  "ctx_size": 32768,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "max_tokens": 4096
+  },
+  "notes": "Cerebras GLM-4.5-Air-REAP 82B MoE (12B aktiv), IQ3_XS 37GB"
+}

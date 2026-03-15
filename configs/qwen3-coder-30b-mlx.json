@@ -1,0 +1,12 @@
+{
+  "name": "mlx-community/Qwen3-Coder-30B-A3B-Instruct-4bit",
+  "display_name": "qwen3-coder-30b-mlx",
+  "gguf_path": "~/Models/manager/qwen3-coder-30b-a3b-instruct-q4_k_m.gguf",
+  "ctx_size": 131072,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "notes": "Same qwen3-coder-30b via MLX backend (mlx-lm server). Use with --external-server."
+}

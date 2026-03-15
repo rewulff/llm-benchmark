@@ -1,0 +1,8 @@
+{
+  "name": "devstral-2-24b-opt",
+  "model_id": "mlx-community/Devstral-Small-2-24B-Instruct-2512-4bit",
+  "gguf_path": "dummy",
+  "ctx_size": 131072,
+  "inference": {"temperature": 0.15, "top_p": 0.9, "max_tokens": 4096},
+  "notes": "Optimized: temp=0.15 (official), prefill-step-size=1024"
+}

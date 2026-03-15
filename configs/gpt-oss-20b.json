@@ -1,0 +1,15 @@
+{
+  "name": "gpt-oss-20b",
+  "gguf_path": "~/models/manager/gpt-oss-20b-mxfp4.gguf",
+  "ctx_size": 65536,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "jinja": true,
+  "threads": 10,
+  "inference": {
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_tokens": 4096
+  },
+  "notes": "OpenAI GPT-OSS 20B. MoE 21B/3.6B aktiv. MXFP4 nativ (FFN nicht weiter quantisierbar). BRAUCHT --jinja Flag! Offiziell: temp=1.0, top_p=1.0, kein rep_penalty. Reasoning-Level per System-Prompt steuerbar."
+}

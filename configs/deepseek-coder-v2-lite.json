@@ -1,0 +1,14 @@
+{
+  "name": "deepseek-coder-v2-lite",
+  "gguf_path": "~/.cache/llmfit/models/DeepSeek-Coder-V2-Lite-Instruct-Q8_0.gguf",
+  "ctx_size": 32768,
+  "gpu_layers": 99,
+  "flash_attn": "on",
+  "threads": 10,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "max_tokens": 4096
+  },
+  "notes": "DeepSeek-Coder-V2-Lite MoE 16B/2.4B aktiv, Q8_0, 15.6GB GGUF"
+}

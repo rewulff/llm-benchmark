@@ -1,0 +1,33 @@
+{
+  "model": "qwen3-coder-30b",
+  "timestamp": "2026-02-17T16:04:57.746613",
+  "tests": {
+    "A1_file_write": {
+      "status": "PASS",
+      "time": 12.4
+    },
+    "A2_bug_fix": {
+      "status": "PASS",
+      "time": 13.2
+    },
+    "A3_error_handling": {
+      "status": "PASS",
+      "time": 56.0
+    },
+    "A4_large_read": {
+      "status": "PASS",
+      "time": 3.6
+    },
+    "A5_large_edit": {
+      "status": "FAIL",
+      "time": 309.8
+    }
+  },
+  "summary": {
+    "total": 5,
+    "passed": 4,
+    "failed": 1,
+    "pass_rate": "4/5 (80%)",
+    "total_time": 395.0
+  }
+}
