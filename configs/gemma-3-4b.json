@@ -1,0 +1,7 @@
+{
+  "name": "gemma-3-4b",
+  "model_id": "mlx-community/gemma-3-4b-it-4bit",
+  "gguf_path": "dummy",
+  "ctx_size": 32768,
+  "inference": {"temperature": 0.7, "top_p": 0.9, "max_tokens": 4096}
+}
