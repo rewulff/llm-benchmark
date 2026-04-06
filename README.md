@@ -35,6 +35,27 @@ All speeds measured on M4 Pro 48GB. Vision models need ~6GB with KV-Q4 — fits 
 | **16-24GB Mac** | Devstral-2-24B | ~14GB | ~25 | **25/25** | 483s | MLX 4bit |
 | **M1/M2 8GB** | Qwen3.5-2B | ~1.5GB | ~200 | 25/25 | 150s | MLX 4bit |
 
+## Multi-Harness Benchmark (April 6, 2026)
+
+Extended the suite to cover three harnesses in a single run: **CC-Agent** (Claude Code CLI), **smolagents** (HuggingFace ToolCallingAgent), and **VLM-Oneshot** (single-shot image→text). 12 tests total, 15 models evaluated — all running in Docker against llama-server on the host.
+
+**Harnesses:**
+- **CC-Agent (7 tests):** The existing V2 agent suite — bugfix, debug, refactor, search, landing page, document extraction, validation.
+- **smolagents (2 tests):** Agentic document synthesis via HuggingFace `ToolCallingAgent` with custom Python tools. `sa1` = classify document + check relevance; `sa2` = multi-document synthesis.
+- **VLM Oneshot (3 tests):** Single-shot image→text with no agent loop. `vl1` = describe document, `vl2` = extract text fields, `vl3` = extract receipt line items.
+
+| Model | CC-Agent (7) | smolagents | VLM (3) | Total | Notes |
+|---|:--:|:--:|:--:|:--:|---|
+| **Qwen3-VL-4B F16** | **7/7** | **PASS** | **3/3** | **11/12** | Multi-harness champion |
+| Qwen3-VL-4B Q4 | 6/7 | PASS | 2/3 | 9/12 | vl2 (text extraction) needs F16 |
+| Qwen3.5-35B-A3B think | 5/5 | PASS | — | 6/7 | Text-only champion |
+| Qwen3.5-4B think | 5/5 | PASS | — | 6/7 | Budget champion (2.5GB) |
+| Qwen3-Coder-30B | 5/5 | PASS | — | 6/7 | Speed champion (~73 t/s) |
+| Gemma 4 E4B Q4 think | 5/7 | PASS | 2/3 | 8/12 | Struggles with R1 (refactor) |
+| Qwen3-VL-2B | 1/7 | FAIL | 1/3 | 2/12 | Too small for agent context |
+
+**sa2 (multi-document synthesis) failed for all models** — fixture is too complex for current smolagents tool design; needs a redesign before it produces meaningful signal.
+
 ## The Big Findings (April 2026)
 
 ### 1. Qwen3.5-4B is the Sleeper Hit
@@ -89,7 +110,28 @@ Turn 3-15: TaskOutput → TodoWrite → repeat    ← stuck
 
 The model never even tries to read the image or write the output. **4B is the minimum for Claude Code agent tasks.**
 
-### 6. Gemma 4 — Great at Text, Bad at Vision Agent
+### 6. F16 Required for VLM Text Extraction
+
+Q4 quantization is sufficient for most vision tasks, but **not for dense text extraction** (vl2). Across all multi-harness runs, the vl2 fixture (extract structured fields from a document image) failed consistently at Q4 but passed at F16:
+
+| Quant | vl1 (describe) | vl2 (extract text) | vl3 (receipt fields) |
+|---|---|---|---|
+| Q4_K_M | PASS | **FAIL** | PASS |
+| **F16** | **PASS** | **PASS** | **PASS** |
+
+This is a hard quantization boundary, not a model size issue. The same 4B model passes at F16 and fails at Q4. For production document extraction pipelines, **use F16** (7.5GB) or accept the vl2 limitation.
+
+### 7. smolagents Works Out of the Box
+
+14/15 models pass `sa1` (classify document + check relevance) on the first attempt with zero prompt tuning. The `ToolCallingAgent` from HuggingFace's smolagents library talks directly to llama-server via OpenAI-compatible endpoint.
+
+- Custom Python tools: `classify_document(path)`, `check_relevance(path, query)`, `write_result(label, relevant)`
+- Works with any model that can follow a tool-calling schema — even budget 4B models
+- **Only failure:** Qwen3-VL-2B — too small to parse tool definitions reliably (same failure mode as CC-Agent)
+
+`sa2` (multi-document synthesis) is a different story: **all models fail**. The fixture requires cross-document reasoning that the current tool design doesn't support. Fixture redesign is pending before sa2 produces useful signal.
+
+### 8. Gemma 4 — Great at Text, Bad at Vision Agent
 
 | Task Type | Gemma 4 E4B | Verdict |
 |---|---|---|
@@ -181,13 +223,16 @@ Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the doc
 
 ### Vision-Language Models (Document Analysis Benchmark)
 
-| Model | Params | Size | t/s | VRAM (KV-Q4) | Extraction | Validation | Use Case |
-|---|---|---|---|---|---|---|---|
-| **Qwen3-VL-4B Q4** | 4B | 2.3GB | ~42 | ~6GB | **5/5 (100%)** | **6/6 (100%)** | **Document analysis agent** |
-| Qwen3-VL-2B Q4 | 2B | 1.0GB | ~120 | ~3GB | 10/10 (one-shot) | — | Simple one-shot VLM extraction |
-| Gemma 4 E4B Q4 | 4.5B | 3.8GB | ~30 | ~8GB | 2/5 | DQ | Not recommended for vision-agent |
+| Model | Params | Size | t/s | VRAM (KV-Q4) | Extraction | Validation | Text Extract (vl2) | Use Case |
+|---|---|---|---|---|---|---|---|---|
+| **Qwen3-VL-4B F16** | 4B | 7.5GB | ~28 | ~10GB | **5/5 (100%)** | **6/6 (100%)** | **PASS** | **Multi-harness champion** |
+| **Qwen3-VL-4B Q4** | 4B | 2.3GB | ~42 | ~6GB | **5/5 (100%)** | **6/6 (100%)** | FAIL | Document analysis agent |
+| Qwen3-VL-2B Q4 | 2B | 1.0GB | ~120 | ~3GB | 10/10 (one-shot) | — | FAIL | Simple one-shot VLM extraction |
+| Gemma 4 E4B Q4 | 4.5B | 3.8GB | ~30 | ~8GB | 2/5 | DQ | FAIL | Not recommended for vision-agent |
 
 **Key distinction:** Qwen3-VL-2B excels at **one-shot VLM extraction** (the current one-shot VLM pipeline). Qwen3-VL-4B excels at **agentic multi-turn vision** (v2 pipeline with self-validation). Different use cases, different winners.
+
+**F16 vs Q4 for text extraction:** Q4 is sufficient for document description and receipt parsing, but fails on dense text extraction (vl2). If your pipeline requires extracting typed text from document images, use F16.
 
 ## Key Lessons Learned
 
