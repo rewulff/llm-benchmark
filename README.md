@@ -319,7 +319,7 @@ These numbers are **not comparable** with llama-server results due to Ollama's G
 ## Quick Start
 
 ```bash
-git clone https://github.com/YOUR-USER/llm-benchmark.git
+git clone https://github.com/rewulff/llm-benchmark.git
 cd llm-benchmark
 
 # Start a model
@@ -336,4 +336,3 @@ llama-server \
 ## License
 
 MIT. Benchmark code and results are freely available. Model weights are subject to their respective licenses.
-test sync
