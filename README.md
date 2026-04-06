@@ -8,17 +8,21 @@ After testing **30+ models** across text, reasoning, code, agent, and vision tas
 
 ### Text + Code Agent (Claude Code CLI backend)
 
-| Your Hardware | Model | RAM | t/s | Pass Rate | Speed | Notes |
+All speeds measured on M4 Pro 48GB. Expect 3-4x slower on M1/M2 8GB.
+
+| Your Hardware | Model | RAM | t/s (M4 Pro) | Pass Rate | Speed (M4 Pro) | Notes |
 |---|---|---|---|---|---|---|
 | **M4 Pro 48GB** (max quality) | Qwen3.5-35B-A3B think | ~20GB | ~45 | **5/5 (100%)** | 251s | Agent-Matrix Champion |
-| **Any Mac 8GB+** (best value) | **Qwen3.5-4B think** | **2.5GB** | **~150** | **5/5 (100%)** | **266s** | **Same quality at 1/8 the RAM** |
-| **Embedded / Edge** | Qwen3.5-2B think | 1.3GB | ~200 | 3/5 | 391s | Fast on simple tasks, weak on search |
+| **M4 Pro / M1 8GB+** (best value) | **Qwen3.5-4B think** | **2.5GB** | **~150** | **5/5 (100%)** | **266s** | **Same quality at 1/8 the RAM** |
+| **M1/M2 8GB** (edge) | Qwen3.5-2B think | 1.3GB | ~200 | 3/5 | 391s | Fast on simple tasks, weak on search |
 
 ### Vision / Document Analysis (Paperless-ngx style)
 
-| Your Hardware | Model | RAM | VRAM (w/ KV-Q4) | t/s | Extraction | Validation |
+All speeds measured on M4 Pro 48GB. Vision models need ~6GB with KV-Q4 — fits on 8GB Macs but runs slower.
+
+| Your Hardware | Model | RAM | VRAM (w/ KV-Q4) | t/s (M4 Pro) | Extraction | Validation |
 |---|---|---|---|---|---|---|
-| **Any Mac 8GB+** | **Qwen3-VL-4B Q4** | **2.3GB** | **~6GB** | **~42** | **5/5 (100%)** | **6/6 (100%)** |
+| **M4 Pro / 8GB+ (tight)** | **Qwen3-VL-4B Q4** | **2.3GB** | **~6GB** | **~42** | **5/5 (100%)** | **6/6 (100%)** |
 | | Gemma 4 E4B Q4 | 5.5GB | ~8GB | ~30 | 2/5 | DQ |
 | | Qwen3-VL-2B | 1.6GB | ~3GB | ~120 | 0/5 (agent) | 0/6 |
 
