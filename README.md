@@ -8,34 +8,34 @@ After testing **30+ models** across text, reasoning, code, agent, and vision tas
 
 ### Text + Code Agent (Claude Code CLI backend)
 
-| Your Hardware | Model | RAM | Pass Rate | Speed | Notes |
-|---|---|---|---|---|---|
-| **M4 Pro 48GB** (max quality) | Qwen3.5-35B-A3B think | ~20GB | **5/5 (100%)** | 251s | Agent-Matrix Champion |
-| **Any Mac 8GB+** (best value) | **Qwen3.5-4B think** | **2.5GB** | **5/5 (100%)** | **266s** | **Same quality at 1/8 the RAM** |
-| **Embedded / Edge** | Qwen3.5-2B think | 1.3GB | 3/5 | 391s | Fast on simple tasks, weak on search |
+| Your Hardware | Model | RAM | t/s | Pass Rate | Speed | Notes |
+|---|---|---|---|---|---|---|
+| **M4 Pro 48GB** (max quality) | Qwen3.5-35B-A3B think | ~20GB | ~45 | **5/5 (100%)** | 251s | Agent-Matrix Champion |
+| **Any Mac 8GB+** (best value) | **Qwen3.5-4B think** | **2.5GB** | **~150** | **5/5 (100%)** | **266s** | **Same quality at 1/8 the RAM** |
+| **Embedded / Edge** | Qwen3.5-2B think | 1.3GB | ~200 | 3/5 | 391s | Fast on simple tasks, weak on search |
 
-### Vision / Document Analysis (PPL-E style)
+### Vision / Document Analysis (Paperless-ngx style)
 
-| Your Hardware | Model | RAM | Extraction | Validation | Notes |
-|---|---|---|---|---|---|
-| **Any Mac 8GB+** | **Qwen3-VL-4B Q4** | **2.3GB** | **5/5 (100%)** | **6/6 (100%)** | **Best local vision agent** |
-| | Gemma 4 E4B Q4 | 5.5GB | 2/5 | DQ | Weak OCR, tool bias |
-| | Qwen3-VL-2B | 1.6GB | 0/5 | 0/6 | Too small for agent context |
+| Your Hardware | Model | RAM | VRAM (w/ KV-Q4) | t/s | Extraction | Validation |
+|---|---|---|---|---|---|---|
+| **Any Mac 8GB+** | **Qwen3-VL-4B Q4** | **2.3GB** | **~6GB** | **~42** | **5/5 (100%)** | **6/6 (100%)** |
+| | Gemma 4 E4B Q4 | 5.5GB | ~8GB | ~30 | 2/5 | DQ |
+| | Qwen3-VL-2B | 1.6GB | ~3GB | ~120 | 0/5 (agent) | 0/6 |
 
 ### Text-Only Tasks (smolagents / single-shot)
 
-| Your Hardware | Model | RAM | Quality | Speed | How to Run |
-|---|---|---|---|---|---|
-| **M4 Pro 48GB** (fast) | Qwen3-Coder-30B-A3B | ~15GB | 25/25 | **285s** | llama-server, GGUF Q4_K_M |
-| **M4 Pro 48GB** (quality) | Qwen3-Coder-Next 80B | ~30GB | **25/25** | 386s | GGUF IQ3_XXS |
-| **16-24GB Mac** | Devstral-2-24B | ~14GB | **25/25** | 483s | MLX 4bit |
-| **M1/M2 8GB** | Qwen3.5-2B | ~1.5GB | 25/25 | 150s | MLX 4bit |
+| Your Hardware | Model | RAM | t/s | Quality | Speed | How to Run |
+|---|---|---|---|---|---|---|
+| **M4 Pro 48GB** (fast) | Qwen3-Coder-30B-A3B | ~15GB | ~73 | 25/25 | **285s** | llama-server, GGUF Q4_K_M |
+| **M4 Pro 48GB** (quality) | Qwen3-Coder-Next 80B | ~30GB | ~15 | **25/25** | 386s | GGUF IQ3_XXS |
+| **16-24GB Mac** | Devstral-2-24B | ~14GB | ~25 | **25/25** | 483s | MLX 4bit |
+| **M1/M2 8GB** | Qwen3.5-2B | ~1.5GB | ~200 | 25/25 | 150s | MLX 4bit |
 
 ## The Big Findings (April 2026)
 
 ### 1. Qwen3.5-4B is the Sleeper Hit
 
-5/5 PASS on all agent tasks (bugfix, debug, refactor, search, landing page) with just **2.5GB RAM**. Only 15 seconds slower than the 10x larger 35B model. This is the new "Knecht-Lite" — the model you run when you don't want to waste API calls on trivial tasks.
+5/5 PASS on all agent tasks (bugfix, debug, refactor, search, landing page) with just **2.5GB RAM**. Only 15 seconds slower than the 10x larger 35B model. This is the new "budget workhorse" — the model you run when you don't want to waste API calls on trivial tasks.
 
 ### 2. Agentic Prompting Makes Small Vision Models Competitive
 
@@ -93,7 +93,7 @@ The model never even tries to read the image or write the output. **4B is the mi
 | Agent (D1, R1) | 3/5 | OK |
 | **Vision (E1, E2)** | **2/5, DQ** | **Weak OCR, false positives** |
 
-Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the document), produces English placeholders for German text ("Utility Company" instead of "Baugenossenschaft Bad Cannstatt eG"), and over-corrects correct fields (disqualified for false-positive).
+Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the document), produces English placeholders for German text ("Utility Company" instead of the actual German company name), and over-corrects correct fields (disqualified for false-positive).
 
 ## Benchmark Versions
 
@@ -115,7 +115,7 @@ Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the doc
 
 **Vision pipeline:** Image injected as base64 in initial user message via `--input-format stream-json`. Required because llama-server ignores images in tool_result content blocks.
 
-**Full results + evaluation contract:** See `AGENT_BENCHMARKS.md` and `EVALUATION_CONTRACT_V2.md` in the arbeitsverzeichnis benchmark directory.
+**Full results + evaluation contract:** See `AGENT_BENCHMARKS.md` and `EVALUATION_CONTRACT_V2.md` in the benchmark directory.
 
 ### Screening V1 (April 4, 2026)
 
@@ -123,14 +123,14 @@ Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the doc
 
 | Model | Size | Profile | Recommendation |
 |---|---|---|---|
-| GLM-4.7-Flash | 17GB | KNECHT-KANDIDAT | Full test recommended |
-| Nemotron-3-Nano 30B | 23GB | KNECHT-KANDIDAT | Full test recommended |
-| GPT-OSS 20B | 11GB | KNECHT-KANDIDAT | Full test recommended |
-| DeepSeek-R1-Qwen3-8B | 4.7GB | KNECHT-KANDIDAT | Full test recommended |
-| Magistral Small 24B | 13GB | PIPELINE-SPEZIALIST | Only J1 pipelines |
-| Meta Llama 3 8B | 4.6GB | PIPELINE-SPEZIALIST | Only simple pipelines |
-| LFM2-24B-A2B | 16GB | PIPELINE-SPEZIALIST | Fast but F1 FAIL |
-| Qwen3-14B Opus Distill | 8.4GB | KNECHT-KANDIDAT | With reservation |
+| GLM-4.7-Flash | 17GB | AGENT-READY | Full test recommended |
+| Nemotron-3-Nano 30B | 23GB | AGENT-READY | Full test recommended |
+| GPT-OSS 20B | 11GB | AGENT-READY | Full test recommended |
+| DeepSeek-R1-Qwen3-8B | 4.7GB | AGENT-READY | Full test recommended |
+| Magistral Small 24B | 13GB | SINGLE-TASK | Only J1 pipelines |
+| Meta Llama 3 8B | 4.6GB | SINGLE-TASK | Only simple pipelines |
+| LFM2-24B-A2B | 16GB | SINGLE-TASK | Fast but F1 FAIL |
+| Qwen3-14B Opus Distill | 8.4GB | AGENT-READY | With reservation |
 
 **No model passed G1 (Multi-Constraint Reasoning)** — even with thinking mode enabled.
 
@@ -138,16 +138,16 @@ Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the doc
 
 19 tests via llama-server. First Gemma 4 benchmarks after llama.cpp GGUF support landed.
 
-| Model | Architecture | Pass Rate | Quality | Time | Key Finding |
-|---|---|---|---|---|---|
-| **Qwen3-Coder-30B** | 3B MoE | **100% (19/19)** | **25/25** | **285s** | Undefeated champion |
-| **Gemma 4 E4B** | 4.5B dense | 94% (18/19) | **25/25** | 560s | Best Gemma, VLM-capable |
-| Gemma 4 E2B (think) | 2.3B dense | 94% (18/19) | 24/25 | 857s | Thinking +1 test, 3.7x slower |
-| Gemma 4 E2B (no-think) | 2.3B dense | 89% (17/19) | 23/25 | 234s | Fastest model overall |
-| Qwen3.5-2B | 2B dense | 84% (16/19) | 21/25 | 244s | Mac Mini champion |
-| Gemma 4 26B-A4B | 4B MoE | 73% (14/19) | **25/25** | 461s | Perfect text, broken agent (code-tag bug) |
+| Model | Architecture | t/s | Pass Rate | Quality | Time | Key Finding |
+|---|---|---|---|---|---|---|
+| **Qwen3-Coder-30B** | 3B MoE | ~73 | **100% (19/19)** | **25/25** | **285s** | Undefeated champion |
+| **Gemma 4 E4B** | 4.5B dense | ~30 | 94% (18/19) | **25/25** | 560s | Best Gemma, VLM-capable |
+| Gemma 4 E2B (think) | 2.3B dense | ~67 | 94% (18/19) | 24/25 | 857s | Thinking +1 test, 3.7x slower |
+| Gemma 4 E2B (no-think) | 2.3B dense | ~67 | 89% (17/19) | 23/25 | 234s | Fastest model overall |
+| Qwen3.5-2B | 2B dense | ~200 | 84% (16/19) | 21/25 | 244s | Mac Mini champion |
+| Gemma 4 26B-A4B | 4B MoE | ~30 | 73% (14/19) | **25/25** | 461s | Perfect text, broken agent (code-tag bug) |
 
-**Gemma 4 31B (dense) was eliminated** — 10 t/s generation speed, 13.7GB swap, impractical on M4 Pro 48GB.
+**Gemma 4 31B (dense) was eliminated** — ~10 t/s generation speed, 13.7GB swap, impractical on M4 Pro 48GB.
 
 ### Benchmark V2 (March 15-16, 2026)
 
@@ -161,29 +161,29 @@ Gemma hallucinates dates ("2026-04-05" = today's date instead of reading the doc
 
 ### Large Models
 
-| Model | Params | Backend | Pass /14 | Quality /25 | Time | Role |
-|---|---|---|---|---|---|---|
-| **Qwen3-Coder-30B** | 30B MoE | MLX 4bit | 14/14 | 21/22 | **67s** | Fast-Knecht |
-| **Qwen3-Coder-Next 80B** | 80B MoE | GGUF IQ3_XXS | 14/14 | **25/25** | 386s | Quality-Knecht |
-| Devstral-2-24B | 24B dense | MLX 4bit | 14/14 | 25/25 | 483s | Reserve |
+| Model | Params | Backend | t/s | Pass /14 | Quality /25 | Time | Role |
+|---|---|---|---|---|---|---|---|
+| **Qwen3-Coder-30B** | 30B MoE (3B active) | MLX 4bit | ~73 | 14/14 | 21/22 | **67s** | Fast workhorse |
+| **Qwen3-Coder-Next 80B** | 80B MoE (10B active) | GGUF IQ3_XXS | ~15 | 14/14 | **25/25** | 386s | Quality workhorse |
+| Devstral-2-24B | 24B dense | MLX 4bit | ~25 | 14/14 | 25/25 | 483s | Reserve |
 
 ### Small Models
 
-| Model | Params | Backend | Pass /14 | Quality /25 | Time | Notes |
-|---|---|---|---|---|---|---|
-| **Qwen3.5-2B** | 2B | MLX 4bit | **14/14** | **25/25** | 150s | Mac Mini Champion |
-| **Qwen3.5-4B /no_think** | 4B | MLX 4bit | 14/14 | 25/25 | 273s | Must disable thinking |
-| Gemma-3-4B | 4B | MLX 4bit | 14/14 | 21/25 | 158s | Strongest alternative |
+| Model | Params | Backend | t/s | Pass /14 | Quality /25 | Time | Notes |
+|---|---|---|---|---|---|---|---|
+| **Qwen3.5-2B** | 2B | MLX 4bit | ~200 | **14/14** | **25/25** | 150s | Mac Mini Champion |
+| **Qwen3.5-4B /no_think** | 4B | MLX 4bit | ~150 | 14/14 | 25/25 | 273s | Must disable thinking |
+| Gemma-3-4B | 4B | MLX 4bit | ~120 | 14/14 | 21/25 | 158s | Strongest alternative |
 
-### Vision-Language Models (PPL-E Benchmark)
+### Vision-Language Models (Document Analysis Benchmark)
 
-| Model | Params | Size | Extraction | Validation | Use Case |
-|---|---|---|---|---|---|
-| **Qwen3-VL-4B Q4** | 4B | 2.3GB | **5/5 (100%)** | **6/6 (100%)** | **Document analysis agent** |
-| Qwen3-VL-2B Q4 | 2B | 1.0GB | 10/10 (one-shot) | — | Simple VLM extraction (PPL-E v1) |
-| Gemma 4 E4B Q4 | 4.5B | 3.8GB | 2/5 | DQ | Not recommended for vision-agent |
+| Model | Params | Size | t/s | VRAM (KV-Q4) | Extraction | Validation | Use Case |
+|---|---|---|---|---|---|---|---|
+| **Qwen3-VL-4B Q4** | 4B | 2.3GB | ~42 | ~6GB | **5/5 (100%)** | **6/6 (100%)** | **Document analysis agent** |
+| Qwen3-VL-2B Q4 | 2B | 1.0GB | ~120 | ~3GB | 10/10 (one-shot) | — | Simple one-shot VLM extraction |
+| Gemma 4 E4B Q4 | 4.5B | 3.8GB | ~30 | ~8GB | 2/5 | DQ | Not recommended for vision-agent |
 
-**Key distinction:** Qwen3-VL-2B excels at **one-shot VLM extraction** (the current PPL-E v1 pipeline). Qwen3-VL-4B excels at **agentic multi-turn vision** (v2 pipeline with self-validation). Different use cases, different winners.
+**Key distinction:** Qwen3-VL-2B excels at **one-shot VLM extraction** (the current one-shot VLM pipeline). Qwen3-VL-4B excels at **agentic multi-turn vision** (v2 pipeline with self-validation). Different use cases, different winners.
 
 ## Key Lessons Learned
 
@@ -278,7 +278,7 @@ Higher precision wastes RAM and time without quality improvement.
 ## Quick Start
 
 ```bash
-git clone https://forgejo.routetohome.renewulff.de/formin/llm-benchmark.git
+git clone https://github.com/YOUR-USER/llm-benchmark.git
 cd llm-benchmark
 
 # Start a model
