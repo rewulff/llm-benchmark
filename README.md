@@ -257,6 +257,47 @@ Higher precision wastes RAM and time without quality improvement.
 
 `--cache-type-k q4_0 --cache-type-v q4_0` saves ~4GB KV-cache RAM with **no quality loss**. Essential for fitting models on 8GB hardware or increasing context window.
 
+### 7. MLX vs. llama.cpp — Backend Barely Matters
+
+Same model (Qwen3-Coder-30B-A3B), same tests, different backends:
+
+| Backend | Pass | Quality | Time | t/s |
+|---|---|---|---|---|
+| MLX 4bit | 7/7 | — | 44.5s | ~80 |
+| llama.cpp Q4_K_M | 7/7 | — | 47.6s | ~73 |
+
+**~6% difference.** Pick whichever is easier to set up.
+
+**MLX advantages:** 20-35% faster single-shot (Apple Metal native, unified memory optimized), better quantization options (TurboQuant, 3.5-bit KV).
+
+**llama.cpp advantages:** KV-cache reuse across turns (critical for agent loops), N-gram speculative decoding, `--mmproj` for vision models, broader hardware support (CUDA, Vulkan, CPU).
+
+**Our choice:** llama.cpp for production (agent loops, vision, cross-platform). MLX for quick single-shot benchmarks.
+
+### 8. Ollama — We Tried, We Left
+
+We used Ollama briefly (March-April 2026) as a workaround when llama.cpp GGUF support for Gemma 4 was broken (PR #21309 pending).
+
+**Why we stopped:**
+- **60-75% GPU utilization** — Ollama's Metal backend underperforms vs. llama-server (2-3x slower on same model)
+- **No `--mmproj` support** — can't run vision models with separate projector
+- **No KV-cache quantization** — wastes RAM
+- **No fine-grained control** — can't set `--ubatch-size`, `--cache-type-k`, flash attention, etc.
+- **Model storage bloat** — duplicates models in its own blob store
+
+**When Ollama is still useful:** Quick model testing, zero-config setup, pulling models with one command. Just don't benchmark with it — the numbers are misleading.
+
+**V3 Ollama results (for reference, April 3, 2026):**
+
+| Model | Backend | Pass Rate | Avg/Test | Note |
+|---|---|---|---|---|
+| Gemma 4 E4B | Ollama | 91% (11/12) | 52s | Same model via llama-server: 94%, 29s |
+| Gemma 4 E2B | Ollama | 91% (11/12) | 35s | Same model via llama-server: 89%, 12s |
+| Nemotron Cascade 2 | Ollama | 83% (10/12) | 58s | Too slow for practical use |
+| Gemma 4 26B-A4B | Ollama | 66% (8/12) | 70s | Agent code-tag bug persists |
+
+These numbers are **not comparable** with llama-server results due to Ollama's GPU underutilization.
+
 ## Models That Don't Work
 
 | Model | Why it Failed |
