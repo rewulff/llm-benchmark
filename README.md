@@ -16,7 +16,7 @@ All models run via llama-server. Speeds on M4 Pro 48GB. Expect 3-4x slower on M1
 | **M4 Pro 48GB** (quality) | Qwen3.5-35B-A3B think | ~20GB | ~45 | **6/7** | 241s | Perfect on all CC-Agent tests |
 | **Any Mac 8GB+** (best value) | **Qwen3.5-4B think** | **2.5GB** | **~150** | **6/7** | **230s** | **Same score at 1/8 the RAM** |
 | M4 Pro 48GB (all-rounder) | Qwen3-VL-4B F16 | 7.5GB | ~28 | **11/12** | 492s | Only model that passes ALL harnesses |
-| M4 Pro 48GB (fast text) | knecht (Qwen3-Coder-30B) | ~15GB | ~73 | **6/7** | 491s | No thinking support, reliable |
+| M4 Pro 48GB (fast text) | Qwen3-Coder-30B-A3B | ~15GB | ~73 | **6/7** | 491s | No thinking support, reliable |
 
 ### Vision / Document Analysis
 
@@ -34,7 +34,7 @@ HuggingFace `ToolCallingAgent` with custom Python tools. `sa1` = classify + chec
 
 | Hardware | Model | RAM | t/s | sa1 | sa1 Duration | Notes |
 |---|---|---|---|---|---|---|
-| M4 Pro 48GB | knecht (Qwen3-Coder-30B) | ~15GB | ~73 | PASS | 36s | Fastest sa1 |
+| M4 Pro 48GB | Qwen3-Coder-30B-A3B | ~15GB | ~73 | PASS | 36s | Fastest sa1 |
 | Any Mac 8GB+ | Qwen3.5-4B think | 2.5GB | ~150 | PASS | 40s | Budget option |
 | M4 Pro 48GB | Qwen3-VL-4B Q4 | 2.3GB | ~42 | PASS | 25s | Also handles vision |
 | M4 Pro 48GB | Qwen3.5-35B-A3B think | ~20GB | ~45 | PASS | 50s | Overkill for sa1 |
@@ -153,23 +153,30 @@ V2: 14 tests, 5 categories, quality score /25 (March 2026). V1: 12 tests, code +
 
 Latest run per model+test. Score = PASS / eligible (DQ excluded from both).
 
+#### Text/Code Models (7 eligible tests: b1, d1, lp1, r1, s1, sa1, sa2)
+
+| Model | b1 | d1 | lp1 | r1 | s1 | sa1 | sa2 | Score |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| glm-4.7-flash | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 |
+| **Qwen3-Coder-30B-A3B** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
+| qwen3.5-2b-nothink | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | 4/7 |
+| qwen3.5-2b-think | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | 3/7 |
+| qwen3.5-35b-nothink | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 5/7 |
+| **qwen3.5-35b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
+| qwen3.5-4b-nothink | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 5/7 |
+| **qwen3.5-4b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
+
+#### Vision-Language Models (12 eligible tests: all)
+
 | Model | b1 | d1 | lp1 | r1 | s1 | e1 | e2 | sa1 | sa2 | vl1 | vl2 | vl3 | Score |
 |---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| **qwen3-vl-4b-f16** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | **11/12** |
-| **knecht** | ✅ | ✅ | ✅ | ✅ | ✅ | -- | -- | ✅ | ❌ | -- | -- | -- | **6/7** |
-| **qwen3.5-35b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | -- | -- | ✅ | ❌ | -- | -- | -- | **6/7** |
-| **qwen3.5-4b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | -- | -- | ✅ | ❌ | -- | -- | -- | **6/7** |
-| qwen3-vl-4b-q4 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | 9/12 |
-| qwen3.5-35b-nothink | ✅ | ✅ | ❌ | ✅ | ✅ | -- | -- | ✅ | ❌ | -- | -- | -- | 5/7 |
-| qwen3.5-4b-nothink | ✅ | ✅ | ❌ | ✅ | ✅ | -- | -- | ✅ | ❌ | -- | -- | -- | 5/7 |
-| gemma-4-e4b-q4-think | ✅ | ✅ | ✅ | ❌ | ✅ | ⚠️ | DQ | ✅ | ❌ | ✅ | ❌ | ✅ | 7/11 |
-| glm-4.7-flash | ❌ | ✅ | ❌ | ✅ | ✅ | -- | -- | ✅ | ❌ | -- | -- | -- | 4/7 |
-| gemma-4-e4b-q4-nothink | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | 6/12 |
-| qwen3.5-2b-nothink | ✅ | ✅ | ❌ | ✅ | ❌ | -- | -- | ✅ | ❌ | -- | -- | -- | 4/7 |
-| gemma-4-e2b-think | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 5/12 |
-| qwen3.5-2b-think | ❌ | ✅ | ❌ | ✅ | ❌ | -- | -- | ✅ | ❌ | -- | -- | -- | 3/7 |
 | gemma-4-e2b-nothink | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 3/12 |
+| gemma-4-e2b-think | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 5/12 |
+| gemma-4-e4b-q4-nothink | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | 6/12 |
+| gemma-4-e4b-q4-think | ✅ | ✅ | ✅ | ❌ | ✅ | ⚠️ | DQ | ✅ | ❌ | ✅ | ❌ | ✅ | 7/11 |
 | qwen3-vl-2b | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | 2/12 |
+| **qwen3-vl-4b-f16** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | **11/12** |
+| qwen3-vl-4b-q4 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | 9/12 |
 
 Legend: ✅ PASS | ❌ FAIL | ⚠️ PARTIAL | DQ = Disqualified | -- = not applicable (no vision/VLM capability)
 
@@ -179,23 +186,30 @@ Legend: ✅ PASS | ❌ FAIL | ⚠️ PARTIAL | DQ = Disqualified | -- = not appl
 
 Total duration per harness group (sum of all tests in group, latest run).
 
+#### Text/Code Models
+
+| Model | RAM | t/s | CC-Agent 5 (s) | sa1 (s) | Total (s) |
+|---|---|---|---|---|---|
+| glm-4.7-flash | 17GB | ~20 | 847 | 45 | 937 |
+| **Qwen3-Coder-30B-A3B** | ~15GB | ~73 | 491 | 36 | 552 |
+| qwen3.5-2b-nothink | 1.3GB | ~200 | 105 | 15 | 135 |
+| qwen3.5-2b-think | 1.3GB | ~200 | 110 | 20 | 145 |
+| qwen3.5-35b-nothink | ~20GB | ~45 | 190 | 30 | 255 |
+| **qwen3.5-35b-think** | ~20GB | ~45 | 241 | 50 | 331 |
+| qwen3.5-4b-nothink | 2.5GB | ~150 | 306 | 30 | 371 |
+| **qwen3.5-4b-think** | 2.5GB | ~150 | **230** | 40 | 315 |
+
+#### Vision-Language Models
+
 | Model | RAM | t/s | CC-Agent 5 (s) | Vision 2 (s) | sa1 (s) | VLM 3 (s) | Total (s) |
 |---|---|---|---|---|---|---|---|
-| **qwen3.5-4b-think** | 2.5GB | ~150 | **230** | -- | 40 | -- | 315 |
-| **qwen3.5-35b-think** | ~20GB | ~45 | 241 | -- | 50 | -- | 331 |
-| qwen3.5-35b-nothink | ~20GB | ~45 | 190 | -- | 30 | -- | 255 |
-| qwen3.5-4b-nothink | 2.5GB | ~150 | 306 | -- | 30 | -- | 371 |
-| **knecht** | ~15GB | ~73 | 491 | -- | 36 | -- | 552 |
-| qwen3-vl-4b-q4 | 2.3GB | ~42 | 431 | 180 | 25 | 35 | 696 |
-| **qwen3-vl-4b-f16** | 7.5GB | ~28 | 492 | 200 | 45 | 45 | 812 |
-| gemma-4-e4b-q4-nothink | 5.5GB | ~30 | 255 | 90 | 186 | 20 | 796 |
-| gemma-4-e4b-q4-think | 5.5GB | ~30 | 546 | 185 | 50 | 35 | 862 |
-| glm-4.7-flash | 17GB | ~20 | 847 | -- | 45 | -- | 937 |
-| qwen3-vl-2b | 1.0GB | ~120 | 887 | 85 | 10 | 25 | 1017 |
 | gemma-4-e2b-nothink | 4.6GB | ~67 | 256 | 366 | 186 | 15 | 1068 |
 | gemma-4-e2b-think | 4.6GB | ~67 | 311 | 376 | 186 | 15 | 1133 |
-| qwen3.5-2b-nothink | 1.3GB | ~200 | 105 | -- | 15 | -- | 135 |
-| qwen3.5-2b-think | 1.3GB | ~200 | 110 | -- | 20 | -- | 145 |
+| gemma-4-e4b-q4-nothink | 5.5GB | ~30 | 255 | 90 | 186 | 20 | 796 |
+| gemma-4-e4b-q4-think | 5.5GB | ~30 | 546 | 185 | 50 | 35 | 862 |
+| qwen3-vl-2b | 1.0GB | ~120 | 887 | 85 | 10 | 25 | 1017 |
+| **qwen3-vl-4b-f16** | 7.5GB | ~28 | 492 | 200 | 45 | 45 | 812 |
+| qwen3-vl-4b-q4 | 2.3GB | ~42 | 431 | 180 | 25 | 35 | 696 |
 
 **CC-Agent 5** = b1 + d1 + lp1 + r1 + s1 (code tasks only). **Vision 2** = e1 + e2 (agent vision). **VLM 3** = vl1 + vl2 + vl3 (oneshot vision). Total includes sa2 durations not shown separately.
 
