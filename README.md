@@ -156,102 +156,146 @@ V2: 14 tests, 5 categories, quality score /25 (March 2026). V1: 12 tests, code +
 
 ## 4. Full Results — V4 Matrix
 
-### Complete Model Matrix
+### 4.1 Model Specs
+
+Central reference for all 32 models tested. All run via llama-server on M4 Pro 48GB.
+
+| Model | Params | Arch | Quant | RAM | t/s | ctx | Thinking | Vision | Base |
+|---|---|---|---|---|---|---|---|---|---|
+| Bonsai-8B | 8B | dense | Q1_0 | 2 GB | -- | 32k | -- | -- | Qwen3 |
+| Carnice-9B | 9B | dense | Q4_K_M | 6 GB | ~50 | 32k | nothink | -- | Qwen3.5-9B |
+| DeepSeek-R1-Qwen3-8B | 8B | dense | Q4_K_M | 5 GB | ~40 | 64k | reason | -- | Qwen3 |
+| gemma-4-e2b-nothink | 2.3B | dense | Q8_0 | 4.6 GB | ~67 | 32k | nothink | mmproj | Gemma 4 |
+| gemma-4-e2b-think | 2.3B | dense | Q8_0 | 4.6 GB | ~67 | 32k | think | mmproj | Gemma 4 |
+| gemma-4-e4b-q4-nothink | 4.5B | dense | Q4_K_M | 5.5 GB | ~30 | 32k | nothink | mmproj | Gemma 4 |
+| gemma-4-e4b-q4-think | 4.5B | dense | Q4_K_M | 5.5 GB | ~30 | 32k | think | mmproj | Gemma 4 |
+| GLM-4.7-Flash | 30B | dense | Q4_K | 17 GB | ~20 | 32k | -- | -- | GLM |
+| GLM-OCR | ~4B | dense | Q8_0 | 9 GB | ~60 | 8k | -- | mmproj | GLM |
+| GPT-OSS-20B | 20B | dense | Q4_K_M | 12 GB | ~25 | 128k | reason | -- | GPT-OSS |
+| granite-3.3-8b | 8B | dense | Q4_K_M | 5 GB | ~45 | 128k | reason | -- | Granite |
+| InternVL3-2B | 2B | dense | Q4_K_M | 3 GB | ~50 | 8k | -- | mmproj | InternVL3 |
+| Nemotron-3-Nano-30B | 30B | MoE (3B) | Q4_K_M | 18 GB | ~30 | 32k | reason | -- | Mamba-SSM |
+| Nemotron-Cascade-2-30B | 30B | MoE (3B) | Q4_K_M | 25 GB | ~20 | 32k | reason | -- | Mamba-SSM |
+| phi-4-mini | 3.8B | dense | Q4_K_M | 3 GB | ~80 | 128k | -- | -- | Phi-4 |
+| Qianfan-OCR | ~4B | dense | Q4_K_M | 5 GB | ~50 | 8k | reason | mmproj | InternVL |
+| Qwen3-8B | 8B | dense | Q5_K_M | 7 GB | ~40 | 32k | nothink | -- | Qwen3 |
+| Qwen3-Coder-30B-A3B | 30B | MoE (3B) | Q4_K_M | 20 GB | ~73 | 32k | -- | -- | Qwen3 |
+| Qwen3-VL-2B | 2B | dense | Q4_K_M | 3.5 GB | ~120 | 32k | -- | mmproj | Qwen3-VL |
+| Qwen3-VL-4B F16 | 4B | dense | F16 | 9 GB | ~28 | 32k | -- | mmproj | Qwen3-VL |
+| Qwen3-VL-4B Q4 | 4B | dense | Q4_K_M | 5.5 GB | ~42 | 32k | -- | mmproj | Qwen3-VL |
+| Qwen3.5-2B nothink | 2B | dense | Q4_K_M | 1.3 GB | ~200 | 32k | nothink | -- | Qwen3.5 |
+| Qwen3.5-2B think | 2B | dense | Q4_K_M | 1.3 GB | ~200 | 32k | reason | -- | Qwen3.5 |
+| Qwen3.5-4B nothink | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | nothink | -- | Qwen3.5 |
+| Qwen3.5-4B think | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | reason | -- | Qwen3.5 |
+| Qwen3.5-9B nothink | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | nothink | -- | Qwen3.5 |
+| Qwen3.5-9B think | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | reason | -- | Qwen3.5 |
+| Qwen3.5-27B nothink | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | nothink | -- | Qwen3.5 |
+| Qwen3.5-27B think | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | reason | -- | Qwen3.5 |
+| Qwen3.5-35B-A3B nothink | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | nothink | -- | Qwen3.5 |
+| Qwen3.5-35B-A3B think | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | reason | -- | Qwen3.5 |
+| SmolVLM2-2.2B | 2.2B | dense | Q4_K_M | 3 GB | ~55 | 16k | -- | mmproj | SmolVLM2 |
+
+**Legend:** t/s = tokens/second (generation). ctx = max context window. Thinking: `reason` = chain-of-thought enabled, `nothink` = explicitly disabled, `think` = thinking variant. Vision: `mmproj` = multimodal projector required for llama-server. Arch: `MoE (3B)` = Mixture-of-Experts with 3B active parameters.
+
+### 4.2 Test Results Matrix
 
 Latest run per model+test. Score = PASS / eligible (DQ excluded from both).
 
 #### Text/Code Models (7 eligible tests: b1, d1, lp1, r1, s1, sa1, sa2)
 
-| Model | b1 | d1 | lp1 | r1 | s1 | sa1 | sa2 | Score |
-|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| Bonsai-8B | — | — | — | — | — | — | — | 0/7 (SERVER_FAIL) |
-| **Carnice-9B** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
-| DeepSeek-R1-Qwen3-8B | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | 0/7 |
-| glm-4.7-flash | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 |
-| GPT-OSS-20B | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 |
-| granite-3.3-8b | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | 0/7 |
-| Nemotron-Cascade-2 | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 |
-| **Nemotron-3-Nano-30B** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
-| phi-4-mini | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | 1/7 |
-| **Qwen3-Coder-30B-A3B** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
-| qwen3-8b | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | 3/7 |
-| qwen3.5-2b-nothink | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | 4/7 |
-| qwen3.5-2b-think | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | 3/7 |
-| qwen3.5-9b-nothink | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
-| **qwen3.5-9b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
-| qwen3.5-27b-nothink | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | 5/7 |
-| qwen3.5-27b-think | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | 4/7 |
-| qwen3.5-35b-nothink | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 5/7 |
-| **qwen3.5-35b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
-| qwen3.5-4b-nothink | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 5/7 |
-| **qwen3.5-4b-think** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** |
+| Model | RAM | b1 | d1 | lp1 | r1 | s1 | sa1 | sa2 | Score | Total (s) | Avg (s/test) |
+|---|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|---:|---:|
+| Bonsai-8B | 2 GB | -- | -- | -- | -- | -- | -- | -- | 0/7 | -- | -- |
+| **Carnice-9B** | 6 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 340 | 49 |
+| DeepSeek-R1-Qwen3-8B | 5 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | 0/7 | 1437 | 205 |
+| GLM-4.7-Flash | 17 GB | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 | 937 | 134 |
+| GPT-OSS-20B | 12 GB | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 | 426 | 61 |
+| granite-3.3-8b | 5 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | 0/7 | 857 | 122 |
+| **Nemotron-3-Nano-30B** | 18 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 916 | 131 |
+| Nemotron-Cascade-2-30B | 25 GB | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 4/7 | 847 | 121 |
+| phi-4-mini | 3 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | 1/7 | 116 | 17 |
+| **Qwen3-Coder-30B-A3B** | 20 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 552 | 79 |
+| Qwen3-8B | 7 GB | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | 3/7 | 706 | 101 |
+| Qwen3.5-2B nothink | 1.3 GB | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | 4/7 | 135 | 19 |
+| Qwen3.5-2B think | 1.3 GB | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | 3/7 | 145 | 21 |
+| **Qwen3.5-4B nothink** | 2.5 GB | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 5/7 | 371 | 53 |
+| **Qwen3.5-4B think** | 2.5 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 315 | 45 |
+| **Qwen3.5-9B nothink** | 6 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 396 | 57 |
+| **Qwen3.5-9B think** | 6 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 471 | 67 |
+| Qwen3.5-27B nothink | 19 GB | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | 5/7 | 1172 | 167 |
+| Qwen3.5-27B think | 19 GB | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | 4/7 | 1323 | 189 |
+| Qwen3.5-35B-A3B nothink | 20 GB | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | 5/7 | 255 | 36 |
+| **Qwen3.5-35B-A3B think** | 20 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | **6/7** | 331 | 47 |
 
-#### Vision-Language Models (12 eligible tests: all)
+#### Vision-Language Models (12 eligible tests: b1, d1, lp1, r1, s1, e1, e2, sa1, sa2, vl1, vl2, vl3)
 
-| Model | b1 | d1 | lp1 | r1 | s1 | e1 | e2 | sa1 | sa2 | vl1 | vl2 | vl3 | Score |
-|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| gemma-4-e2b-nothink | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 3/12 |
-| gemma-4-e2b-think | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 5/12 |
-| gemma-4-e4b-q4-nothink | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | 6/12 |
-| gemma-4-e4b-q4-think | ✅ | ✅ | ✅ | ❌ | ✅ | ⚠️ | DQ | ✅ | ❌ | ✅ | ❌ | ✅ | 7/11 |
-| GLM-OCR | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | 1/12 |
-| InternVL3-2B | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | 2/12 |
-| Qianfan-OCR | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | 2/12 |
-| qwen3-vl-2b | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | 2/12 |
-| **qwen3-vl-4b-f16** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | **11/12** |
-| qwen3-vl-4b-q4 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | 9/12 |
-| SmolVLM2-2.2B | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | 2/12 |
+| Model | RAM | b1 | d1 | lp1 | r1 | s1 | e1 | e2 | sa1 | sa2 | vl1 | vl2 | vl3 | Score | Total (s) | Avg (s/test) |
+|---|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|---:|---:|
+| gemma-4-e2b-nothink | 4.6 GB | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 3/12 | 1068 | 89 |
+| gemma-4-e2b-think | 4.6 GB | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | 5/12 | 1133 | 94 |
+| gemma-4-e4b-q4-nothink | 5.5 GB | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | 6/12 | 796 | 66 |
+| gemma-4-e4b-q4-think | 5.5 GB | ✅ | ✅ | ✅ | ❌ | ✅ | ⚠️ | DQ | ✅ | ❌ | ✅ | ❌ | ✅ | 7/11 | 862 | 78 |
+| GLM-OCR | 9 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | 1/12 | 401 | 33 |
+| InternVL3-2B | 3 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | 2/12 | 251 | 21 |
+| Qianfan-OCR | 5 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | 2/12 | 876 | 73 |
+| Qwen3-VL-2B | 3.5 GB | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | 2/12 | 1017 | 85 |
+| **Qwen3-VL-4B F16** | 9 GB | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | **11/12** | 812 | 68 |
+| Qwen3-VL-4B Q4 | 5.5 GB | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | 9/12 | 696 | 58 |
+| SmolVLM2-2.2B | 3 GB | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | 2/12 | 121 | 10 |
 
-Legend: ✅ PASS | ❌ FAIL | ⚠️ PARTIAL | DQ = Disqualified | -- = not applicable (no vision/VLM capability)
+**Legend:** ✅ PASS | ❌ FAIL | ⚠️ PARTIAL | DQ = Disqualified (excluded from eligible count) | -- = server failure, no data
 
-**sa2 note:** 0/32 models pass sa2 (multi-document synthesis). This is a fixture design issue — the task is too complex for the current tool architecture. Not a model limitation.
+**sa2 note:** 0/32 models pass sa2 (multi-document synthesis). This is a fixture design issue -- the task is too complex for the current tool architecture. Not a model limitation.
 
-### Performance Table
+**Avg (s/test)** = Total duration / 7 (text) or / 12 (VLM). Includes time spent on failed tests.
 
-Total duration per harness group (sum of all tests in group, latest run).
+### 4.3 Performance Ranking
+
+Sorted by **Efficiency Score** = PASS count / RAM (GB). Higher is better -- more passes per gigabyte of memory.
 
 #### Text/Code Models
 
-| Model | RAM | t/s | CC-Agent 5 (s) | sa1 (s) | Total (s) |
-|---|---|---|---|---|---|
-| **Carnice-9B** | ~6GB | ~50 | ~300 | ~40 | ~380 |
-| DeepSeek-R1-Qwen3-8B | 4.7GB | ~40 | FAIL | FAIL | — |
-| glm-4.7-flash | 17GB | ~20 | 847 | 45 | 937 |
-| GPT-OSS-20B | 11GB | ~25 | ~500 | ~35 | ~580 |
-| granite-3.3-8b | ~5GB | ~45 | FAIL | FAIL | — |
-| Nemotron-Cascade-2 | ~23GB | ~20 | ~600 | ~40 | ~690 |
-| **Nemotron-3-Nano-30B** | ~23GB | ~30 | ~350 | ~45 | ~440 |
-| phi-4-mini | ~3GB | ~80 | FAIL | ~30 | — |
-| **Qwen3-Coder-30B-A3B** | ~15GB | ~73 | 491 | 36 | 552 |
-| qwen3-8b | ~5GB | ~40 | ~450 | ~35 | ~530 |
-| qwen3.5-2b-nothink | 1.3GB | ~200 | 105 | 15 | 135 |
-| qwen3.5-2b-think | 1.3GB | ~200 | 110 | 20 | 145 |
-| qwen3.5-9b-nothink | 6GB | ~60 | ~280 | ~35 | ~355 |
-| **qwen3.5-9b-think** | 6GB | ~60 | ~300 | ~40 | ~380 |
-| qwen3.5-27b-nothink | ~16GB | ~25 | ~500 | ~45 | ~590 |
-| qwen3.5-27b-think | ~16GB | ~25 | ~550 | FAIL | — |
-| qwen3.5-35b-nothink | ~20GB | ~45 | 190 | 30 | 255 |
-| **qwen3.5-35b-think** | ~20GB | ~45 | 241 | 50 | 331 |
-| qwen3.5-4b-nothink | 2.5GB | ~150 | 306 | 30 | 371 |
-| **qwen3.5-4b-think** | 2.5GB | ~150 | **230** | 40 | 315 |
+| Rank | Model | RAM | Score | Total (s) | Efficiency (PASS/GB) |
+|---:|---|---|:--:|---:|---:|
+| 1 | Qwen3.5-2B nothink | 1.3 GB | 4/7 | 135 | 3.08 |
+| 2 | **Qwen3.5-4B think** | 2.5 GB | **6/7** | 315 | **2.40** |
+| 3 | Qwen3.5-2B think | 1.3 GB | 3/7 | 145 | 2.31 |
+| 4 | Qwen3.5-4B nothink | 2.5 GB | 5/7 | 371 | 2.00 |
+| 5 | **Qwen3.5-9B nothink** | 6 GB | **6/7** | 396 | **1.00** |
+| 6 | **Qwen3.5-9B think** | 6 GB | **6/7** | 471 | **1.00** |
+| 7 | **Carnice-9B** | 6 GB | **6/7** | 340 | **1.00** |
+| 8 | Qwen3-8B | 7 GB | 3/7 | 706 | 0.43 |
+| 9 | phi-4-mini | 3 GB | 1/7 | 116 | 0.33 |
+| 10 | **Nemotron-3-Nano-30B** | 18 GB | **6/7** | 916 | 0.33 |
+| 11 | GPT-OSS-20B | 12 GB | 4/7 | 426 | 0.33 |
+| 12 | **Qwen3-Coder-30B-A3B** | 20 GB | **6/7** | 552 | 0.30 |
+| 13 | **Qwen3.5-35B-A3B think** | 20 GB | **6/7** | 331 | 0.30 |
+| 14 | Qwen3.5-27B nothink | 19 GB | 5/7 | 1172 | 0.26 |
+| 15 | Qwen3.5-35B-A3B nothink | 20 GB | 5/7 | 255 | 0.25 |
+| 16 | GLM-4.7-Flash | 17 GB | 4/7 | 937 | 0.24 |
+| 17 | Qwen3.5-27B think | 19 GB | 4/7 | 1323 | 0.21 |
+| 18 | Nemotron-Cascade-2-30B | 25 GB | 4/7 | 847 | 0.16 |
+| 19 | Bonsai-8B | 2 GB | 0/7 | -- | 0.00 |
+| 20 | DeepSeek-R1-Qwen3-8B | 5 GB | 0/7 | 1437 | 0.00 |
+| 21 | granite-3.3-8b | 5 GB | 0/7 | 857 | 0.00 |
 
 #### Vision-Language Models
 
-| Model | RAM | t/s | CC-Agent 5 (s) | Vision 2 (s) | sa1 (s) | VLM 3 (s) | Total (s) |
-|---|---|---|---|---|---|---|---|
-| gemma-4-e2b-nothink | 4.6GB | ~67 | 256 | 366 | 186 | 15 | 1068 |
-| gemma-4-e2b-think | 4.6GB | ~67 | 311 | 376 | 186 | 15 | 1133 |
-| gemma-4-e4b-q4-nothink | 5.5GB | ~30 | 255 | 90 | 186 | 20 | 796 |
-| gemma-4-e4b-q4-think | 5.5GB | ~30 | 546 | 185 | 50 | 35 | 862 |
-| GLM-OCR | ~2GB | ~60 | FAIL | FAIL | FAIL | ~15 | — |
-| InternVL3-2B | ~2GB | ~50 | FAIL | FAIL | FAIL | ~20 | — |
-| Qianfan-OCR | ~2GB | ~50 | FAIL | FAIL | FAIL | ~20 | — |
-| qwen3-vl-2b | 1.0GB | ~120 | 887 | 85 | 10 | 25 | 1017 |
-| **qwen3-vl-4b-f16** | 7.5GB | ~28 | 492 | 200 | 45 | 45 | 812 |
-| qwen3-vl-4b-q4 | 2.3GB | ~42 | 431 | 180 | 25 | 35 | 696 |
-| SmolVLM2-2.2B | ~2GB | ~55 | FAIL | FAIL | FAIL | ~20 | — |
+| Rank | Model | RAM | Score | Total (s) | Efficiency (PASS/GB) |
+|---:|---|---|:--:|---:|---:|
+| 1 | **Qwen3-VL-4B Q4** | 5.5 GB | 9/12 | 696 | **1.64** |
+| 2 | gemma-4-e4b-q4-think | 5.5 GB | 7/11 | 862 | 1.27 |
+| 3 | **Qwen3-VL-4B F16** | 9 GB | **11/12** | 812 | **1.22** |
+| 4 | gemma-4-e4b-q4-nothink | 5.5 GB | 6/12 | 796 | 1.09 |
+| 5 | gemma-4-e2b-think | 4.6 GB | 5/12 | 1133 | 1.09 |
+| 6 | SmolVLM2-2.2B | 3 GB | 2/12 | 121 | 0.67 |
+| 7 | InternVL3-2B | 3 GB | 2/12 | 251 | 0.67 |
+| 8 | gemma-4-e2b-nothink | 4.6 GB | 3/12 | 1068 | 0.65 |
+| 9 | Qwen3-VL-2B | 3.5 GB | 2/12 | 1017 | 0.57 |
+| 10 | Qianfan-OCR | 5 GB | 2/12 | 876 | 0.40 |
+| 11 | GLM-OCR | 9 GB | 1/12 | 401 | 0.11 |
 
-**CC-Agent 5** = b1 + d1 + lp1 + r1 + s1 (code tasks only). **Vision 2** = e1 + e2 (agent vision). **VLM 3** = vl1 + vl2 + vl3 (oneshot vision). Total includes sa2 durations not shown separately.
+**Key takeaway:** Qwen3.5-4B think (2.40 PASS/GB) dominates text efficiency -- 6/7 score at just 2.5 GB. For VLM, Qwen3-VL-4B Q4 (1.64 PASS/GB) leads on efficiency, but F16 (1.22 PASS/GB) is the better choice when OCR accuracy matters (11/12 vs 9/12).
 
 ---
 
