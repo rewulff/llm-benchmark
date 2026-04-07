@@ -1,0 +1,4433 @@
+{
+  "generated": "2026-04-07T20:02:48.530945",
+  "source": "tools/llm-benchmark/results/*.json",
+  "total_result_files": 38,
+  "total_unique_models": 36,
+  "notes": [
+    "All benchmarks run on M4 Pro 48GB unless noted (hardware field per run)",
+    "Suite v3_14test is the current/primary suite (March 2026)",
+    "Suite v1_12test is the Feb 2026 suite with agent A-tasks + B/C text tasks",
+    "Suite v2_7test is the B+C text subset (partial runs only)",
+    "Rankings only include models with >= 7 tests in their best run",
+    "RAM estimates: Q4=0.6 GB/B, Q5=0.75 GB/B, Q8=1.2 GB/B, F16=2.0 GB/B, IQ3=0.45 GB/B",
+    "thinking_mode: true = Qwen3 thinking enabled (default), false = nothink/nojinja variant"
+  ],
+  "test_suites": {
+    "v3_14test": {
+      "tests": [
+        "b1_summary",
+        "b2_log_analysis",
+        "b3_statistics",
+        "b4_code_review",
+        "c1_config_diff",
+        "c2_decision_matrix",
+        "c3_root_cause",
+        "d1_subtle_bug",
+        "d2_instruction_following",
+        "d3_multi_step_calc",
+        "d4_long_context",
+        "d5_nuanced_review",
+        "e1_correlated_log",
+        "e2_dmarc_analysis"
+      ],
+      "total_tests": 14,
+      "models_tested": 24,
+      "description": "V3 Full Suite — Text, Code, Reasoning, Multi-step (March 2026)",
+      "date_added": "2026-03-15"
+    },
+    "v1_12test": {
+      "tests": [
+        "a1_file_write",
+        "a2_bug_fix",
+        "a3_error_handling",
+        "a4_large_read",
+        "a5_large_edit",
+        "b1_summary",
+        "b2_log_analysis",
+        "b3_statistics",
+        "b4_code_review",
+        "c1_config_diff",
+        "c2_decision_matrix",
+        "c3_root_cause"
+      ],
+      "total_tests": 12,
+      "models_tested": 5,
+      "description": "V1 Suite — Agent Tasks + Text (Feb 2026)",
+      "date_added": "2026-02-17"
+    },
+    "v2_7test": {
+      "tests": [
+        "b1_summary",
+        "b2_log_analysis",
+        "b3_statistics",
+        "b4_code_review",
+        "c1_config_diff",
+        "c2_decision_matrix",
+        "c3_root_cause"
+      ],
+      "total_tests": 7,
+      "models_tested": 3,
+      "description": "V2 Partial — Text+Code subset (Feb-Mar 2026)",
+      "date_added": "2026-02-27"
+    },
+    "v0_partial_1test": {
+      "tests": [
+        "b1_summary"
+      ],
+      "total_tests": 1,
+      "models_tested": 1,
+      "description": "Partial run — 1 tests"
+    },
+    "v0_partial_5test": {
+      "tests": [
+        "a1_file_write",
+        "a2_bug_fix",
+        "a3_error_handling",
+        "a4_large_read",
+        "a5_large_edit"
+      ],
+      "total_tests": 5,
+      "models_tested": 2,
+      "description": "Partial run — 5 tests"
+    },
+    "v0_partial_3test": {
+      "tests": [
+        "a1_file_write",
+        "a2_bug_fix",
+        "a3_error_handling"
+      ],
+      "total_tests": 3,
+      "models_tested": 1,
+      "description": "Partial run — 3 tests"
+    },
+    "v0_partial_2test": {
+      "tests": [
+        "a1_file_write",
+        "a2_bug_fix"
+      ],
+      "total_tests": 2,
+      "models_tested": 1,
+      "description": "Partial run — 2 tests"
+    }
+  },
+  "models": [
+    {
+      "name": "deepseek-coder-v2-lite",
+      "display_name": "Deepseek Coder V2 Lite",
+      "family": "DeepSeek",
+      "params": null,
+      "params_numeric_b": null,
+      "quantization": "Q8_0",
+      "model_id": "deepseek-coder-v2-lite",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 15.6,
+      "runs": [
+        {
+          "file": "deepseek-coder-v2-lite_20260315.json",
+          "timestamp": "2026-03-15T14:32:02.926854",
+          "date": "2026-03-15",
+          "test_suite": "v2_7test",
+          "total_tests": 7,
+          "passed": 5,
+          "failed": 2,
+          "pass_rate": 0.714,
+          "total_time_sec": 87.7,
+          "quality_score": null,
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 5.5
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 13.4
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 17.9
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 14.8
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 22.6
+            },
+            "c2_decision_matrix": {
+              "status": "FAIL",
+              "time_sec": 8.1
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 5.4
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.714,
+        "passed": 5,
+        "total": 7,
+        "suite": "v2_7test",
+        "date": "2026-03-15",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "devstral-2-24b",
+      "display_name": "Devstral 2 24B",
+      "family": "Devstral",
+      "params": "24B",
+      "params_numeric_b": 24.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Devstral-Small-2-24B-Instruct-2512-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 15.4,
+      "runs": [
+        {
+          "file": "devstral-2-24b_20260315.json",
+          "timestamp": "2026-03-15T16:36:02.808911",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 482.8,
+          "quality_score": "25/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 9.7
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 57.9
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 38.0
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 34.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 34.3
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 39.9
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 11.1
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 19.9
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 4.4
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 27.9
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 35.4
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 65.6
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 97.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "25/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "devstral-2-24b-opt",
+      "display_name": "Devstral 2 24B Opt",
+      "family": "Devstral",
+      "params": "24B",
+      "params_numeric_b": 24.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Devstral-Small-2-24B-Instruct-2512-4bit",
+      "ctx_size": 131072,
+      "category": "text",
+      "ram_estimate_gb": 15.4,
+      "runs": [
+        {
+          "file": "devstral-2-24b-opt_20260315.json",
+          "timestamp": "2026-03-15T18:29:28.841406",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 640.4,
+          "quality_score": "25/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 9.4
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 55.6
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 65.0
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 108.9
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 38.1
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 27.9
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 13.2
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 25.4
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 4.7
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 23.0
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 6.9
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 101.7
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 81.6
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 79.0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "25/25"
+      },
+      "base_model": "devstral-2-24b"
+    },
+    {
+      "name": "gemma-3-27b",
+      "display_name": "Gemma 3 27B",
+      "family": "Gemma 3",
+      "params": "27B",
+      "params_numeric_b": 27.0,
+      "quantization": "Q4 (assumed)",
+      "model_id": "gemma-3-27b",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 17.3,
+      "runs": [
+        {
+          "file": "gemma-3-27b_20260217.json",
+          "timestamp": "2026-02-17T15:27:12.489268",
+          "date": "2026-02-17",
+          "test_suite": "v1_12test",
+          "total_tests": 12,
+          "passed": 9,
+          "failed": 3,
+          "pass_rate": 0.75,
+          "total_time_sec": 858.2,
+          "quality_score": null,
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 45.6
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 195.2
+            },
+            "a3_error_handling": {
+              "status": "FAIL",
+              "time_sec": 113.5
+            },
+            "a4_large_read": {
+              "status": "PASS",
+              "time_sec": 17.6
+            },
+            "a5_large_edit": {
+              "status": "FAIL",
+              "time_sec": 140.1
+            },
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 11.6
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 78.5
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 67.7
+            },
+            "b4_code_review": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 84.1
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 89.3
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 15.0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "date": "2026-02-17",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "gemma-3-4b",
+      "display_name": "Gemma 3 4B",
+      "family": "Gemma 3",
+      "params": "4B",
+      "params_numeric_b": 4.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/gemma-3-4b-it-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 2.8,
+      "runs": [
+        {
+          "file": "gemma-3-4b_20260316.json",
+          "timestamp": "2026-03-16T00:18:49.149412",
+          "date": "2026-03-16",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 158.3,
+          "quality_score": "21/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 1.6
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 10.5
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 14.9
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 21.9
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 16.2
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 12.6
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 2.4
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 9.7
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 1.2
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 7.3
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 1.1
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 27.8
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 14.4
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 16.7
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-16",
+        "quality_score": "21/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "glm-4.5-reap-82b",
+      "display_name": "Glm 4.5 Reap 82B",
+      "family": "GLM-4.5",
+      "params": "82B",
+      "params_numeric_b": 82.0,
+      "quantization": "IQ3_XS",
+      "model_id": "glm-4.5-reap-82b",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 37.0,
+      "runs": [
+        {
+          "file": "glm-4.5-reap-82b_20260315.json",
+          "timestamp": "2026-03-15T19:15:14.472282",
+          "date": "2026-03-15",
+          "test_suite": "v0_partial_1test",
+          "total_tests": 1,
+          "passed": 0,
+          "failed": 1,
+          "pass_rate": 0.0,
+          "total_time_sec": 15.2,
+          "quality_score": null,
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 15.2
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "total": 1,
+        "suite": "v0_partial_1test",
+        "date": "2026-03-15",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "glm-4.7-flash",
+      "display_name": "Glm 4.7 Flash",
+      "family": "GLM-4.7",
+      "params": null,
+      "params_numeric_b": null,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/GLM-4.7-Flash-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": null,
+      "runs": [
+        {
+          "file": "glm-4.7-flash_20260315.json",
+          "timestamp": "2026-03-15T16:20:18.455420",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 10,
+          "failed": 4,
+          "pass_rate": 0.714,
+          "total_time_sec": 641.9,
+          "quality_score": "12/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 10.9
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 37.7
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 30.1
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 71.8
+            },
+            "c1_config_diff": {
+              "status": "FAIL",
+              "time_sec": 73.0
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 50.6
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 22.1
+            },
+            "d1_subtle_bug": {
+              "status": "FAIL",
+              "time_sec": 72.2
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 16.8
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 26.2
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 7.6
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 70.1
+            },
+            "e1_correlated_log": {
+              "status": "FAIL",
+              "time_sec": 78.4
+            },
+            "e2_dmarc_analysis": {
+              "status": "FAIL",
+              "time_sec": 74.4
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "12/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "gpt-oss-20b",
+      "display_name": "Gpt Oss 20B",
+      "family": "GPT-OSS",
+      "params": "20B",
+      "params_numeric_b": 20.0,
+      "quantization": "MXFP4",
+      "model_id": "gpt-oss-20b",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 10.8,
+      "runs": [
+        {
+          "file": "gpt-oss-20b_20260217.json",
+          "timestamp": "2026-02-17T15:54:29.408560",
+          "date": "2026-02-17",
+          "test_suite": "v1_12test",
+          "total_tests": 12,
+          "passed": 8,
+          "failed": 4,
+          "pass_rate": 0.667,
+          "total_time_sec": 462.5,
+          "quality_score": null,
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 85.0
+            },
+            "a2_bug_fix": {
+              "status": "FAIL",
+              "time_sec": 45.4
+            },
+            "a3_error_handling": {
+              "status": "FAIL",
+              "time_sec": 66.3
+            },
+            "a4_large_read": {
+              "status": "FAIL",
+              "time_sec": 33.3
+            },
+            "a5_large_edit": {
+              "status": "FAIL",
+              "time_sec": 62.4
+            },
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 9.6
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 26.0
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 39.2
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 45.6
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 20.9
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 18.6
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 10.2
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "date": "2026-02-17",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "huihui-qwen35-27b-opus",
+      "display_name": "Huihui Qwen35 27B Opus",
+      "family": "Huihui-Qwen3.5",
+      "params": "27B",
+      "params_numeric_b": 27.0,
+      "quantization": "Q4_K_M",
+      "model_id": "vanch007/Huihui-Qwen3.5-27B-Claude-4.6-Opus-abliterated-mlx-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 17.3,
+      "runs": [
+        {
+          "file": "huihui-qwen35-27b-opus_20260315.json",
+          "timestamp": "2026-03-15T16:45:07.778847",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 8,
+          "failed": 6,
+          "pass_rate": 0.571,
+          "total_time_sec": 602.1,
+          "quality_score": "2/4",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 24.7
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 112.4
+            },
+            "b3_statistics": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "b4_code_review": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 85.8
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 119.8
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 38.6
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 51.9
+            },
+            "d2_instruction_following": {
+              "status": "FAIL",
+              "time_sec": 35.8
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 103.7
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 29.4
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "e1_correlated_log": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "e2_dmarc_analysis": {
+              "status": "FAIL",
+              "time_sec": 0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.571,
+        "passed": 8,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "2/4"
+      },
+      "base_model": null
+    },
+    {
+      "name": "lfm2-24b-a2b",
+      "display_name": "Lfm2 24B A2B",
+      "family": "LFM2",
+      "params": "24B",
+      "params_numeric_b": 24.0,
+      "quantization": "Q5_K_M",
+      "model_id": "lfm2-24b-a2b",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "lfm2-24b-a2b_20260227.json",
+          "timestamp": "2026-02-27T07:55:45.897520",
+          "date": "2026-02-27",
+          "test_suite": "v1_12test",
+          "total_tests": 12,
+          "passed": 8,
+          "failed": 4,
+          "pass_rate": 0.667,
+          "total_time_sec": 233.6,
+          "quality_score": null,
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 16.1
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 9.6
+            },
+            "a3_error_handling": {
+              "status": "PASS",
+              "time_sec": 27.1
+            },
+            "a4_large_read": {
+              "status": "FAIL",
+              "time_sec": 26.1
+            },
+            "a5_large_edit": {
+              "status": "FAIL",
+              "time_sec": 66.1
+            },
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 3.7
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 11.7
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 14.3
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 24.1
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 15.9
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 15.2
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 3.7
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "date": "2026-02-27",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "llama-3.2-1b",
+      "display_name": "Llama 3.2 1B",
+      "family": "Llama 3.2",
+      "params": "1B",
+      "params_numeric_b": 1.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Llama-3.2-1B-Instruct-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 0.9,
+      "runs": [
+        {
+          "file": "llama-3.2-1b_20260316.json",
+          "timestamp": "2026-03-16T00:22:54.014911",
+          "date": "2026-03-16",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 11,
+          "failed": 3,
+          "pass_rate": 0.786,
+          "total_time_sec": 36.9,
+          "quality_score": "16/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 0.7
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 3.2
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 3.3
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 5.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 5.5
+            },
+            "c2_decision_matrix": {
+              "status": "FAIL",
+              "time_sec": 3.2
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 0.6
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 2.2
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 0.4
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 1.7
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 0.5
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 3.5
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 4.1
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 2.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-16",
+        "quality_score": "16/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "llama-3.2-3b",
+      "display_name": "Llama 3.2 3B",
+      "family": "Llama 3.2",
+      "params": "3B",
+      "params_numeric_b": 3.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Llama-3.2-3B-Instruct-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 2.2,
+      "runs": [
+        {
+          "file": "llama-3.2-3b_20260316.json",
+          "timestamp": "2026-03-16T00:21:31.753973",
+          "date": "2026-03-16",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 13,
+          "failed": 1,
+          "pass_rate": 0.929,
+          "total_time_sec": 78.1,
+          "quality_score": "19/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 1.2
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 6.9
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 12.4
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 7.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 9.3
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 6.5
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 1.9
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 5.8
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 1.0
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 2.2
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 0.8
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 9.4
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 7.7
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 5.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-16",
+        "quality_score": "19/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "phi-4-mini",
+      "display_name": "Phi 4 Mini",
+      "family": "Phi-4",
+      "params": null,
+      "params_numeric_b": null,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Phi-4-mini-instruct-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": null,
+      "runs": [
+        {
+          "file": "phi-4-mini_20260316.json",
+          "timestamp": "2026-03-16T00:11:57.934604",
+          "date": "2026-03-16",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 406.2,
+          "quality_score": "21/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 2.0
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 54.3
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 52.3
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 11.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 52.6
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 51.8
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 52.0
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 51.9
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 0.8
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 6.4
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 1.1
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 52.1
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 11.0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-16",
+        "quality_score": "21/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3-30b",
+      "display_name": "Qwen3 30B",
+      "family": "Qwen3",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4 (assumed)",
+      "model_id": "qwen3-30b",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "qwen3-30b_20260217.json",
+          "timestamp": "2026-02-17T15:17:50.314151",
+          "date": "2026-02-17",
+          "test_suite": "v1_12test",
+          "total_tests": 12,
+          "passed": 9,
+          "failed": 3,
+          "pass_rate": 0.75,
+          "total_time_sec": 541.8,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 38.5
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 34.9
+            },
+            "a3_error_handling": {
+              "status": "FAIL",
+              "time_sec": 32.7
+            },
+            "a4_large_read": {
+              "status": "FAIL",
+              "time_sec": 35.4
+            },
+            "a5_large_edit": {
+              "status": "FAIL",
+              "time_sec": 211.6
+            },
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 7.0
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 25.6
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 36.0
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 50.4
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 26.6
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 27.8
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 15.3
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "date": "2026-02-17",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3-coder-30b",
+      "display_name": "Qwen3 Coder 30B",
+      "family": "Qwen3-Coder",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4 (assumed)",
+      "model_id": "qwen3-coder-30b",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "qwen3-coder-30b_20260217.json",
+          "timestamp": "2026-02-17T16:04:57.746613",
+          "date": "2026-02-17",
+          "test_suite": "v0_partial_5test",
+          "total_tests": 5,
+          "passed": 4,
+          "failed": 1,
+          "pass_rate": 0.8,
+          "total_time_sec": 395.0,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 12.4
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 13.2
+            },
+            "a3_error_handling": {
+              "status": "PASS",
+              "time_sec": 56.0
+            },
+            "a4_large_read": {
+              "status": "PASS",
+              "time_sec": 3.6
+            },
+            "a5_large_edit": {
+              "status": "FAIL",
+              "time_sec": 309.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.8,
+        "passed": 4,
+        "total": 5,
+        "suite": "v0_partial_5test",
+        "date": "2026-02-17",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3-coder-30b-llama",
+      "display_name": "Qwen3 Coder 30B Llama",
+      "family": "Qwen3-Coder",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4 (assumed)",
+      "model_id": null,
+      "ctx_size": null,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "qwen3-coder-30b-llama_20260315.json",
+          "timestamp": "2026-03-15T15:15:00.253296",
+          "date": "2026-03-15",
+          "test_suite": "v2_7test",
+          "total_tests": 7,
+          "passed": 7,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 47.6,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 1.9
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 12.3
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 7.1
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 9.8
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 6.5
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 3.3
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "date": "2026-03-15",
+        "quality_score": null
+      },
+      "base_model": "qwen3-coder-30b"
+    },
+    {
+      "name": "qwen3-coder-30b-mlx",
+      "display_name": "Qwen3 Coder 30B Mlx",
+      "family": "Qwen3-Coder",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4 (assumed)",
+      "model_id": "mlx-community/Qwen3-Coder-30B-A3B-Instruct-4bit",
+      "ctx_size": 131072,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "qwen3-coder-30b-mlx_20260227.json",
+          "timestamp": "2026-02-27T12:59:17.241021",
+          "date": "2026-02-27",
+          "test_suite": "v0_partial_5test",
+          "total_tests": 5,
+          "passed": 4,
+          "failed": 1,
+          "pass_rate": 0.8,
+          "total_time_sec": 586.2,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 92.6
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 10.7
+            },
+            "a3_error_handling": {
+              "status": "PASS",
+              "time_sec": 472.6
+            },
+            "a4_large_read": {
+              "status": "PASS",
+              "time_sec": 10.3
+            },
+            "a5_large_edit": {
+              "status": "FAIL",
+              "time_sec": 0
+            }
+          }
+        },
+        {
+          "file": "qwen3-coder-30b-mlx_20260315.json",
+          "timestamp": "2026-03-15T16:13:58.356210",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 105.7,
+          "quality_score": "24/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 12.6
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 10.1
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 6.0
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 10.5
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 6.1
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 5.7
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 2.1
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 5.9
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 1.1
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 6.8
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 1.8
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 8.0
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 14.9
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 14.1
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "24/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3-coder-30b-omlx",
+      "display_name": "Qwen3 Coder 30B Omlx",
+      "family": "Qwen3-Coder",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4 (assumed)",
+      "model_id": "qwen3-coder-30b",
+      "ctx_size": 131072,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "qwen3-coder-30b-omlx_20260227.json",
+          "timestamp": "2026-02-27T14:40:40.735283",
+          "date": "2026-02-27",
+          "test_suite": "v0_partial_3test",
+          "total_tests": 3,
+          "passed": 3,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 365.3,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 61.0
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 22.4
+            },
+            "a3_error_handling": {
+              "status": "PASS",
+              "time_sec": 281.9
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 3,
+        "total": 3,
+        "suite": "v0_partial_3test",
+        "date": "2026-02-27",
+        "quality_score": null
+      },
+      "base_model": "qwen3-coder-30b"
+    },
+    {
+      "name": "qwen3-coder-next-80b",
+      "display_name": "Qwen3 Coder Next 80B",
+      "family": "Qwen3-Coder-Next",
+      "params": "80B",
+      "params_numeric_b": 80.0,
+      "quantization": "IQ3_XXS",
+      "model_id": "qwen3-coder-next-80b",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 30.0,
+      "runs": [
+        {
+          "file": "qwen3-coder-next-80b_20260315.json",
+          "timestamp": "2026-03-15T19:55:27.452528",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 370.7,
+          "quality_score": "24/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 3.8
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 24.8
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 31.0
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 48.4
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 34.1
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 29.6
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 5.6
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 12.1
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 2.7
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 14.8
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 2.4
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 53.7
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 41.7
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 66.0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "24/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3-coder-next-80b-opt",
+      "display_name": "Qwen3 Coder Next 80B Opt",
+      "family": "Qwen3-Coder-Next",
+      "params": "80B",
+      "params_numeric_b": 80.0,
+      "quantization": "IQ3_XXS",
+      "model_id": "qwen3-coder-next-80b-opt",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 30.0,
+      "runs": [
+        {
+          "file": "qwen3-coder-next-80b-opt_20260315.json",
+          "timestamp": "2026-03-15T20:06:20.181567",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 385.7,
+          "quality_score": "25/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 3.4
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 27.3
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 36.8
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 35.6
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 43.9
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 37.8
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 5.3
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 19.3
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 2.7
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 12.9
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 2.4
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 55.2
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 39.2
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 63.9
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "25/25"
+      },
+      "base_model": "qwen3-coder-next-80b"
+    },
+    {
+      "name": "qwen3.5-0.8b",
+      "display_name": "Qwen3.5 0.8B",
+      "family": "Qwen3.5",
+      "params": "0.8B",
+      "params_numeric_b": 0.8,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-0.8B-MLX-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 0.8,
+      "runs": [
+        {
+          "file": "qwen3.5-0.8b_20260315.json",
+          "timestamp": "2026-03-15T20:46:45.418143",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 12,
+          "failed": 2,
+          "pass_rate": 0.857,
+          "total_time_sec": 36.6,
+          "quality_score": "20/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 0.5
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 2.1
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 2.9
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 3.0
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 5.5
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 3.4
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 0.6
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 1.6
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 0.4
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 2.1
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 0.4
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 3.5
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 5.0
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 5.6
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "20/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-27b",
+      "display_name": "Qwen3.5 27B",
+      "family": "Qwen3.5",
+      "params": "27B",
+      "params_numeric_b": 27.0,
+      "quantization": "Q5_K_M",
+      "model_id": "qwen3.5-27b",
+      "ctx_size": 16384,
+      "category": "text",
+      "ram_estimate_gb": 48.0,
+      "runs": [
+        {
+          "file": "qwen3.5-27b_20260227.json",
+          "timestamp": "2026-02-27T09:52:38.615031",
+          "date": "2026-02-27",
+          "test_suite": "v0_partial_2test",
+          "total_tests": 2,
+          "passed": 2,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 239.0,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 145.2
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 93.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 2,
+        "total": 2,
+        "suite": "v0_partial_2test",
+        "date": "2026-02-27",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-27b-opus-distilled",
+      "display_name": "Qwen3.5 27B Opus Distilled",
+      "family": "Qwen3.5",
+      "params": "27B",
+      "params_numeric_b": 27.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-27B-Claude-4.6-Opus-Distilled-MLX-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 17.3,
+      "runs": [
+        {
+          "file": "qwen3.5-27b-opus-distilled_20260315.json",
+          "timestamp": "2026-03-15T19:33:41.224983",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 11,
+          "failed": 3,
+          "pass_rate": 0.786,
+          "total_time_sec": 811.0,
+          "quality_score": "15/15",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 33.1
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 88.6
+            },
+            "b3_statistics": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "b4_code_review": {
+              "status": "FAIL",
+              "time_sec": 0
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 81.7
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 105.7
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 49.9
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 78.9
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 40.5
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 94.0
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 31.3
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 109.9
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 97.4
+            },
+            "e2_dmarc_analysis": {
+              "status": "FAIL",
+              "time_sec": 0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "15/15"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-2b",
+      "display_name": "Qwen3.5 2B",
+      "family": "Qwen3.5",
+      "params": "2B",
+      "params_numeric_b": 2.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-2B-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 1.6,
+      "runs": [
+        {
+          "file": "qwen3.5-2b_20260315.json",
+          "timestamp": "2026-03-15T20:47:26.196208",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 150.4,
+          "quality_score": "25/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 1.0
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 4.9
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 7.7
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 8.6
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 12.1
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 11.0
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 4.2
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 24.9
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 24.9
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 3.2
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 1.2
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 19.4
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 10.1
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 17.2
+            }
+          }
+        },
+        {
+          "file": "qwen3.5-2b_20260316.json",
+          "timestamp": "2026-03-16T00:33:19.586659",
+          "date": "2026-03-16",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 118.8,
+          "quality_score": "23/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 0.9
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 6.1
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 10.1
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 25.4
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 10.2
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 5.7
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 1.4
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 5.0
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 1.0
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 9.0
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 0.8
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 17.6
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 10.0
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 15.6
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "25/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-2b-gguf",
+      "display_name": "Qwen3.5 2B Gguf",
+      "family": "Qwen3.5",
+      "params": "2B",
+      "params_numeric_b": 2.0,
+      "quantization": "Q4_K_M",
+      "model_id": "qwen3.5-2b-gguf",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 1.6,
+      "runs": [
+        {
+          "file": "qwen3.5-2b-gguf_20260315.json",
+          "timestamp": "2026-03-15T22:26:50.416215",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 4,
+          "failed": 10,
+          "pass_rate": 0.286,
+          "total_time_sec": 474.0,
+          "quality_score": "5/25",
+          "thinking_mode": false,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 39.9
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 21.4
+            },
+            "b3_statistics": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 8.6
+            },
+            "c1_config_diff": {
+              "status": "FAIL",
+              "time_sec": 40.5
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 33.3
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 40.2
+            },
+            "d1_subtle_bug": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "d2_instruction_following": {
+              "status": "FAIL",
+              "time_sec": 40.2
+            },
+            "d3_multi_step_calc": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 6.3
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "e1_correlated_log": {
+              "status": "FAIL",
+              "time_sec": 41.6
+            },
+            "e2_dmarc_analysis": {
+              "status": "FAIL",
+              "time_sec": 40.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.286,
+        "passed": 4,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "5/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-2b-gguf-nojinja",
+      "display_name": "Qwen3.5 2B Gguf Nojinja",
+      "family": "Qwen3.5",
+      "params": "2B",
+      "params_numeric_b": 2.0,
+      "quantization": "Q4_K_M",
+      "model_id": "qwen3.5-2b-gguf-nojinja",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 1.6,
+      "runs": [
+        {
+          "file": "qwen3.5-2b-gguf-nojinja_20260315.json",
+          "timestamp": "2026-03-15T22:40:53.328245",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 4,
+          "failed": 10,
+          "pass_rate": 0.286,
+          "total_time_sec": 502.0,
+          "quality_score": "4/25",
+          "thinking_mode": false,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 39.9
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 34.3
+            },
+            "b3_statistics": {
+              "status": "FAIL",
+              "time_sec": 40.4
+            },
+            "b4_code_review": {
+              "status": "FAIL",
+              "time_sec": 40.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 22.2
+            },
+            "c2_decision_matrix": {
+              "status": "FAIL",
+              "time_sec": 40.1
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "d1_subtle_bug": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 34.2
+            },
+            "d3_multi_step_calc": {
+              "status": "FAIL",
+              "time_sec": 40.3
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 40.4
+            },
+            "e1_correlated_log": {
+              "status": "FAIL",
+              "time_sec": 41.7
+            },
+            "e2_dmarc_analysis": {
+              "status": "FAIL",
+              "time_sec": 41.0
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.286,
+        "passed": 4,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "4/25"
+      },
+      "base_model": "qwen3.5-2b-gguf"
+    },
+    {
+      "name": "qwen3.5-2b-gguf-nothink",
+      "display_name": "Qwen3.5 2B Gguf Nothink",
+      "family": "Qwen3.5",
+      "params": "2B",
+      "params_numeric_b": 2.0,
+      "quantization": "Q4_K_M",
+      "model_id": "qwen3.5-2b-gguf-nothink",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 1.6,
+      "runs": [
+        {
+          "file": "qwen3.5-2b-gguf-nothink_20260315.json",
+          "timestamp": "2026-03-15T23:34:40.461234",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 13,
+          "failed": 1,
+          "pass_rate": 0.929,
+          "total_time_sec": 125.1,
+          "quality_score": "21/25",
+          "thinking_mode": false,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 1.0
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 10.4
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 15.3
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 12.3
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 11.0
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 13.0
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 1.3
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 5.7
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 0.7
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 0.7
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 15.0
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 14.1
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 17.9
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "21/25"
+      },
+      "base_model": "qwen3.5-2b-gguf"
+    },
+    {
+      "name": "qwen3.5-2b-macmini-m1",
+      "display_name": "Qwen3.5 2B Macmini M1",
+      "family": "Qwen3.5",
+      "params": "2B",
+      "params_numeric_b": 2.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-2B-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 1.6,
+      "runs": [
+        {
+          "file": "qwen3.5-2b-macmini-m1_20260315.json",
+          "timestamp": "2026-03-15T21:33:31.869665",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 12,
+          "failed": 2,
+          "pass_rate": 0.857,
+          "total_time_sec": 562.5,
+          "quality_score": "21/25",
+          "thinking_mode": true,
+          "hardware": "m1-macmini",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 3.3
+            },
+            "b2_log_analysis": {
+              "status": "FAIL",
+              "time_sec": 26.5
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 38.5
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 44.9
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 38.0
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 19.8
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 6.6
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 89.0
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 3.9
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 19.4
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 90.3
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 89.0
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 44.6
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 48.7
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "21/25"
+      },
+      "base_model": "qwen3.5-2b"
+    },
+    {
+      "name": "qwen3.5-35b-a3b",
+      "display_name": "Qwen3.5 35B A3B",
+      "family": "Qwen3.5",
+      "params": "35B",
+      "params_numeric_b": 35.0,
+      "quantization": "Q4_K_M",
+      "model_id": "qwen3.5-35b-a3b",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 22.4,
+      "runs": [
+        {
+          "file": "qwen3.5-35b-a3b_20260227.json",
+          "timestamp": "2026-02-27T08:00:01.837584",
+          "date": "2026-02-27",
+          "test_suite": "v1_12test",
+          "total_tests": 12,
+          "passed": 11,
+          "failed": 1,
+          "pass_rate": 0.917,
+          "total_time_sec": 990.6,
+          "quality_score": null,
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "a1_file_write": {
+              "status": "PASS",
+              "time_sec": 32.0
+            },
+            "a2_bug_fix": {
+              "status": "PASS",
+              "time_sec": 34.3
+            },
+            "a3_error_handling": {
+              "status": "PASS",
+              "time_sec": 43.3
+            },
+            "a4_large_read": {
+              "status": "PASS",
+              "time_sec": 23.5
+            },
+            "a5_large_edit": {
+              "status": "PASS",
+              "time_sec": 247.5
+            },
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 47.6
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 72.7
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 83.6
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 115.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 101.5
+            },
+            "c2_decision_matrix": {
+              "status": "FAIL",
+              "time_sec": 114.8
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 74.6
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.917,
+        "passed": 11,
+        "total": 12,
+        "suite": "v1_12test",
+        "date": "2026-02-27",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-4b",
+      "display_name": "Qwen3.5 4B",
+      "family": "Qwen3.5",
+      "params": "4B",
+      "params_numeric_b": 4.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-4B-MLX-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 2.8,
+      "runs": [
+        {
+          "file": "qwen3.5-4b_20260315.json",
+          "timestamp": "2026-03-15T20:50:00.816185",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 10,
+          "failed": 4,
+          "pass_rate": 0.714,
+          "total_time_sec": 424.4,
+          "quality_score": "22/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 51.2
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 21.2
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 28.1
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 19.3
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 25.7
+            },
+            "c2_decision_matrix": {
+              "status": "FAIL",
+              "time_sec": 51.2
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 6.8
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 11.6
+            },
+            "d2_instruction_following": {
+              "status": "FAIL",
+              "time_sec": 51.2
+            },
+            "d3_multi_step_calc": {
+              "status": "FAIL",
+              "time_sec": 51.5
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 3.9
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 34.1
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 42.2
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 26.4
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "22/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-4b-gguf-nothink",
+      "display_name": "Qwen3.5 4B Gguf Nothink",
+      "family": "Qwen3.5",
+      "params": "4B",
+      "params_numeric_b": 4.0,
+      "quantization": "Q4_K_M",
+      "model_id": "qwen3.5-4b-gguf-nothink",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 2.8,
+      "runs": [
+        {
+          "file": "qwen3.5-4b-gguf-nothink_20260315.json",
+          "timestamp": "2026-03-15T23:42:35.439692",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 13,
+          "failed": 1,
+          "pass_rate": 0.929,
+          "total_time_sec": 266.9,
+          "quality_score": "25/25",
+          "thinking_mode": false,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 2.2
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 21.8
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 27.4
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 31.6
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 22.9
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 21.4
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 3.5
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 10.4
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 1.7
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 14.3
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 1.8
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 44.4
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 23.7
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 39.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "25/25"
+      },
+      "base_model": "qwen3.5-4b-gguf"
+    },
+    {
+      "name": "qwen3.5-4b-nothink",
+      "display_name": "Qwen3.5 4B Nothink",
+      "family": "Qwen3.5",
+      "params": "4B",
+      "params_numeric_b": 4.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-4B-MLX-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 2.8,
+      "runs": [
+        {
+          "file": "qwen3.5-4b-nothink_20260315.json",
+          "timestamp": "2026-03-15T22:04:30.988543",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 14,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 273.0,
+          "quality_score": "25/25",
+          "thinking_mode": false,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 16.3
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 18.4
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 24.0
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 18.5
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 21.8
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 10.6
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 6.5
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 8.6
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 38.1
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 12.6
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 3.5
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 37.4
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 24.9
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 31.8
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "25/25"
+      },
+      "base_model": "qwen3.5-4b"
+    },
+    {
+      "name": "qwen3.5-9b",
+      "display_name": "Qwen3.5 9B",
+      "family": "Qwen3.5",
+      "params": "9B",
+      "params_numeric_b": 9.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 6.0,
+      "runs": [
+        {
+          "file": "qwen3.5-9b_20260315.json",
+          "timestamp": "2026-03-15T20:57:09.445259",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 9,
+          "failed": 5,
+          "pass_rate": 0.643,
+          "total_time_sec": 852.1,
+          "quality_score": "17/25",
+          "thinking_mode": true,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 86.7
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 52.7
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 87.5
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 45.6
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 34.2
+            },
+            "c2_decision_matrix": {
+              "status": "FAIL",
+              "time_sec": 86.4
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 86.7
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 31.3
+            },
+            "d2_instruction_following": {
+              "status": "FAIL",
+              "time_sec": 86.4
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 21.3
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 60.0
+            },
+            "e1_correlated_log": {
+              "status": "FAIL",
+              "time_sec": 92.5
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 74.1
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.643,
+        "passed": 9,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "17/25"
+      },
+      "base_model": null
+    },
+    {
+      "name": "qwen3.5-9b-nothink",
+      "display_name": "Qwen3.5 9B Nothink",
+      "family": "Qwen3.5",
+      "params": "9B",
+      "params_numeric_b": 9.0,
+      "quantization": "Q4_K_M",
+      "model_id": "mlx-community/Qwen3.5-9B-MLX-4bit",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 6.0,
+      "runs": [
+        {
+          "file": "qwen3.5-9b-nothink_20260315.json",
+          "timestamp": "2026-03-15T22:09:21.843776",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 11,
+          "failed": 3,
+          "pass_rate": 0.786,
+          "total_time_sec": 712.3,
+          "quality_score": "18/25",
+          "thinking_mode": false,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "FAIL",
+              "time_sec": 86.8
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 33.7
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 50.5
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 65.3
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 33.1
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 32.2
+            },
+            "c3_root_cause": {
+              "status": "FAIL",
+              "time_sec": 87.4
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 22.0
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 35.7
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 37.3
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 7.6
+            },
+            "d5_nuanced_review": {
+              "status": "PASS",
+              "time_sec": 54.0
+            },
+            "e1_correlated_log": {
+              "status": "FAIL",
+              "time_sec": 92.5
+            },
+            "e2_dmarc_analysis": {
+              "status": "PASS",
+              "time_sec": 74.2
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "18/25"
+      },
+      "base_model": "qwen3.5-9b"
+    },
+    {
+      "name": "tongyi-deepresearch-30b",
+      "display_name": "Tongyi Deepresearch 30B",
+      "family": "Tongyi-DeepResearch",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4_K_M",
+      "model_id": "tongyi-deepresearch-30b",
+      "ctx_size": 32768,
+      "category": "text",
+      "ram_estimate_gb": 17.3,
+      "runs": [
+        {
+          "file": "tongyi-deepresearch-30b_20260315.json",
+          "timestamp": "2026-03-15T15:02:22.642475",
+          "date": "2026-03-15",
+          "test_suite": "v2_7test",
+          "total_tests": 7,
+          "passed": 7,
+          "failed": 0,
+          "pass_rate": 1.0,
+          "total_time_sec": 162.1,
+          "quality_score": null,
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 7.6
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 19.7
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 31.3
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 38.2
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 36.9
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 18.9
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 9.5
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "date": "2026-03-15",
+        "quality_score": null
+      },
+      "base_model": null
+    },
+    {
+      "name": "tongyi-deepresearch-30b-opt",
+      "display_name": "Tongyi Deepresearch 30B Opt",
+      "family": "Tongyi-DeepResearch",
+      "params": "30B",
+      "params_numeric_b": 30.0,
+      "quantization": "Q4_K_M",
+      "model_id": "tongyi-deepresearch-30b-opt",
+      "ctx_size": 65536,
+      "category": "text",
+      "ram_estimate_gb": 19.2,
+      "runs": [
+        {
+          "file": "tongyi-deepresearch-30b-opt_20260315.json",
+          "timestamp": "2026-03-15T18:45:32.658510",
+          "date": "2026-03-15",
+          "test_suite": "v3_14test",
+          "total_tests": 14,
+          "passed": 12,
+          "failed": 2,
+          "pass_rate": 0.857,
+          "total_time_sec": 494.5,
+          "quality_score": "13/25",
+          "thinking_mode": null,
+          "hardware": "m4pro",
+          "tests": {
+            "b1_summary": {
+              "status": "PASS",
+              "time_sec": 4.5
+            },
+            "b2_log_analysis": {
+              "status": "PASS",
+              "time_sec": 49.0
+            },
+            "b3_statistics": {
+              "status": "PASS",
+              "time_sec": 33.4
+            },
+            "b4_code_review": {
+              "status": "PASS",
+              "time_sec": 48.6
+            },
+            "c1_config_diff": {
+              "status": "PASS",
+              "time_sec": 29.7
+            },
+            "c2_decision_matrix": {
+              "status": "PASS",
+              "time_sec": 29.1
+            },
+            "c3_root_cause": {
+              "status": "PASS",
+              "time_sec": 11.2
+            },
+            "d1_subtle_bug": {
+              "status": "PASS",
+              "time_sec": 32.8
+            },
+            "d2_instruction_following": {
+              "status": "PASS",
+              "time_sec": 4.4
+            },
+            "d3_multi_step_calc": {
+              "status": "PASS",
+              "time_sec": 43.7
+            },
+            "d4_long_context": {
+              "status": "PASS",
+              "time_sec": 6.7
+            },
+            "d5_nuanced_review": {
+              "status": "FAIL",
+              "time_sec": 68.7
+            },
+            "e1_correlated_log": {
+              "status": "PASS",
+              "time_sec": 61.3
+            },
+            "e2_dmarc_analysis": {
+              "status": "FAIL",
+              "time_sec": 71.4
+            }
+          }
+        }
+      ],
+      "best_run": {
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "date": "2026-03-15",
+        "quality_score": "13/25"
+      },
+      "base_model": "tongyi-deepresearch-30b"
+    }
+  ],
+  "rankings": {
+    "by_pass_rate_best_run": [
+      {
+        "name": "devstral-2-24b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 15.4,
+        "quality_score": "25/25",
+        "pass_per_gb": 0.91
+      },
+      {
+        "name": "devstral-2-24b-opt",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 15.4,
+        "quality_score": "25/25",
+        "pass_per_gb": 0.91
+      },
+      {
+        "name": "gemma-3-4b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "21/25",
+        "pass_per_gb": 5.0
+      },
+      {
+        "name": "phi-4-mini",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": null,
+        "quality_score": "21/25"
+      },
+      {
+        "name": "qwen3-coder-30b-mlx",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 19.2,
+        "quality_score": "24/25",
+        "pass_per_gb": 0.73
+      },
+      {
+        "name": "qwen3-coder-next-80b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 30.0,
+        "quality_score": "24/25",
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "qwen3-coder-next-80b-opt",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 30.0,
+        "quality_score": "25/25",
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "qwen3.5-2b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "25/25",
+        "pass_per_gb": 8.75
+      },
+      {
+        "name": "qwen3.5-4b-nothink",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "25/25",
+        "pass_per_gb": 5.0
+      },
+      {
+        "name": "qwen3-coder-30b-llama",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "pass_per_gb": 0.36
+      },
+      {
+        "name": "tongyi-deepresearch-30b",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 17.3,
+        "quality_score": null,
+        "pass_per_gb": 0.4
+      },
+      {
+        "name": "llama-3.2-3b",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.2,
+        "quality_score": "19/25",
+        "pass_per_gb": 5.91
+      },
+      {
+        "name": "qwen3.5-2b-gguf-nothink",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "21/25",
+        "pass_per_gb": 8.12
+      },
+      {
+        "name": "qwen3.5-4b-gguf-nothink",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "25/25",
+        "pass_per_gb": 4.64
+      },
+      {
+        "name": "qwen3.5-35b-a3b",
+        "pass_rate": 0.917,
+        "passed": 11,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 22.4,
+        "quality_score": null,
+        "pass_per_gb": 0.49
+      },
+      {
+        "name": "qwen3.5-0.8b",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 0.8,
+        "quality_score": "20/25",
+        "pass_per_gb": 15.0
+      },
+      {
+        "name": "qwen3.5-2b-macmini-m1",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "21/25",
+        "pass_per_gb": 7.5
+      },
+      {
+        "name": "tongyi-deepresearch-30b-opt",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 19.2,
+        "quality_score": "13/25",
+        "pass_per_gb": 0.62
+      },
+      {
+        "name": "llama-3.2-1b",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 0.9,
+        "quality_score": "16/25",
+        "pass_per_gb": 12.22
+      },
+      {
+        "name": "qwen3.5-27b-opus-distilled",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 17.3,
+        "quality_score": "15/15",
+        "pass_per_gb": 0.64
+      },
+      {
+        "name": "qwen3.5-9b-nothink",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 6.0,
+        "quality_score": "18/25",
+        "pass_per_gb": 1.83
+      },
+      {
+        "name": "gemma-3-27b",
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 17.3,
+        "quality_score": null,
+        "pass_per_gb": 0.52
+      },
+      {
+        "name": "qwen3-30b",
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "glm-4.7-flash",
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": null,
+        "quality_score": "12/25"
+      },
+      {
+        "name": "qwen3.5-4b",
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "22/25",
+        "pass_per_gb": 3.57
+      },
+      {
+        "name": "deepseek-coder-v2-lite",
+        "pass_rate": 0.714,
+        "passed": 5,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 15.6,
+        "quality_score": null,
+        "pass_per_gb": 0.32
+      },
+      {
+        "name": "gpt-oss-20b",
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 10.8,
+        "quality_score": null,
+        "pass_per_gb": 0.74
+      },
+      {
+        "name": "lfm2-24b-a2b",
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "pass_per_gb": 0.42
+      },
+      {
+        "name": "qwen3.5-9b",
+        "pass_rate": 0.643,
+        "passed": 9,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 6.0,
+        "quality_score": "17/25",
+        "pass_per_gb": 1.5
+      },
+      {
+        "name": "huihui-qwen35-27b-opus",
+        "pass_rate": 0.571,
+        "passed": 8,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 17.3,
+        "quality_score": "2/4",
+        "pass_per_gb": 0.46
+      },
+      {
+        "name": "qwen3.5-2b-gguf",
+        "pass_rate": 0.286,
+        "passed": 4,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "5/25",
+        "pass_per_gb": 2.5
+      },
+      {
+        "name": "qwen3.5-2b-gguf-nojinja",
+        "pass_rate": 0.286,
+        "passed": 4,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "4/25",
+        "pass_per_gb": 2.5
+      }
+    ],
+    "by_efficiency_pass_per_gb": [
+      {
+        "name": "qwen3.5-0.8b",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 0.8,
+        "quality_score": "20/25",
+        "pass_per_gb": 15.0
+      },
+      {
+        "name": "llama-3.2-1b",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 0.9,
+        "quality_score": "16/25",
+        "pass_per_gb": 12.22
+      },
+      {
+        "name": "qwen3.5-2b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "25/25",
+        "pass_per_gb": 8.75
+      },
+      {
+        "name": "qwen3.5-2b-gguf-nothink",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "21/25",
+        "pass_per_gb": 8.12
+      },
+      {
+        "name": "qwen3.5-2b-macmini-m1",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "21/25",
+        "pass_per_gb": 7.5
+      },
+      {
+        "name": "llama-3.2-3b",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.2,
+        "quality_score": "19/25",
+        "pass_per_gb": 5.91
+      },
+      {
+        "name": "gemma-3-4b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "21/25",
+        "pass_per_gb": 5.0
+      },
+      {
+        "name": "qwen3.5-4b-nothink",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "25/25",
+        "pass_per_gb": 5.0
+      },
+      {
+        "name": "qwen3.5-4b-gguf-nothink",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "25/25",
+        "pass_per_gb": 4.64
+      },
+      {
+        "name": "qwen3.5-4b",
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "22/25",
+        "pass_per_gb": 3.57
+      },
+      {
+        "name": "qwen3.5-2b-gguf",
+        "pass_rate": 0.286,
+        "passed": 4,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "5/25",
+        "pass_per_gb": 2.5
+      },
+      {
+        "name": "qwen3.5-2b-gguf-nojinja",
+        "pass_rate": 0.286,
+        "passed": 4,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "4/25",
+        "pass_per_gb": 2.5
+      },
+      {
+        "name": "qwen3.5-9b-nothink",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 6.0,
+        "quality_score": "18/25",
+        "pass_per_gb": 1.83
+      },
+      {
+        "name": "qwen3.5-9b",
+        "pass_rate": 0.643,
+        "passed": 9,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 6.0,
+        "quality_score": "17/25",
+        "pass_per_gb": 1.5
+      },
+      {
+        "name": "devstral-2-24b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 15.4,
+        "quality_score": "25/25",
+        "pass_per_gb": 0.91
+      },
+      {
+        "name": "devstral-2-24b-opt",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 15.4,
+        "quality_score": "25/25",
+        "pass_per_gb": 0.91
+      },
+      {
+        "name": "gpt-oss-20b",
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 10.8,
+        "quality_score": null,
+        "pass_per_gb": 0.74
+      },
+      {
+        "name": "qwen3-coder-30b-mlx",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 19.2,
+        "quality_score": "24/25",
+        "pass_per_gb": 0.73
+      },
+      {
+        "name": "qwen3.5-27b-opus-distilled",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 17.3,
+        "quality_score": "15/15",
+        "pass_per_gb": 0.64
+      },
+      {
+        "name": "tongyi-deepresearch-30b-opt",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 19.2,
+        "quality_score": "13/25",
+        "pass_per_gb": 0.62
+      },
+      {
+        "name": "gemma-3-27b",
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 17.3,
+        "quality_score": null,
+        "pass_per_gb": 0.52
+      },
+      {
+        "name": "qwen3.5-35b-a3b",
+        "pass_rate": 0.917,
+        "passed": 11,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 22.4,
+        "quality_score": null,
+        "pass_per_gb": 0.49
+      },
+      {
+        "name": "qwen3-30b",
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "qwen3-coder-next-80b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 30.0,
+        "quality_score": "24/25",
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "qwen3-coder-next-80b-opt",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 30.0,
+        "quality_score": "25/25",
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "huihui-qwen35-27b-opus",
+        "pass_rate": 0.571,
+        "passed": 8,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 17.3,
+        "quality_score": "2/4",
+        "pass_per_gb": 0.46
+      },
+      {
+        "name": "lfm2-24b-a2b",
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "pass_per_gb": 0.42
+      },
+      {
+        "name": "tongyi-deepresearch-30b",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 17.3,
+        "quality_score": null,
+        "pass_per_gb": 0.4
+      },
+      {
+        "name": "qwen3-coder-30b-llama",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "pass_per_gb": 0.36
+      },
+      {
+        "name": "deepseek-coder-v2-lite",
+        "pass_rate": 0.714,
+        "passed": 5,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 15.6,
+        "quality_score": null,
+        "pass_per_gb": 0.32
+      }
+    ],
+    "by_speed_total_time_sec": [
+      {
+        "name": "qwen3.5-0.8b",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 0.8,
+        "quality_score": "20/25",
+        "total_time_sec": 36.6,
+        "pass_per_gb": 15.0
+      },
+      {
+        "name": "llama-3.2-1b",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 0.9,
+        "quality_score": "16/25",
+        "total_time_sec": 36.9,
+        "pass_per_gb": 12.22
+      },
+      {
+        "name": "qwen3-coder-30b-llama",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "total_time_sec": 47.6,
+        "pass_per_gb": 0.36
+      },
+      {
+        "name": "llama-3.2-3b",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.2,
+        "quality_score": "19/25",
+        "total_time_sec": 78.1,
+        "pass_per_gb": 5.91
+      },
+      {
+        "name": "qwen3-coder-30b-mlx",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 19.2,
+        "quality_score": "24/25",
+        "total_time_sec": 105.7,
+        "pass_per_gb": 0.73
+      },
+      {
+        "name": "qwen3.5-2b-gguf-nothink",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "21/25",
+        "total_time_sec": 125.1,
+        "pass_per_gb": 8.12
+      },
+      {
+        "name": "qwen3.5-2b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "25/25",
+        "total_time_sec": 150.4,
+        "pass_per_gb": 8.75
+      },
+      {
+        "name": "gemma-3-4b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "21/25",
+        "total_time_sec": 158.3,
+        "pass_per_gb": 5.0
+      },
+      {
+        "name": "tongyi-deepresearch-30b",
+        "pass_rate": 1.0,
+        "passed": 7,
+        "total": 7,
+        "suite": "v2_7test",
+        "ram_gb": 17.3,
+        "quality_score": null,
+        "total_time_sec": 162.1,
+        "pass_per_gb": 0.4
+      },
+      {
+        "name": "lfm2-24b-a2b",
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "total_time_sec": 233.6,
+        "pass_per_gb": 0.42
+      },
+      {
+        "name": "qwen3.5-4b-gguf-nothink",
+        "pass_rate": 0.929,
+        "passed": 13,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "25/25",
+        "total_time_sec": 266.9,
+        "pass_per_gb": 4.64
+      },
+      {
+        "name": "qwen3.5-4b-nothink",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "25/25",
+        "total_time_sec": 273.0,
+        "pass_per_gb": 5.0
+      },
+      {
+        "name": "qwen3-coder-next-80b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 30.0,
+        "quality_score": "24/25",
+        "total_time_sec": 370.7,
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "qwen3-coder-next-80b-opt",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 30.0,
+        "quality_score": "25/25",
+        "total_time_sec": 385.7,
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "phi-4-mini",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": null,
+        "quality_score": "21/25",
+        "total_time_sec": 406.2
+      },
+      {
+        "name": "qwen3.5-4b",
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 2.8,
+        "quality_score": "22/25",
+        "total_time_sec": 424.4,
+        "pass_per_gb": 3.57
+      },
+      {
+        "name": "gpt-oss-20b",
+        "pass_rate": 0.667,
+        "passed": 8,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 10.8,
+        "quality_score": null,
+        "total_time_sec": 462.5,
+        "pass_per_gb": 0.74
+      },
+      {
+        "name": "devstral-2-24b",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 15.4,
+        "quality_score": "25/25",
+        "total_time_sec": 482.8,
+        "pass_per_gb": 0.91
+      },
+      {
+        "name": "tongyi-deepresearch-30b-opt",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 19.2,
+        "quality_score": "13/25",
+        "total_time_sec": 494.5,
+        "pass_per_gb": 0.62
+      },
+      {
+        "name": "qwen3-30b",
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 19.2,
+        "quality_score": null,
+        "total_time_sec": 541.8,
+        "pass_per_gb": 0.47
+      },
+      {
+        "name": "qwen3.5-2b-macmini-m1",
+        "pass_rate": 0.857,
+        "passed": 12,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 1.6,
+        "quality_score": "21/25",
+        "total_time_sec": 562.5,
+        "pass_per_gb": 7.5
+      },
+      {
+        "name": "huihui-qwen35-27b-opus",
+        "pass_rate": 0.571,
+        "passed": 8,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 17.3,
+        "quality_score": "2/4",
+        "total_time_sec": 602.1,
+        "pass_per_gb": 0.46
+      },
+      {
+        "name": "devstral-2-24b-opt",
+        "pass_rate": 1.0,
+        "passed": 14,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 15.4,
+        "quality_score": "25/25",
+        "total_time_sec": 640.4,
+        "pass_per_gb": 0.91
+      },
+      {
+        "name": "glm-4.7-flash",
+        "pass_rate": 0.714,
+        "passed": 10,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": null,
+        "quality_score": "12/25",
+        "total_time_sec": 641.9
+      },
+      {
+        "name": "qwen3.5-9b-nothink",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 6.0,
+        "quality_score": "18/25",
+        "total_time_sec": 712.3,
+        "pass_per_gb": 1.83
+      },
+      {
+        "name": "qwen3.5-27b-opus-distilled",
+        "pass_rate": 0.786,
+        "passed": 11,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 17.3,
+        "quality_score": "15/15",
+        "total_time_sec": 811.0,
+        "pass_per_gb": 0.64
+      },
+      {
+        "name": "qwen3.5-9b",
+        "pass_rate": 0.643,
+        "passed": 9,
+        "total": 14,
+        "suite": "v3_14test",
+        "ram_gb": 6.0,
+        "quality_score": "17/25",
+        "total_time_sec": 852.1,
+        "pass_per_gb": 1.5
+      },
+      {
+        "name": "gemma-3-27b",
+        "pass_rate": 0.75,
+        "passed": 9,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 17.3,
+        "quality_score": null,
+        "total_time_sec": 858.2,
+        "pass_per_gb": 0.52
+      },
+      {
+        "name": "qwen3.5-35b-a3b",
+        "pass_rate": 0.917,
+        "passed": 11,
+        "total": 12,
+        "suite": "v1_12test",
+        "ram_gb": 22.4,
+        "quality_score": null,
+        "total_time_sec": 990.6,
+        "pass_per_gb": 0.49
+      }
+    ]
+  },
+  "test_difficulty": {
+    "a1_file_write": {
+      "total_attempts": 9,
+      "total_passes": 9,
+      "total_fails": 0,
+      "pass_rate": 1.0,
+      "difficulty": "easy"
+    },
+    "a2_bug_fix": {
+      "total_attempts": 9,
+      "total_passes": 8,
+      "total_fails": 1,
+      "pass_rate": 0.889,
+      "difficulty": "easy"
+    },
+    "a3_error_handling": {
+      "total_attempts": 8,
+      "total_passes": 5,
+      "total_fails": 3,
+      "pass_rate": 0.625,
+      "difficulty": "medium"
+    },
+    "a4_large_read": {
+      "total_attempts": 7,
+      "total_passes": 4,
+      "total_fails": 3,
+      "pass_rate": 0.571,
+      "difficulty": "hard"
+    },
+    "a5_large_edit": {
+      "total_attempts": 7,
+      "total_passes": 1,
+      "total_fails": 6,
+      "pass_rate": 0.143,
+      "difficulty": "hard"
+    },
+    "b1_summary": {
+      "total_attempts": 34,
+      "total_passes": 25,
+      "total_fails": 9,
+      "pass_rate": 0.735,
+      "difficulty": "medium"
+    },
+    "b2_log_analysis": {
+      "total_attempts": 33,
+      "total_passes": 32,
+      "total_fails": 1,
+      "pass_rate": 0.97,
+      "difficulty": "easy"
+    },
+    "b3_statistics": {
+      "total_attempts": 33,
+      "total_passes": 29,
+      "total_fails": 4,
+      "pass_rate": 0.879,
+      "difficulty": "easy"
+    },
+    "b4_code_review": {
+      "total_attempts": 33,
+      "total_passes": 29,
+      "total_fails": 4,
+      "pass_rate": 0.879,
+      "difficulty": "easy"
+    },
+    "c1_config_diff": {
+      "total_attempts": 33,
+      "total_passes": 31,
+      "total_fails": 2,
+      "pass_rate": 0.939,
+      "difficulty": "easy"
+    },
+    "c2_decision_matrix": {
+      "total_attempts": 33,
+      "total_passes": 27,
+      "total_fails": 6,
+      "pass_rate": 0.818,
+      "difficulty": "medium"
+    },
+    "c3_root_cause": {
+      "total_attempts": 33,
+      "total_passes": 26,
+      "total_fails": 7,
+      "pass_rate": 0.788,
+      "difficulty": "medium"
+    },
+    "d1_subtle_bug": {
+      "total_attempts": 25,
+      "total_passes": 22,
+      "total_fails": 3,
+      "pass_rate": 0.88,
+      "difficulty": "easy"
+    },
+    "d2_instruction_following": {
+      "total_attempts": 25,
+      "total_passes": 21,
+      "total_fails": 4,
+      "pass_rate": 0.84,
+      "difficulty": "medium"
+    },
+    "d3_multi_step_calc": {
+      "total_attempts": 25,
+      "total_passes": 22,
+      "total_fails": 3,
+      "pass_rate": 0.88,
+      "difficulty": "easy"
+    },
+    "d4_long_context": {
+      "total_attempts": 25,
+      "total_passes": 25,
+      "total_fails": 0,
+      "pass_rate": 1.0,
+      "difficulty": "easy"
+    },
+    "d5_nuanced_review": {
+      "total_attempts": 25,
+      "total_passes": 16,
+      "total_fails": 9,
+      "pass_rate": 0.64,
+      "difficulty": "medium"
+    },
+    "e1_correlated_log": {
+      "total_attempts": 25,
+      "total_passes": 19,
+      "total_fails": 6,
+      "pass_rate": 0.76,
+      "difficulty": "medium"
+    },
+    "e2_dmarc_analysis": {
+      "total_attempts": 25,
+      "total_passes": 19,
+      "total_fails": 6,
+      "pass_rate": 0.76,
+      "difficulty": "medium"
+    }
+  },
+  "warnings": [
+    "qwen3.5-2b-gguf and qwen3.5-2b-gguf-nojinja: 4/14 PASS — missing --jinja flag caused chat template failures (timeouts on most tests)",
+    "qwen3.5-27b (20260227): only 2/2 tests completed — aborted run, not representative",
+    "qwen3-coder-30b-omlx (20260227): only 3/3 tests — connection error, incomplete",
+    "qwen3-coder-30b-mlx (20260227): only 5/5 tests — partial A-suite only",
+    "qwen3-coder-30b (20260217): only 5/5 tests — partial A-suite only",
+    "huihui-qwen35-27b-opus: 5x 'ERROR: timed out' — very slow model, many tests exceeded timeout",
+    "qwen3.5-27b-opus-distilled: 3x timeouts — slow due to distillation overhead",
+    "gemma-3-27b: B4_code_review = 'ERROR: timed out' (0s) — timeout during benchmark",
+    "glm-4.5-reap-82b: 0/1 (FAIL) — likely OOM or server crash after first test",
+    "glm-4.5-reap-82b (glm-4.5-reap-82b_20260315.json): 1/1 test only — likely server crash during run",
+    "qwen3-coder-30b-mlx (qwen3-coder-30b-mlx_20260227.json): only 5 tests — incomplete partial run",
+    "qwen3-coder-30b-omlx (qwen3-coder-30b-omlx_20260227.json): only 3 tests — incomplete partial run",
+    "qwen3-coder-30b (qwen3-coder-30b_20260217.json): only 5 tests — incomplete partial run",
+    "qwen3.5-27b (qwen3.5-27b_20260227.json): only 2 tests — incomplete partial run"
+  ]
+}
