@@ -37,13 +37,16 @@ All models run via llama-server. Speeds on M4 Pro 48GB. Expect 3-4x slower on M1
 
 ### Vision / Document Analysis
 
-Vision models need `--mmproj` for llama-server. Text extraction capability depends on model architecture (see Finding 4).
+Vision models need `--mmproj` for llama-server. Text extraction capability depends on model architecture (see Finding 5).
 
-| Hardware | Model | RAM | t/s | VLM Score | Agent Vision | Notes |
-|---|---|---|---|---|---|---|
-| **M4 Pro 48GB** (OCR) | **Qwen3-VL-4B F16** | **7.5GB** | **~28** | **3/3** | **7/7 CC + 2/2 Vision** | **F16 required for text extraction** |
-| Any Mac 8GB+ (non-OCR) | Qwen3-VL-4B Q4 | 2.3GB | ~42 | 2/3 | 6/7 CC + 2/2 Vision | Fails vl2 (OCR), everything else perfect |
-| Edge only | Qwen3-VL-2B | 1.0GB | ~120 | 1/3 | 1/7 CC | Too small for agent context |
+| Hardware | Model | RAM | t/s | VLM Score | OCR Score | Agent Vision | Notes |
+|---|---|---|---|---|---|---|---|
+| **M4 Pro 48GB** (OCR) | **Qwen3-VL-4B F16** | **7.5GB** | **~28** | **3/3** | **91.8%** | **7/7 CC + 2/2 Vision** | **F16 required for Qwen-VL text extraction** |
+| Any Mac 8GB+ (non-OCR) | Qwen3-VL-4B Q4 | 2.3GB | ~42 | 2/3 | 89.8% | 6/7 CC + 2/2 Vision | Fails vl2, everything else perfect |
+| **Any Mac 8GB+** (OCR edge) | **Qwen3-VL-2B Q4** | **1.0GB** | **~120** | 1/3 | **93.9%** | 1/7 CC | **Best OCR score, too small for agent context** |
+| Any Mac 8GB+ (efficient) | GLM-OCR Q8 | 1.5GB | ~60 | — | 91.8% | — | OCR-only model, no agent capability |
+
+**OCR Score** = keyword match accuracy on 5 German document fixtures (49 keywords). See Finding 9 for details.
 
 ### smolagents / Agentic Synthesis
 
@@ -157,6 +160,21 @@ Claude Code injects ~30 tool definitions into every request. 2B models (Qwen3-VL
 
 Gemma hallucinates dates, produces English placeholders for German text, and over-corrects correct fields (DQ for false-positive on E2).
 
+### 9. OCR Specialists Fail on German Documents
+
+14 VLM/OCR models tested on 5 German document fixtures (49 ground-truth keywords). Chinese-trained OCR specialists perform significantly worse than general-purpose VLMs:
+
+| Model | OCR Score | RAM | Trained On | Verdict |
+|---|:---:|---:|---|---|
+| **Qwen3-VL-2B Q4** | **93.9%** | 2 GB | Multilingual | Best overall |
+| GLM-OCR Q8 | 91.8% | 1.5 GB | Multilingual | Most efficient |
+| Qwen3-VL-4B F16 | 91.8% | 8 GB | Multilingual | Overkill |
+| Qwen3-VL-8B Q4 | 91.8% | 5 GB | Multilingual | Overkill |
+| PaddleOCR-VL-1.5 | 77.6% | 1 GB | Chinese-focused | Fails on German |
+| Qianfan-OCR Q4 | 30.6% | 3 GB | Chinese-focused | Fails on German |
+
+**Key insight:** The smallest general-purpose VLM (Qwen3-VL-2B, 2 GB) beats all larger models and all OCR specialists on German text. Models trained primarily on Chinese corpora (PaddleOCR, Qianfan-OCR) struggle with umlauts, German formatting, and Latin-script document layouts. Config tuning (context size, image tokens) does not help -- 5 re-runs all produced equal or worse results.
+
 ---
 
 ## 3. Benchmark Suites
@@ -195,44 +213,44 @@ V2: 14 tests, 5 categories, quality score /25 (March 2026). V1: 12 tests, code +
 
 Central reference for all 32 models tested. All run via llama-server on M4 Pro 48GB.
 
-| Model | Params | Arch | Quant | RAM | t/s | ctx | Thinking | Vision | Base |
-|---|---|---|---|---|---|---|---|---|---|
-| **Haiku 4.5 (baseline)** | — | Cloud | — | — | — | 200k | — | ✅ | Anthropic |
-| **Sonnet 4.6 (baseline)** | — | Cloud | — | — | — | 200k | — | ✅ | Anthropic |
-| Bonsai-8B | 8B | dense | Q1_0 | 2 GB | -- | 32k | -- | -- | Qwen3 |
-| Carnice-9B | 9B | dense | Q4_K_M | 6 GB | ~50 | 32k | nothink | -- | Qwen3.5-9B |
-| DeepSeek-R1-Qwen3-8B | 8B | dense | Q4_K_M | 5 GB | ~40 | 64k | reason | -- | Qwen3 |
-| gemma-4-e2b-nothink | 2.3B | dense | Q8_0 | 4.6 GB | ~67 | 32k | nothink | mmproj | Gemma 4 |
-| gemma-4-e2b-think | 2.3B | dense | Q8_0 | 4.6 GB | ~67 | 32k | think | mmproj | Gemma 4 |
-| gemma-4-e4b-q4-nothink | 4.5B | dense | Q4_K_M | 5.5 GB | ~30 | 32k | nothink | mmproj | Gemma 4 |
-| gemma-4-e4b-q4-think | 4.5B | dense | Q4_K_M | 5.5 GB | ~30 | 32k | think | mmproj | Gemma 4 |
-| GLM-4.7-Flash | 30B | dense | Q4_K | 17 GB | ~20 | 32k | -- | -- | GLM |
-| GLM-OCR | ~4B | dense | Q8_0 | 9 GB | ~60 | 8k | -- | mmproj | GLM |
-| GPT-OSS-20B | 20B | dense | Q4_K_M | 12 GB | ~25 | 128k | reason | -- | GPT-OSS |
-| granite-3.3-8b | 8B | dense | Q4_K_M | 5 GB | ~45 | 128k | reason | -- | Granite |
-| InternVL3-2B | 2B | dense | Q4_K_M | 3 GB | ~50 | 8k | -- | mmproj | InternVL3 |
-| Nemotron-3-Nano-30B | 30B | MoE (3B) | Q4_K_M | 18 GB | ~30 | 32k | reason | -- | Mamba-SSM |
-| Nemotron-Cascade-2-30B | 30B | MoE (3B) | Q4_K_M | 25 GB | ~20 | 32k | reason | -- | Mamba-SSM |
-| phi-4-mini | 3.8B | dense | Q4_K_M | 3 GB | ~80 | 128k | -- | -- | Phi-4 |
-| Qianfan-OCR | ~4B | dense | Q4_K_M | 5 GB | ~50 | 8k | reason | mmproj | InternVL |
-| Qwen3-8B | 8B | dense | Q5_K_M | 7 GB | ~40 | 32k | nothink | -- | Qwen3 |
-| Qwen3-Coder-30B-A3B | 30B | MoE (3B) | Q4_K_M | 20 GB | ~73 | 32k | -- | -- | Qwen3 |
-| Qwen3-VL-2B | 2B | dense | Q4_K_M | 3.5 GB | ~120 | 32k | -- | mmproj | Qwen3-VL |
-| Qwen3-VL-4B F16 | 4B | dense | F16 | 9 GB | ~28 | 32k | -- | mmproj | Qwen3-VL |
-| Qwen3-VL-4B Q4 | 4B | dense | Q4_K_M | 5.5 GB | ~42 | 32k | -- | mmproj | Qwen3-VL |
-| Qwen3.5-2B nothink | 2B | dense | Q4_K_M | 1.3 GB | ~200 | 32k | nothink | -- | Qwen3.5 |
-| Qwen3.5-2B think | 2B | dense | Q4_K_M | 1.3 GB | ~200 | 32k | reason | -- | Qwen3.5 |
-| Qwen3.5-4B nothink | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | nothink | -- | Qwen3.5 |
-| Qwen3.5-4B think | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | reason | -- | Qwen3.5 |
-| Qwen3.5-9B nothink | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | nothink | -- | Qwen3.5 |
-| Qwen3.5-9B think | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | reason | -- | Qwen3.5 |
-| Qwen3.5-27B nothink | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | nothink | -- | Qwen3.5 |
-| Qwen3.5-27B think | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | reason | -- | Qwen3.5 |
-| Qwen3.5-35B-A3B nothink | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | nothink | -- | Qwen3.5 |
-| Qwen3.5-35B-A3B think | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | reason | -- | Qwen3.5 |
-| SmolVLM2-2.2B | 2.2B | dense | Q4_K_M | 3 GB | ~55 | 16k | -- | mmproj | SmolVLM2 |
+| Model | Params | Arch | Quant | RAM | t/s | ctx | Thinking | Vision | OCR | Base |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **Haiku 4.5 (baseline)** | — | Cloud | — | — | — | 200k | — | ✅ | — | Anthropic |
+| **Sonnet 4.6 (baseline)** | — | Cloud | — | — | — | 200k | — | ✅ | — | Anthropic |
+| Bonsai-8B | 8B | dense | Q1_0 | 2 GB | -- | 32k | -- | -- | -- | Qwen3 |
+| Carnice-9B | 9B | dense | Q4_K_M | 6 GB | ~50 | 32k | nothink | -- | -- | Qwen3.5-9B |
+| DeepSeek-R1-Qwen3-8B | 8B | dense | Q4_K_M | 5 GB | ~40 | 64k | reason | -- | -- | Qwen3 |
+| gemma-4-e2b-nothink | 2.3B | dense | Q8_0 | 4.6 GB | ~67 | 32k | nothink | mmproj | -- | Gemma 4 |
+| gemma-4-e2b-think | 2.3B | dense | Q8_0 | 4.6 GB | ~67 | 32k | think | mmproj | -- | Gemma 4 |
+| gemma-4-e4b-q4-nothink | 4.5B | dense | Q4_K_M | 5.5 GB | ~30 | 32k | nothink | mmproj | 24.5% | Gemma 4 |
+| gemma-4-e4b-q4-think | 4.5B | dense | Q4_K_M | 5.5 GB | ~30 | 32k | think | mmproj | 24.5% | Gemma 4 |
+| GLM-4.7-Flash | 30B | dense | Q4_K | 17 GB | ~20 | 32k | -- | -- | -- | GLM |
+| GLM-OCR | ~4B | dense | Q8_0 | 9 GB | ~60 | 8k | -- | mmproj | 91.8% | GLM |
+| GPT-OSS-20B | 20B | dense | Q4_K_M | 12 GB | ~25 | 128k | reason | -- | -- | GPT-OSS |
+| granite-3.3-8b | 8B | dense | Q4_K_M | 5 GB | ~45 | 128k | reason | -- | -- | Granite |
+| InternVL3-2B | 2B | dense | Q4_K_M | 3 GB | ~50 | 8k | -- | mmproj | 53.1% | InternVL3 |
+| Nemotron-3-Nano-30B | 30B | MoE (3B) | Q4_K_M | 18 GB | ~30 | 32k | reason | -- | -- | Mamba-SSM |
+| Nemotron-Cascade-2-30B | 30B | MoE (3B) | Q4_K_M | 25 GB | ~20 | 32k | reason | -- | -- | Mamba-SSM |
+| phi-4-mini | 3.8B | dense | Q4_K_M | 3 GB | ~80 | 128k | -- | -- | -- | Phi-4 |
+| Qianfan-OCR | ~4B | dense | Q4_K_M | 5 GB | ~50 | 8k | reason | mmproj | 30.6% | InternVL |
+| Qwen3-8B | 8B | dense | Q5_K_M | 7 GB | ~40 | 32k | nothink | -- | -- | Qwen3 |
+| Qwen3-Coder-30B-A3B | 30B | MoE (3B) | Q4_K_M | 20 GB | ~73 | 32k | -- | -- | -- | Qwen3 |
+| Qwen3-VL-2B | 2B | dense | Q4_K_M | 3.5 GB | ~120 | 32k | -- | mmproj | 93.9% | Qwen3-VL |
+| Qwen3-VL-4B F16 | 4B | dense | F16 | 9 GB | ~28 | 32k | -- | mmproj | 91.8% | Qwen3-VL |
+| Qwen3-VL-4B Q4 | 4B | dense | Q4_K_M | 5.5 GB | ~42 | 32k | -- | mmproj | 89.8% | Qwen3-VL |
+| Qwen3.5-2B nothink | 2B | dense | Q4_K_M | 1.3 GB | ~200 | 32k | nothink | -- | -- | Qwen3.5 |
+| Qwen3.5-2B think | 2B | dense | Q4_K_M | 1.3 GB | ~200 | 32k | reason | -- | -- | Qwen3.5 |
+| Qwen3.5-4B nothink | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | nothink | -- | -- | Qwen3.5 |
+| Qwen3.5-4B think | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | reason | -- | -- | Qwen3.5 |
+| Qwen3.5-9B nothink | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | nothink | -- | -- | Qwen3.5 |
+| Qwen3.5-9B think | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | reason | -- | -- | Qwen3.5 |
+| Qwen3.5-27B nothink | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | nothink | -- | -- | Qwen3.5 |
+| Qwen3.5-27B think | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | reason | -- | -- | Qwen3.5 |
+| Qwen3.5-35B-A3B nothink | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | nothink | -- | -- | Qwen3.5 |
+| Qwen3.5-35B-A3B think | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | reason | -- | -- | Qwen3.5 |
+| SmolVLM2-2.2B | 2.2B | dense | Q4_K_M | 3 GB | ~55 | 16k | -- | mmproj | 0% | SmolVLM2 |
 
-**Legend:** t/s = tokens/second (generation). ctx = max context window. Thinking: `reason` = chain-of-thought enabled, `nothink` = explicitly disabled, `think` = thinking variant. Vision: `mmproj` = multimodal projector required for llama-server. Arch: `MoE (3B)` = Mixture-of-Experts with 3B active parameters.
+**Legend:** t/s = tokens/second (generation). ctx = max context window. Thinking: `reason` = chain-of-thought enabled, `nothink` = explicitly disabled, `think` = thinking variant. Vision: `mmproj` = multimodal projector required for llama-server. Arch: `MoE (3B)` = Mixture-of-Experts with 3B active parameters. OCR: keyword match accuracy on 5 German document fixtures (49 keywords), `--` = not a vision model or not tested.
 
 ### 4.2 Test Results Matrix
 
