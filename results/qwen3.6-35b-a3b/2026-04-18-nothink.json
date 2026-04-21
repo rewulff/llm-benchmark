@@ -1,0 +1,808 @@
+{
+  "model": "qwen3.6-35b-a3b-nothink",
+  "timestamp": "2026-04-18T22:54:11.015969",
+  "llama_cpp_version": "8680 (15f786e65)",
+  "config": {
+    "gpu_layers": 99,
+    "flash_attn": "on",
+    "threads": 10,
+    "ctx_size": 32768,
+    "jinja": true,
+    "backend": "llamacpp",
+    "inference": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "max_tokens": 4096,
+      "top_k": 20,
+      "presence_penalty": 1.5
+    },
+    "name": "Qwen/Qwen3.6-35B-A3B",
+    "display_name": "qwen3.6-35b-a3b-nothink",
+    "gguf_path": "~/models/manager/Qwen_Qwen3.6-35B-A3B-Q5_K_M.gguf",
+    "architecture": "MoE",
+    "params_total": "35B",
+    "params_active": "3B",
+    "thinking_support": true,
+    "notes": "No-Think mit Qwen3.6 Instruct-Params (temp=0.7, top_p=0.8, top_k=20, presence_penalty=1.5) aus model.json geerbt.",
+    "chat_template_kwargs": "{\"enable_thinking\":false}",
+    "no_think": true
+  },
+  "tests": {
+    "A1_file_write": {
+      "status": "PASS",
+      "time": 15.7,
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20003,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 40.8,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19099,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "A2_bug_fix": {
+      "status": "PASS",
+      "time": 14.5,
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 25215,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 41.0,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19233,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "A3_error_handling": {
+      "status": "PASS",
+      "time": 27.2,
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21768,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 41.2,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19297,
+        "samples": 3,
+        "throttled": false
+      }
+    },
+    "A4_large_read": {
+      "status": "PASS",
+      "time": 6.5,
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 32184,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 41.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20005,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "A5_large_edit": {
+      "status": "PASS",
+      "time": 96.3,
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1343,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 22292,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 42.4,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20027,
+        "samples": 10,
+        "throttled": false
+      }
+    },
+    "B1_summary": {
+      "status": "PASS",
+      "time": 2.7,
+      "response": "Proxmox Virtual Environment (PVE) requires regular maintenance of its host, virtual machines, and containers to ensure operational stability. Critical updates, particularly those affecting the host kernel, necessitate careful planning such as creating snapshots for potential rollback and using package managers specific to each guest OS. Automating these processes with robust error handling and real-time monitoring notifications significantly reduces manual effort and minimizes the risk of human ",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 30949,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 42.7,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20774,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "B2_log_analysis": {
+      "status": "PASS",
+      "time": 18.1,
+      "response": "# Proxmox Maintenance Log Report\n**Host:** lab-pve-02  \n**Date:** 2026-02-17  \n**Total Duration:** 212 seconds  \n\n## 1. Summary\nThe automated maintenance run completed successfully with a 100% VM snapshot success rate and successful updates for 4 out of 5 containers. However, one container update (**CT 104/searxng**) failed critically due to file permission issues. Another container (**CT 102/alpine-3.19**) experienced transient network timeouts but recovered after retries. No hardware or host-l",
+      "gpu": {
+        "gpu_freq_mhz_median": 1572,
+        "gpu_freq_mhz_min": 1567,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 25826,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 426,
+        "mem_used_gb_max": 42.9,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20596,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "B3_statistics": {
+      "status": "PASS",
+      "time": 31.4,
+      "response": "Based on the monthly sales figures provided for 2025, here is a detailed analysis of Product A, B, and C, including anomaly detection, trend identification, and strategic recommendations.\n\n### 1. Executive Summary\n*   **Product A** shows steady, healthy growth with no major anomalies. It is the company’s strongest performer in terms of volume and consistency.\n*   **Product B** exhibits a critical **anomaly in June** (massive spike) followed by an immediate return to baseline. This suggests a one",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21633,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 484,
+        "mem_used_gb_max": 43.1,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19933,
+        "samples": 3,
+        "throttled": false
+      }
+    },
+    "B4_code_review": {
+      "status": "PASS",
+      "time": 41.2,
+      "issues_found": {
+        "sql_injection": true,
+        "eval": true,
+        "bare_except": true
+      },
+      "response": "Here is a comprehensive review of the Python function `process_user_data`. It contains **critical security vulnerabilities**, **bugs**, and **anti-patterns**.\n\n### 🚨 Critical Security Issues\n\n#### 1. SQL Injection (Critical)\nThe code uses string formatting (`%`) to construct SQL queries. This is the most dangerous vulnerability in this snippet.\n- **Vulnerable Lines:**\n  ```python\n  db_conn.execute(\"SELECT * FROM users WHERE name = '%s'\" % item['name'])\n  db_conn.execute(\"INSERT INTO users VALUES",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21246,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 815,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19677,
+        "samples": 4,
+        "throttled": false
+      }
+    },
+    "C1_config_diff": {
+      "status": "PASS",
+      "time": 23.8,
+      "diffs_found": 8,
+      "response": "Here is a detailed comparison of all differences between Config A and Config B, categorized by section.\n\n### 1. `server` Section\n| Field | Config A | Config B | Impact/Explanation |\n| :--- | :--- | :--- | :--- |\n| **host** | `0.0.0.0` | `127.0.0.1` | **Binding Scope**: Config A binds to all network interfaces (publicly accessible if firewall allows). Config B binds only to localhost (only accessible from the same machine). |\n| **port** | `8080` | `9090` | **Port Change**: The application listens",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21203,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 807,
+        "mem_used_gb_max": 42.7,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19499,
+        "samples": 3,
+        "throttled": false
+      }
+    },
+    "C2_decision_matrix": {
+      "status": "PASS",
+      "time": 24.9,
+      "response": "Here is the structured decision matrix and recommendation based on your specific requirements: **Auto-SSL (Let's Encrypt), Web UI, Docker support, low resource usage, and active community.**\n\n### Decision Matrix\n\n| Criterion | Weight | Traefik | Caddy | Zoraxy |\n| :--- | :---: | :---: | :---: | :---: |\n| **Auto-SSL (Let's Encrypt)** | High | 5 | 5 | 4 |\n| **Web UI for Management** | High | 3 | 1 | 5 |\n| **Docker Support** | Medium | 5 | 4 | 5 |\n| **Low Resource Usage** | Medium | 4 | 5 | 5 |\n| *",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1577,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21116,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 791,
+        "mem_used_gb_max": 42.9,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19641,
+        "samples": 3,
+        "throttled": false
+      }
+    },
+    "C3_root_cause": {
+      "status": "PASS",
+      "time": 4.1,
+      "response": "The root cause is that the manual `pip install` executed as root changed the ownership of the virtual environment files to `root:root`, creating a permission mismatch for the unprivileged `searxng` user who performs updates. Since the container runs as unprivileged LXC, the `searxng` user cannot write to these root-owned directories, resulting in \"Permission denied\" errors. To resolve this, restore correct ownership by running `chown -R searxng:searxng /opt/searxng/venv/` (and potentially `/opt/",
+      "gpu": {
+        "gpu_freq_mhz_median": 1576,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1576,
+        "gpu_power_mw_median": 21690,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 783,
+        "mem_used_gb_max": 42.6,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19793,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "D1_subtle_bug": {
+      "status": "PASS",
+      "time": 13.2,
+      "response": "### The Bug: Race Condition on Shared State\n\nThe bug is a **race condition** caused by the non-atomic nature of the `increment` operation in a multi-threaded environment.\n\n### Mechanism Explanation\n\nThe `increment` method consists of three distinct steps that are not atomic (i.e., they can be interrupted between steps):\n\n1.  **Read**: `current = self.value`\n2.  **Compute**: `current + 1`\n3.  **Write**: `self.value = current + 1`\n\n#### How It Fails:\nWhen multiple threads execute this method concu",
+      "gpu": {
+        "gpu_freq_mhz_median": 1577,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 22252,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 783,
+        "mem_used_gb_max": 42.6,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19928,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "D2_instruction_following": {
+      "status": "PASS",
+      "time": 2.0,
+      "checks": {
+        "five_items": true,
+        "no_lightweight": true,
+        "ends_correctly": true,
+        "words_ok": true
+      },
+      "response": "1. Containers share the host kernel, reducing resource overhead significantly.\n2. Start times are measured in milliseconds rather than minutes.\n3. Image sizes are much smaller than full virtual machine disks.\n4. Deployment consistency is ensured across different development and production environments.\n5. Scaling individual services is faster and more granular than VMs.\n\nEnd of list.",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20364,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 783,
+        "mem_used_gb_max": 42.6,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20070,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "D3_multi_step_calc": {
+      "status": "PASS",
+      "time": 14.8,
+      "response": "To determine if VM-2 can be live-migrated from Node A to Node C, we must verify two conditions:\n1.  **Source Node Check**: Does Node A have enough RAM to run its remaining workloads after VM-2 is removed? (Implicitly required for the migration to start).\n2.  **Target Node Check**: Does Node C have enough FREE RAM to accept VM-2, and will it still meet the >= 50% free RAM requirement AFTER the migration?\n\n---\n\n### Step 1: Analyze Node A (Source)\n*   **Total RAM**: 64 GB\n*   **Current Workloads**:",
+      "gpu": {
+        "gpu_freq_mhz_median": 1577,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20887,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 783,
+        "mem_used_gb_max": 42.8,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19941,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "D4_long_context": {
+      "status": "PASS",
+      "time": 1.9,
+      "response": "The service with a known issue is **Prometheus**.\n\nThe issue is that its **retention policy is set to 90 days instead of the required 365 days**.",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 30969,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 783,
+        "mem_used_gb_max": 42.9,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19945,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "D5_nuanced_review": {
+      "status": "PASS",
+      "time": 47.5,
+      "issues_found": {
+        "negative_price": true,
+        "stock_mutation": true,
+        "missing_stock_check": true,
+        "discount_stacking": true,
+        "no_error_handling": true
+      },
+      "found": 5,
+      "response": "Here is a comprehensive review of the `process_orders` function, ranked by severity from Critical (data loss/corruption) to Low (style/maintainability).\n\n### 🚨 Critical Severity\n\n**1. Mutating Shared State (`product['stock'] -= item['quantity']`)**\n*   **Issue:** The function modifies the `inventory` dictionary in-place. Since dictionaries are mutable objects, this changes the original `inventory` passed into the function.\n*   **Impact:** This is a side effect that breaks the principle of least ",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21097,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 855,
+        "mem_used_gb_max": 43.4,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19846,
+        "samples": 5,
+        "throttled": false
+      }
+    },
+    "E1_correlated_log": {
+      "status": "PASS",
+      "time": 35.5,
+      "score": "6/6",
+      "checks": {
+        "grafana_critical": true,
+        "causal_chain": true,
+        "forgejo_disk": true,
+        "forgejo_502_benign": true,
+        "prioritization": true,
+        "grafana_investigate": true
+      },
+      "response": "Based on the maintenance log from March 14, 2026, here is an analysis of the causal relationships between events and a prioritized action plan.\n\n### 1. Causal Relationship Analysis\n\nThe log reveals two distinct incident chains: one involving **software compatibility** and another involving **infrastructure capacity**.\n\n#### Incident A: Grafana Update Failure (CT 126)\n*   **Trigger:** The system attempted to upgrade Grafana from `v12.4.1` to `v12.5.0`.\n*   **Causal Chain:**\n    1.  The package installation completed successfully (`apt update` OK).\n    2.  However, the service failed to start or bind to port 3000 immediately after the update.\n    3.  The health check script detected `Connection Refused` five times over 40 seconds.\n    4.  **Root Cause Inference:** This is a classic \"silent f",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20801,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1022,
+        "mem_used_gb_max": 43.4,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19845,
+        "samples": 4,
+        "throttled": false
+      }
+    },
+    "E2_dmarc_analysis": {
+      "status": "PASS",
+      "time": 42.0,
+      "score": "7/7",
+      "checks": {
+        "spoofing_detected": true,
+        "rfc1918": true,
+        "dkim_failure_legit": true,
+        "policy_upgrade": true,
+        "google_legit": true,
+        "single_probe": true,
+        "fix_internal": true
+      },
+      "response": "Based on the DMARC aggregate report for `wulffit.de`, here is the security analysis:\n\n### 1. Genuine Security Threats vs. Misconfiguration\n\n**Genuine Security Threats (Spoofing/Phishing):**\n*   **45.133.1.72**: This is the most critical threat. It sends emails with `From Header: wulffit.de` but `Envelope From: different-domain.ru`. The SPF and DKIM both fail. This is a classic domain spoofing attempt where an attacker uses your display name/domain to trick recipients, but does not own the infrastructure to pass authentication. Since the envelope sender is different, this is likely phishing or spam impersonating your brand.\n*   **185.70.40.111**: Sends from `wulffit.de` in both headers, but SPF/DKIM fail. This suggests someone is spoofing your domain directly from a malicious server (possib",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1577,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21101,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1023,
+        "mem_used_gb_max": 43.2,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20174,
+        "samples": 4,
+        "throttled": false
+      }
+    },
+    "F1_cross_file_rename": {
+      "status": "PASS",
+      "time": 6.9,
+      "score": "5/5",
+      "checks": {
+        "old_name_gone": true,
+        "in_models": true,
+        "in_service": true,
+        "in_test": true,
+        "no_other_changes": true
+      },
+      "response": "```python\n# models.py\nclass UserManager:\n    def fetch_active_users(self):\n        return [u for u in self.users if u.active]\n\n    def deactivate_user(self, user_id):\n        user = self.find_by_id(user_id)\n        if user:\n            user.active = False\n        return user\n\n    def find_by_id(self, user_id):\n        return next((u for u in self.users if u.id == user_id), None)\n```\n\n```python\n# service.py\nfrom models import UserManager\n\nclass UserService:\n    def __init__(self):\n        self.manager = UserManager()\n\n    def list_active(self):\n        return self.manager.fetch_active_users()\n\n    def remove_user(self, uid):\n        user = self.manager.deactivate_user(uid)\n        if user:\n            active = self.manager.fetch_active_users()\n            return len(active)\n        return -",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 29735,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1175,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20200,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "F2_config_integration": {
+      "status": "PASS",
+      "time": 10.0,
+      "score": "6/6",
+      "checks": {
+        "config_dry_run": true,
+        "init_dry_run": true,
+        "process_guard": true,
+        "test_dry_run": true,
+        "existing_tests": true,
+        "no_extra_changes": true
+      },
+      "response": "```python\n# config.py\nSETTINGS = {\n    \"max_retries\": 3,\n    \"timeout_seconds\": 30,\n    \"log_level\": \"INFO\",\n    \"batch_size\": 100,\n    \"dry_run\": False,\n}\n```\n\n```python\n# processor.py\nfrom config import SETTINGS\n\nclass BatchProcessor:\n    def __init__(self):\n        self.retries = SETTINGS[\"max_retries\"]\n        self.timeout = SETTINGS[\"timeout_seconds\"]\n        self.batch_size = SETTINGS[\"batch_size\"]\n        self.dry_run = SETTINGS[\"dry_run\"]\n\n    def process(self, items):\n        if self.dry_run:\n            return list(items)\n        batches = [items[i:i+self.batch_size] for i in range(0, len(items), self.batch_size)]\n        results = []\n        for batch in batches:\n            results.extend(self._process_batch(batch))\n        return results\n\n    def _process_batch(self, batch):\n ",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 31670,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1226,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20294,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "F3_circular_deps": {
+      "status": "FAIL",
+      "time": 25.1,
+      "score": "1/4",
+      "checks": {
+        "no_cycles": false,
+        "all_functions": true,
+        "has_explanation": false,
+        "sensible_solution": false
+      },
+      "response": "I will break the circular dependencies by moving shared utilities like `get_user_role` and `check_permission` into a new, independent `roles.py` module that has no imports from the other application modules. Then, I will update `auth.py`, `user.py`, `notification.py`, and `audit.py` to import only from this new neutral module or from each other in a strictly hierarchical manner (e.g., `audit` importing from `roles`, but not vice versa), ensuring a clear dependency tree without cycles. Finally, I will verify that all original function signatures and behaviors remain identical while the internal imports are restructured to be acyclic.\n\n=== roles.py ===\ndef get_user_role(user_id):\n    roles = {1: \"admin\", 2: \"editor\", \"3\": \"viewer\"} # Note: user.py uses int keys, but dict.get handles mismatch",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21174,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1433,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20213,
+        "samples": 3,
+        "throttled": false
+      }
+    },
+    "G1_multi_constraint": {
+      "status": "FAIL",
+      "time": 5.1,
+      "score": "5/6",
+      "checks": {
+        "compiles": true,
+        "server_reboot_included": false,
+        "ghost_excluded": true,
+        "weekly_sync_excluded": true,
+        "urgent_flag": true,
+        "sorted_correctly": true
+      },
+      "response": "```python\ndef filter_events(events):\n    filtered = []\n    for event in events:\n        # Rule 1 & 2: Include if priority <= 3 OR category is \"maintenance\"\n        if not (event['priority'] <= 3 or event['category'] == 'maintenance'):\n            continue\n        \n        # Rule 3: Exclude if attendees == 0, unless recurring\n        if event['attendees'] == 0 and not event['recurring']:\n            continue\n        \n        # Create a copy to avoid modifying the original dict\n        result_event = dict(event)\n        \n        # Rule 4: If priority is 1, add \"urgent\": True\n        if event['priority'] == 1:\n            result_event['urgent'] = True\n        \n        filtered.append(result_event)\n    \n    # Rule 5: Sort by priority ascending, then by name alphabetically\n    filtered.sort(key",
+      "gpu": {
+        "gpu_freq_mhz_median": 1577,
+        "gpu_freq_mhz_min": 1577,
+        "gpu_freq_mhz_max": 1577,
+        "gpu_power_mw_median": 20780,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1459,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20098,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "G2_scope_boundaries": {
+      "status": "PASS",
+      "time": 7.4,
+      "score": "7/7",
+      "checks": {
+        "create_validation": true,
+        "delete_validation": true,
+        "raises_valueerror": true,
+        "config_untouched": true,
+        "product_untouched": true,
+        "no_new_imports": true,
+        "logger_untouched": true
+      },
+      "response": "```python\nimport logging\n\nlogger = logging.getLogger(__name__)\n\nclass Config:\n    DEBUG = False\n    DATABASE_URL = \"sqlite:///app.db\"\n    SECRET_KEY = \"change-me-in-production\"\n    MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB\n\nclass UserHandler:\n    def create(self, name, email):\n        if not isinstance(name, str) or not name.strip():\n            raise ValueError(\"Name must be a non-empty string\")\n        if not isinstance(email, str) or \"@\" not in email:\n            raise ValueError(\"Email must contain '@'\")\n        logger.info(f\"Creating user: {name}\")\n        return {\"name\": name, \"email\": email, \"active\": True}\n\n    def delete(self, user_id):\n        if not isinstance(user_id, int) or user_id <= 0:\n            raise ValueError(\"User ID must be a positive integer\")\n        logger.info(f",
+      "gpu": {
+        "gpu_freq_mhz_median": 1577,
+        "gpu_freq_mhz_min": 1577,
+        "gpu_freq_mhz_max": 1577,
+        "gpu_power_mw_median": 29764,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1486,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20169,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "G3_contradiction": {
+      "status": "PASS",
+      "time": 16.7,
+      "score": "5/5",
+      "checks": {
+        "identifies_contradiction": true,
+        "cites_numbers": true,
+        "explains_why": true,
+        "proposes_resolution": true,
+        "no_code": true
+      },
+      "response": "### Contradiction 1: Mandatory Maintenance Window vs. Immediate Execution of Critical Tasks\n\n*   **Conflicting Requirements:**\n    *   **Requirement 1:** \"All tasks must run between 02:00 and 05:00 UTC (maintenance window)\"\n    *   **Requirement 3:** \"No task may run outside the maintenance window\"\n    *   **Requirement 2:** \"Critical tasks (priority=1) must run immediately regardless of schedule\"\n\n*   **Explanation of Conflict:**\n    Requirements 1 and 3 establish a hard constraint that **no** task can execute outside the 02:00–05:00 UTC window. Requirement 2 demands that Priority 1 tasks run \"immediately,\" which implies execution at any time (e.g., 14:00 UTC) if triggered. These are mutually exclusive: a task cannot simultaneously be forced to wait until the maintenance window (Req 1 & 3",
+      "gpu": {
+        "gpu_freq_mhz_median": 1577,
+        "gpu_freq_mhz_min": 1577,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20663,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 1929,
+        "mem_used_gb_max": 43.2,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20060,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "H1_error_correction": {
+      "status": "PASS",
+      "time": 16.2,
+      "score": "5/5",
+      "checks": {
+        "three_components": true,
+        "empty_string": true,
+        "whitespace": true,
+        "simple_30s": true,
+        "complex_1d12h": true
+      },
+      "response": "```python\ndef parse_duration(s: str) -> int:\n    \"\"\"\n    Parse a human-readable duration string and return total seconds.\n    \n    Supported units: s (seconds), m (minutes), h (hours), d (days)\n    Examples: \"30s\", \"5m\", \"2h\", \"1h30m\", \"1d\", \"1d12h\", \"2h30m15s\"\n    \"\"\"\n    total_seconds = 0\n    unit_to_seconds = {\n        's': 1,\n        'm': 60,\n        'h': 3600,\n        'd': 86400\n    }\n    \n    # Strip whitespace\n    s = s.strip()\n    \n    # Handle empty string\n    if not s:\n        return 0\n    \n    i = 0\n    while i < len(s):\n        # Skip whitespace\n        while i < len(s) and s[i].isspace():\n            i += 1\n        \n        if i >= len(s):\n            break\n        \n        # Extract number\n        j = i\n        while j < len(s) and s[j].isdigit():\n            j += 1\n        \n",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21319,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2030,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20138,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "H2_review_feedback": {
+      "status": "PASS",
+      "time": 12.2,
+      "score": "6/6",
+      "checks": {
+        "has_lock": true,
+        "ttl_in_set": true,
+        "ttl_check_in_get": true,
+        "stats_method": true,
+        "max_size_eviction": true,
+        "compiles": true
+      },
+      "response": "```python\nimport threading\nimport time\nfrom collections import OrderedDict\n\n\nclass Cache:\n    def __init__(self, max_size=100):\n        self.max_size = max_size\n        self.cache = OrderedDict()\n        self.lock = threading.Lock()\n        self.hits = 0\n        self.misses = 0\n\n    def get(self, key):\n        with self.lock:\n            if key in self.cache:\n                value, expiry = self.cache[key]\n                # Check if expired\n                if expiry is not None and time.time() > expiry:\n                    # Treat as missing, remove expired entry\n                    del self.cache[key]\n                    self.misses += 1\n                    return None\n                # Move to end to mark as recently used\n                self.cache.move_to_end(key)\n                self.h",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20644,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2348,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20305,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "I1_refactoring": {
+      "status": "QUALITY:4",
+      "time": 37.9,
+      "score": "4/5",
+      "checks": {
+        "has_separate_functions": true,
+        "reduced_nesting": true,
+        "has_explanation": false,
+        "preserves_modes": true,
+        "has_type_hints": true,
+        "compiles": true
+      },
+      "quality": 4,
+      "response": "Here is the refactored code with explanations of the changes made to improve readability, maintainability, and robustness.\n\n### Refactored Code\n\n```python\ndef handle(data: list[dict], mode: str, flag1: bool = False, flag2: bool = False, extra: float | None = None) -> list[dict] | dict:\n    \"\"\"\n    Process, validate, or summarize a list of data items based on the specified mode.\n    \n    Args:\n        data: List of dictionaries containing item details.\n        mode: Operation mode (\"process\", \"validate\", \"summarize\").\n        flag1: If True, filter and process only active items in 'process' mode.\n        flag2: If True, apply a 10% bonus to values in 'process' mode.\n        extra: Value to add to each item's value in 'process' mode.\n\n    Returns:\n        A list of processed/validated result",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 20611,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2710,
+        "mem_used_gb_max": 43.4,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20196,
+        "samples": 4,
+        "throttled": false
+      }
+    },
+    "I2_trade_off": {
+      "status": "QUALITY:5",
+      "time": 23.3,
+      "score": "5/5",
+      "checks": {
+        "correct_bigo_a": true,
+        "correct_bigo_b": true,
+        "identifies_readability": true,
+        "identifies_bug": true,
+        "has_recommendation": true,
+        "suggests_alternative": true
+      },
+      "quality": 5,
+      "response": "Here is the specific comparison of the two implementations.\n\n### 1. Performance (Big-O)\n\n*   **Variante A:** Claims to be $O(n)$, but **it is not**. Due to a critical logical flaw in the condition (see Correctness), it fails to find most pairs. However, if we assume the logic *worked*, `setdefault` and dictionary lookups are $O(1)$ on average, making the theoretical complexity $O(n)$.\n*   **Variante B:** Strictly **$O(n^2)$**. It uses nested loops, checking every unique pair exactly once.\n\n**Verdict:** Variante B is predictably slow but correct. Variante A is fast in theory but broken in practice.\n\n### 2. Readability\n\n*   **Variante A:** **Extremely poor.**\n    *   It uses a list comprehension with side effects (`setdefault`).\n    *   The condition `if target-n in seen or seen.setdefault(n",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 21044,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2939,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 19989,
+        "samples": 3,
+        "throttled": false
+      }
+    },
+    "J1_json_generation": {
+      "status": "PASS",
+      "time": 17.3,
+      "score": "10/10",
+      "checks": {
+        "valid_json": true,
+        "three_nodes": true,
+        "correct_roles": true,
+        "two_services_each": true,
+        "valid_ips": true,
+        "valid_ports": true,
+        "endpoints_slash": true,
+        "timeout_lt_interval": true,
+        "valid_iso8601": true,
+        "no_markdown": true
+      },
+      "response": "{\n  \"cluster_name\": \"prod-cluster-alpha\",\n  \"nodes\": [\n    {\n      \"hostname\": \"node-primary-01\",\n      \"ip\": \"192.168.1.10\",\n      \"role\": \"primary\",\n      \"services\": [\n        {\n          \"name\": \"database\",\n          \"port\": 5432,\n          \"status\": \"running\",\n          \"health_check\": {\n            \"endpoint\": \"/health\",\n            \"interval_seconds\": 10,\n            \"timeout_seconds\": 5\n          }\n        },\n        {\n          \"name\": \"monitoring\",\n          \"port\": 9090,\n          \"status\": \"running\",\n          \"health_check\": {\n            \"endpoint\": \"/metrics\",\n            \"interval_seconds\": 30,\n            \"timeout_seconds\": 10\n          }\n        }\n      ],\n      \"resources\": {\n        \"cpu_cores\": 16,\n        \"ram_gb\": 64,\n        \"disk_gb\": 500\n      }\n    },\n    {\n     ",
+      "gpu": {
+        "gpu_freq_mhz_median": 1577,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 22829,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2939,
+        "mem_used_gb_max": 43.2,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20143,
+        "samples": 2,
+        "throttled": false
+      }
+    },
+    "J2_api_call": {
+      "status": "PASS",
+      "time": 2.2,
+      "score": "10/10",
+      "checks": {
+        "starts_curl": true,
+        "has_post": true,
+        "correct_url": true,
+        "auth_header": true,
+        "content_type": true,
+        "service_field": true,
+        "version_field": true,
+        "environment_field": true,
+        "rollback_field": true,
+        "notify_channels": true
+      },
+      "response": "curl -X POST https://deploy.internal.example.com/api/v1/deployments -H \"Authorization: Bearer sk-deploy-abc123\" -H \"Content-Type: application/json\" -d '{\"service\":\"web-frontend\",\"version\":\"2.4.1\",\"environment\":\"production\",\"rollback_on_failure\":true,\"notify_channels\":[\"slack-ops\",\"email-team\"]}'",
+      "gpu": {
+        "gpu_freq_mhz_median": 1576,
+        "gpu_freq_mhz_min": 1576,
+        "gpu_freq_mhz_max": 1576,
+        "gpu_power_mw_median": 21014,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2939,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20209,
+        "samples": 1,
+        "throttled": false
+      }
+    },
+    "J3_function_calling": {
+      "status": "PASS",
+      "time": 2.7,
+      "score": "9/9",
+      "checks": {
+        "valid_json": true,
+        "correct_name": true,
+        "correct_service": true,
+        "correct_start": true,
+        "correct_end": true,
+        "correct_level": true,
+        "correct_limit": true,
+        "correct_pattern": true,
+        "no_extra_keys": true
+      },
+      "response": "{\"name\": \"search_logs\", \"arguments\": {\"service\": \"payment-service\", \"time_range\": {\"start\": \"2026-03-01T00:00:00Z\", \"end\": \"2026-03-02T00:00:00Z\"}, \"level\": \"ERROR\", \"pattern\": \"timeout|connection refused\", \"limit\": 500}}",
+      "gpu": {
+        "gpu_freq_mhz_median": 1578,
+        "gpu_freq_mhz_min": 1578,
+        "gpu_freq_mhz_max": 1578,
+        "gpu_power_mw_median": 29415,
+        "thermal_pressure": "Nominal",
+        "battery_pct": -1,
+        "swap_used_mb_max": 2959,
+        "mem_used_gb_max": 43.3,
+        "mem_pressure": "warning",
+        "server_rss_mb": 20179,
+        "samples": 1,
+        "throttled": false
+      }
+    }
+  },
+  "summary": {
+    "total": 32,
+    "passed": 28,
+    "failed": 4,
+    "pass_rate": "28/32 (87%)",
+    "total_time": 646.3,
+    "quality_score": "103/108"
+  }
+}

@@ -446,6 +446,39 @@ llama-server \
 ./run.sh --config configs/qwen3.5-4b.json --external-server
 ```
 
+## 8. V4+ Additions (April 18–21, 2026)
+
+After the V4 Multi-Harness release, three additional workstreams landed — released here as raw data and configs, not yet as a formal V5 version bump.
+
+### Qwen3.6-35B-A3B deep-dive
+
+Separate article on [wulffit.de](https://wulffit.de/artikel/qwen36-35b-praxistest) documents the dual-run methodology.
+
+- `results/qwen36-v1.json` — V1 default settings (temp=0.7, `INT_MAX` reasoning budget)
+- `results/qwen36-v2.json` — V2 optimized (Qwen Think-General preset, budget=8192, Unsloth UD-Q5_K_XL)
+- `results/qwen3.6-35b-a3b/` — Raw timestamped runs (April 18–19, 2026)
+
+Key finding: `--reasoning-budget 8192` is not optional. Without it, F2 test times out at 600s; with it, the same test passes in 79s.
+
+### OpenCode Harness
+
+Integration of [OpenCode](https://opencode.ai/) (140k+ GitHub stars) as a third agent harness, alongside smolagents and the internal CC-Agent. Tracks real multi-turn tool-calling behavior (Read/Edit/Bash) rather than single-shot code-completion.
+
+- `harnesses/opencode/` — Config template, prompt patterns, fixtures
+- `harnesses/opencode/PROMPT-PATTERNS.md` — Small-Diff-Constraint, Finish-Trigger, Scope limitation, DACH-Compliance — empirically validated patterns that drop output tokens by ~95× and fix silent JSON-truncation failures
+
+### V6 Reasoning Benchmarks — "When does think pay off?"
+
+Separate article on [wulffit.de](https://wulffit.de/artikel/think-mythos) documents the full dataset.
+
+- `results/v6-reasoning/` — 34 raw runs across 8 models × 4 fixtures
+- Fixtures: `debug-unmarked`, `custom-constraint`, `architecture-choice`, `ambiguity-probe`
+- Plus `v6-produktiv-fqdn-bug` — real production issue closed by Gemma-4-26B-A4B via OpenCode
+
+Empirical finding across all 8 models: NoThink matches or beats Think on every benchmark data-point in this suite. Think mode delivers pure overhead at agentic task size.
+
+---
+
 ## License
 
 MIT. Benchmark code and results are freely available. Model weights are subject to their respective licenses.

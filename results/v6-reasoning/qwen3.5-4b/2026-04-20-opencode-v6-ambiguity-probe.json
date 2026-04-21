@@ -1,0 +1,26 @@
+{
+  "model": "local-qwen35-4b/qwen3.5-4b",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "v6-ambiguity-probe-35-4b-think-210404",
+  "timestamp": "2026-04-20T19:16:56.260459+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 18.12,
+    "steps": 3,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11645,
+      "cache_read_sum": 22375,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253ad7ddcffeGMBHXs4o44Hmr3"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-ambiguity-probe-35-4b-think-210404"
+}

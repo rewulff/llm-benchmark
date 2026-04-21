@@ -1,0 +1,69 @@
+{
+  "model": "local-gemma4-26b/gemma-4-26b",
+  "fixture": "v6-produktiv-fqdn-bug",
+  "job_slug": "v6-produktiv-gemma-4-26b-turbo-20260421-003606",
+  "timestamp": "2026-04-20T23:02:08.646480+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 1533.69,
+    "steps": 8,
+    "tool_calls": 7,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 3,
+      "edit": 2,
+      "invalid": 1
+    },
+    "final_text": "",
+    "stop_reason": "tool-calls",
+    "tokens": {
+      "total_final_step": 60723,
+      "cache_read_sum": 143045,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_252f683c2ffe77OY0DyRm2P9zx"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [
+      {
+        "cell": null,
+        "code": "F841",
+        "end_location": {
+          "column": 10,
+          "row": 99
+        },
+        "filename": "/Users/rwu/opencode-jobs/v6-produktiv-gemma-4-26b-turbo-20260421-003606/work/main.py",
+        "fix": {
+          "applicability": "unsafe",
+          "edits": [
+            {
+              "content": "",
+              "end_location": {
+                "column": 13,
+                "row": 99
+              },
+              "location": {
+                "column": 5,
+                "row": 99
+              }
+            }
+          ],
+          "message": "Remove assignment to unused variable `token`"
+        },
+        "location": {
+          "column": 5,
+          "row": 99
+        },
+        "message": "Local variable `token` is assigned to but never used",
+        "noqa_row": 99,
+        "severity": "error",
+        "url": "https://docs.astral.sh/ruff/rules/unused-variable"
+      }
+    ],
+    "passed": false,
+    "ruff_exit": 1
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-produktiv-gemma-4-26b-turbo-20260421-003606"
+}

@@ -1,0 +1,27 @@
+{
+  "model": "local-nemotron-30b/nemotron-3-nano-30b",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "v6-debug-unmarked-nemotron-3-nano-30b-20260420-221349",
+  "timestamp": "2026-04-20T20:14:53.844153+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 29.04,
+    "steps": 8,
+    "tool_calls": 7,
+    "tools_breakdown": {
+      "bash": 4,
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 13565,
+      "cache_read_sum": 84946,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_25378a5ceffeUMON1USL2kq7FR"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-debug-unmarked-nemotron-3-nano-30b-20260420-221349"
+}

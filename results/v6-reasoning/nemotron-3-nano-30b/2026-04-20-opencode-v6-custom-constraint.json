@@ -1,0 +1,26 @@
+{
+  "model": "local-nemotron-30b/nemotron-3-nano-30b",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "v6-custom-constraint-nemotron-3-nano-30b-20260420-221349",
+  "timestamp": "2026-04-20T20:15:56.458343+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 40.51,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "bash": 2,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 12466,
+      "cache_read_sum": 34683,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_25377e2cbffe1GGrpEo5Lle1kx"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-custom-constraint-nemotron-3-nano-30b-20260420-221349"
+}

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "local-qwen36": {
+      "name": "Qwen3.6-35B-A3B (local, llama.cpp)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "qwen3.6-35b-a3b": {
+          "name": "Qwen3.6-35B-A3B (Unsloth UD-Q5_K_XL, ctx 65k)"
+        }
+      }
+    },
+    "local-knecht": {
+      "name": "Qwen3-Coder-30B / Knecht (local, llama.cpp)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "qwen3-coder-30b": {
+          "name": "Qwen3-Coder-30B-A3B (Q4_K_M, Knecht, ctx 65k)"
+        }
+      }
+    },
+    "local-qwen35-4b": {
+      "name": "Qwen3.5-4B (local, llama.cpp) \u2014 Sweet-Spot",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "qwen3.5-4b": {
+          "name": "Qwen3.5-4B (Q4_K_M, ctx 32k)"
+        }
+      }
+    },
+    "local-gemma4-e4b": {
+      "name": "Gemma-4-E4B (local, Google, SWA-Architektur)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "gemma-4-e4b": {
+          "name": "Gemma-4-E4B (Q4_K_M, 5:1 SWA, ~4B, ctx 32k)"
+        }
+      }
+    },
+    "local-qwen35-9b": {
+      "name": "Qwen3.5-9B (local, dense, V4 Sweet-Spot)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "qwen3.5-9b": {
+          "name": "Qwen3.5-9B (Q4_K_M, dense, ctx 32k)"
+        }
+      }
+    },
+    "local-gemma4-26b": {
+      "name": "Gemma-4-26B-A4B (local, MoE 4B active, SWA+MoE-Hybrid)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "gemma-4-26b": {
+          "name": "Gemma-4-26B-A4B (Q4_K_M, MoE 4B active, ctx 32k)"
+        }
+      }
+    },
+    "local-nemotron-30b": {
+      "name": "Nemotron-3-Nano-30B-A3B (NVIDIA, MoE Mamba-Hybrid)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "nemotron-3-nano-30b": {
+          "name": "Nemotron-3-Nano-30B-A3B (Q4_K_M, Mamba-MoE)"
+        }
+      }
+    },
+    "local-magistral-24b": {
+      "name": "Magistral-Small-24B (Mistral Reasoning)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "magistral-small-24b": {
+          "name": "Magistral-Small-2509-24B (Q4_K_M, dense)"
+        }
+      }
+    },
+    "local-gpt-oss-20b": {
+      "name": "GPT-OSS-20B (OpenAI Open-Source)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "gpt-oss-20b": {
+          "name": "GPT-OSS-20B (Q4_K_M, dense)"
+        }
+      }
+    },
+    "local-gemma4-31b": {
+      "name": "Gemma-4-31B (local, dense, SWA)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://127.0.0.1:1235/v1",
+        "apiKey": "local-not-needed"
+      },
+      "models": {
+        "gemma-4-31b": {
+          "name": "Gemma-4-31B (Q4_K_M, dense 5:1 SWA, ctx 32k)"
+        }
+      }
+    }
+  },
+  "model": "local-qwen36/qwen3.6-35b-a3b"
+}

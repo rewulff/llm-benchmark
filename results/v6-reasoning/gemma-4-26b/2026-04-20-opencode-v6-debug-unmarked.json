@@ -1,0 +1,27 @@
+{
+  "model": "local-gemma4-26b/gemma-4-26b",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "v6-debug-unmarked-gemma4-26b-220644",
+  "timestamp": "2026-04-20T20:07:18.858927+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 16.32,
+    "steps": 8,
+    "tool_calls": 7,
+    "tools_breakdown": {
+      "glob": 3,
+      "read": 3,
+      "edit": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 12235,
+      "cache_read_sum": 75940,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_2537f5a53ffem8A6EDqFFxfDzQ"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-debug-unmarked-gemma4-26b-220644"
+}

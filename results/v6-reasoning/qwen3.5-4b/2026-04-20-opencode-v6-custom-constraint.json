@@ -1,0 +1,25 @@
+{
+  "model": "local-qwen35-4b/qwen3.5-4b",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "v6-custom-constraint-35-4b-think-210404",
+  "timestamp": "2026-04-20T19:05:10.598217+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 23.38,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11552,
+      "cache_read_sum": 21691,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253b82014ffeCgUJSOzQD7w8H7"
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-custom-constraint-35-4b-think-210404"
+}

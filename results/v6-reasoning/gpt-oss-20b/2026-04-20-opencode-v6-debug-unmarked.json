@@ -1,0 +1,27 @@
+{
+  "model": "local-gpt-oss-20b/gpt-oss-20b",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "v6-debug-unmarked-gpt-oss-20b-20260420-221349",
+  "timestamp": "2026-04-20T20:28:57.779855+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 8.21,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "edit": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 10570,
+      "cache_read_sum": 29064,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_2536b5bd1ffeR8PtJgJVaHDba0"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-debug-unmarked-gpt-oss-20b-20260420-221349"
+}

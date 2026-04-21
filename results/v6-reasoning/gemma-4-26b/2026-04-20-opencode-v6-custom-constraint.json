@@ -1,0 +1,25 @@
+{
+  "model": "local-gemma4-26b/gemma-4-26b",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "v6-custom-constraint-gemma4-26b-220644",
+  "timestamp": "2026-04-20T20:07:50.459487+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 8.37,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 10402,
+      "cache_read_sum": 10137,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_2537ed4c3ffeyXhmElMebnloUC"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-custom-constraint-gemma4-26b-220644"
+}

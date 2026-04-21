@@ -1,0 +1,27 @@
+{
+  "model": "local-gemma4-e4b/gemma-4-e4b",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "v6-ambiguity-probe-gemma4e4b-212015",
+  "timestamp": "2026-04-20T19:24:20.403847+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 80.2,
+    "steps": 10,
+    "tool_calls": 9,
+    "tools_breakdown": {
+      "read": 3,
+      "edit": 5,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 12226,
+      "cache_read_sum": 99581,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253a7a333ffeb4m09q39V25XAR"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-ambiguity-probe-gemma4e4b-212015"
+}

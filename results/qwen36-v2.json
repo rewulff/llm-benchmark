@@ -1,0 +1,426 @@
+{
+  "article_ref": "qwen36-v2.json",
+  "label": "V2 — Optimized (Qwen Think General preset + reasoning budget 8192)",
+  "description": "Re-run with Qwen's recommended Think-General preset, reasoning budget capped, Unsloth UD-Q5_K_XL quant, ctx=65536.",
+  "source_files": [
+    "results/qwen3.6-35b-a3b/2026-04-19-nothink-opt.json",
+    "results/qwen3.6-35b-a3b/2026-04-19-think-opt.json"
+  ],
+  "runs": {
+    "nothink_opt": {
+      "model": "qwen3.6-35b-a3b-nothink-opt",
+      "timestamp": "2026-04-19T16:07:33.199145",
+      "llama_cpp_version": "8680 (15f786e65)",
+      "config": {
+        "gpu_layers": 99,
+        "flash_attn": "on",
+        "threads": 10,
+        "ctx_size": 65536,
+        "jinja": true,
+        "backend": "llamacpp",
+        "inference": {
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "max_tokens": 4096,
+          "top_k": 20,
+          "presence_penalty": 1.5
+        },
+        "name": "Qwen/Qwen3.6-35B-A3B",
+        "display_name": "qwen3.6-35b-a3b-nothink-opt",
+        "gguf_path": "~/models/manager/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf",
+        "architecture": "MoE",
+        "params_total": "35B",
+        "params_active": "3B",
+        "thinking_support": true,
+        "notes": "v2 Settings: Unsloth UD-Q5_K_XL (patched Jinja), --reasoning off (statt chat-template-kwargs-Deprecation), ctx 65536, Qwen 'NoThink General' Preset.",
+        "reasoning": "off"
+      },
+      "total_tests": 8,
+      "passed": 5,
+      "failed": 3,
+      "total_duration_s": 335.1,
+      "tests": {
+        "A1_file_write": {
+          "status": "PASS",
+          "time": 17.1,
+          "gpu": {
+            "gpu_freq_mhz_median": 958,
+            "gpu_freq_mhz_min": 338,
+            "gpu_freq_mhz_max": 1578,
+            "gpu_power_mw_median": 10001,
+            "thermal_pressure": "Nominal",
+            "battery_pct": -1,
+            "swap_used_mb_max": 13409,
+            "mem_used_gb_max": 43.6,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1597,
+            "samples": 2,
+            "throttled": false
+          }
+        },
+        "A2_bug_fix": {
+          "status": "PASS",
+          "time": 15.2,
+          "gpu": {
+            "gpu_freq_mhz_median": 1527,
+            "gpu_freq_mhz_min": 1477,
+            "gpu_freq_mhz_max": 1578,
+            "gpu_power_mw_median": 27813,
+            "thermal_pressure": "Nominal",
+            "battery_pct": -1,
+            "swap_used_mb_max": 12123,
+            "mem_used_gb_max": 40.6,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1846,
+            "samples": 2,
+            "throttled": false
+          }
+        },
+        "A3_error_handling": {
+          "status": "PASS",
+          "time": 27.0,
+          "gpu": {
+            "gpu_freq_mhz_median": 1438,
+            "gpu_freq_mhz_min": 1340,
+            "gpu_freq_mhz_max": 1577,
+            "gpu_power_mw_median": 20931,
+            "thermal_pressure": "Nominal",
+            "battery_pct": -1,
+            "swap_used_mb_max": 13709,
+            "mem_used_gb_max": 44.7,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1700,
+            "samples": 3,
+            "throttled": false
+          }
+        },
+        "A5_large_edit": {
+          "status": "PASS",
+          "time": 191.3,
+          "gpu": {
+            "gpu_freq_mhz_median": 1376,
+            "gpu_freq_mhz_min": 338,
+            "gpu_freq_mhz_max": 1575,
+            "gpu_power_mw_median": 15658,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 16980,
+            "mem_used_gb_max": 44.4,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1596,
+            "samples": 18,
+            "throttled": true
+          }
+        },
+        "F2_config_integration": {
+          "status": "PASS",
+          "time": 15.1,
+          "score": "6/6",
+          "checks": {
+            "config_dry_run": true,
+            "init_dry_run": true,
+            "process_guard": true,
+            "test_dry_run": true,
+            "existing_tests": true,
+            "no_extra_changes": true
+          },
+          "response": "```python\n# config.py\nSETTINGS = {\n    \"max_retries\": 3,\n    \"timeout_seconds\": 30,\n    \"log_level\": \"INFO\",\n    \"batch_size\": 100,\n    \"dry_run\": False,\n}\n```\n\n```python\n# processor.py\nfrom config import SETTINGS\n\nclass BatchProcessor:\n    def __init__(self):\n        self.retries = SETTINGS[\"max_retries\"]\n        self.timeout = SETTINGS[\"timeout_seconds\"]\n        self.batch_size = SETTINGS[\"batch_size\"]\n        self.dry_run = SETTINGS[\"dry_run\"]\n\n    def process(self, items):\n        if self.dry_run:\n            return list(items)\n        batches = [items[i:i+self.batch_size] for i in range(0, len(items), self.batch_size)]\n        results = []\n        for batch in batches:\n            results.extend(self._process_batch(batch))\n        return results\n\n    def _process_batch(self, batch):\n ",
+          "gpu": {
+            "gpu_freq_mhz_median": 1561,
+            "gpu_freq_mhz_min": 1561,
+            "gpu_freq_mhz_max": 1561,
+            "gpu_power_mw_median": 19567,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 14331,
+            "mem_used_gb_max": 43.2,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1621,
+            "samples": 1,
+            "throttled": true
+          }
+        },
+        "F3_circular_deps": {
+          "status": "FAIL",
+          "time": 18.5,
+          "score": "1/4",
+          "checks": {
+            "no_cycles": false,
+            "all_functions": true,
+            "has_explanation": false,
+            "sensible_solution": false
+          },
+          "response": "I will resolve the circular dependencies by extracting the shared logic into a new `permissions.py` module, which both `auth.py` and `audit.py` can import without creating cycles. I will also ensure that `user.py` imports from `auth` only after `auth` no longer depends on `user`, breaking the direct loop. Finally, I will update all files to use these new dependencies while preserving the original function signatures and behaviors.\n\n=== permissions.py ===\ndef get_user_role(user_id):\n    roles = {1: \"admin\", 2: \"editor\", 3: \"viewer\"}\n    return roles.get(user_id, \"viewer\")\n\ndef check_permission(user_id, resource):\n    role = get_user_role(user_id)\n    return role in (\"admin\", \"editor\")\n\n\n=== auth.py ===\nfrom permissions import check_permission as _check_permission_base\n\n# Re-exporting for ba",
+          "gpu": {
+            "gpu_freq_mhz_median": 1238,
+            "gpu_freq_mhz_min": 1198,
+            "gpu_freq_mhz_max": 1279,
+            "gpu_power_mw_median": 12850,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 17150,
+            "mem_used_gb_max": 42.6,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1773,
+            "samples": 2,
+            "throttled": true
+          }
+        },
+        "G1_multi_constraint": {
+          "status": "FAIL",
+          "time": 5.6,
+          "score": "5/6",
+          "checks": {
+            "compiles": true,
+            "server_reboot_included": false,
+            "ghost_excluded": true,
+            "weekly_sync_excluded": true,
+            "urgent_flag": true,
+            "sorted_correctly": true
+          },
+          "response": "```python\ndef filter_events(events):\n    results = []\n    for event in events:\n        # Rule 3: Exclude events with 0 attendees unless recurring\n        if event['attendees'] == 0 and not event['recurring']:\n            continue\n        \n        # Rule 1 & 2: Include if priority <= 3, OR category is \"maintenance\"\n        if event['priority'] <= 3 or event['category'] == 'maintenance':\n            new_event = dict(event)\n            # Rule 4: If priority is 1, add urgent key\n            if event['priority'] == 1:\n                new_event['urgent'] = True\n            results.append(new_event)\n    \n    # Rule 5: Sort by priority ascending, then by name alphabetically\n    results.sort(key=lambda x: (x['priority'], x['name']))\n    \n    return results\n```",
+          "gpu": {
+            "gpu_freq_mhz_median": 1564,
+            "gpu_freq_mhz_min": 1564,
+            "gpu_freq_mhz_max": 1564,
+            "gpu_power_mw_median": 27090,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 16196,
+            "mem_used_gb_max": 43.6,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1919,
+            "samples": 1,
+            "throttled": true
+          }
+        },
+        "I2_trade_off": {
+          "status": "QUALITY:4",
+          "time": 45.3,
+          "score": "4/5",
+          "checks": {
+            "correct_bigo_a": true,
+            "correct_bigo_b": false,
+            "identifies_readability": true,
+            "identifies_bug": true,
+            "has_recommendation": true,
+            "suggests_alternative": true
+          },
+          "quality": 4,
+          "response": "Here is a detailed comparison of the two implementations.\n\n### 1. Performance (Big-O)\n\n*   **Variante A:** Theoretically **O(n)** time complexity, but with significant hidden constants and overhead. It uses a single pass through the list `nums`. Dictionary lookups (`in seen`, `setdefault`) are O(1) on average. However, the logic is convoluted, leading to unnecessary dictionary writes even when no pair is found.\n*   **Variante B:** **O(n²)** time complexity. It uses nested loops, checking every possible pair. For large inputs, this will be drastically slower than Variante A.\n\n**Verdict:** Variante A is asymptotically faster for large `n`. Variante B is only acceptable for very small datasets.\n\n### 2. Readability\n\n*   **Variante A:** **Extremely poor.** This code violates nearly every princi",
+          "gpu": {
+            "gpu_freq_mhz_median": 1290,
+            "gpu_freq_mhz_min": 1276,
+            "gpu_freq_mhz_max": 1333,
+            "gpu_power_mw_median": 11239,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 15525,
+            "mem_used_gb_max": 44.9,
+            "mem_pressure": "warning",
+            "server_rss_mb": 1629,
+            "samples": 5,
+            "throttled": true
+          }
+        }
+      }
+    },
+    "think_opt": {
+      "model": "qwen3.6-35b-a3b-think-opt",
+      "timestamp": "2026-04-19T16:13:23.142584",
+      "llama_cpp_version": "8680 (15f786e65)",
+      "config": {
+        "gpu_layers": 99,
+        "flash_attn": "on",
+        "threads": 10,
+        "ctx_size": 65536,
+        "jinja": true,
+        "backend": "llamacpp",
+        "inference": {
+          "temperature": 1.0,
+          "top_p": 0.95,
+          "max_tokens": 8192,
+          "top_k": 20,
+          "presence_penalty": 1.5
+        },
+        "name": "Qwen/Qwen3.6-35B-A3B",
+        "display_name": "qwen3.6-35b-a3b-think-opt",
+        "gguf_path": "~/models/manager/Qwen3.6-35B-A3B-UD-Q5_K_XL.gguf",
+        "architecture": "MoE",
+        "params_total": "35B",
+        "params_active": "3B",
+        "thinking_support": true,
+        "notes": "v2 Settings: Unsloth UD-Q5_K_XL (patched Jinja), reasoning_budget 8192, ctx 65536, Sampling = Qwen 'Think General' Preset (Agent-Tasks, NICHT WebDev Precise).",
+        "reasoning": "on",
+        "reasoning_budget": 8192
+      },
+      "total_tests": 8,
+      "passed": 5,
+      "failed": 3,
+      "total_duration_s": 614.0,
+      "tests": {
+        "A1_file_write": {
+          "status": "PASS",
+          "time": 30.7,
+          "gpu": {
+            "gpu_freq_mhz_median": 1353,
+            "gpu_freq_mhz_min": 338,
+            "gpu_freq_mhz_max": 1361,
+            "gpu_power_mw_median": 12766,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 16198,
+            "mem_used_gb_max": 42.3,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25898,
+            "samples": 3,
+            "throttled": true
+          }
+        },
+        "A2_bug_fix": {
+          "status": "PASS",
+          "time": 28.6,
+          "gpu": {
+            "gpu_freq_mhz_median": 1420,
+            "gpu_freq_mhz_min": 1410,
+            "gpu_freq_mhz_max": 1578,
+            "gpu_power_mw_median": 15228,
+            "thermal_pressure": "Moderate",
+            "battery_pct": -1,
+            "swap_used_mb_max": 10901,
+            "mem_used_gb_max": 42.9,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25902,
+            "samples": 3,
+            "throttled": true
+          }
+        },
+        "A3_error_handling": {
+          "status": "PASS",
+          "time": 82.2,
+          "gpu": {
+            "gpu_freq_mhz_median": 1399,
+            "gpu_freq_mhz_min": 1334,
+            "gpu_freq_mhz_max": 1576,
+            "gpu_power_mw_median": 14330,
+            "thermal_pressure": "Moderate",
+            "battery_pct": -1,
+            "swap_used_mb_max": 13869,
+            "mem_used_gb_max": 44.8,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25899,
+            "samples": 8,
+            "throttled": true
+          }
+        },
+        "A5_large_edit": {
+          "status": "PASS",
+          "time": 177.1,
+          "gpu": {
+            "gpu_freq_mhz_median": 1417,
+            "gpu_freq_mhz_min": 1215,
+            "gpu_freq_mhz_max": 1504,
+            "gpu_power_mw_median": 14746,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 19612,
+            "mem_used_gb_max": 45.1,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25905,
+            "samples": 16,
+            "throttled": true
+          }
+        },
+        "F2_config_integration": {
+          "status": "PASS",
+          "time": 79.3,
+          "score": "6/6",
+          "checks": {
+            "config_dry_run": true,
+            "init_dry_run": true,
+            "process_guard": true,
+            "test_dry_run": true,
+            "existing_tests": true,
+            "no_extra_changes": true
+          },
+          "response": "=== config.py ===\n```python\nSETTINGS = {\n    \"max_retries\": 3,\n    \"timeout_seconds\": 30,\n    \"log_level\": \"INFO\",\n    \"batch_size\": 100,\n    \"dry_run\": False,\n}\n```\n\n=== processor.py ===\n```python\nfrom config import SETTINGS\n\nclass BatchProcessor:\n    def __init__(self):\n        self.retries = SETTINGS[\"max_retries\"]\n        self.timeout = SETTINGS[\"timeout_seconds\"]\n        self.batch_size = SETTINGS[\"batch_size\"]\n        self.dry_run = SETTINGS[\"dry_run\"]\n\n    def process(self, items):\n        if self.dry_run:\n            return list(items)\n        \n        batches = [items[i:i+self.batch_size] for i in range(0, len(items), self.batch_size)]\n        results = []\n        for batch in batches:\n            results.extend(self._process_batch(batch))\n        return results\n\n    def _process_",
+          "gpu": {
+            "gpu_freq_mhz_median": 1450,
+            "gpu_freq_mhz_min": 338,
+            "gpu_freq_mhz_max": 1494,
+            "gpu_power_mw_median": 14129,
+            "thermal_pressure": "Heavy",
+            "battery_pct": -1,
+            "swap_used_mb_max": 17972,
+            "mem_used_gb_max": 44.6,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25918,
+            "samples": 8,
+            "throttled": true
+          }
+        },
+        "F3_circular_deps": {
+          "status": "ERROR: timed out",
+          "time": 0
+        },
+        "G1_multi_constraint": {
+          "status": "FAIL",
+          "time": 78.7,
+          "score": "5/6",
+          "checks": {
+            "compiles": true,
+            "server_reboot_included": false,
+            "ghost_excluded": true,
+            "weekly_sync_excluded": true,
+            "urgent_flag": true,
+            "sorted_correctly": true
+          },
+          "response": "```python\ndef filter_events(events):\n    result = []\n    for e in events:\n        passes_priority = e['priority'] <= 3 or e['category'] == 'maintenance'\n        passes_attendees = e['attendees'] > 0 or e['recurring']\n        \n        if passes_priority and passes_attendees:\n            out = dict(e)\n            if e['priority'] == 1:\n                out['urgent'] = True\n            result.append(out)\n            \n    result.sort(key=lambda x: (x['priority'], x['name']))\n    return result\n```",
+          "gpu": {
+            "gpu_freq_mhz_median": 1475,
+            "gpu_freq_mhz_min": 1279,
+            "gpu_freq_mhz_max": 1542,
+            "gpu_power_mw_median": 15665,
+            "thermal_pressure": "Moderate",
+            "battery_pct": -1,
+            "swap_used_mb_max": 18314,
+            "mem_used_gb_max": 45.0,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25920,
+            "samples": 8,
+            "throttled": true
+          }
+        },
+        "I2_trade_off": {
+          "status": "QUALITY:4",
+          "time": 137.4,
+          "score": "4/5",
+          "checks": {
+            "correct_bigo_a": true,
+            "correct_bigo_b": false,
+            "identifies_readability": true,
+            "identifies_bug": true,
+            "has_recommendation": true,
+            "suggests_alternative": true
+          },
+          "quality": 4,
+          "response": "Here is a specific, code-grounded comparison across your four criteria:\n\n### 1. Performance (Big-O)\n- **Variante A**: Theoretically attempts `O(n)` time and `O(n)` space by iterating once over `nums` and using dictionary lookups/inserts. Dictionary operations are `O(1)` average, so the loop structure is linear. However, `setdefault()` carries higher constant overhead than direct dict access or `.get()`, and the hidden short-circuiting logic causes unnecessary function calls on every iteration.\n- **Variante B**: Explicitly `O(n²)` time due to nested loops iterating over all `(i, j)` pairs where `j > i`. Auxiliary space is `O(1)` (excluding output), making it memory-efficient but computationally heavy for large inputs.\n\n**Verdict**: A is asymptotically faster (`O(n)` vs `O(n²)`), but B's con",
+          "gpu": {
+            "gpu_freq_mhz_median": 1577,
+            "gpu_freq_mhz_min": 1477,
+            "gpu_freq_mhz_max": 1578,
+            "gpu_power_mw_median": 19357,
+            "thermal_pressure": "Moderate",
+            "battery_pct": -1,
+            "swap_used_mb_max": 18804,
+            "mem_used_gb_max": 44.2,
+            "mem_pressure": "warning",
+            "server_rss_mb": 25919,
+            "samples": 12,
+            "throttled": true
+          }
+        }
+      }
+    }
+  }
+}

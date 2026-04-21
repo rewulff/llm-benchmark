@@ -1,0 +1,25 @@
+{
+  "model": "local-qwen36/qwen3.6-35b-a3b",
+  "fixture": "v6-quick-nqueens",
+  "job_slug": "nq-think-201203",
+  "timestamp": "2026-04-20T18:12:50.082120+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 25.99,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11688,
+      "cache_read_sum": 11636,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253e85847ffefKibgtdPMjveCb"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/nq-think-201203"
+}

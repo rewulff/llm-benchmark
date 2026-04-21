@@ -1,0 +1,26 @@
+{
+  "model": "local-gpt-oss-20b/gpt-oss-20b",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "v6-architecture-choice-gpt-oss-20b-20260420-221349",
+  "timestamp": "2026-04-20T20:30:28.805559+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 41.14,
+    "steps": 5,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "glob": 2,
+      "write": 2
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11756,
+      "cache_read_sum": 40255,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_2536a7836ffekt2PpXY4las2w7"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-architecture-choice-gpt-oss-20b-20260420-221349"
+}

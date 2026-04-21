@@ -1,0 +1,27 @@
+{
+  "model": "local-gpt-oss-20b/gpt-oss-20b",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "v6-ambiguity-probe-gpt-oss-20b-20260420-221349",
+  "timestamp": "2026-04-20T20:31:19.891033+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 37.34,
+    "steps": 6,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11793,
+      "cache_read_sum": 50903,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253699f74ffeJFxKAoSQjr6zmP"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-ambiguity-probe-gpt-oss-20b-20260420-221349"
+}

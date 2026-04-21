@@ -1,0 +1,1 @@
+Read `large_module.py`. This is a 400+ line Python module with 8 broken functions. Each broken function is marked with a `# BUG:` comment describing what is wrong. Fix ALL 8 bugs and save the file back. Keep working until all bugs are fixed. When done, respond with 'DONE'.

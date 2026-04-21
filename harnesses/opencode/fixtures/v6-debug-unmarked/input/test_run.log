@@ -1,0 +1,9 @@
+[2026-04-20 14:32:15] INFO: Starting batch analytics pipeline
+[2026-04-20 14:32:15] INFO: Loading items from db_export.json
+[2026-04-20 14:32:16] INFO: Loaded 100 items from db_export.json
+[2026-04-20 14:32:16] INFO: Filtered to 87 active items
+[2026-04-20 14:32:16] INFO: Normalized scores for 87 items
+[2026-04-20 14:32:16] INFO: Calling get_top_n(items, 10)
+[2026-04-20 14:32:16] INFO: Returned 9 items
+[2026-04-20 14:32:16] INFO: Wrote 9 items to results.json
+[2026-04-20 14:32:16] INFO: Pipeline complete. Top-10 items written to results.json.

@@ -1,0 +1,25 @@
+{
+  "model": "local-gemma4-e4b/gemma-4-e4b",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "v6-architecture-choice-gemma4e4b-212015",
+  "timestamp": "2026-04-20T19:22:44.448683+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 23.52,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "todowrite": 1
+    },
+    "final_text": "The optimal messaging pattern is **Event Streaming using Apache Kafka**.\n\n**Reasoning:**\n1.  **Why Kafka:** Kafka provides durable, ordered, and high-throughput message logs. By using the `user_id` as",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11365,
+      "cache_read_sum": 10174,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253a84126ffeRpoDgTM0iVL0Q1"
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-architecture-choice-gemma4e4b-212015"
+}

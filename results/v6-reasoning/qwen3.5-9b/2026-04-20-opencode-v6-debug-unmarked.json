@@ -1,0 +1,26 @@
+{
+  "model": "local-qwen35-9b/qwen3.5-9b",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "v6-debug-unmarked-qwen35-9b-212441",
+  "timestamp": "2026-04-20T19:25:24.165667+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 13.62,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 12609,
+      "cache_read_sum": 35396,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253a5dc2cffefo4eeV9L7girGt"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-debug-unmarked-qwen35-9b-212441"
+}

@@ -1,0 +1,25 @@
+{
+  "model": "local-qwen36/qwen3.6-35b-a3b",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "v6-architecture-choice-think-202827",
+  "timestamp": "2026-04-20T18:31:03.362318+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 103.28,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 14206,
+      "cache_read_sum": 21226,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253d895bfffeUwEdlgKX28pH74"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-architecture-choice-think-202827"
+}

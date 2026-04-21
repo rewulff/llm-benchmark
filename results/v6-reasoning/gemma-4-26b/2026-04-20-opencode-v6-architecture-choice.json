@@ -1,0 +1,25 @@
+{
+  "model": "local-gemma4-26b/gemma-4-26b",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "v6-architecture-choice-gemma4-26b-220644",
+  "timestamp": "2026-04-20T20:08:35.025801+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 22.69,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11027,
+      "cache_read_sum": 10174,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_2537e5940ffe9I81GKDdjcWe47"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-architecture-choice-gemma4-26b-220644"
+}

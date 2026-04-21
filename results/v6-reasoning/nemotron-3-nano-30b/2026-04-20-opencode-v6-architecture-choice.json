@@ -1,0 +1,25 @@
+{
+  "model": "local-nemotron-30b/nemotron-3-nano-30b",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "v6-architecture-choice-nemotron-3-nano-30b-20260420-221349",
+  "timestamp": "2026-04-20T20:17:13.871023+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 56.56,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 13438,
+      "cache_read_sum": 10999,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_25376ef09ffeku8y1CaoH0orfa"
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-architecture-choice-nemotron-3-nano-30b-20260420-221349"
+}

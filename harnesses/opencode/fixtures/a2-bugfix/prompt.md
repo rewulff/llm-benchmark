@@ -1,0 +1,1 @@
+Read calculator.py. It has three bugs: (1) multiply() uses + instead of *, (2) divide() has no zero-division check, (3) average() is missing a return statement. Fix all three bugs and save the file back. When done, respond with just 'DONE'.

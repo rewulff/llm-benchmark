@@ -1,0 +1,26 @@
+{
+  "model": "local-qwen35-4b/qwen3.5-4b",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "v6-architecture-choice-35-4b-think-210404",
+  "timestamp": "2026-04-20T19:16:20.666932+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 667.33,
+    "steps": 4,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "invalid": 1,
+      "bash": 1
+    },
+    "final_text": "We haven't done anything yet. The working directory is empty. You requested a messaging architecture design, but I haven't created the `design.md` file yet.\n\nWould you like me to proceed with creating",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11409,
+      "cache_read_sum": 21530,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_253b7b8aeffexXuxqsml5PpRGI"
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/v6-architecture-choice-35-4b-think-210404"
+}
