@@ -1,0 +1,12 @@
+{
+  "name": "lmstudio-community/gemma-4-26B-A4B-it-MLX-6bit",
+  "display_name": "gemma-4-26b-a4b-it-mlx",
+  "gguf_path": "~/.lmstudio/models/lmstudio-community/gemma-4-26B-A4B-it-MLX-6bit",
+  "ctx_size": 65536,
+  "inference": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "top_k": 64
+  },
+  "notes": "MLX backend (mlx_lm.server aus rachittshah/feat/turboquant-kv-cache + eigene Patches) mit 3-bit TurboQuant KV. Use with --external-server. Server-Start: ~/venvs/mlx-turbo/bin/python -m mlx_lm server --model ~/.lmstudio/models/lmstudio-community/gemma-4-26B-A4B-it-MLX-6bit --host 127.0.0.1 --port 1235 --turbo-kv-bits 3 --served-model-name gemma-4-26b --log-level INFO"
+}
