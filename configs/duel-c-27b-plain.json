@@ -1,0 +1,12 @@
+{
+  "name": "qwen36-27b-nvfp4-mtp",
+  "model_id": "qwen36-27b-nvfp4-mtp",
+  "display_name": "duel-c-27b-plain",
+  "ctx_size": 65536,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "notes": "Duell 2026-07-28 Arm C: Qwen3.6-27B dense nvfp4/g16 + bf16-MTP-Head (Frankenstein), MTP an (~1.6x), Dense-Qualitaetsdecke. omlx external-server."
+}
