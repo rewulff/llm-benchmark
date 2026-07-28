@@ -237,7 +237,7 @@ def build_command(model: str, message: str, session_id: str | None) -> list[str]
     cmd = [str(OPENCODE_BIN), "run"]
     if session_id:
         cmd += ["-s", session_id]
-    cmd += ["--model", model, "--dangerously-skip-permissions", "--format", "json", message]
+    cmd += ["--model", model, "--auto", "--format", "json", message]
     return cmd
 
 
