@@ -232,9 +232,9 @@ def link_opencode_config(job_dir: Path, code_home: Path) -> None:
 # Turn-Ausfuehrung und Auswertung
 # --------------------------------------------------------------------------
 
-def build_command(model: str, message: str, session_id: str | None) -> list[str]:
+def build_command(model: str, message: str, session_id: str | None, work_dir: Path | str = "<work>") -> list[str]:
     """Baut das opencode-Kommando fuer einen Turn."""
-    cmd = [str(OPENCODE_BIN), "run"]
+    cmd = [str(OPENCODE_BIN), "run", "--dir", str(work_dir)]
     if session_id:
         cmd += ["-s", session_id]
     cmd += ["--model", model, "--auto", "--format", "json", message]
@@ -243,7 +243,7 @@ def build_command(model: str, message: str, session_id: str | None) -> list[str]
 
 def run_turn(model: str, message: str, session_id: str | None, work_dir: Path, jsonl_path: Path) -> None:
     """Fuehrt einen Turn aus und schreibt den Event-Stream nach jsonl_path."""
-    cmd = build_command(model, message, session_id)
+    cmd = build_command(model, message, session_id, work_dir)
     with open(jsonl_path, "w") as out_fh:
         result = subprocess.run(cmd, cwd=str(work_dir), stdout=out_fh, stderr=subprocess.PIPE, text=True)
     if result.returncode != 0:
