@@ -1,0 +1,32 @@
+{
+  "model": "omlx/ornith-9b-nvfp4",
+  "fixture": "a2-bugfix",
+  "job_slug": "mx-G-ornith-9b-a2-bugfix-1785323497",
+  "timestamp": "2026-07-29T11:12:38.179721+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 56.58,
+    "steps": 5,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11739,
+      "cache_read_sum": 40960,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0526d56c7ffeBeEzDeSn872x0q"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-G-ornith-9b-a2-bugfix-1785323497"
+}

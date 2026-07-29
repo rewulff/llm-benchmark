@@ -595,10 +595,15 @@ def chat_completion(prompt: str, config: dict, system: str = "", timeout: int = 
     }
 
     body = json.dumps(payload).encode()
+    headers = {"Content-Type": "application/json"}
+    # omlx (and other auth-enabled OpenAI-compatible servers): Bearer key via env
+    api_key = os.environ.get("OMLX_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
     req = urllib.request.Request(
         f"http://{SERVER_HOST}:{SERVER_PORT}/v1/chat/completions",
         data=body,
-        headers={"Content-Type": "application/json"},
+        headers=headers,
     )
     t0 = time.time()
     r = urllib.request.urlopen(req, timeout=timeout)
@@ -616,7 +621,7 @@ def run_smolagent(prompt: str, config: dict, max_steps: int = 8, timeout: int = 
     model = LiteLLMModel(
         model_id=f"openai/{config.get('name', 'local')}",
         api_base=f"http://{SERVER_HOST}:{SERVER_PORT}/v1",
-        api_key="not-needed",
+        api_key=os.environ.get("OMLX_API_KEY") or os.environ.get("OPENAI_API_KEY") or "not-needed",
         temperature=inf.get("temperature", 0.7),
         top_p=inf.get("top_p", 0.8),
     )

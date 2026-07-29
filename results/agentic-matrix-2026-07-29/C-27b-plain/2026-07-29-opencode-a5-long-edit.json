@@ -1,0 +1,34 @@
+{
+  "model": "omlx/qwen36-27b-nvfp4-mtp",
+  "fixture": "a5-long-edit",
+  "job_slug": "mx-C-27b-plain-a5-long-edit-1785320219",
+  "timestamp": "2026-07-29T10:27:56.983560+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 656.18,
+    "steps": 22,
+    "tool_calls": 21,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 9,
+      "edit": 10,
+      "grep": 1
+    },
+    "final_text": "\n\nAll 8 bugs fixed and no `# BUG:` comments remain.\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22200,
+      "cache_read_sum": 378880,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0529f5b2fffeSdGRAgARTMb6BV"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-C-27b-plain-a5-long-edit-1785320219"
+}

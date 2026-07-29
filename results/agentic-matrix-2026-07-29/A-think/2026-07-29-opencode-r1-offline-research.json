@@ -1,0 +1,31 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-A-think-r1-offline-research-1785319657",
+  "timestamp": "2026-07-29T10:09:07.319636+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 88.56,
+    "steps": 5,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "read": 14,
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19985,
+      "cache_read_sum": 59392,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052a7ef19ffeLZGhAInsK4uLwM"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-A-think-r1-offline-research-1785319657"
+}

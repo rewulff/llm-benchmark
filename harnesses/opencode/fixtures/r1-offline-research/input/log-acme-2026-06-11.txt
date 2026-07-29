@@ -1,0 +1,13 @@
+# agent log excerpt — customer: ACME Industrieservice — collected 2026-06-11 by support
+# routine health check after the 2.6.0 rollout, no incident attached
+
+2026-06-11T01:00:02Z INFO  kestrel 2.6.0 starting, host acme-backup02
+2026-06-11T01:00:02Z INFO  config: upload.chunk_strategy=fixed upload.chunk_size_mb=32 retry.max_attempts=5
+2026-06-11T01:00:04Z INFO  job vault-nightly: queued 5 files (14.8 GB total)
+2026-06-11T01:00:05Z INFO  uploading vault-full.img (11.2 GB)
+2026-06-11T01:38:47Z INFO  vault-full.img done in 2322s
+2026-06-11T01:38:48Z INFO  uploading vault-delta-01.img (1.9 GB)
+2026-06-11T01:45:10Z INFO  vault-delta-01.img done in 382s
+2026-06-11T01:52:44Z INFO  job vault-nightly finished: 5 uploaded, 0 failed
+2026-06-11T09:14:20Z WARN  E_AUTH_EXPIRED refreshing session token
+2026-06-11T09:14:21Z INFO  session token refreshed, resuming

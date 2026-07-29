@@ -1,1 +1,4 @@
 .DS_Store
+__pycache__/
+# Laufzeit-Arbeitskopien der Fixtures (Harness kopiert input/ je Lauf hierher)
+/fixtures/

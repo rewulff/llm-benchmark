@@ -1,0 +1,11 @@
+# agent log excerpt — customer: Brightwave Media — collected 2026-06-09 by support
+# customer opened a ticket about upgrade planning, log attached for reference
+
+2026-06-09T22:30:01Z INFO  kestrel 2.3.2 starting, host bw-nas-a
+2026-06-09T22:30:01Z INFO  config: upload.chunk_size_mb=32 upload.max_concurrent=4 retry.max_attempts=3
+2026-06-09T22:30:03Z INFO  job media-offload: queued 2 files (7.7 GB total)
+2026-06-09T22:30:04Z INFO  uploading raw-footage-week23.mov (7.1 GB)
+2026-06-09T23:11:55Z INFO  raw-footage-week23.mov done in 2511s
+2026-06-09T23:11:56Z INFO  uploading proxies-week23.zip (0.6 GB)
+2026-06-09T23:15:02Z INFO  proxies-week23.zip done in 186s
+2026-06-09T23:15:02Z INFO  job media-offload finished: 2 uploaded, 0 failed

@@ -1,0 +1,12 @@
+{
+  "name": "qwen36-a3b-nvfp4-nothink",
+  "model_id": "qwen36-a3b-nvfp4-nothink",
+  "display_name": "duel-b-35b-nothink",
+  "ctx_size": 65536,
+  "inference": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "notes": "Duell 2026-07-28 Arm B: 35B-A3B nothink-Alias — misst Kosten/Nutzen des Thinkings beim MoE. omlx external-server."
+}

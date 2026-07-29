@@ -1,0 +1,35 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4-nothink",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "mx-B-nothink-c1-dependent-pipeline-1785319854",
+  "timestamp": "2026-07-29T10:12:06.483264+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 69.76,
+    "steps": 12,
+    "tool_calls": 20,
+    "tools_breakdown": {
+      "read": 10,
+      "glob": 2,
+      "todowrite": 3,
+      "bash": 2,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17351,
+      "cache_read_sum": 161792,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052a4ea77ffeio1M6v7vXUOK8v"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-B-nothink-c1-dependent-pipeline-1785319854"
+}

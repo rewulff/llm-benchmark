@@ -1,0 +1,34 @@
+{
+  "model": "omlx/thinkingcap-27b-nvfp4-mtp",
+  "fixture": "a5-long-edit",
+  "job_slug": "mx-D-thinkingcap-a5-long-edit-1785321732",
+  "timestamp": "2026-07-29T10:48:59.507383+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 405.1,
+    "steps": 12,
+    "tool_calls": 11,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19022,
+      "cache_read_sum": 176128,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_05288431dffeO1C3jggu22L6Zl"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-D-thinkingcap-a5-long-edit-1785321732"
+}

@@ -1,0 +1,31 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4-nothink",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-B-nothink-r1-offline-research-1785319926",
+  "timestamp": "2026-07-29T10:13:06.151419+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 58.1,
+    "steps": 6,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "read": 14,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19750,
+      "cache_read_sum": 75776,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052a3d2e6ffe23k0qxMjewcq5k"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-B-nothink-r1-offline-research-1785319926"
+}

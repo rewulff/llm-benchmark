@@ -1,0 +1,33 @@
+{
+  "model": "omlx/ornith-9b-nvfp4",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "mx-G-ornith-9b-c1-dependent-pipeline-1785323684",
+  "timestamp": "2026-07-29T11:15:54.865972+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 68.64,
+    "steps": 9,
+    "tool_calls": 12,
+    "tools_breakdown": {
+      "read": 5,
+      "bash": 4,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15484,
+      "cache_read_sum": 116736,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0526a7a9fffebNOcH1LK5wAZwt"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-G-ornith-9b-c1-dependent-pipeline-1785323684"
+}

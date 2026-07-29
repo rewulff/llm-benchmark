@@ -1,0 +1,22 @@
+{
+  "description": "Scripted three-turn dialogue: ambiguous brief, clarification (or correction), mid-task requirement change.",
+  "turns": [
+    {
+      "id": 1,
+      "label": "ambiguous brief",
+      "message_file": "turn-1.md"
+    },
+    {
+      "id": 2,
+      "label": "clarification or correction",
+      "condition": "asked_clarifying",
+      "message_file": "turn-2-answer.md",
+      "else_message_file": "turn-2-correction.md"
+    },
+    {
+      "id": 3,
+      "label": "requirement change",
+      "message_file": "turn-3.md"
+    }
+  ]
+}

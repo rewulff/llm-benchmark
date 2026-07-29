@@ -1,0 +1,33 @@
+{
+  "model": "omlx/qwen36-27b-nvfp4-mtp",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "mx-C-27b-plain-c1-dependent-pipeline-1785320876",
+  "timestamp": "2026-07-29T10:33:55.714332+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 357.07,
+    "steps": 9,
+    "tool_calls": 12,
+    "tools_breakdown": {
+      "read": 5,
+      "bash": 4,
+      "edit": 3
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16829,
+      "cache_read_sum": 120832,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0529551fbffekLmP9mrbOq3l3C"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-C-27b-plain-c1-dependent-pipeline-1785320876"
+}

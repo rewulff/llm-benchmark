@@ -1,0 +1,17 @@
+# agent log excerpt — customer: Northwind Logistics — collected 2026-06-14 by support
+# only the nightly-archive job is included, INFO level and above
+
+2026-06-14T02:11:04Z INFO  kestrel 2.5.1 starting, host nwl-fs01
+2026-06-14T02:11:04Z INFO  config: upload.chunk_strategy=adaptive upload.max_concurrent=4 retry.max_attempts=5
+2026-06-14T02:11:06Z INFO  job nightly-archive: queued 3 files (9.1 GB total)
+2026-06-14T02:11:07Z INFO  uploading manifest-2026-06.json (0.4 MB)
+2026-06-14T02:11:09Z INFO  uploading ledger-export.csv (712 MB)
+2026-06-14T02:14:52Z INFO  ledger-export.csv done in 223s
+2026-06-14T02:14:53Z INFO  uploading archive-2026-05.tar (8.4 GB)
+2026-06-14T02:26:11Z INFO  chunk 214/512 in flight
+2026-06-14T02:41:12Z WARN  chunk 214/512 stalled, no progress for 900s
+2026-06-14T02:41:12Z ERROR E_CHUNK_TIMEOUT aborting upload of archive-2026-05.tar
+2026-06-14T02:41:13Z INFO  job nightly-archive finished: 2 uploaded, 1 failed
+2026-06-15T02:11:04Z INFO  kestrel 2.5.1 starting, host nwl-fs01
+2026-06-15T02:43:38Z ERROR E_CHUNK_TIMEOUT aborting upload of archive-2026-05.tar
+2026-06-15T02:43:39Z INFO  job nightly-archive finished: 2 uploaded, 1 failed

@@ -1,0 +1,31 @@
+{
+  "model": "omlx/qwen36-27b-nvfp4-mtp",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-C-27b-plain-r1-offline-research-1785321235",
+  "timestamp": "2026-07-29T10:39:12.533553+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 315.09,
+    "steps": 4,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "read": 14,
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 20192,
+      "cache_read_sum": 45056,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0528fd8c2ffezmJYaDTCCRNcOk"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-C-27b-plain-r1-offline-research-1785321235"
+}

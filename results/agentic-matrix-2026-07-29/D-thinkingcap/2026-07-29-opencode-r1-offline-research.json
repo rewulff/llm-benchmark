@@ -1,0 +1,31 @@
+{
+  "model": "omlx/thinkingcap-27b-nvfp4-mtp",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-D-thinkingcap-r1-offline-research-1785322327",
+  "timestamp": "2026-07-29T10:57:21.933902+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 312.77,
+    "steps": 5,
+    "tool_calls": 16,
+    "tools_breakdown": {
+      "read": 15,
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 20454,
+      "cache_read_sum": 63488,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0527f303fffewViLnwpmH1r6nS"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-D-thinkingcap-r1-offline-research-1785322327"
+}

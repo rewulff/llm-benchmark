@@ -1,0 +1,32 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4-nothink",
+  "fixture": "a5-long-edit",
+  "job_slug": "mx-B-nothink-a5-long-edit-1785319795",
+  "timestamp": "2026-07-29T10:10:54.923327+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 58.45,
+    "steps": 10,
+    "tool_calls": 9,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17998,
+      "cache_read_sum": 147456,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052a5d430ffeG9wmqSgs1pHBBO"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-B-nothink-a5-long-edit-1785319795"
+}
