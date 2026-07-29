@@ -1,0 +1,34 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4",
+  "fixture": "a5-long-edit",
+  "job_slug": "mx-A-think-a5-long-edit-1785319407",
+  "timestamp": "2026-07-29T10:06:08.583245+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 159.91,
+    "steps": 6,
+    "tool_calls": 19,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 16,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 23720,
+      "cache_read_sum": 90112,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052abc022ffeaaFpve3HxGWAar"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-A-think-a5-long-edit-1785319407"
+}

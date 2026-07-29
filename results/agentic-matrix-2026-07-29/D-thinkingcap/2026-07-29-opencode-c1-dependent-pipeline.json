@@ -1,0 +1,33 @@
+{
+  "model": "omlx/thinkingcap-27b-nvfp4-mtp",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "mx-D-thinkingcap-c1-dependent-pipeline-1785322139",
+  "timestamp": "2026-07-29T10:52:07.428986+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 186.07,
+    "steps": 4,
+    "tool_calls": 9,
+    "tools_breakdown": {
+      "read": 5,
+      "edit": 3,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15445,
+      "cache_read_sum": 45056,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052820e4cffe9yfAnVMiD5VTVf"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-D-thinkingcap-c1-dependent-pipeline-1785322139"
+}

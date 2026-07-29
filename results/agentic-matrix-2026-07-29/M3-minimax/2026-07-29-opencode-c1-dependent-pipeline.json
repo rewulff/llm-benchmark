@@ -1,0 +1,33 @@
+{
+  "model": "minimax/MiniMax-M3",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "mx-M3-minimax-c1-dependent-pipeline-1785323934",
+  "timestamp": "2026-07-29T11:19:24.739841+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 27.44,
+    "steps": 14,
+    "tool_calls": 13,
+    "tools_breakdown": {
+      "bash": 5,
+      "read": 5,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15665,
+      "cache_read_sum": 180615,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_05266abc7ffeuakthZUEB5fpyv"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-M3-minimax-c1-dependent-pipeline-1785323934"
+}

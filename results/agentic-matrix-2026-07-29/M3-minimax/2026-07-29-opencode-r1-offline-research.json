@@ -1,0 +1,32 @@
+{
+  "model": "minimax/MiniMax-M3",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-M3-minimax-r1-offline-research-1785323964",
+  "timestamp": "2026-07-29T11:20:01.975006+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 34.9,
+    "steps": 4,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "bash": 1,
+      "read": 13,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19808,
+      "cache_read_sum": 44928,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0526634a5ffedGxnIuq7xOnz1W"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-M3-minimax-r1-offline-research-1785323964"
+}

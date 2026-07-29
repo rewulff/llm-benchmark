@@ -1,0 +1,33 @@
+{
+  "model": "omlx/ornith-9b-nvfp4",
+  "fixture": "a5-long-edit",
+  "job_slug": "mx-G-ornith-9b-a5-long-edit-1785323558",
+  "timestamp": "2026-07-29T11:14:44.658966+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 124.9,
+    "steps": 14,
+    "tool_calls": 13,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 9,
+      "bash": 2
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19110,
+      "cache_read_sum": 217088,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0526c68a2ffelqXK6yXWhI0o4J"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-G-ornith-9b-a5-long-edit-1785323558"
+}

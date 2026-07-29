@@ -1,0 +1,34 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "mx-A-think-c1-dependent-pipeline-1785319568",
+  "timestamp": "2026-07-29T10:07:37.152569+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 86.83,
+    "steps": 9,
+    "tool_calls": 13,
+    "tools_breakdown": {
+      "read": 6,
+      "glob": 2,
+      "bash": 2,
+      "edit": 3
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16759,
+      "cache_read_sum": 112640,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052a94912ffeGbG2Ui9KrAKxRD"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-A-think-c1-dependent-pipeline-1785319568"
+}

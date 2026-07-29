@@ -1,0 +1,33 @@
+{
+  "model": "omlx/qwen36-27b-nvfp4-mtp",
+  "fixture": "a2-bugfix",
+  "job_slug": "mx-C-27b-plain-a2-bugfix-1785319994",
+  "timestamp": "2026-07-29T10:16:59.264617+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 218.66,
+    "steps": 5,
+    "tool_calls": 6,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 2,
+      "edit": 3
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 12228,
+      "cache_read_sum": 40960,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052a2c7fcffeBE79leYaM0R8NQ"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-C-27b-plain-a2-bugfix-1785319994"
+}

@@ -1,0 +1,32 @@
+{
+  "model": "omlx/ornith-9b-nvfp4",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-G-ornith-9b-r1-offline-research-1785323754",
+  "timestamp": "2026-07-29T11:17:42.948309+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 106.45,
+    "steps": 5,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "bash": 1,
+      "read": 13,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 20246,
+      "cache_read_sum": 61440,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052696858ffe1NZk7JLiP1c2V2"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-G-ornith-9b-r1-offline-research-1785323754"
+}

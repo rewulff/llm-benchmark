@@ -1,0 +1,33 @@
+{
+  "model": "omlx/qwen36-a3b-nvfp4",
+  "fixture": "a2-bugfix",
+  "job_slug": "mx-A-think-a2-bugfix-1785319347",
+  "timestamp": "2026-07-29T10:03:27.013604+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 50.43,
+    "steps": 7,
+    "tool_calls": 6,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 2,
+      "edit": 3
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 12232,
+      "cache_read_sum": 63488,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_052aca85bffe3BGtuEwUMTcxrI"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-A-think-a2-bugfix-1785319347"
+}

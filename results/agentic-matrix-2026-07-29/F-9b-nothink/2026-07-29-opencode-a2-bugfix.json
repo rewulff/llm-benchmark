@@ -1,0 +1,32 @@
+{
+  "model": "omlx/qwen35-9b-nvfp4",
+  "fixture": "a2-bugfix",
+  "job_slug": "mx-F-9b-nothink-a2-bugfix-1785323168",
+  "timestamp": "2026-07-29T11:06:44.768448+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 33.49,
+    "steps": 3,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11712,
+      "cache_read_sum": 26624,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0527259c4ffeUcxY5px0Yw0oe2"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-F-9b-nothink-a2-bugfix-1785323168"
+}

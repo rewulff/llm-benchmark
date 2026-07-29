@@ -273,9 +273,30 @@ file-ops category, with long FAIL runtimes) → systematic suite/Qwen3.6 format 
 suite is saturated at 15/19 for this generation; needs a harness fix before it can
 differentiate again. (2) Single-shot: thinking = pure cost (+52% time, zero score/quality
 delta). (3) ThinkingCap: −17% time vs plain 27B *and* keeps the quality point plain drops
-— the token-efficiency finetune is free lunch on this suite. Agentic differentiation
-(where thinking *does* pay) → see `harnesses/opencode/` fixtures c1/r1/m1 and the
-2026-07-29 agentic matrix results.
+— the token-efficiency finetune is free lunch on this suite.
+
+**Agentic matrix 2026-07-29** (opencode harness, fixtures a2/a5/c1/r1, all omlx + M3 cloud ref):
+
+| Arm | Σ PASS | Σ time | Fails |
+|---|---|---|---|
+| 35B think | 3/4 | 386s | r1 (nuance) |
+| 35B nothink | 4/4 | 216s | — |
+| 27B plain +MTP | 4/4 | 1547s | — |
+| 27B ThinkingCap +MTP | 4/4 | 1073s | — |
+| 9B think | 3/4 | 508s | a5 (volume; nothink passed it) |
+| **9B nothink** | **4/4** | 316s | — (5 GB RAM) |
+| **Ornith-1.0-9B** | **4/4** | 357s | — (agentic-RL claims hold here) |
+| MiniMax M3 (cloud) | 4/4 | 127s | only 1.7× faster than local 35B nothink |
+
+Thinking scored zero wins and owns both sole fails across three measurement rounds
+(suite, scaffolded agentic, bare-prompt agentic). Working hypothesis: prompt
+scaffolding and thinking are *substitutes* — these fixtures (and PROMPT-PATTERNS)
+externalize the reasoning, so internal thinking only adds cost. Bare-prompt rerun
+of c1 confirmed all arms still pass (the fixture's stage-wise test feedback itself
+guides), with one twist: strong models were *faster* without the scaffolded prompt.
+Caveats: n=1 per cell; thinking measurement requires server-side token counts
+(omlx strips <think> before the API response — client telemetry undercounts
+thinkers by ~40%).
 
 ### 4.2 Test Results Matrix
 

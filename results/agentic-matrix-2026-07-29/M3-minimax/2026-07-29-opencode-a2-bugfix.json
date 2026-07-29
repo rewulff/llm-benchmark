@@ -1,0 +1,32 @@
+{
+  "model": "minimax/MiniMax-M3",
+  "fixture": "a2-bugfix",
+  "job_slug": "mx-M3-minimax-a2-bugfix-1785323862",
+  "timestamp": "2026-07-29T11:18:00.530823+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 13.0,
+    "steps": 5,
+    "tool_calls": 6,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 4
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11858,
+      "cache_read_sum": 37504,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_05267c21cffezEtakm1rfvw6ai"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-M3-minimax-a2-bugfix-1785323862"
+}

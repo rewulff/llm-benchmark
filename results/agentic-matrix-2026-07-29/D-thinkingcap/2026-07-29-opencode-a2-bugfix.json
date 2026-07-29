@@ -1,0 +1,33 @@
+{
+  "model": "omlx/thinkingcap-27b-nvfp4-mtp",
+  "fixture": "a2-bugfix",
+  "job_slug": "mx-D-thinkingcap-a2-bugfix-1785321558",
+  "timestamp": "2026-07-29T10:42:12.770253+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 168.6,
+    "steps": 4,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "edit": 3
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 11903,
+      "cache_read_sum": 32768,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_0528aed3effePngB39V1jErase"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-D-thinkingcap-a2-bugfix-1785321558"
+}

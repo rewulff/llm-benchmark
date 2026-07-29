@@ -1,0 +1,32 @@
+{
+  "model": "omlx/qwen35-9b-nvfp4",
+  "fixture": "r1-offline-research",
+  "job_slug": "mx-E-9b-think-r1-offline-research-1785322999",
+  "timestamp": "2026-07-29T11:06:04.292904+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 162.81,
+    "steps": 5,
+    "tool_calls": 13,
+    "tools_breakdown": {
+      "bash": 1,
+      "read": 11,
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 20308,
+      "cache_read_sum": 61440,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_05274edcdffeaof1Z4VQCWHn18"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/mx-E-9b-think-r1-offline-research-1785322999"
+}
