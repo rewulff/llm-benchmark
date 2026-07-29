@@ -211,7 +211,8 @@ V2: 14 tests, 5 categories, quality score /25 (March 2026). V1: 12 tests, code +
 
 ### 4.1 Model Specs
 
-Central reference for all 32 models tested. All run via llama-server on M4 Pro 48GB.
+Central reference for all 36 models tested. All run via llama-server on M4 Pro 48GB
+unless marked *(omlx)* — those ran on oMLX 0.5.2rc2, MLX-native nvfp4, TurboQuant-KV 3-bit (2026-07-28).
 
 | Model | Params | Arch | Quant | RAM | t/s | ctx | Thinking | Vision | OCR | Base |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -244,6 +245,10 @@ Central reference for all 32 models tested. All run via llama-server on M4 Pro 4
 | Qwen3.5-4B think | 4B | dense | Q4_K_M | 2.5 GB | ~150 | 32k | reason | -- | -- | Qwen3.5 |
 | Qwen3.5-9B nothink | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | nothink | -- | -- | Qwen3.5 |
 | Qwen3.5-9B think | 9B | dense | Q4_K_M | 6 GB | ~60 | 32k | reason | -- | -- | Qwen3.5 |
+| Qwen3.6-27B *(omlx)* | 27B | dense | nvfp4+MTP | 14.3 GB | 14.6 / **25 MTP** | 262k | reason | (VLM-fallback off) | -- | Qwen3.6 |
+| Qwen3.6-27B ThinkingCap *(omlx)* | 27B | dense | nvfp4+MTP | 14.4 GB | 14.2 / **23 MTP** | 262k | reason (−46% trained) | (VLM-fallback off) | -- | Qwen3.6 |
+| Qwen3.6-35B-A3B think *(omlx)* | 35B | MoE (3B) | nvfp4 | 19.5 GB | ~75 | 262k | reason | mmproj | -- | Qwen3.6 |
+| Qwen3.6-35B-A3B nothink *(omlx)* | 35B | MoE (3B) | nvfp4 | 19.5 GB | ~75 | 262k | nothink | mmproj | -- | Qwen3.6 |
 | Qwen3.5-27B nothink | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | nothink | -- | -- | Qwen3.5 |
 | Qwen3.5-27B think | 27B | dense | Q5_K_M | 19 GB | ~25 | 32k | reason | -- | -- | Qwen3.5 |
 | Qwen3.5-35B-A3B nothink | 35B | MoE (3B) | Q4_K_M | 20 GB | ~45 | 32k | nothink | -- | -- | Qwen3.5 |
@@ -251,6 +256,26 @@ Central reference for all 32 models tested. All run via llama-server on M4 Pro 4
 | SmolVLM2-2.2B | 2.2B | dense | Q4_K_M | 3 GB | ~55 | 16k | -- | mmproj | 0% | SmolVLM2 |
 
 **Legend:** t/s = tokens/second (generation). ctx = max context window. Thinking: `reason` = chain-of-thought enabled, `nothink` = explicitly disabled, `think` = thinking variant. Vision: `mmproj` = multimodal projector required for llama-server. Arch: `MoE (3B)` = Mixture-of-Experts with 3B active parameters. OCR: keyword match accuracy on 5 German document fixtures (49 keywords), `--` = not a vision model or not tested.
+
+### 4.1.1 omlx Duel 2026-07-28 — Qwen3.6 Generation (V2 suite, 19 tests)
+
+All four arms on identical quant lane (nvfp4/g16 + TurboQuant-KV 3-bit, omlx, external-server):
+
+| Arm | Score | Quality | Total time |
+|---|---|---|---|
+| Qwen3.6-35B-A3B **think** | 15/19 (78%) | 25/25 | 241.5s |
+| Qwen3.6-35B-A3B **nothink** | 15/19 (78%) | 25/25 | **158.4s** |
+| Qwen3.6-27B plain +MTP | 15/19 (78%) | 24/25 | 779.6s |
+| Qwen3.6-27B ThinkingCap +MTP | 15/19 (78%) | 25/25 | 646.7s |
+
+**Findings:** (1) All four arms fail the *identical* four tests (A1/A3/A4/A5 — the whole
+file-ops category, with long FAIL runtimes) → systematic suite/Qwen3.6 format mismatch,
+suite is saturated at 15/19 for this generation; needs a harness fix before it can
+differentiate again. (2) Single-shot: thinking = pure cost (+52% time, zero score/quality
+delta). (3) ThinkingCap: −17% time vs plain 27B *and* keeps the quality point plain drops
+— the token-efficiency finetune is free lunch on this suite. Agentic differentiation
+(where thinking *does* pay) → see `harnesses/opencode/` fixtures c1/r1/m1 and the
+2026-07-29 agentic matrix results.
 
 ### 4.2 Test Results Matrix
 
