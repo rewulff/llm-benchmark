@@ -2,3 +2,6 @@
 __pycache__/
 # Laufzeit-Arbeitskopien der Fixtures (Harness kopiert input/ je Lauf hierher)
 /fixtures/
+
+# runtime results of local opencode runs (canonical results live in results/)
+harnesses/opencode/models/
