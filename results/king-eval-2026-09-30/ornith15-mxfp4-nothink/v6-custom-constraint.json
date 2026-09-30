@@ -1,0 +1,29 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "king-ornith15-mxfp4-nothink-v6-custom-constraint-1790790617",
+  "timestamp": "2026-09-30T17:51:33.044903+00:00",
+  "status": "INVALID",
+  "parser_output": {
+    "duration_s": 0.0,
+    "steps": 0,
+    "tool_calls": 0,
+    "tools_breakdown": {},
+    "final_text": "",
+    "stop_reason": "unknown",
+    "tokens": {
+      "total_final_step": 0,
+      "cache_read_sum": 0,
+      "reasoning_sum": 0
+    },
+    "session_id": null
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-v6-custom-constraint-1790790617",
+  "invalid_reason": "omlx 507: memory ceiling — Modell konnte nicht geladen werden (paralleler 22-GB-Download drückte den Memory-Guard). Kein Modellergebnis, Lauf muss wiederholt werden."
+}

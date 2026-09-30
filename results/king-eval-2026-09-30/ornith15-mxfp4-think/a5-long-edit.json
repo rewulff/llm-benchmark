@@ -1,0 +1,51 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-ornith15-mxfp4-think-a5-long-edit-1790790165",
+  "timestamp": "2026-09-30T17:45:14.516110+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 146.99,
+    "steps": 7,
+    "tool_calls": 13,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 9,
+      "grep": 1,
+      "bash": 1
+    },
+    "final_text": "\n\nAll 8 bugs fixed and verified via runtime tests:\n1. `calculate_discount` — subtracts percentage now (100,20→80.0)\n2. `is_palindrome` — compares reversed string (racecar=True, hello=False)\n3. `flatte",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 23756,
+      "cache_read_sum": 129024,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c969a39ffeItvQzYtxNYwdE0"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-think-a5-long-edit-1790790165",
+  "lint_delta": {
+    "baseline": {
+      "I001": 1,
+      "PLR0124": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "after_run": {
+      "I001": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "A5 Oracle: 8 / 8 bugs fixed\nPASS: alle 8 Bugs gefixt\n",
+  "failed_checks": []
+}

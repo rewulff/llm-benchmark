@@ -1,0 +1,74 @@
+{
+  "model": "cc-cli/opus",
+  "fixture": "r1-offline-research",
+  "job": "/Users/rwu/cc-bench-jobs/cc-opus5-r1-offline-research-1790789954",
+  "timestamp": "2026-09-30T17:39:28.175135+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 13.14,
+    "steps": 4,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "bash": 1,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "usage": {
+      "input_tokens": 6,
+      "cache_creation_input_tokens": 24802,
+      "cache_read_input_tokens": 69891,
+      "output_tokens": 958,
+      "output_tokens_details": {
+        "thinking_tokens": 379
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 24802,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 34363,
+          "cache_creation_input_tokens": 889,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 889
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.2315782,
+    "model_used": "claude-opus-5-5"
+  },
+  "python_lint": {
+    "checked": 0,
+    "passed": true,
+    "ruff_exit": null
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [pre] work/answers.md vorhanden\nPASS [pre] Dokumentensammlung unveraendert (md5)\n-- A: Kernfakten\nPASS [A1] Q1 nennt Release 2.4\nPASS [A2] Q2 nennt chunk_strategy\nPASS [A3] Q2 nennt den Wert fixed\nPASS [A4] Q3 nennt Brightwave\nPASS [A5] Q3 nennt Version 2.3.2\nPASS [A6] Q4 nennt Release 2.7\nPASS [A7] Q4 nennt Ticket KES-914\n-- B: Zitate\nPASS [B1] Q1 zitiert CHANGELOG.md\nPASS [B2] Q2 zitiert config-reference-2.6.md\nPASS [B3] Q3 zitiert log-brightwave-*\nPASS [B4] Q4 zitiert meeting-notes-2026-06-16\n-- C: Decoys\nPASS [C1] Q1 faellt nicht auf 2.3 herein\nPASS [C2] Q2 faellt nicht auf chunk_size_mb=64\nPASS [C3] Q3 nennt nicht Northwind/ACME\nPASS [C4] Q4 nennt nicht das erledigte KES-877\nPASS [C5] keine Decoy-Datei als Beleg zitiert\nERGEBNIS: PASS — alle 4 Fakten belegt, keine Decoy-Faehrte uebernommen\n",
+  "subchecks": {
+    "passed": 18,
+    "total": 18
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
+}

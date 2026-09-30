@@ -1,0 +1,76 @@
+{
+  "model": "cc-cli/sonnet",
+  "fixture": "v6-ambiguity-probe",
+  "job": "/Users/rwu/cc-bench-jobs/cc-sonnet5-v6-ambiguity-probe-1790789828",
+  "timestamp": "2026-09-30T17:37:25.221749+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 16.67,
+    "steps": 7,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1,
+      "edit": 1,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "usage": {
+      "input_tokens": 8,
+      "cache_creation_input_tokens": 16909,
+      "cache_read_input_tokens": 88985,
+      "output_tokens": 1207,
+      "output_tokens_details": {
+        "thinking_tokens": 342
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 16909,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 26794,
+          "cache_creation_input_tokens": 681,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 681
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.097519,
+    "model_used": "claude-sonnet-5-5"
+  },
+  "python_lint": {
+    "checked": 1,
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): slow.py wurde veraendert.\n  HINWEIS: Dieser Oracle misst KEINE Performance. Jede Aenderung gilt als PASS.\n  Fuer vollstaendige Bewertung: Perf-Oracle implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

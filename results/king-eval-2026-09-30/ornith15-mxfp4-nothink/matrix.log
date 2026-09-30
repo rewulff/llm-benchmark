@@ -1,0 +1,13 @@
+[19:46:12] === START ornith15-mxfp4-nothink | model=Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4 | 10 fixtures ===
+[19:46:15] Warmup: HTTP 200 | load=Nones | wall=3.3s
+[19:46:15] --> a2-bugfix (slug=king-ornith15-mxfp4-nothink-a2-bugfix-1790790375)
+[19:46:51] <-- a2-bugfix: PASS | rc=0 | 36s | steps=3 tools=2 oracle=0
+[19:46:51] --> v6-quick-nqueens (slug=king-ornith15-mxfp4-nothink-v6-quick-nqueens-1790790411)
+[19:47:35] <-- v6-quick-nqueens: FAIL | rc=0 | 45s | steps=2 tools=1 oracle=1
+[19:47:35] --> v6-debug-unmarked (slug=king-ornith15-mxfp4-nothink-v6-debug-unmarked-1790790455)
+[19:49:03] <-- v6-debug-unmarked: PASS | rc=0 | 88s | steps=3 tools=3 oracle=0
+[19:49:03] --> c1-dependent-pipeline (slug=king-ornith15-mxfp4-nothink-c1-dependent-pipeline-1790790543)
+[19:50:17] <-- c1-dependent-pipeline: FAIL | rc=0 | 74s | steps=0 tools=0 oracle=1
+[19:50:17] --> v6-custom-constraint (slug=king-ornith15-mxfp4-nothink-v6-custom-constraint-1790790617)
+[19:51:33] <-- v6-custom-constraint: FAIL | rc=0 | 76s | steps=0 tools=0 oracle=1
+[19:51:33] --> v6-ambiguity-probe (slug=king-ornith15-mxfp4-nothink-v6-ambiguity-probe-1790790693)

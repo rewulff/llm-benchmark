@@ -1,0 +1,67 @@
+{
+  "model": "cc-cli/sonnet",
+  "fixture": "v6-custom-constraint",
+  "job": "/Users/rwu/cc-bench-jobs/cc-sonnet5-v6-custom-constraint-1790789818",
+  "timestamp": "2026-09-30T17:37:08.517566+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 10.39,
+    "steps": 3,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "usage": {
+      "input_tokens": 4,
+      "cache_creation_input_tokens": 15842,
+      "cache_read_input_tokens": 36326,
+      "output_tokens": 552,
+      "output_tokens_details": {
+        "thinking_tokens": 134
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 15842,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 25760,
+          "cache_creation_input_tokens": 648,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 648
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.0761612,
+    "model_used": "claude-sonnet-5-5"
+  },
+  "python_lint": {
+    "checked": 1,
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: find_sequences(4, 30, 5) count == 32\n",
+  "failed_checks": []
+}

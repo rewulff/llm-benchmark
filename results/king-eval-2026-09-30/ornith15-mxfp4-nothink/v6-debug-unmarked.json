@@ -1,0 +1,32 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "king-ornith15-mxfp4-nothink-v6-debug-unmarked-1790790455",
+  "timestamp": "2026-09-30T17:49:03.801947+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 85.73,
+    "steps": 3,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "Done. Confirmed fix at `server.py:43` — `get_top_n` now returns `sorted_items[: n]` instead of `sorted_items[: n - 1]`, so a top-N request returns N items.",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17305,
+      "cache_read_sum": 36864,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c922ad6ffeKfV1VlSohlk4ic"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-v6-debug-unmarked-1790790455"
+}

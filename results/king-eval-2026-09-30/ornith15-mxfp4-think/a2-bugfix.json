@@ -1,0 +1,41 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-ornith15-mxfp4-think-a2-bugfix-1790789151",
+  "timestamp": "2026-09-30T17:26:31.869545+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 38.1,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 1,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16010,
+      "cache_read_sum": 43008,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ca6123fffef3YYpI0KJalZVB"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-think-a2-bugfix-1790789151",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

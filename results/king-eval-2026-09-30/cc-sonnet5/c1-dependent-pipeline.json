@@ -1,0 +1,81 @@
+{
+  "model": "cc-cli/sonnet",
+  "fixture": "c1-dependent-pipeline",
+  "job": "/Users/rwu/cc-bench-jobs/cc-sonnet5-c1-dependent-pipeline-1790789804",
+  "timestamp": "2026-09-30T17:36:58.035599+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 12.98,
+    "steps": 11,
+    "tool_calls": 9,
+    "tools_breakdown": {
+      "read": 5,
+      "edit": 3,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "usage": {
+      "input_tokens": 6,
+      "cache_creation_input_tokens": 20376,
+      "cache_read_input_tokens": 66439,
+      "output_tokens": 1184,
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 20376,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 29820,
+          "cache_creation_input_tokens": 1122,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 1122
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.1066438,
+    "model_used": "claude-sonnet-5-5"
+  },
+  "python_lint": {
+    "checked": 4,
+    "passed": false,
+    "ruff_exit": 1
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "after_run": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [1/4] alle 5 Dateien in work/ vorhanden\nPASS [2/4] test_pipeline.py + sample.json unveraendert (md5)\nPASS [3/4] config_loader.py, pipeline.py, report.py kompilieren\nPASS [4/4] test_pipeline.py exit=0 (alle 3 Stufen)\nERGEBNIS: PASS — Bug-Kette vollstaendig aufgeloest\n",
+  "subchecks": {
+    "passed": 4,
+    "total": 4
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}
