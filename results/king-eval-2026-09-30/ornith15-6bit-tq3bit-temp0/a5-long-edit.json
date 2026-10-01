@@ -42,5 +42,8 @@
       "PIE810": 1
     },
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 1,
+  "oracle_output": "A5 Oracle: 7 / 8 bugs fixed\nFAIL: nur 7 von 8 gefixt\n  FAIL: Bug 8 — fibonacci (gibt n*n statt Fibonacci-Zahl)\n",
+  "failed_checks": []
 }

@@ -36,5 +36,8 @@
     "new_violations": {
       "RUF007": 1
     }
-  }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: find_sequences(4, 30, 5) count == 32\n",
+  "failed_checks": []
 }

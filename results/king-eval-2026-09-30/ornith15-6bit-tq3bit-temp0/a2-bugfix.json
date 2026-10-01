@@ -33,5 +33,8 @@
     "baseline": {},
     "after_run": {},
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
 }

@@ -40,5 +40,14 @@
       "BLE001": 1
     },
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [1/4] alle 5 Dateien in work/ vorhanden\nPASS [2/4] test_pipeline.py + sample.json unveraendert (md5)\nPASS [3/4] config_loader.py, pipeline.py, report.py kompilieren\nPASS [4/4] test_pipeline.py exit=0 (alle 3 Stufen)\nERGEBNIS: PASS — Bug-Kette vollstaendig aufgeloest\n",
+  "subchecks": {
+    "passed": 4,
+    "total": 4
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
 }

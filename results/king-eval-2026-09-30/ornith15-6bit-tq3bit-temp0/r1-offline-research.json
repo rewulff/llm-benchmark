@@ -33,5 +33,19 @@
     "baseline": {},
     "after_run": {},
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 1,
+  "oracle_output": "PASS [pre] work/answers.md vorhanden\nPASS [pre] Dokumentensammlung unveraendert (md5)\n-- A: Kernfakten\nPASS [A1] Q1 nennt Release 2.4\nPASS [A2] Q2 nennt chunk_strategy\nPASS [A3] Q2 nennt den Wert fixed\nFAIL [A4] Q3 nennt Brightwave  (Zeile: Answer: ACME Industrieservice, running agent 2.6.0)\nFAIL [A5] Q3 nennt Version 2.3.2  (Zeile: Answer: ACME Industrieservice, running agent 2.6.0)\nPASS [A6] Q4 nennt Release 2.7\nPASS [A7] Q4 nennt Ticket KES-914\n-- B: Zitate\nPASS [B1] Q1 zitiert CHANGELOG.md\nPASS [B2] Q2 zitiert config-reference-2.6.md\nFAIL [B3] Q3 zitiert log-brightwave-*  (Zeile: Sources: meeting-notes-2026-06-16.md, log-acme-2026-06-11.txt)\nPASS [B4] Q4 zitiert meeting-notes-2026-06-16\n-- C: Decoys\nPASS [C1] Q1 faellt nicht auf 2.3 herein\nPASS [C2] Q2 faellt nicht auf chunk_size_mb=64\nFAIL [C3] Q3 nennt nicht Northwind/ACME  (Zeile: Answer: ACME Industrieservice, running agent 2.6.0)\nPASS [C4] Q4 nennt nicht das erledigte KES-877\nPASS [C5] keine Decoy-Datei als Beleg zitiert\nERGEBNIS: FAIL\n",
+  "subchecks": {
+    "passed": 14,
+    "total": 18
+  },
+  "quality_score": 0.778,
+  "verdict_v2": "PARTIAL",
+  "failed_checks": [
+    "FAIL [A4] Q3 nennt Brightwave  (Zeile: Answer: ACME Industrieservice, running agent 2.6.0)",
+    "FAIL [A5] Q3 nennt Version 2.3.2  (Zeile: Answer: ACME Industrieservice, running agent 2.6.0)",
+    "FAIL [B3] Q3 zitiert log-brightwave-*  (Zeile: Sources: meeting-notes-2026-06-16.md, log-acme-2026-06-11.txt)",
+    "FAIL [C3] Q3 nennt nicht Northwind/ACME  (Zeile: Answer: ACME Industrieservice, running agent 2.6.0)"
+  ]
 }

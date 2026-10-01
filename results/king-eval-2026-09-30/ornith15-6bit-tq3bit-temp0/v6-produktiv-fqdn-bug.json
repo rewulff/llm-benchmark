@@ -45,5 +45,14 @@
       "PLW1510": 1,
       "PIE810": 1
     }
-  }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "  PASS 1: py_compile OK\n  PASS 2: Kein Hardcoded-Fallback 10.0.167.253\n  PASS 3: git remote get-url Aufruf vorhanden\n  PASS 4: Token-Injection-Pattern (formin:TOKEN@host)\n  PASS 5: FORGEJO_INTERNAL_HOST als Option vorhanden\n  PASS 6: ruff F-Rules OK\n  PASS 7: Keine grossen Kommentar-Bloecke (kein Pseudo-Code-Rumbrueten)\n\nv6-produktiv-fqdn-bug: 7 / 7 checks\n",
+  "subchecks": {
+    "passed": 7,
+    "total": 7
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
 }

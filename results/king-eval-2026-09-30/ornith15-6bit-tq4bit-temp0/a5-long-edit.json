@@ -42,5 +42,8 @@
       "PIE810": 1
     },
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "A5 Oracle: 8 / 8 bugs fixed\nPASS: alle 8 Bugs gefixt\n",
+  "failed_checks": []
 }

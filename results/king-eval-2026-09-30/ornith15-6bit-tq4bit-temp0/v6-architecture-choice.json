@@ -31,5 +31,14 @@
     "baseline": {},
     "after_run": {},
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): design.md existiert mit       99 Zeilen und adressiert alle 5 Constraints.\n  HINWEIS: Inhaltliche Qualitaet (Konsistenz, Tiefe, ASCII-Diagramm) wurde NICHT geprueft.\n  Fuer vollstaendige Bewertung: LLM-as-judge implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
 }

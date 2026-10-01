@@ -31,5 +31,8 @@
     "baseline": {},
     "after_run": {},
     "new_violations": {}
-  }
+  },
+  "oracle_rerun_exit": 1,
+  "oracle_output": "FAIL: work/queens.py nicht erstellt\n",
+  "failed_checks": []
 }
