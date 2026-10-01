@@ -350,7 +350,7 @@ seit 19:00 persistent zweites `model_dir`.
 - ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll
 - Solstice/ThinkingCap-Fixtures mit adaptivem MTP (≤ 8) statt fest d3 — Code-Beleg für die
   Tiefenwahl; ThinkingCap-Gegenprobe adaptiv
-- Knecht-Entscheid (rwu, 01.10. 21:35): nothink/temp 0 + MTP adaptiv ≤ 4 + 32k/128k als Profil `knecht-nothink`, Fallback `knecht-think` (`…:think`) — umgesetzt in omlx/lib/local-llm/opencode
+- Knecht-Entscheid (rwu, 01.10. 21:35): nothink/temp 0 + MTP adaptiv ≤ 4 + 32k/128k als Profil `knecht-nothink`, Fallback `knecht-think` (`…:think`) — umgesetzt in omlx/lib/local-llm/opencode. Mitschnitt 22:55: opencode sendet die ID `…oQ4e-mtp:think` unverändert (`max_tokens 32000`, `stream true`) — Profilweg über opencode belegt
 - Suite: Steady-State-Modus ohne Cache-Reset zwischen Fixtures (Erst-Prefill dominiert sonst 50–80 % der Zeit, dense 4× stärker)
 - ThinkingCap Effort low: Vollmatrix (10) und n ≥ 3 auf a5, bevor „a5 gelöst" gilt
 - Denkbremse: erledigt — `<think>` bleibt leer (Rohmessung); Variante ist nothink/0,6. Falls dosiertes Thinking gewünscht: omlx `thinking_budget` testen (einziger Hebel)
