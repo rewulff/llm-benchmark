@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 # Startet Ornith-1.5 als GGUF mit nativem MTP-Head und llama.cpp-WebUI.
+#
+# NUR ZUM TESTEN, NUR AUF ZURUF (rwu 01.10.2026). Hauptinferenzserver ist omlx :1235,
+# dessen WebUI reicht fuer Modellwechsel und Betrieb. Dieser Server haelt sein Modell in
+# Metal-Buffern (unsichtbar im RSS) und drueckt das omlx-Memory-Ceiling von ~26 auf 5,5 GiB —
+# der omlx-Knecht (20 GiB) laedt dann nicht mehr. Nach dem Test wieder beenden:
+#   pkill -f llama-server
 # WebUI danach: http://127.0.0.1:1236 — die brew-Bottle liefert KEINE WebUI-Assets mit
 # (404 auf /), daher wird der separat gebaute Build per --path serviert.
 # Build erneuern: scratchpad/build-llama-webui.sh (Quelle: llama.cpp tools/ui, Commit 7fe450e)
