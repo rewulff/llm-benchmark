@@ -190,9 +190,12 @@ nicht entscheiden.**
 
 ## 7. Offen
 
-- [ ] Ornith **think mit Denkbremse** — nicht messbar: `reasoning_tokens: 0`, kein
-      `reasoning_content`, obwohl `enable_thinking: true` und Template gepatcht. Ein
-      Prüfstein vor dem Batch verhinderte eine Stunde Blindmessung. Ursache ungeklärt.
+- [x] Ornith **think mit Denkbremse** — geklärt 01.10. 19:30: `reasoning_content` war leer,
+      weil das Modell auf den Template-Prefix („Reasoning effort is low …") als **erstes
+      Token `</think>`** antwortet (Rohmessung `/v1/completions`, 6bit wie oQ4e). Die
+      „lowthink"-Ordner sind nothink unter irreführendem Namen (Symlinks auf unveränderte
+      Gewichte, kein Finetune). Ornith hat keinen Denk-Dosierer; `reasoning_tokens: 0` aus
+      opencode ist zudem grundsätzlich blind (zählt omlx' reasoning_content nicht).
 - [ ] **Java-/TypeScript-Fixtures** — die Suite misst nur Python
 - [ ] **Jev/Laya** als typed-decision-Schicht für Klassifikation (Laya: Apache-2.0,
       ~700 MB, lokal; Drittmessung 57 % gegen Jev-API 78 %, aber 7,6 ms gegen 588 ms;
