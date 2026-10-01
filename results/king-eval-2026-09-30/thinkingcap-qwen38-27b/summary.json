@@ -1,0 +1,17 @@
+{
+  "label": "thinkingcap-qwen38-27b",
+  "model": "ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "finished_utc": "2026-09-30T20:05:03.996443+00:00",
+  "runs": [
+    {
+      "fixture": "v6-ambiguity-probe",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 187.7,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    }
+  ]
+}

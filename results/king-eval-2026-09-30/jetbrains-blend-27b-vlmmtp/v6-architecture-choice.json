@@ -1,0 +1,44 @@
+{
+  "model": "omlx/JetBrains--Qwen3.8-3.6-27B-blend-MLX-4bit",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "king-jetbrains-blend-27b-vlmmtp-v6-architecture-choice-1790814782",
+  "timestamp": "2026-10-01T00:39:03.049931+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 359.34,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19827,
+      "cache_read_sum": 22528,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b1efaadffeklOMDXABJ0B2Vy"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-jetbrains-blend-27b-vlmmtp-v6-architecture-choice-1790814782",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): design.md existiert mit      154 Zeilen und adressiert alle 5 Constraints.\n  HINWEIS: Inhaltliche Qualitaet (Konsistenz, Tiefe, ASCII-Diagramm) wurde NICHT geprueft.\n  Fuer vollstaendige Bewertung: LLM-as-judge implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

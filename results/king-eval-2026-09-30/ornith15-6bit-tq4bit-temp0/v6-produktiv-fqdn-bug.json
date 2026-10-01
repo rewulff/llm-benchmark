@@ -1,0 +1,47 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-produktiv-fqdn-bug",
+  "job_slug": "king-ornith15-6bit-tq4bit-temp0-v6-produktiv-fqdn-bug-1790839403",
+  "timestamp": "2026-10-01T07:24:41.501837+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 76.84,
+    "steps": 6,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 2,
+      "bash": 1,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 23404,
+      "cache_read_sum": 113653,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f09a74b95ffeUzbpOITEWV6H2H"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-tq4bit-temp0-v6-produktiv-fqdn-bug-1790839403",
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "PLW1510": 6
+    },
+    "after_run": {
+      "EXE001": 1,
+      "PLW1510": 7
+    },
+    "new_violations": {
+      "PLW1510": 1
+    }
+  }
+}

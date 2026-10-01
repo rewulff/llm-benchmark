@@ -1,0 +1,44 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "king-ornith15-nothink-specprefill03-v6-debug-unmarked-1790802971",
+  "timestamp": "2026-09-30T21:16:40.673794+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 27.76,
+    "steps": 4,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 2
+    },
+    "final_text": "I verified the fix against the log: `get_top_n` was slicing `[: n - 1]`, returning 9 items for a top-10 request. The edit changes it to `[: n]`.\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17491,
+      "cache_read_sum": 55903,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0bd332e9ffeU7M2CzK30owXs7"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-nothink-specprefill03-v6-debug-unmarked-1790802971",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: off-by-one in get_top_n gefixt (sorted_items[:n])\n",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {
+      "DTZ003": 1
+    },
+    "after_run": {
+      "DTZ003": 1
+    },
+    "new_violations": {}
+  }
+}

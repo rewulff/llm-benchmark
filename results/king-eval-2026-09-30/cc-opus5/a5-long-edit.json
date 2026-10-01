@@ -1,0 +1,78 @@
+{
+  "model": "cc-cli/opus",
+  "fixture": "a5-long-edit",
+  "job": "/Users/rwu/cc-bench-jobs/cc-opus5-a5-long-edit-1790790220",
+  "timestamp": "2026-09-30T17:44:08.860414+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 28.7,
+    "steps": 13,
+    "tool_calls": 10,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "ings erfolgreich durchlaufen. Zusätzlich hat es geprüft, dass bei `merge_dicts` der Wert aus `b` gewinnt, und die Fibonacci-Zahlen für n = 0 bis 6. Eine eigene Testdatei habe ich nicht angelegt.\n\nDONE",
+    "usage": {
+      "input_tokens": 8,
+      "cache_creation_input_tokens": 25091,
+      "cache_read_input_tokens": 104534,
+      "output_tokens": 2721,
+      "output_tokens_details": {
+        "thinking_tokens": 47
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 25091,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 573,
+          "cache_read_input_tokens": 35031,
+          "cache_creation_input_tokens": 510,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 510
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.2760868,
+    "model_used": "claude-opus-5-5"
+  },
+  "python_lint": {
+    "checked": 1,
+    "passed": false,
+    "ruff_exit": 1
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "lint_delta": {
+    "baseline": {
+      "I001": 1,
+      "PLR0124": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "after_run": {
+      "I001": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "A5 Oracle: 8 / 8 bugs fixed\nPASS: alle 8 Bugs gefixt\n",
+  "failed_checks": []
+}

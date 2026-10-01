@@ -1,0 +1,108 @@
+{
+  "label": "cc-opus5",
+  "model": "cc-cli/opus",
+  "harness": "claude-code-cli (nicht opencode \u2014 Vergleichseinschr\u00e4nkung)",
+  "finished_utc": "2026-09-30T17:44:08.861697+00:00",
+  "runs": [
+    {
+      "fixture": "a2-bugfix",
+      "status": "PASS",
+      "duration_s": 17.0,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.1640524,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "v6-quick-nqueens",
+      "status": "PASS",
+      "duration_s": 10.3,
+      "steps": 2,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.1569044,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "v6-debug-unmarked",
+      "status": "FAIL",
+      "duration_s": 10.3,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.1687622,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "c1-dependent-pipeline",
+      "status": "FAIL",
+      "duration_s": 14.6,
+      "steps": 7,
+      "tool_calls": 5,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.20866460000000003,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "v6-custom-constraint",
+      "status": "PASS",
+      "duration_s": 19.0,
+      "steps": 5,
+      "tool_calls": 2,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.1845732,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "v6-ambiguity-probe",
+      "status": "PASS",
+      "duration_s": 29.3,
+      "steps": 7,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.2220256,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "v6-produktiv-fqdn-bug",
+      "status": "FAIL",
+      "duration_s": 71.6,
+      "steps": 16,
+      "tool_calls": 8,
+      "oracle_exit": 1,
+      "total_cost_usd": 0.43661439999999996,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "r1-offline-research",
+      "status": "PASS",
+      "duration_s": 13.1,
+      "steps": 4,
+      "tool_calls": 2,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.2315782,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "v6-architecture-choice",
+      "status": "PASS",
+      "duration_s": 251.8,
+      "steps": 7,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.8532972,
+      "model_used": "claude-opus-5-5"
+    },
+    {
+      "fixture": "a5-long-edit",
+      "status": "FAIL",
+      "duration_s": 28.7,
+      "steps": 13,
+      "tool_calls": 10,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.2760868,
+      "model_used": "claude-opus-5-5"
+    }
+  ]
+}

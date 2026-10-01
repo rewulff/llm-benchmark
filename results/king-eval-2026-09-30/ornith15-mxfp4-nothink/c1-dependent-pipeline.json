@@ -1,0 +1,53 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "king-ornith15-mxfp4-nothink-c1-dependent-pipeline-1790793353",
+  "timestamp": "2026-09-30T18:36:46.066842+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 51.08,
+    "steps": 9,
+    "tool_calls": 12,
+    "tools_breakdown": {
+      "read": 5,
+      "bash": 4,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 20132,
+      "cache_read_sum": 152830,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c65f548ffeYMRxZdlGRIOeIA"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-c1-dependent-pipeline-1790793353",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [1/4] alle 5 Dateien in work/ vorhanden\nPASS [2/4] test_pipeline.py + sample.json unveraendert (md5)\nPASS [3/4] config_loader.py, pipeline.py, report.py kompilieren\nPASS [4/4] test_pipeline.py exit=0 (alle 3 Stufen)\nERGEBNIS: PASS — Bug-Kette vollstaendig aufgeloest\n",
+  "subchecks": {
+    "passed": 4,
+    "total": 4
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "after_run": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "new_violations": {}
+  }
+}

@@ -1,0 +1,24 @@
+[23:15:08] === START ornith15-nothink-specprefill03 | model=Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4 | 10 fixtures ===
+[23:15:20] Warmup: HTTP 200 | load=11.29s | wall=12.2s
+[23:15:20] --> a2-bugfix (slug=king-ornith15-nothink-specprefill03-a2-bugfix-1790802920, Versuch 1)
+[23:15:47] <-- a2-bugfix: PASS | rc=0 | 27s | steps=3 tools=2 oracle=0
+[23:15:47] --> v6-quick-nqueens (slug=king-ornith15-nothink-specprefill03-v6-quick-nqueens-1790802947, Versuch 1)
+[23:16:11] <-- v6-quick-nqueens: PASS | rc=0 | 24s | steps=2 tools=1 oracle=0
+[23:16:11] --> v6-debug-unmarked (slug=king-ornith15-nothink-specprefill03-v6-debug-unmarked-1790802971, Versuch 1)
+[23:16:40] <-- v6-debug-unmarked: PASS | rc=0 | 29s | steps=4 tools=4 oracle=0
+[23:16:40] --> c1-dependent-pipeline (slug=king-ornith15-nothink-specprefill03-c1-dependent-pipeline-1790803000, Versuch 1)
+[23:17:27] <-- c1-dependent-pipeline: PASS | rc=0 | 47s | steps=5 tools=12 oracle=0
+[23:17:27] --> v6-custom-constraint (slug=king-ornith15-nothink-specprefill03-v6-custom-constraint-1790803047, Versuch 1)
+[23:17:47] <-- v6-custom-constraint: FAIL | rc=0 | 20s | steps=2 tools=1 oracle=1
+[23:17:47] --> v6-ambiguity-probe (slug=king-ornith15-nothink-specprefill03-v6-ambiguity-probe-1790803067, Versuch 1)
+[23:18:13] <-- v6-ambiguity-probe: PASS | rc=0 | 26s | steps=4 tools=3 oracle=0
+[23:18:13] --> v6-produktiv-fqdn-bug (slug=king-ornith15-nothink-specprefill03-v6-produktiv-fqdn-bug-1790803093, Versuch 1)
+[23:19:06] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 53s | steps=5 tools=4 oracle=0
+[23:19:06] --> r1-offline-research (slug=king-ornith15-nothink-specprefill03-r1-offline-research-1790803146, Versuch 1)
+[23:22:25] <-- r1-offline-research: FAIL | rc=0 | 199s | steps=10 tools=41 oracle=1
+[23:22:25] --> v6-architecture-choice (slug=king-ornith15-nothink-specprefill03-v6-architecture-choice-1790803345, Versuch 1)
+[23:23:07] <-- v6-architecture-choice: FAIL | rc=0 | 42s | steps=3 tools=2 oracle=1
+[23:23:07] --> a5-long-edit (slug=king-ornith15-nothink-specprefill03-a5-long-edit-1790803387, Versuch 1)
+[23:24:01] <-- a5-long-edit: PASS | rc=0 | 54s | steps=5 tools=4 oracle=0
+[23:24:01] === ENDE ornith15-nothink-specprefill03: 7/10 PASS ===
+[23:24:02] Unload: HTTP 200

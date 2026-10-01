@@ -1,0 +1,39 @@
+{
+  "model": "omlx/JetBrains--Qwen3.8-3.6-27B-blend-MLX-4bit",
+  "fixture": "v6-quick-nqueens",
+  "job_slug": "king-jetbrains-blend-27b-vlmmtp-v6-quick-nqueens-1790813115",
+  "timestamp": "2026-10-01T00:08:17.382535+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 180.74,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17127,
+      "cache_read_sum": 21743,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b386ac1ffeYil87aKYrW9kRu"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-jetbrains-blend-27b-vlmmtp-v6-quick-nqueens-1790813115",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: count_restricted(8, 3) == 18\n",
+  "failed_checks": []
+}

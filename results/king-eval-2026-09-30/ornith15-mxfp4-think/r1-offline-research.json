@@ -1,0 +1,52 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "r1-offline-research",
+  "job_slug": "king-ornith15-mxfp4-think-r1-offline-research-1790789762",
+  "timestamp": "2026-09-30T17:39:07.216010+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 180.64,
+    "steps": 7,
+    "tool_calls": 18,
+    "tools_breakdown": {
+      "bash": 1,
+      "read": 15,
+      "write": 1,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE\n\nAnswers written to `answers.md`:\n- **Q1:** defect introduced in 2.4.0 (the multipart scheduler rewrite — CHANGELOG + known-issues tie KES-914 to that rewrite; meeting notes confirm via build b",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 25715,
+      "cache_read_sum": 118784,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c9cb93effeP4D7RJoujHdpxX"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-think-r1-offline-research-1790789762",
+  "oracle_rerun_exit": 1,
+  "oracle_output": "PASS [pre] work/answers.md vorhanden\nPASS [pre] Dokumentensammlung unveraendert (md5)\n-- A: Kernfakten\nPASS [A1] Q1 nennt Release 2.4\nPASS [A2] Q2 nennt chunk_strategy\nPASS [A3] Q2 nennt den Wert fixed\nFAIL [A4] Q3 nennt Brightwave  (Zeile: Answer: ACME Industries, running agent version 2.6.0.)\nFAIL [A5] Q3 nennt Version 2.3.2  (Zeile: Answer: ACME Industries, running agent version 2.6.0.)\nPASS [A6] Q4 nennt Release 2.7\nPASS [A7] Q4 nennt Ticket KES-914\n-- B: Zitate\nPASS [B1] Q1 zitiert CHANGELOG.md\nPASS [B2] Q2 zitiert config-reference-2.6.md\nFAIL [B3] Q3 zitiert log-brightwave-*  (Zeile: Sources: log-acme-2026-06-11.txt, meeting-notes-2026-06-16.md)\nPASS [B4] Q4 zitiert meeting-notes-2026-06-16\n-- C: Decoys\nPASS [C1] Q1 faellt nicht auf 2.3 herein\nPASS [C2] Q2 faellt nicht auf chunk_size_mb=64\nFAIL [C3] Q3 nennt nicht Northwind/ACME  (Zeile: Answer: ACME Industries, running agent version 2.6.0.)\nPASS [C4] Q4 nennt nicht das erledigte KES-877\nPASS [C5] keine Decoy-Datei als Beleg zitiert\nERGEBNIS: FAIL\n",
+  "subchecks": {
+    "passed": 14,
+    "total": 18
+  },
+  "quality_score": 0.778,
+  "verdict_v2": "PARTIAL",
+  "failed_checks": [
+    "FAIL [A4] Q3 nennt Brightwave  (Zeile: Answer: ACME Industries, running agent version 2.6.0.)",
+    "FAIL [A5] Q3 nennt Version 2.3.2  (Zeile: Answer: ACME Industries, running agent version 2.6.0.)",
+    "FAIL [B3] Q3 zitiert log-brightwave-*  (Zeile: Sources: log-acme-2026-06-11.txt, meeting-notes-2026-06-16.md)",
+    "FAIL [C3] Q3 nennt nicht Northwind/ACME  (Zeile: Answer: ACME Industries, running agent version 2.6.0.)"
+  ],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
+}

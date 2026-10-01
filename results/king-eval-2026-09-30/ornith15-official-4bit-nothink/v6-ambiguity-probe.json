@@ -1,0 +1,51 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-4bit",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-ornith15-official-4bit-nothink-v6-ambiguity-probe-1790805168",
+  "timestamp": "2026-09-30T21:53:10.830956+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 20.59,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16289,
+      "cache_read_sum": 53475,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0bb1aba9ffeaw79Q8mgvzzRhN"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-official-4bit-nothink-v6-ambiguity-probe-1790805168",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {
+      "UP033": 1
+    },
+    "new_violations": {
+      "UP033": 1
+    }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): slow.py wurde veraendert.\n  HINWEIS: Dieser Oracle misst KEINE Performance. Jede Aenderung gilt als PASS.\n  Fuer vollstaendige Bewertung: Perf-Oracle implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

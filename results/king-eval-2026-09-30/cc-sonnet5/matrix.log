@@ -1,0 +1,22 @@
+[19:36:20] === START cc-sonnet5 | cc-model=sonnet | 10 fixtures ===
+[19:36:20] --> a2-bugfix (job=cc-sonnet5-a2-bugfix-1790789780)
+[19:36:28] <-- a2-bugfix: PASS | rc=0 | 9s | steps=3 tools=2 oracle=0 lint=0 cost=0.0787792 in=6 cache_r=61936 out=386
+[19:36:28] --> v6-quick-nqueens (job=cc-sonnet5-v6-quick-nqueens-1790789788)
+[19:36:37] <-- v6-quick-nqueens: PASS | rc=0 | 9s | steps=2 tools=1 oracle=0 lint=0 cost=0.07798419999999999 in=4 cache_r=36411 out=671
+[19:36:37] --> v6-debug-unmarked (job=cc-sonnet5-v6-debug-unmarked-1790789797)
+[19:36:44] <-- v6-debug-unmarked: FAIL | rc=0 | 7s | steps=4 tools=3 oracle=0 lint=1 cost=0.0850206 in=6 cache_r=63633 out=355
+[19:36:44] --> c1-dependent-pipeline (job=cc-sonnet5-c1-dependent-pipeline-1790789804)
+[19:36:58] <-- c1-dependent-pipeline: FAIL | rc=0 | 13s | steps=11 tools=9 oracle=0 lint=1 cost=0.1066438 in=6 cache_r=66439 out=1184
+[19:36:58] --> v6-custom-constraint (job=cc-sonnet5-v6-custom-constraint-1790789818)
+[19:37:08] <-- v6-custom-constraint: PASS | rc=0 | 10s | steps=3 tools=1 oracle=0 lint=0 cost=0.0761612 in=4 cache_r=36326 out=552
+[19:37:08] --> v6-ambiguity-probe (job=cc-sonnet5-v6-ambiguity-probe-1790789828)
+[19:37:25] <-- v6-ambiguity-probe: PASS | rc=0 | 17s | steps=7 tools=4 oracle=0 lint=0 cost=0.097519 in=8 cache_r=88985 out=1207
+[19:37:25] --> v6-produktiv-fqdn-bug (job=cc-sonnet5-v6-produktiv-fqdn-bug-1790789845)
+[19:37:52] <-- v6-produktiv-fqdn-bug: FAIL | rc=0 | 28s | steps=4 tools=2 oracle=1 lint=1 cost=0.1264508 in=6 cache_r=66364 out=2829
+[19:37:52] --> r1-offline-research (job=cc-sonnet5-r1-offline-research-1790789872)
+[19:38:01] <-- r1-offline-research: PASS | rc=0 | 9s | steps=4 tools=3 oracle=0 lint=None cost=0.11992840000000002 in=8 cache_r=97532 out=607
+[19:38:01] --> v6-architecture-choice (job=cc-sonnet5-v6-architecture-choice-1790789881)
+[19:39:04] <-- v6-architecture-choice: PASS | rc=0 | 62s | steps=3 tools=1 oracle=0 lint=None cost=0.1692964 in=4 cache_r=36392 out=7185
+[19:39:04] --> a5-long-edit (job=cc-sonnet5-a5-long-edit-1790789944)
+[19:39:24] <-- a5-long-edit: FAIL | rc=0 | 20s | steps=13 tools=10 oracle=0 lint=1 cost=0.14092439999999998 in=8 cache_r=102192 out=2425
+[19:39:24] === ENDE cc-sonnet5: 6/10 PASS | Kosten-Summe 1.0787 USD ===

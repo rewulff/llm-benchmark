@@ -1,0 +1,26 @@
+[04:06:49] === START ornith15-6bit-lowthink-tq3 | model=ornith15-6bit-lowthink | 10 fixtures ===
+[04:06:49] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[04:06:49] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":208,"distributed_ranks":0}
+[04:07:02] Warmup: HTTP 200 | load=12.19s | wall=12.6s
+[04:07:02] --> a2-bugfix (slug=king-ornith15-6bit-lowthink-tq3-a2-bugfix-1790820422, Versuch 1)
+[04:07:45] <-- a2-bugfix: PASS | rc=0 | 43s | steps=3 tools=2 oracle=0
+[04:07:45] --> v6-quick-nqueens (slug=king-ornith15-6bit-lowthink-tq3-v6-quick-nqueens-1790820465, Versuch 1)
+[04:08:58] <-- v6-quick-nqueens: FAIL | rc=0 | 73s | steps=4 tools=3 oracle=1
+[04:08:58] --> v6-debug-unmarked (slug=king-ornith15-6bit-lowthink-tq3-v6-debug-unmarked-1790820538, Versuch 1)
+[04:09:32] <-- v6-debug-unmarked: PASS | rc=0 | 34s | steps=3 tools=3 oracle=0
+[04:09:32] --> c1-dependent-pipeline (slug=king-ornith15-6bit-lowthink-tq3-c1-dependent-pipeline-1790820572, Versuch 1)
+[04:10:27] <-- c1-dependent-pipeline: PASS | rc=0 | 54s | steps=4 tools=9 oracle=0
+[04:10:27] --> v6-custom-constraint (slug=king-ornith15-6bit-lowthink-tq3-v6-custom-constraint-1790820627, Versuch 1)
+[04:10:55] <-- v6-custom-constraint: PASS | rc=0 | 29s | steps=2 tools=1 oracle=0
+[04:10:55] --> v6-ambiguity-probe (slug=king-ornith15-6bit-lowthink-tq3-v6-ambiguity-probe-1790820655, Versuch 1)
+[04:11:47] <-- v6-ambiguity-probe: PASS | rc=0 | 52s | steps=3 tools=2 oracle=0
+[04:11:47] --> v6-produktiv-fqdn-bug (slug=king-ornith15-6bit-lowthink-tq3-v6-produktiv-fqdn-bug-1790820707, Versuch 1)
+[04:14:00] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 132s | steps=4 tools=3 oracle=0
+[04:14:00] --> r1-offline-research (slug=king-ornith15-6bit-lowthink-tq3-r1-offline-research-1790820840, Versuch 1)
+[04:16:29] <-- r1-offline-research: PASS | rc=0 | 150s | steps=5 tools=15 oracle=0
+[04:16:29] --> v6-architecture-choice (slug=king-ornith15-6bit-lowthink-tq3-v6-architecture-choice-1790820989, Versuch 1)
+[08:38:37] <-- v6-architecture-choice: PASS | rc=0 | 15728s | steps=6 tools=5 oracle=0
+[08:38:37] --> a5-long-edit (slug=king-ornith15-6bit-lowthink-tq3-a5-long-edit-1790836717, Versuch 1)
+[08:39:16] <-- a5-long-edit: FAIL | rc=0 | 39s | steps=2 tools=1 oracle=1
+[08:39:16] === ENDE ornith15-6bit-lowthink-tq3: 8/10 PASS ===
+[08:39:19] Unload: HTTP 200

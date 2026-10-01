@@ -1,0 +1,107 @@
+{
+  "label": "thinkingcap-qwen38-mtp-d3",
+  "model": "ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "finished_utc": "2026-09-30T21:14:33.275465+00:00",
+  "runs": [
+    {
+      "fixture": "a2-bugfix",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 147.3,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-quick-nqueens",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 230.0,
+      "steps": 2,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-debug-unmarked",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 174.7,
+      "steps": 5,
+      "tool_calls": 5,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "c1-dependent-pipeline",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 273.7,
+      "steps": 8,
+      "tool_calls": 11,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-custom-constraint",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 146.9,
+      "steps": 2,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-ambiguity-probe",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 161.5,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-produktiv-fqdn-bug",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 1160.3,
+      "steps": 11,
+      "tool_calls": 10,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "r1-offline-research",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 550.5,
+      "steps": 6,
+      "tool_calls": 15,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-architecture-choice",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 759.4,
+      "steps": 2,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "a5-long-edit",
+      "status": "FAIL",
+      "rc": 0,
+      "duration_s": 285.3,
+      "steps": 4,
+      "tool_calls": 10,
+      "oracle_exit": 1,
+      "reasoning_tokens": 0
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[01:10:34] === START thinkingcap-mtp-budget2048 | model=ThinkingCap-Qwen3.8-27B-mlx-nvfp4 | 10 fixtures ===
+[01:10:34] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[01:10:34] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":250,"distributed_ranks":0}
+[01:10:46] Warmup: HTTP 200 | load=8.49s | wall=12.2s
+[01:10:46] --> a2-bugfix (slug=king-thinkingcap-mtp-budget2048-a2-bugfix-1790809846, Versuch 1)
+[01:13:51] <-- a2-bugfix: PASS | rc=0 | 185s | steps=5 tools=4 oracle=0
+[01:13:51] --> v6-quick-nqueens (slug=king-thinkingcap-mtp-budget2048-v6-quick-nqueens-1790810031, Versuch 1)
+[01:18:23] <-- v6-quick-nqueens: PASS | rc=0 | 272s | steps=2 tools=1 oracle=0
+[01:18:23] --> v6-debug-unmarked (slug=king-thinkingcap-mtp-budget2048-v6-debug-unmarked-1790810303, Versuch 1)
+[01:20:43] <-- v6-debug-unmarked: PASS | rc=0 | 140s | steps=3 tools=3 oracle=0
+[01:20:43] --> c1-dependent-pipeline (slug=king-thinkingcap-mtp-budget2048-c1-dependent-pipeline-1790810443, Versuch 1)
+[01:24:21] <-- c1-dependent-pipeline: PASS | rc=0 | 218s | steps=4 tools=9 oracle=0
+[01:24:21] --> v6-custom-constraint (slug=king-thinkingcap-mtp-budget2048-v6-custom-constraint-1790810661, Versuch 1)
+[01:26:34] <-- v6-custom-constraint: PASS | rc=0 | 134s | steps=2 tools=1 oracle=0
+[01:26:34] --> v6-ambiguity-probe (slug=king-thinkingcap-mtp-budget2048-v6-ambiguity-probe-1790810794, Versuch 1)
+[01:28:58] <-- v6-ambiguity-probe: PASS | rc=0 | 143s | steps=4 tools=3 oracle=0
+[01:28:58] --> v6-produktiv-fqdn-bug (slug=king-thinkingcap-mtp-budget2048-v6-produktiv-fqdn-bug-1790810938, Versuch 1)
+[01:40:40] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 702s | steps=9 tools=10 oracle=0
+[01:40:40] --> r1-offline-research (slug=king-thinkingcap-mtp-budget2048-r1-offline-research-1790811640, Versuch 1)
+[01:47:07] <-- r1-offline-research: PASS | rc=0 | 387s | steps=5 tools=15 oracle=0
+[01:47:07] --> v6-architecture-choice (slug=king-thinkingcap-mtp-budget2048-v6-architecture-choice-1790812027, Versuch 1)
+[01:56:44] <-- v6-architecture-choice: PASS | rc=0 | 577s | steps=2 tools=1 oracle=0
+[01:56:44] --> a5-long-edit (slug=king-thinkingcap-mtp-budget2048-a5-long-edit-1790812604, Versuch 1)
+[02:01:19] <-- a5-long-edit: FAIL | rc=0 | 275s | steps=4 tools=10 oracle=1
+[02:01:19] === ENDE thinkingcap-mtp-budget2048: 9/10 PASS ===
+[02:01:21] Unload: HTTP 200

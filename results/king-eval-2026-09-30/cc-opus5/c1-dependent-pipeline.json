@@ -1,0 +1,80 @@
+{
+  "model": "cc-cli/opus",
+  "fixture": "c1-dependent-pipeline",
+  "job": "/Users/rwu/cc-bench-jobs/cc-opus5-c1-dependent-pipeline-1790789819",
+  "timestamp": "2026-09-30T17:37:14.688341+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 14.63,
+    "steps": 7,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "bash": 2,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "usage": {
+      "input_tokens": 8,
+      "cache_creation_input_tokens": 21256,
+      "cache_read_input_tokens": 99323,
+      "output_tokens": 936,
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 21256,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 31438,
+          "cache_creation_input_tokens": 268,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 268
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.20866460000000003,
+    "model_used": "claude-opus-5-5"
+  },
+  "python_lint": {
+    "checked": 4,
+    "passed": false,
+    "ruff_exit": 1
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "after_run": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [1/4] alle 5 Dateien in work/ vorhanden\nPASS [2/4] test_pipeline.py + sample.json unveraendert (md5)\nPASS [3/4] config_loader.py, pipeline.py, report.py kompilieren\nPASS [4/4] test_pipeline.py exit=0 (alle 3 Stufen)\nERGEBNIS: PASS — Bug-Kette vollstaendig aufgeloest\n",
+  "subchecks": {
+    "passed": 4,
+    "total": 4
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

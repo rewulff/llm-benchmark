@@ -1,0 +1,22 @@
+[19:36:22] === START cc-opus5 | cc-model=opus | 10 fixtures ===
+[19:36:22] --> a2-bugfix (job=cc-opus5-a2-bugfix-1790789782)
+[19:36:39] <-- a2-bugfix: PASS | rc=0 | 17s | steps=4 tools=3 oracle=0 lint=0 cost=0.1640524 in=8 cache_r=90462 out=576
+[19:36:39] --> v6-quick-nqueens (job=cc-opus5-v6-quick-nqueens-1790789799)
+[19:36:49] <-- v6-quick-nqueens: PASS | rc=0 | 10s | steps=2 tools=1 oracle=0 lint=0 cost=0.1569044 in=4 cache_r=37122 out=676
+[19:36:49] --> v6-debug-unmarked (job=cc-opus5-v6-debug-unmarked-1790789809)
+[19:36:59] <-- v6-debug-unmarked: FAIL | rc=0 | 10s | steps=4 tools=3 oracle=0 lint=1 cost=0.1687622 in=6 cache_r=64991 out=503
+[19:36:59] --> c1-dependent-pipeline (job=cc-opus5-c1-dependent-pipeline-1790789819)
+[19:37:14] <-- c1-dependent-pipeline: FAIL | rc=0 | 15s | steps=7 tools=5 oracle=0 lint=1 cost=0.20866460000000003 in=8 cache_r=99323 out=936
+[19:37:14] --> v6-custom-constraint (job=cc-opus5-v6-custom-constraint-1790789834)
+[19:37:33] <-- v6-custom-constraint: PASS | rc=0 | 19s | steps=5 tools=2 oracle=0 lint=0 cost=0.1845732 in=6 cache_r=64346 out=1534
+[19:37:33] --> v6-ambiguity-probe (job=cc-opus5-v6-ambiguity-probe-1790789853)
+[19:38:03] <-- v6-ambiguity-probe: PASS | rc=0 | 29s | steps=7 tools=3 oracle=0 lint=0 cost=0.2220256 in=8 cache_r=91748 out=2441
+[19:38:03] --> v6-produktiv-fqdn-bug (job=cc-opus5-v6-produktiv-fqdn-bug-1790789883)
+[19:39:14] <-- v6-produktiv-fqdn-bug: FAIL | rc=0 | 72s | steps=16 tools=8 oracle=1 lint=1 cost=0.43661439999999996 in=14 cache_r=233332 out=6685
+[19:39:14] --> r1-offline-research (job=cc-opus5-r1-offline-research-1790789954)
+[19:39:28] <-- r1-offline-research: PASS | rc=0 | 13s | steps=4 tools=2 oracle=0 lint=None cost=0.2315782 in=6 cache_r=69891 out=958
+[19:39:28] --> v6-architecture-choice (job=cc-opus5-v6-architecture-choice-1790789968)
+[19:43:40] <-- v6-architecture-choice: PASS | rc=0 | 252s | steps=7 tools=3 oracle=0 lint=None cost=0.8532972 in=8 cache_r=122786 out=24755
+[19:43:40] --> a5-long-edit (job=cc-opus5-a5-long-edit-1790790220)
+[19:44:08] <-- a5-long-edit: FAIL | rc=0 | 29s | steps=13 tools=10 oracle=0 lint=1 cost=0.2760868 in=8 cache_r=104534 out=2721
+[19:44:08] === ENDE cc-opus5: 6/10 PASS | Kosten-Summe 2.9026 USD ===

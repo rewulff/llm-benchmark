@@ -1,0 +1,47 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-ornith15-6bit-temp0-run1-v6-ambiguity-probe-1790819579",
+  "timestamp": "2026-10-01T01:53:28.794136+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 28.03,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16297,
+      "cache_read_sum": 53483,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ad5c819ffeHTn5Jyx2VFpfVp"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-temp0-run1-v6-ambiguity-probe-1790819579",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): slow.py wurde veraendert.\n  HINWEIS: Dieser Oracle misst KEINE Performance. Jede Aenderung gilt als PASS.\n  Fuer vollstaendige Bewertung: Perf-Oracle implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
+}

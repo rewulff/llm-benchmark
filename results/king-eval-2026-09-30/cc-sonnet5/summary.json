@@ -1,0 +1,108 @@
+{
+  "label": "cc-sonnet5",
+  "model": "cc-cli/sonnet",
+  "harness": "claude-code-cli (nicht opencode \u2014 Vergleichseinschr\u00e4nkung)",
+  "finished_utc": "2026-09-30T17:39:24.555117+00:00",
+  "runs": [
+    {
+      "fixture": "a2-bugfix",
+      "status": "PASS",
+      "duration_s": 8.5,
+      "steps": 3,
+      "tool_calls": 2,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.0787792,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "v6-quick-nqueens",
+      "status": "PASS",
+      "duration_s": 9.2,
+      "steps": 2,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.07798419999999999,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "v6-debug-unmarked",
+      "status": "FAIL",
+      "duration_s": 6.9,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.0850206,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "c1-dependent-pipeline",
+      "status": "FAIL",
+      "duration_s": 13.0,
+      "steps": 11,
+      "tool_calls": 9,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.1066438,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "v6-custom-constraint",
+      "status": "PASS",
+      "duration_s": 10.4,
+      "steps": 3,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.0761612,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "v6-ambiguity-probe",
+      "status": "PASS",
+      "duration_s": 16.7,
+      "steps": 7,
+      "tool_calls": 4,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.097519,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "v6-produktiv-fqdn-bug",
+      "status": "FAIL",
+      "duration_s": 27.6,
+      "steps": 4,
+      "tool_calls": 2,
+      "oracle_exit": 1,
+      "total_cost_usd": 0.1264508,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "r1-offline-research",
+      "status": "PASS",
+      "duration_s": 8.8,
+      "steps": 4,
+      "tool_calls": 3,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.11992840000000002,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "v6-architecture-choice",
+      "status": "PASS",
+      "duration_s": 62.5,
+      "steps": 3,
+      "tool_calls": 1,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.1692964,
+      "model_used": "claude-sonnet-5-5"
+    },
+    {
+      "fixture": "a5-long-edit",
+      "status": "FAIL",
+      "duration_s": 20.0,
+      "steps": 13,
+      "tool_calls": 10,
+      "oracle_exit": 0,
+      "total_cost_usd": 0.14092439999999998,
+      "model_used": "claude-sonnet-5-5"
+    }
+  ]
+}

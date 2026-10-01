@@ -1,0 +1,40 @@
+{
+  "model": "omlx/ornith15-6bit-lowthink",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-ornith15-6bit-lowthink-tq3-a2-bugfix-1790820422",
+  "timestamp": "2026-10-01T02:07:45.355245+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 41.1,
+    "steps": 3,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15876,
+      "cache_read_sum": 30909,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ac8ea3cffeVJxvW07iwkVD9H"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-lowthink-tq3-a2-bugfix-1790820422",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

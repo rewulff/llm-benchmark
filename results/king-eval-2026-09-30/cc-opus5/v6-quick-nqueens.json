@@ -1,0 +1,67 @@
+{
+  "model": "cc-cli/opus",
+  "fixture": "v6-quick-nqueens",
+  "job": "/Users/rwu/cc-bench-jobs/cc-opus5-v6-quick-nqueens-1790789799",
+  "timestamp": "2026-09-30T17:36:49.583498+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 10.28,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "usage": {
+      "input_tokens": 4,
+      "cache_creation_input_tokens": 16993,
+      "cache_read_input_tokens": 37122,
+      "output_tokens": 676,
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 16993,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 5,
+          "cache_read_input_tokens": 26672,
+          "cache_creation_input_tokens": 771,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 771
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.1569044,
+    "model_used": "claude-opus-5-5"
+  },
+  "python_lint": {
+    "checked": 1,
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "cli_rc": 0,
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: count_restricted(8, 3) == 18\n",
+  "failed_checks": []
+}

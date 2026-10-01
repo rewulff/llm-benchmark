@@ -1,0 +1,53 @@
+{
+  "model": "omlx/ornith15-6bit-lowthink",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "king-ornith15-6bit-lowthink-tq3-c1-dependent-pipeline-1790820572",
+  "timestamp": "2026-10-01T02:10:27.332544+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 52.74,
+    "steps": 4,
+    "tool_calls": 9,
+    "tools_breakdown": {
+      "read": 5,
+      "edit": 3,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19657,
+      "cache_read_sum": 61014,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ac69ebcffelD3UCRgCb8WVu1"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-lowthink-tq3-c1-dependent-pipeline-1790820572",
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "after_run": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [1/4] alle 5 Dateien in work/ vorhanden\nPASS [2/4] test_pipeline.py + sample.json unveraendert (md5)\nPASS [3/4] config_loader.py, pipeline.py, report.py kompilieren\nPASS [4/4] test_pipeline.py exit=0 (alle 3 Stufen)\nERGEBNIS: PASS — Bug-Kette vollstaendig aufgeloest\n",
+  "subchecks": {
+    "passed": 4,
+    "total": 4
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

@@ -1,0 +1,43 @@
+{
+  "model": "omlx/Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "king-ornith15-nothink-specprefill03-v6-custom-constraint-1790803047",
+  "timestamp": "2026-09-30T21:17:47.643246+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 18.58,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15704,
+      "cache_read_sum": 21632,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0bd20940ffe91R65FnqLAna0E"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-nothink-specprefill03-v6-custom-constraint-1790803047",
+  "oracle_rerun_exit": 1,
+  "oracle_output": "FAIL: erwartet '32', erhalten '3'\n  Full Output: 3\n",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {
+      "C413": 1
+    },
+    "new_violations": {
+      "C413": 1
+    }
+  }
+}

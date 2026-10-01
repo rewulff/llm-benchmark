@@ -1,0 +1,83 @@
+{
+  "model": "cc-cli/sonnet",
+  "fixture": "v6-produktiv-fqdn-bug",
+  "job": "/Users/rwu/cc-bench-jobs/cc-sonnet5-v6-produktiv-fqdn-bug-1790789845",
+  "timestamp": "2026-09-30T17:37:52.991607+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 27.64,
+    "steps": 4,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "bash": 2
+    },
+    "final_text": " Variable wird `origin` trotzdem gelesen, weil das Schema daher kommt. Fehlt `origin` dann, bricht der Push auch bei gesetzter Variable ab.\n\n`CHANGES.md` (unter 20 Zeilen) liegt neben `main.py`.\n\nDONE",
+    "usage": {
+      "input_tokens": 6,
+      "cache_creation_input_tokens": 21219,
+      "cache_read_input_tokens": 66364,
+      "output_tokens": 2829,
+      "output_tokens_details": {
+        "thinking_tokens": 441
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 21219,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 625,
+          "cache_read_input_tokens": 29568,
+          "cache_creation_input_tokens": 2217,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 2217
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "total_cost_usd": 0.1264508,
+    "model_used": "claude-sonnet-5-5"
+  },
+  "python_lint": {
+    "checked": 1,
+    "passed": false,
+    "ruff_exit": 1
+  },
+  "oracle_exit": 1,
+  "cli_rc": 0,
+  "oracle_rerun_exit": 1,
+  "oracle_output": "  PASS 1: py_compile OK\n  PASS 2: Kein Hardcoded-Fallback 10.0.167.253\n  PASS 3: git remote get-url Aufruf vorhanden\n  FAIL 4: Token-Injection-Pattern nicht gefunden\n  PASS 5: FORGEJO_INTERNAL_HOST als Option vorhanden\n  PASS 6: ruff F-Rules OK\n  PASS 7: Keine grossen Kommentar-Bloecke (kein Pseudo-Code-Rumbrueten)\n\nv6-produktiv-fqdn-bug: 6 / 7 checks\n",
+  "subchecks": {
+    "passed": 6,
+    "total": 7
+  },
+  "quality_score": 0.857,
+  "verdict_v2": "PASS",
+  "failed_checks": [
+    "FAIL 4: Token-Injection-Pattern nicht gefunden"
+  ],
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "PLW1510": 6
+    },
+    "after_run": {
+      "EXE001": 1,
+      "PLW1510": 7
+    },
+    "new_violations": {
+      "PLW1510": 1
+    }
+  }
+}

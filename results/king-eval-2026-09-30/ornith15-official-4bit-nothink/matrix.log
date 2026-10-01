@@ -1,0 +1,28 @@
+[23:24:19] === START ornith15-official-4bit-nothink | model=ornith-ai--Ornith-1.5-35B-A3B-MLX-4bit | 10 fixtures ===
+[23:24:19] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":2097152,"distributed_ranks":0
+[23:24:20] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":895,"distributed_ranks":0}
+[23:24:28] Warmup: HTTP 200 | load=7.19s | wall=7.4s
+[23:24:28] --> a2-bugfix (slug=king-ornith15-official-4bit-nothink-a2-bugfix-1790803468, Versuch 1)
+[23:24:54] <-- a2-bugfix: PASS | rc=0 | 27s | steps=5 tools=4 oracle=0
+[23:24:54] --> v6-quick-nqueens (slug=king-ornith15-official-4bit-nothink-v6-quick-nqueens-1790803494, Versuch 1)
+[23:25:15] <-- v6-quick-nqueens: PASS | rc=0 | 21s | steps=2 tools=1 oracle=0
+[23:25:15] --> v6-debug-unmarked (slug=king-ornith15-official-4bit-nothink-v6-debug-unmarked-1790803515, Versuch 1)
+[23:25:39] <-- v6-debug-unmarked: PASS | rc=0 | 23s | steps=5 tools=5 oracle=0
+[23:25:39] --> c1-dependent-pipeline (slug=king-ornith15-official-4bit-nothink-c1-dependent-pipeline-1790803539, Versuch 1)
+[23:51:49]     steps=0 — Request wurde abgewiesen (Speicher?), Warmup + zweiter Versuch
+[23:51:58] --> c1-dependent-pipeline (slug=king-ornith15-official-4bit-nothink-c1-dependent-pipeline-1790805118, Versuch 2)
+[23:52:31] <-- c1-dependent-pipeline: PASS | rc=0 | 33s | steps=5 tools=10 oracle=0
+[23:52:31] --> v6-custom-constraint (slug=king-ornith15-official-4bit-nothink-v6-custom-constraint-1790805151, Versuch 1)
+[23:52:48] <-- v6-custom-constraint: FAIL | rc=0 | 17s | steps=2 tools=1 oracle=1
+[23:52:48] --> v6-ambiguity-probe (slug=king-ornith15-official-4bit-nothink-v6-ambiguity-probe-1790805168, Versuch 1)
+[23:53:10] <-- v6-ambiguity-probe: PASS | rc=0 | 22s | steps=4 tools=3 oracle=0
+[23:53:10] --> v6-produktiv-fqdn-bug (slug=king-ornith15-official-4bit-nothink-v6-produktiv-fqdn-bug-1790805190, Versuch 1)
+[23:53:56] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 46s | steps=6 tools=5 oracle=0
+[23:53:56] --> r1-offline-research (slug=king-ornith15-official-4bit-nothink-r1-offline-research-1790805236, Versuch 1)
+[23:54:47] <-- r1-offline-research: PASS | rc=0 | 51s | steps=5 tools=15 oracle=0
+[23:54:47] --> v6-architecture-choice (slug=king-ornith15-official-4bit-nothink-v6-architecture-choice-1790805287, Versuch 1)
+[23:55:31] <-- v6-architecture-choice: PASS | rc=0 | 44s | steps=2 tools=1 oracle=0
+[23:55:31] --> a5-long-edit (slug=king-ornith15-official-4bit-nothink-a5-long-edit-1790805331, Versuch 1)
+[23:56:16] <-- a5-long-edit: FAIL | rc=0 | 45s | steps=4 tools=10 oracle=1
+[23:56:16] === ENDE ornith15-official-4bit-nothink: 8/10 PASS ===
+[23:56:19] Unload: HTTP 200

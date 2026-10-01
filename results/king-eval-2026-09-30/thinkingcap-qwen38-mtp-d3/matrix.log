@@ -1,0 +1,24 @@
+[22:09:32] === START thinkingcap-qwen38-mtp-d3 | model=ThinkingCap-Qwen3.8-27B-mlx-nvfp4 | 10 fixtures ===
+[22:09:43] Warmup: HTTP 200 | load=7.88s | wall=11.0s
+[22:09:43] --> a2-bugfix (slug=king-thinkingcap-qwen38-mtp-d3-a2-bugfix-1790798983, Versuch 1)
+[22:12:11] <-- a2-bugfix: PASS | rc=0 | 147s | steps=4 tools=3 oracle=0
+[22:12:11] --> v6-quick-nqueens (slug=king-thinkingcap-qwen38-mtp-d3-v6-quick-nqueens-1790799131, Versuch 1)
+[22:16:01] <-- v6-quick-nqueens: PASS | rc=0 | 230s | steps=2 tools=1 oracle=0
+[22:16:01] --> v6-debug-unmarked (slug=king-thinkingcap-qwen38-mtp-d3-v6-debug-unmarked-1790799361, Versuch 1)
+[22:18:55] <-- v6-debug-unmarked: PASS | rc=0 | 175s | steps=5 tools=5 oracle=0
+[22:18:55] --> c1-dependent-pipeline (slug=king-thinkingcap-qwen38-mtp-d3-c1-dependent-pipeline-1790799535, Versuch 1)
+[22:23:29] <-- c1-dependent-pipeline: PASS | rc=0 | 274s | steps=8 tools=11 oracle=0
+[22:23:29] --> v6-custom-constraint (slug=king-thinkingcap-qwen38-mtp-d3-v6-custom-constraint-1790799809, Versuch 1)
+[22:25:56] <-- v6-custom-constraint: PASS | rc=0 | 147s | steps=2 tools=1 oracle=0
+[22:25:56] --> v6-ambiguity-probe (slug=king-thinkingcap-qwen38-mtp-d3-v6-ambiguity-probe-1790799956, Versuch 1)
+[22:28:37] <-- v6-ambiguity-probe: PASS | rc=0 | 162s | steps=4 tools=3 oracle=0
+[22:28:37] --> v6-produktiv-fqdn-bug (slug=king-thinkingcap-qwen38-mtp-d3-v6-produktiv-fqdn-bug-1790800117, Versuch 1)
+[22:47:58] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 1160s | steps=11 tools=10 oracle=0
+[22:47:58] --> r1-offline-research (slug=king-thinkingcap-qwen38-mtp-d3-r1-offline-research-1790801278, Versuch 1)
+[22:57:08] <-- r1-offline-research: PASS | rc=0 | 550s | steps=6 tools=15 oracle=0
+[22:57:08] --> v6-architecture-choice (slug=king-thinkingcap-qwen38-mtp-d3-v6-architecture-choice-1790801828, Versuch 1)
+[23:09:47] <-- v6-architecture-choice: PASS | rc=0 | 759s | steps=2 tools=1 oracle=0
+[23:09:47] --> a5-long-edit (slug=king-thinkingcap-qwen38-mtp-d3-a5-long-edit-1790802587, Versuch 1)
+[23:14:33] <-- a5-long-edit: FAIL | rc=0 | 285s | steps=4 tools=10 oracle=1
+[23:14:33] === ENDE thinkingcap-qwen38-mtp-d3: 9/10 PASS ===
+[23:14:40] Unload: HTTP 200

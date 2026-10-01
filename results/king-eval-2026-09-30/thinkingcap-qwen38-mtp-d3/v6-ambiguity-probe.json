@@ -1,0 +1,51 @@
+{
+  "model": "omlx/ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-thinkingcap-qwen38-mtp-d3-v6-ambiguity-probe-1790799956",
+  "timestamp": "2026-09-30T20:28:37.857446+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 159.96,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16349,
+      "cache_read_sum": 53498,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c013464ffePpk8kxAUdBgEes"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-qwen38-mtp-d3-v6-ambiguity-probe-1790799956",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {
+      "UP033": 1
+    },
+    "new_violations": {
+      "UP033": 1
+    }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): slow.py wurde veraendert.\n  HINWEIS: Dieser Oracle misst KEINE Performance. Jede Aenderung gilt als PASS.\n  Fuer vollstaendige Bewertung: Perf-Oracle implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

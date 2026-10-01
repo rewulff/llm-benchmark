@@ -1,0 +1,35 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "king-ornith15-6bit-tq3bit-temp0-v6-custom-constraint-1790838771",
+  "timestamp": "2026-10-01T07:13:20.163781+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 27.04,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15815,
+      "cache_read_sum": 21637,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f09b0eee8ffekWN0Cquj9PWKcW"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-tq3bit-temp0-v6-custom-constraint-1790838771",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
+}

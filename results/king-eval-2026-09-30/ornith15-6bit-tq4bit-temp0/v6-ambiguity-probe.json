@@ -1,0 +1,38 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-ornith15-6bit-tq4bit-temp0-v6-ambiguity-probe-1790839365",
+  "timestamp": "2026-10-01T07:23:23.023453+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 36.19,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16308,
+      "cache_read_sum": 53500,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f09a7df38ffe0FwRD8R68gW62Y"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-tq4bit-temp0-v6-ambiguity-probe-1790839365",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
+}

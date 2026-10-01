@@ -1,0 +1,39 @@
+{
+  "model": "omlx/ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "fixture": "v6-quick-nqueens",
+  "job_slug": "king-thinkingcap-qwen38-27b-v6-quick-nqueens-1790794272",
+  "timestamp": "2026-09-30T18:56:28.048881+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 314.08,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "\n\n",
+    "stop_reason": "tool-calls",
+    "tokens": {
+      "total_final_step": 16848,
+      "cache_read_sum": 6144,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c57f01fffedxke8SEKogOF1L"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-qwen38-27b-v6-quick-nqueens-1790794272",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: count_restricted(8, 3) == 18\n",
+  "failed_checks": []
+}
