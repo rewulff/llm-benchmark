@@ -1,5 +1,12 @@
 # King-Eval 2026-09-30/10-01 — lokaler Default-Coding-Agent ("neuer Knecht")
 
+> **Nachtrag 01.10.2026 — alle Zahlen in diesem Report sind auf omlx 0.7.0rc1 gemessen.**
+> Die Nachmessung auf 0.7.0 mit dem omlx-eigenen Quantformat oQ4e liegt unter
+> `results/omlx-070-throughput/REPORT.md`. Kurz: Ornith 46,9 -> **78,9 tok/s**,
+> ThinkingCap 15,3 -> **22,6 tok/s**. Die Durchsatzzahlen hier sind damit ueberholt;
+> die Qualitaetsaussagen (Fixtures) stehen weiter, weil sie auf oQ4e noch nicht
+> nachgefahren sind.
+
 **Anlass:** Wechsel Max → Team Premium. Ziel ist ein lokales Modell, das Sonnet-/Opus-
 Coding-Aufgaben übernimmt, damit Abo-Kontingent für die Arbeit bleibt, die es wirklich braucht.
 

@@ -1,0 +1,36 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-ornith15-oq4e-nomtp-temp0-a5-long-edit-1790857317",
+  "timestamp": "2026-10-01T12:22:49.112812+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 50.24,
+    "steps": 4,
+    "tool_calls": 10,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22383,
+      "cache_read_sum": 64622,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0895f283ffePciHrIOZhGKggm"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-nomtp-temp0-a5-long-edit-1790857317",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "A5 Oracle: 8 / 8 bugs fixed\nPASS: alle 8 Bugs gefixt\n",
+  "failed_checks": []
+}

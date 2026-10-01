@@ -1,0 +1,26 @@
+[14:16:30] === START ornith15-oq4e-nomtp-temp0 | model=scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp | 10 fixtures ===
+[14:16:30] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[14:16:30] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":2,"distributed_ranks":0}
+[14:16:40] Warmup: HTTP 200 | load=9.6s | wall=10.3s
+[14:16:40] --> a2-bugfix (slug=king-ornith15-oq4e-nomtp-temp0-a2-bugfix-1790857000, Versuch 1)
+[14:17:06] <-- a2-bugfix: PASS | rc=0 | 26s | steps=3 tools=2 oracle=0
+[14:17:06] --> v6-quick-nqueens (slug=king-ornith15-oq4e-nomtp-temp0-v6-quick-nqueens-1790857026, Versuch 1)
+[14:17:29] <-- v6-quick-nqueens: PASS | rc=0 | 23s | steps=2 tools=1 oracle=0
+[14:17:29] --> v6-debug-unmarked (slug=king-ornith15-oq4e-nomtp-temp0-v6-debug-unmarked-1790857049, Versuch 1)
+[14:17:52] <-- v6-debug-unmarked: PASS | rc=0 | 22s | steps=3 tools=3 oracle=0
+[14:17:52] --> c1-dependent-pipeline (slug=king-ornith15-oq4e-nomtp-temp0-c1-dependent-pipeline-1790857072, Versuch 1)
+[14:18:32] <-- c1-dependent-pipeline: PASS | rc=0 | 40s | steps=6 tools=11 oracle=0
+[14:18:32] --> v6-custom-constraint (slug=king-ornith15-oq4e-nomtp-temp0-v6-custom-constraint-1790857112, Versuch 1)
+[14:18:51] <-- v6-custom-constraint: PASS | rc=0 | 19s | steps=2 tools=1 oracle=0
+[14:18:51] --> v6-ambiguity-probe (slug=king-ornith15-oq4e-nomtp-temp0-v6-ambiguity-probe-1790857131, Versuch 1)
+[14:19:16] <-- v6-ambiguity-probe: PASS | rc=0 | 25s | steps=4 tools=3 oracle=0
+[14:19:16] --> v6-produktiv-fqdn-bug (slug=king-ornith15-oq4e-nomtp-temp0-v6-produktiv-fqdn-bug-1790857156, Versuch 1)
+[14:20:17] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 61s | steps=9 tools=8 oracle=0
+[14:20:17] --> r1-offline-research (slug=king-ornith15-oq4e-nomtp-temp0-r1-offline-research-1790857217, Versuch 1)
+[14:21:05] <-- r1-offline-research: FAIL | rc=0 | 48s | steps=5 tools=15 oracle=1
+[14:21:05] --> v6-architecture-choice (slug=king-ornith15-oq4e-nomtp-temp0-v6-architecture-choice-1790857265, Versuch 1)
+[14:21:57] <-- v6-architecture-choice: PASS | rc=0 | 52s | steps=2 tools=1 oracle=0
+[14:21:57] --> a5-long-edit (slug=king-ornith15-oq4e-nomtp-temp0-a5-long-edit-1790857317, Versuch 1)
+[14:22:49] <-- a5-long-edit: PASS | rc=0 | 52s | steps=4 tools=10 oracle=0
+[14:22:49] === ENDE ornith15-oq4e-nomtp-temp0: 9/10 PASS ===
+[14:22:50] Unload: HTTP 200

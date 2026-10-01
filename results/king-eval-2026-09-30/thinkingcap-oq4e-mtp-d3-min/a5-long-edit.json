@@ -1,0 +1,36 @@
+{
+  "model": "omlx/chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-thinkingcap-oq4e-mtp-d3-min-a5-long-edit-1790857753",
+  "timestamp": "2026-10-01T12:33:32.003366+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 257.42,
+    "steps": 4,
+    "tool_calls": 10,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22393,
+      "cache_read_sum": 64539,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f088f4be4ffeqAds1eB5yMnNb5"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-oq4e-mtp-d3-min-a5-long-edit-1790857753",
+  "oracle_rerun_exit": 1,
+  "oracle_output": "A5 Oracle: 7 / 8 bugs fixed\nFAIL: nur 7 von 8 gefixt\n  FAIL: Bug 1 — calculate_discount (Rabatt addiert statt abgezogen)\n",
+  "failed_checks": []
+}

@@ -1,0 +1,254 @@
+{
+  "omlx": "omlx 0.7.0",
+  "measured": "2026-10-01T13:24:23.624423",
+  "cells": [
+    {
+      "cell": "A",
+      "model": "ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+      "mtp": null,
+      "median_tok_s": 11.11,
+      "runs": [
+        {
+          "s": 126.0,
+          "completion_tokens": 1397,
+          "tok_s": 11.16,
+          "wall_tok_s": 11.09,
+          "generation_duration": 125.16,
+          "ttft": 0.85,
+          "prompt_tok_s": 63.82
+        },
+        {
+          "s": 123.58,
+          "completion_tokens": 1364,
+          "tok_s": 11.11,
+          "wall_tok_s": 11.04,
+          "generation_duration": 122.75,
+          "ttft": 0.83,
+          "prompt_tok_s": 64.93
+        },
+        {
+          "s": 137.92,
+          "completion_tokens": 1502,
+          "tok_s": 10.96,
+          "wall_tok_s": 10.89,
+          "generation_duration": 137.0,
+          "ttft": 0.92,
+          "prompt_tok_s": 58.71
+        }
+      ],
+      "rc1_reference": 10.0,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK",
+      "gain_vs_rc1": 11.1
+    },
+    {
+      "cell": "B",
+      "model": "ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+      "mtp": 3,
+      "median_tok_s": 14.0,
+      "runs": [
+        {
+          "s": 90.01,
+          "completion_tokens": 1246,
+          "tok_s": 14.0,
+          "wall_tok_s": 13.84,
+          "generation_duration": 88.98,
+          "ttft": 1.03,
+          "prompt_tok_s": 52.35
+        },
+        {
+          "s": 91.06,
+          "completion_tokens": 1304,
+          "tok_s": 14.47,
+          "wall_tok_s": 14.32,
+          "generation_duration": 90.13,
+          "ttft": 0.93,
+          "prompt_tok_s": 58.1
+        },
+        {
+          "s": 116.75,
+          "completion_tokens": 1593,
+          "tok_s": 13.76,
+          "wall_tok_s": 13.64,
+          "generation_duration": 115.74,
+          "ttft": 1.01,
+          "prompt_tok_s": 53.59
+        }
+      ],
+      "rc1_reference": 15.3,
+      "mtp_active": true,
+      "mtp_acceptance_pct": 63.929618768328446,
+      "mtp_note": "3 MTP-Zyklen, 2398/3751",
+      "status": "OK",
+      "gain_vs_rc1": -8.5
+    },
+    {
+      "cell": "C",
+      "model": "chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp",
+      "mtp": null,
+      "median_tok_s": 14.56,
+      "runs": [
+        {
+          "s": 77.3,
+          "completion_tokens": 1120,
+          "tok_s": 14.66,
+          "wall_tok_s": 14.49,
+          "generation_duration": 76.42,
+          "ttft": 0.88,
+          "prompt_tok_s": 61.53
+        },
+        {
+          "s": 77.39,
+          "completion_tokens": 1114,
+          "tok_s": 14.56,
+          "wall_tok_s": 14.4,
+          "generation_duration": 76.5,
+          "ttft": 0.88,
+          "prompt_tok_s": 61.16
+        },
+        {
+          "s": 91.57,
+          "completion_tokens": 1318,
+          "tok_s": 14.53,
+          "wall_tok_s": 14.39,
+          "generation_duration": 90.69,
+          "ttft": 0.88,
+          "prompt_tok_s": 61.62
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK"
+    },
+    {
+      "cell": "D",
+      "model": "chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp",
+      "mtp": 3,
+      "median_tok_s": 22.57,
+      "runs": [
+        {
+          "s": 57.8,
+          "completion_tokens": 1284,
+          "tok_s": 22.57,
+          "wall_tok_s": 22.22,
+          "generation_duration": 56.88,
+          "ttft": 0.91,
+          "prompt_tok_s": 59.15
+        },
+        {
+          "s": 53.3,
+          "completion_tokens": 1189,
+          "tok_s": 22.69,
+          "wall_tok_s": 22.31,
+          "generation_duration": 52.4,
+          "ttft": 0.9,
+          "prompt_tok_s": 59.91
+        },
+        {
+          "s": 54.12,
+          "completion_tokens": 1155,
+          "tok_s": 21.69,
+          "wall_tok_s": 21.34,
+          "generation_duration": 53.24,
+          "ttft": 0.87,
+          "prompt_tok_s": 61.87
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": true,
+      "mtp_acceptance_pct": 64.15552855407047,
+      "mtp_note": "3 MTP-Zyklen, 2112/3292",
+      "status": "OK"
+    },
+    {
+      "cell": "E",
+      "model": "ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+      "mtp": null,
+      "status": "WARMUP-507"
+    },
+    {
+      "cell": "F",
+      "model": "scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+      "mtp": null,
+      "median_tok_s": 78.87,
+      "runs": [
+        {
+          "s": 10.67,
+          "completion_tokens": 825,
+          "tok_s": 78.65,
+          "wall_tok_s": 77.34,
+          "generation_duration": 10.49,
+          "ttft": 0.18,
+          "prompt_tok_s": 306.71
+        },
+        {
+          "s": 12.13,
+          "completion_tokens": 942,
+          "tok_s": 78.87,
+          "wall_tok_s": 77.66,
+          "generation_duration": 11.94,
+          "ttft": 0.18,
+          "prompt_tok_s": 292.38
+        },
+        {
+          "s": 13.31,
+          "completion_tokens": 1035,
+          "tok_s": 78.9,
+          "wall_tok_s": 77.79,
+          "generation_duration": 13.12,
+          "ttft": 0.18,
+          "prompt_tok_s": 293.24
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK"
+    },
+    {
+      "cell": "G",
+      "model": "scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+      "mtp": 3,
+      "median_tok_s": 51.24,
+      "runs": [
+        {
+          "s": 21.17,
+          "completion_tokens": 1075,
+          "tok_s": 51.24,
+          "wall_tok_s": 50.78,
+          "generation_duration": 20.98,
+          "ttft": 0.19,
+          "prompt_tok_s": 285.32
+        },
+        {
+          "s": 20.63,
+          "completion_tokens": 1063,
+          "tok_s": 52.0,
+          "wall_tok_s": 51.53,
+          "generation_duration": 20.44,
+          "ttft": 0.19,
+          "prompt_tok_s": 289.47
+        },
+        {
+          "s": 20.14,
+          "completion_tokens": 1010,
+          "tok_s": 50.66,
+          "wall_tok_s": 50.15,
+          "generation_duration": 19.94,
+          "ttft": 0.2,
+          "prompt_tok_s": 268.18
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": true,
+      "mtp_acceptance_pct": 15.712468193384224,
+      "mtp_note": "3 MTP-Zyklen, 494/3144",
+      "status": "OK"
+    }
+  ]
+}

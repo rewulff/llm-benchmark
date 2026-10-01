@@ -1,0 +1,47 @@
+{
+  "omlx": "omlx 0.7.0",
+  "measured": "2026-10-01T13:28:13.895543",
+  "cells": [
+    {
+      "cell": "E",
+      "model": "ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+      "mtp": null,
+      "median_tok_s": 65.94,
+      "runs": [
+        {
+          "s": 14.04,
+          "completion_tokens": 910,
+          "tok_s": 65.94,
+          "wall_tok_s": 64.84,
+          "generation_duration": 13.8,
+          "ttft": 0.23,
+          "prompt_tok_s": 231.89
+        },
+        {
+          "s": 13.5,
+          "completion_tokens": 871,
+          "tok_s": 65.66,
+          "wall_tok_s": 64.52,
+          "generation_duration": 13.26,
+          "ttft": 0.23,
+          "prompt_tok_s": 232.08
+        },
+        {
+          "s": 17.66,
+          "completion_tokens": 1119,
+          "tok_s": 66.43,
+          "wall_tok_s": 63.37,
+          "generation_duration": 16.84,
+          "ttft": 0.46,
+          "prompt_tok_s": 118.07
+        }
+      ],
+      "rc1_reference": 46.9,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK",
+      "gain_vs_rc1": 40.6
+    }
+  ]
+}

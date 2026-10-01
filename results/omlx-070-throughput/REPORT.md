@@ -1,0 +1,177 @@
+# Durchsatz auf omlx 0.7.0 — warum unsere Zahlen von den Release-Benchmarks abwichen
+
+**Gemessen:** 01.10.2026 · **Hardware:** MacBook Pro M4 Pro, 48 GB, ~273 GB/s
+**Server:** omlx 0.7.0 (von 0.7.0rc1 aktualisiert) · **Rohdaten:** `throughput.json`, `throughput-E.json`
+**Runner:** `runners/run_070_throughput.py`
+
+## Anlass
+
+Die Release-Benchmarks zu omlx 0.7.0 melden gegenüber 0.7.0rc1 bis **+46 % Prompt Processing
+und +50 % Token Generation**. Unsere komplette King-Eval vom 30.09. lag weit darunter
+(ThinkingCap-27B: 10,0 tok/s). Die Frage war, ob bei uns etwas falsch konfiguriert ist.
+
+**Antwort: ja, zwei Dinge — und ein dritter Teil ist Hardware.** Wir maßen auf der alten
+Version *und* mit einem anderen Quantformat als die Referenz. Beide Faktoren waren
+gleichzeitig anders, dazu die Hardware. Diese Matrix dreht sie einzeln.
+
+## Ergebnis
+
+| Zelle | Modell | Quant | MTP | tok/s | gegen rc1 |
+|---|---|---|---|---|---|
+| A | ThinkingCap-27B (dense) | nvfp4, 22,3 GiB | aus | 11,1 | 10,0 → **+11 %** |
+| B | ThinkingCap-27B | nvfp4 | d3 | 14,0 | 15,3 → **−8,5 %** |
+| C | ThinkingCap-27B | **oQ4e**, 15,8 GiB | aus | 14,6 | — |
+| D | ThinkingCap-27B | **oQ4e** | d3 | **22,6** | 15,3 → **+48 %** |
+| E | Ornith-1.5-35B-A3B (MoE) | MLX-6bit, 26 GiB | aus | 65,9 | 46,9 → **+41 %** |
+| F | Ornith-1.5-35B-A3B | **oQ4e**, 20,2 GiB | aus | **78,9** | 46,9 → **+68 %** |
+| G | Ornith-1.5-35B-A3B | **oQ4e** | d3 | 51,2 | — |
+
+Je Zelle drei Läufe, Median; Streuung durchweg unter 1 tok/s. Vor jedem Lauf Hot- und
+SSD-Cache geleert. Messgröße ist `generation_tokens_per_second` aus der omlx-Antwort —
+Prefill und Ladezeit sind herausgerechnet.
+
+## Die drei Faktoren, getrennt
+
+### 1. Serverversion: wirkt bei MoE stark, bei dense kaum
+
+| | rc1 → 0.7.0 |
+|---|---|
+| dense (A gegen rc1-Basis) | **+11 %** |
+| MoE (E gegen rc1-Basis) | **+41 %** |
+
+Das deckt sich mit den Release Notes, wenn man genau liest: Die dense-Beschleuniger sind
+dort ausdrücklich an M5 gebunden — *„QSA attention on the M5 tensor units"*, *„exact fused
+decode and MTP verify kernels on M5 GPUs"*. Der M4 Pro hat diese Einheiten nicht. Der
+einzige Decode-Punkt **ohne** M5-Einschränkung ist *„fused MoE, DeltaNet and attention
+kernels for one-token decode"* — und genau dort messen wir die +41 %.
+
+**Die Balken im Release-Chart stammen von M5 Max und M3 Ultra.** Für dense auf M4 Pro sind
+sie nicht erreichbar; für MoE schon.
+
+### 2. Quantformat: wirkt überall, ungefähr nach Gewicht
+
+| | Gewichtsverhältnis | gemessener Gewinn |
+|---|---|---|
+| dense: nvfp4 → oQ4e (C gegen A) | 22,3 → 15,8 GiB = 1,41× | **+32 %** |
+| MoE: 6bit → oQ4e (F gegen E) | 26 → 20,2 GiB = 1,29× | **+20 %** |
+
+Der Gewinn bleibt etwas hinter dem Gewichtsverhältnis zurück, folgt ihm aber. Das ist die
+erwartete Bandbreitenlogik: Decode liest pro Token die Gewichte, kleinere Gewichte sind
+schneller. **oQ4e ist das Format, in dem omlx selbst misst und optimiert** — wir hatten
+nvfp4 bzw. affine-6bit verwendet.
+
+### 3. MTP: bei dense ja, bei MoE nein — jetzt dreifach belegt
+
+| | ohne MTP | mit MTP d3 | Acceptance |
+|---|---|---|---|
+| dense, nvfp4 (A→B) | 11,1 | 14,0 | **63,9 %** |
+| dense, oQ4e (C→D) | 14,6 | **22,6** (+55 %) | **64,2 %** |
+| MoE, oQ4e (F→G) | 78,9 | 51,2 (**−35 %**) | **15,7 %** |
+
+Die Acceptance stammt aus den `accept=`-Zeilen des Serverlogs, nicht aus einem Settings-Feld.
+Zellen ohne Beleg wären als MTP-inaktiv markiert worden; alle drei MTP-Zellen sind belegt.
+
+**MoE profitiert nicht von Spekulation.** Das steht jetzt auf drei unabhängigen Beinen:
+llama.cpp mit nativem GGUF-Head (34,9 gegen 48,2 tok/s, Acceptance 38,2 %), omlx 0.7.0 mit
+nativem oQ4e-Head (51,2 gegen 78,9, Acceptance 15,7 %), und in beiden Fällen dieselbe
+Richtung. Die Sorge, der Befund sei ein Artefakt der rc1-Implementierung, ist ausgeräumt —
+0.7.0 hat „Exact Lightning MTP" und residenten MTP-Head bei Expert Offload gebaut, und es
+ändert nichts.
+
+**Nebenbefund:** Die dense-Acceptance liegt hier bei ~64 %, im rc1-Sweep waren es 94,9 %.
+Das ist kein Versionseffekt, sondern der Prompt: Der rc1-Sweep lief auf Code-Fixtures,
+diese Matrix auf Fließtext (Wärmetauscher-Erklärung). Code ist repetitiv und gut
+vorhersagbar, Prosa nicht — Zelle B mit demselben Head wie rc1 zeigt dieselben 64 %.
+Für Agent-Arbeit (Code) ist die höhere Acceptance die realistischere.
+
+## Was das praktisch heißt
+
+| Rolle | bisher | neu | Gewinn |
+|---|---|---|---|
+| Knecht (Allrounder, schnell) | Ornith MLX-6bit, 46,9 tok/s | **Ornith oQ4e-mtp, MTP aus, 78,9 tok/s** | **1,68×** |
+| dense-Kandidat (Qualität) | ThinkingCap nvfp4+MTP, 15,3 | **ThinkingCap oQ4e-mtp + MTP d3, 22,6** | **1,48×** |
+
+Beide Empfehlungen wechseln das Quantformat. Für Ornith bleibt MTP **aus**, für ThinkingCap
+**an** — gegenläufig, und beides gemessen.
+
+Dazu kommt ein Nebeneffekt: Die oQ4e-Fassungen sind kleiner (20,2 statt 26 GiB, 15,8 statt
+22,3 GiB). Das entschärft das Speicherproblem, siehe unten.
+
+## Zwei Betriebsfallen aus diesem Lauf
+
+**1. Der Memory Guard in 0.7.0 blockiert Ornith 6-bit.** Zelle E scheiterte zunächst mit
+`prefill_memory_exceeded`: *„would require ~27,31 GB peak but dynamic ceiling is 27,31 GB …
+only 2,90 GB is reclaimable right now"*. `memory_guard_tier` stand dabei bereits auf
+`balanced`. Ursache war ein parallel laufender `llama-server`, der 24 GB in Metal-Buffern
+hielt — die tauchen **nicht** im RSS auf, nur in `Pages wired`. Nach dessen Stopp lud das
+Modell sofort.
+→ **Nie zwei große Modelle in zwei Servern gleichzeitig halten.** Der Guard meldet das als
+Speicherfehler, nicht als Konflikt.
+
+**2. `loaded_count` fällt nie auf 0.** omlx hält sein Default-Modell und lädt es nach. Wer
+nach einem Unload darauf wartet, wartet vergeblich. Das Entladen läuft zudem asynchron
+weiter: Setzt der nächste Schritt sofort neue Settings, kollidiert der Reload und der
+Request stirbt mit **HTTP 409**. Fester Puffer plus Retry ist die Lösung, nicht Warten auf
+den Zähler.
+
+## Qualität auf oQ4e — Fixture-Matrix (Nachtrag, 14:16–14:33 Uhr)
+
+Je Kandidat nur die schnellste Konfiguration, jeder gegen seine eigene Referenz vom 30.09.
+mit deren Sampling. Ornith voll (10 Fixtures, temp 0), ThinkingCap minimal (3 Fixtures:
+zwei schnelle Typen plus der einzige Referenz-FAIL).
+
+| Lauf | PASS | Agent-Zeit | Ausfall | Fehlerbild |
+|---|---|---|---|---|
+| Ornith MLX-6bit, temp 0, run1 (Ref.) | 10/10 | 7,9 min | — | — |
+| Ornith MLX-6bit, temp 0, run2 (Ref.) | 9/10 | 8,1 min | r1 | ACME statt Brightwave |
+| **Ornith oQ4e, MTP aus, temp 0** | **9/10** | **6,1 min** | r1 | **ACME statt Brightwave, 14/18 — identisch** |
+| ThinkingCap nvfp4 + MTP d3 (Ref., 10 Fix.) | 9/10 | 64,8 min | a5 | 7/8 gefixt, calculate_discount |
+| **ThinkingCap oQ4e + MTP d3 (3 Fix.)** | **2/3** | 139–259 s/Fix. | a5 | **7/8 gefixt, calculate_discount — identisch** |
+
+**Beide Ausfälle sind Modellschwächen, keine Quant-Schäden** — das Fehlerbild ist jeweils
+bis in die Sub-Checks identisch mit der Referenz, und beim offiziellen Ornith-6bit tritt r1
+ebenso auf. Qualität liegt innerhalb der Referenz-Streuung.
+
+**Die Agent-Zeit ist die Zahl, die zählt:** Ornith oQ4e erledigt dieselben zehn Fixtures
+in 6,1 statt 7,9–8,1 Minuten (−23 %) bei gleicher Tool-Call-Zahl (55 gegen 54/51). Das ist
+weniger als die +20 % Decode, weil Prefill und Tool-Overhead dominieren — und es ist der
+Wert, der für den Knecht gilt. ThinkingCap-Fixtures laufen 5–10 % schneller als die Referenz
+(a2 nicht wertbar: ein TTS-Load fiel genau hinein).
+
+**Knecht-Umstellung auf `scottlowry/Ornith-1.5-35B-A3B-oQ4e-mtp`, MTP aus, ist damit belegt**
+— Tempo, Qualität und Speicher (20,2 statt 26 GiB).
+
+## Grenzen dieser Messung
+
+- **Ein Prompt, 2048 Token, kurzer Kontext.** Langkontext-Verhalten ist nicht erfasst; der
+  dort gemessene Einbruch (M3 Ultra: 70,3 bei 64K gegen 74,6 bei 4K) ist nicht nachgefahren.
+- **Die dense-Acceptance-Differenz zu rc1 ist kein sauberer A/B** (anderer Prompt).
+- Prefill wurde nicht gemessen, obwohl die Release-Notes dort die größten Gewinne melden —
+  und zwar ebenfalls überwiegend M5-gebunden.
+
+- **Die Hochrechnung „23,6 erwartet, 22,6 gemessen"** vergleicht die M3-Ultra-Zahl von
+  `Qwen3.8-27B-oQ4e` mit unserem `ThinkingCap-Qwen3.8-27B-oQ4e` — ein Finetune auf derselben
+  Basis, nicht dasselbe Modell. Für die Größenordnung tragfähig, nicht für die Nachkommastelle.
+- **Concurrent > 1 ist in keinem Stack gemessen.** llama.cpp lief mit vier Slots, omlx hat
+  einen Engine-Pool — beide wurden nur mit einem Request belastet. Für Worker-Parallelität
+  ist das die offene Frage. Draft-Modell-Spekulation bei llama.cpp (`-md`) ebenfalls nicht.
+- **Speicherdruck während aller Messungen:** Swap 82 % voll, Memory-Guard-Ceiling über den
+  Tag von 30,2 auf 26,2 GiB gefallen (dynamisch, folgt dem Systemdruck). Decode-Durchsatz
+  ist davon kaum betroffen (Modell liegt wired), die 507/400-Ausfälle schon.
+
+## Weitere Betriebsfalle: TTS-Wrapper weicht unter Last still aus
+
+`tools/tts-macbook` (Port 8084, Bifrost-Ziel) nutzt omlx als Primary und prüft `/health`
+mit **1,5 s Timeout, 30 s gecacht**. Antwortet omlx unter Benchmark-Last langsamer, schaltet
+der Wrapper für 30 s auf seinen `subprocess`-Pfad — ohne Logzeile in omlx. Null TTS-Requests
+im omlx-Log sind also kein Beleg für „kein TTS", sondern können „TTS lief am omlx vorbei"
+heißen. TTS-Smoke nach dem Upgrade: PASS (HTTP 200, 161 KB WAV, omlx-Load belegt). Das
+TTS-Modell ist seit 01.10. omlx-Default (`is_default`), damit nach jedem Unload 3 GB statt
+22 GB nachgeladen werden; real belegt es 3,16 GB, omlx schätzt 1,0.
+
+## Offen
+
+- Prefill-Durchsatz messen (unser bekannter Schwachpunkt: ~121 tok/s auf M4 Pro; die
+  Release-Notes melden gerade dort +46 %, überwiegend M5-gebunden)
+- Concurrent > 1 auf beiden Stacks — beantwortet zugleich, ob llama.cpp noch einen Vorteil hat
+- ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll

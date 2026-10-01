@@ -1,0 +1,12 @@
+[14:23:31] === START thinkingcap-oq4e-mtp-d3-min | model=chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp | 3 fixtures ===
+[14:23:31] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[14:23:32] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":176,"distributed_ranks":0}
+[14:23:38] Warmup: HTTP 200 | load=4.86s | wall=7.0s
+[14:23:38] --> a2-bugfix (slug=king-thinkingcap-oq4e-mtp-d3-min-a2-bugfix-1790857418, Versuch 1)
+[14:26:54] <-- a2-bugfix: PASS | rc=0 | 195s | steps=5 tools=4 oracle=0
+[14:26:54] --> v6-custom-constraint (slug=king-thinkingcap-oq4e-mtp-d3-min-v6-custom-constraint-1790857614, Versuch 1)
+[14:29:13] <-- v6-custom-constraint: PASS | rc=0 | 139s | steps=2 tools=1 oracle=0
+[14:29:13] --> a5-long-edit (slug=king-thinkingcap-oq4e-mtp-d3-min-a5-long-edit-1790857753, Versuch 1)
+[14:33:32] <-- a5-long-edit: FAIL | rc=0 | 259s | steps=4 tools=10 oracle=1
+[14:33:32] === ENDE thinkingcap-oq4e-mtp-d3-min: 2/3 PASS ===
+[14:33:33] Unload: HTTP 200

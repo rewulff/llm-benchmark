@@ -1,0 +1,34 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-quick-nqueens",
+  "job_slug": "king-ornith15-oq4e-nomtp-temp0-v6-quick-nqueens-1790857026",
+  "timestamp": "2026-10-01T12:17:29.750933+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 21.51,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16089,
+      "cache_read_sum": 21708,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f089a611affemyAr6HGoimX6EE"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-nomtp-temp0-v6-quick-nqueens-1790857026",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: count_restricted(8, 3) == 18\n",
+  "failed_checks": []
+}

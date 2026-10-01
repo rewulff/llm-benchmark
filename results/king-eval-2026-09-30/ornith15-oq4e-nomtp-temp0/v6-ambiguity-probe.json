@@ -1,0 +1,42 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-ornith15-oq4e-nomtp-temp0-v6-ambiguity-probe-1790857131",
+  "timestamp": "2026-10-01T12:19:16.866396+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 23.85,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "Output matches the original behavior. DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16301,
+      "cache_read_sum": 53554,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0898c7f9ffeEMmyabvC4UU7tN"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-nomtp-temp0-v6-ambiguity-probe-1790857131",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): slow.py wurde veraendert.\n  HINWEIS: Dieser Oracle misst KEINE Performance. Jede Aenderung gilt als PASS.\n  Fuer vollstaendige Bewertung: Perf-Oracle implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}
