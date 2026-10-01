@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 RUNNER = Path("/Users/rwu/Arbeitsverzeichnis/lib/local-llm/benchmark/opencode/run_opencode_test.py")
+JOBS_BASE = Path.home() / "opencode-jobs"
 RESULT_SRC = Path("/Users/rwu/Arbeitsverzeichnis/lib/local-llm/benchmark/opencode/models")
 OUT_BASE = Path("/Users/rwu/Arbeitsverzeichnis/tools/llm-benchmark/results/king-eval-2026-09-30")
 FIXTURES = ["a2-bugfix", "v6-quick-nqueens", "v6-debug-unmarked", "c1-dependent-pipeline",
@@ -65,7 +66,20 @@ def main():
                          "Fuer In-Chat-Modus-Tags wie {REASON:artemis} (Solstice/DavidAU-Merges): "
                          "so laeuft ein Modell ueber opencode in SEINEM vorgesehenen Modus statt im "
                          "Raster des Basismodells (rwu, 01.10.2026).")
+    ap.add_argument("--keep-cache", action="store_true",
+                    help="KEIN Hot-/SSD-Cache-Reset vor dem Batch. Default misst Kaltstart (jede Fixture "
+                         "zahlt den Erst-Prefill des ~15k-System-Prompts: 50-80 %% der Laufzeit, dense 4x "
+                         "teurer als MoE). Mit --keep-cache ist der System-Prompt ab Fixture 2 warm = "
+                         "Produktionsfall 'Knecht laeuft seit Stunden' (rwu 01.10.2026).")
+    ap.add_argument("--one-session", action="store_true",
+                    help="Alle Fixtures nacheinander in EINER opencode-Session und EINEM Arbeitsverzeichnis "
+                         "(Session-ID aus run.jsonl der Vorgaenger-Fixture, opencode run --session). "
+                         "Realitaetsnah: Kontext waechst ueber die Aufgaben (10 Fixtures -> 40-60k), "
+                         "fruehere Dateien bleiben sichtbar. Impliziert --keep-cache. Eingabedateien der "
+                         "Fixtures kollidieren nicht (geprueft 01.10.). Oracle laeuft weiter je Fixture.")
     args = ap.parse_args()
+    if args.one_session:
+        args.keep_cache = True
 
     fixtures = FIXTURES if args.fixtures == "all" else args.fixtures.split(",")
     prefix_map = {}
@@ -115,12 +129,20 @@ def main():
         # schneller als der erste, allein durch Cache-Treffer (Vorfall 30.09.:
         # v6-debug-unmarked 86s -> 29s bei identischen Settings). Ohne das sind
         # Zeitvergleiche zwischen Laeufen wertlos.
-        for ep in ("/admin/api/hot-cache/clear", "/admin/api/ssd-cache/clear"):
-            try:
-                st, body = admin_post(ep)
-                log(fh, f"Cache-Reset {ep}: HTTP {st} {str(body)[:80]}")
-            except Exception as exc:
-                log(fh, f"Cache-Reset {ep} fehlgeschlagen: {exc}")
+        if args.keep_cache:
+            log(fh, "Cache-Reset UEBERSPRUNGEN (--keep-cache): Zeiten sind Steady-State mit warmem "
+                    "Prefix-Cache, nicht mit Kaltstart-Laeufen vergleichbar")
+        else:
+            for ep in ("/admin/api/hot-cache/clear", "/admin/api/ssd-cache/clear"):
+                try:
+                    st, body = admin_post(ep)
+                    log(fh, f"Cache-Reset {ep}: HTTP {st} {str(body)[:80]}")
+                except Exception as exc:
+                    log(fh, f"Cache-Reset {ep} fehlgeschlagen: {exc}")
+        session_slug = f"king-{args.label}-session-{int(time.time())}" if args.one_session else None
+        session_id = None
+        if args.one_session:
+            log(fh, f"ONE-SESSION: gemeinsamer Job {session_slug}, Session-ID wird aus run.jsonl uebernommen")
 
         # Warmup (Cold-Load raus aus der ersten Messung)
         t0 = time.time()
@@ -140,10 +162,12 @@ def main():
             # Bis zu 2 Versuche: ein Lauf mit steps=0 ist kein Modellergebnis, sondern
             # ein abgewiesener Request (omlx 507 memory ceiling o.ä.) — Vorfall 30.09.
             for attempt in (1, 2):
-                slug = f"king-{args.label}-{fx}-{int(time.time())}"
-                log(fh, f"--> {fx} (slug={slug}, Versuch {attempt})")
+                slug = session_slug or f"king-{args.label}-{fx}-{int(time.time())}"
+                log(fh, f"--> {fx} (slug={slug}, Versuch {attempt}" + (f", session={session_id}" if session_id else "") + ")")
                 t = time.time()
                 extra = []
+                if session_id:
+                    extra += ["--session-id", session_id]
                 if fx in prefix_map:
                     # Praefix + Original-Prompt in eine Datei, die run_opencode_test.py per
                     # --prompt-file statt fixtures/<fx>/prompt.md liest. Original bleibt unberuehrt.
@@ -152,10 +176,12 @@ def main():
                     pf.write_text(prefix_map[fx] + "\n\n" + orig)
                     extra = ["--prompt-file", str(pf)]
                     log(fh, f"    Prompt-Praefix: {prefix_map[fx]!r}")
+                cmd = [sys.executable, str(RUNNER), "--model", f"omlx/{args.model}",
+                       "--fixture", fx, "--job-slug", slug, *extra]
+                log(fh, f"    CMD: {' '.join(cmd)}")
                 try:
                     proc = subprocess.run(
-                        [sys.executable, str(RUNNER), "--model", f"omlx/{args.model}",
-                         "--fixture", fx, "--job-slug", slug, *extra],
+                        cmd, stdin=subprocess.DEVNULL,  # s. run_opencode_test.py: opencode liest offenes stdin
                         cwd=str(RUNNER.parent), capture_output=True, text=True,
                         timeout=args.timeout)
                     tail = (proc.stdout or "")[-600:]
@@ -163,11 +189,31 @@ def main():
                 except subprocess.TimeoutExpired:
                     tail, rc = "TIMEOUT", -9
                 dur = time.time() - t
+                if args.one_session:
+                    # Session-ID der ersten Fixture uebernehmen; opencode schreibt sie in jedes Event
+                    try:
+                        for line in (JOBS_BASE / slug / "output" / "run.jsonl").read_text().splitlines():
+                            if '"sessionID"' in line:
+                                sid = json.loads(line).get("sessionID") or json.loads(line).get("part", {}).get("sessionID")
+                                if sid:
+                                    if session_id and sid != session_id:
+                                        log(fh, f"    WARNUNG: Session-ID gewechselt {session_id} -> {sid} (Fortsetzung fehlgeschlagen?)")
+                                    session_id = sid
+                                    break
+                    except Exception as exc:
+                        log(fh, f"    Session-ID nicht lesbar: {exc}")
                 drift = settings_drift()
                 if drift:
                     log(fh, f"    SETTINGS-DRIFT nach {fx}: {'; '.join(drift)} — Fixture nicht belastbar")
 
                 src = RESULT_SRC / short / "results" / f"{datetime.now(timezone.utc).strftime('%Y-%m-%d')}-opencode-{fx}.json"
+                # Die Ergebnisdatei ist je Modell+Tag+Fixture — ein Timeout/Abbruch laesst die Datei
+                # des VORIGEN Laufs stehen, die dann als "PASS" eingelesen wurde (Vorfall 01.10.
+                # 21:53-22:33: vier gehaengte Laeufe meldeten PASS mit rc=-9). Nur Dateien, die
+                # nach dem Start dieser Fixture geschrieben wurden, zaehlen.
+                if src.exists() and src.stat().st_mtime < t:
+                    log(fh, f"    Ergebnisdatei ist aelter als dieser Lauf ({datetime.fromtimestamp(src.stat().st_mtime):%H:%M:%S}) — ignoriert")
+                    src = src.with_name(src.name + ".stale-ignored")
                 probe = json.loads(src.read_text()) if src.exists() else {}
                 po = probe.get("parser_output", {})
                 if po.get("steps") or po.get("tool_calls"):
