@@ -1,0 +1,36 @@
+{
+  "model": "omlx/chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-thinkingcap-think-xhigh-mtp-min-a2-bugfix-1790864009",
+  "timestamp": "2026-10-01T14:17:03.509519+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 211.57,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 1,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16140,
+      "cache_read_sum": 46981,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f082fd38fffe81DNWCQP3jyQKy"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-think-xhigh-mtp-min-a2-bugfix-1790864009",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

@@ -1,0 +1,32 @@
+{
+  "model": "omlx/Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "king-solstice-think-profiles-mtp-min-v6-custom-constraint-1790865770",
+  "timestamp": "2026-10-01T14:46:45.061050+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 233.31,
+    "steps": 6,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "write": 4,
+      "read": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16288,
+      "cache_read_sum": 78922,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0814f792ffe8Rswf2R83Sk4AT"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-solstice-think-profiles-mtp-min-v6-custom-constraint-1790865770"
+}

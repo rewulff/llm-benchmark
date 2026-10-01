@@ -1,0 +1,15 @@
+[15:57:42] === START solstice-think-profiles-min | model=Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M | 3 fixtures ===
+[15:57:42] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[15:57:42] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":12,"distributed_ranks":0}
+[15:57:51] Warmup: HTTP 200 | load=4.44s | wall=8.4s
+[15:57:51] --> a2-bugfix (slug=king-solstice-think-profiles-min-a2-bugfix-1790863071, Versuch 1)
+[15:57:51]     Prompt-Praefix: '{REASON:artemis}'
+[16:01:14] <-- a2-bugfix: PASS | rc=0 | 203s | steps=4 tools=3 oracle=0
+[16:01:14] --> v6-custom-constraint (slug=king-solstice-think-profiles-min-v6-custom-constraint-1790863274, Versuch 1)
+[16:01:14]     Prompt-Praefix: '{REASON:apollo}'
+[16:06:38] <-- v6-custom-constraint: PASS | rc=0 | 324s | steps=3 tools=2 oracle=0
+[16:06:38] --> a5-long-edit (slug=king-solstice-think-profiles-min-a5-long-edit-1790863598, Versuch 1)
+[16:06:38]     Prompt-Praefix: '{REASON:artemis}'
+[16:12:50] <-- a5-long-edit: FAIL | rc=0 | 372s | steps=4 tools=10 oracle=1
+[16:12:50] === ENDE solstice-think-profiles-min: 2/3 PASS ===
+[16:12:51] Unload: HTTP 200

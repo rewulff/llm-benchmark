@@ -1,0 +1,63 @@
+{
+  "omlx": "omlx 0.7.0",
+  "measured": "2026-10-01T16:33:09.125590",
+  "cells": [
+    {
+      "cell": "N",
+      "model": "Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M",
+      "mtp": 3,
+      "median_tok_s": 24.62,
+      "runs": [
+        {
+          "s": 24.93,
+          "completion_tokens": 564,
+          "tok_s": 25.46,
+          "wall_tok_s": 22.63,
+          "generation_duration": 22.15,
+          "ttft": 2.77,
+          "prompt_tok_s": 111.09,
+          "reasoning_tokens": null,
+          "reasoning_chars": 0,
+          "content_chars": 2612,
+          "effort": null,
+          "prompt_tokens": 308
+        },
+        {
+          "s": 61.52,
+          "completion_tokens": 1413,
+          "tok_s": 24.09,
+          "wall_tok_s": 22.97,
+          "generation_duration": 58.67,
+          "ttft": 2.85,
+          "prompt_tok_s": 108.16,
+          "reasoning_tokens": null,
+          "reasoning_chars": 0,
+          "content_chars": 6450,
+          "effort": null,
+          "prompt_tokens": 308
+        },
+        {
+          "s": 42.15,
+          "completion_tokens": 963,
+          "tok_s": 24.62,
+          "wall_tok_s": 22.85,
+          "generation_duration": 39.12,
+          "ttft": 3.03,
+          "prompt_tok_s": 101.64,
+          "reasoning_tokens": null,
+          "reasoning_chars": 0,
+          "content_chars": 4339,
+          "effort": null,
+          "prompt_tokens": 308
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": true,
+      "mtp_acceptance_pct": 67.5685975609756,
+      "mtp_note": "3 MTP-Zyklen, 1773/2624",
+      "pressure": null,
+      "prompt_tokens": 308,
+      "status": "OK"
+    }
+  ]
+}

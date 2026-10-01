@@ -1,0 +1,37 @@
+{
+  "label": "solstice-oq4e-tq4-min",
+  "model": "Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M",
+  "finished_utc": "2026-10-01T13:35:14.606458+00:00",
+  "runs": [
+    {
+      "fixture": "a2-bugfix",
+      "status": "FAIL",
+      "rc": 0,
+      "duration_s": 75.8,
+      "steps": 1,
+      "tool_calls": 0,
+      "oracle_exit": 1,
+      "reasoning_tokens": 0
+    },
+    {
+      "fixture": "v6-custom-constraint",
+      "status": "NO_RESULT",
+      "rc": -9,
+      "duration_s": 38.2,
+      "steps": null,
+      "tool_calls": null,
+      "oracle_exit": null,
+      "reasoning_tokens": null
+    },
+    {
+      "fixture": "a5-long-edit",
+      "status": "NO_RESULT",
+      "rc": 1,
+      "duration_s": 0.1,
+      "steps": null,
+      "tool_calls": null,
+      "oracle_exit": null,
+      "reasoning_tokens": null
+    }
+  ]
+}

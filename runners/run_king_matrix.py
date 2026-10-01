@@ -55,9 +55,45 @@ def main():
     ap.add_argument("--fixtures", default="all")
     ap.add_argument("--timeout", type=int, default=1800, help="Sekunden pro Fixture")
     ap.add_argument("--unload-after", action="store_true")
+    ap.add_argument("--expect-settings", default="",
+                    help='JSON-Objekt der Soll-Settings (z.B. \'{"enable_thinking":true,"mtp_enabled":true}\'). '
+                         "Wird nach JEDER Fixture per Admin-API rueckgelesen; weicht ein Wert ab, gilt die "
+                         "Fixture als SETTINGS-DRIFT. Anlass 01.10.: WebUI-Aenderung waehrend des Laufs "
+                         "(Thinking aus, MTP an) — im omlx-Log unsichtbar, nur Datei-mtime.")
+    ap.add_argument("--prompt-prefix-map", default="",
+                    help="fx=TEXT,fx=TEXT — Text, der der prompt.md der Fixture vorangestellt wird. "
+                         "Fuer In-Chat-Modus-Tags wie {REASON:artemis} (Solstice/DavidAU-Merges): "
+                         "so laeuft ein Modell ueber opencode in SEINEM vorgesehenen Modus statt im "
+                         "Raster des Basismodells (rwu, 01.10.2026).")
     args = ap.parse_args()
 
     fixtures = FIXTURES if args.fixtures == "all" else args.fixtures.split(",")
+    prefix_map = {}
+    for item in filter(None, args.prompt_prefix_map.split(",")):
+        fx_name, _, text = item.partition("=")
+        prefix_map[fx_name.strip()] = text.strip()
+    expect = json.loads(args.expect_settings) if args.expect_settings else {}
+
+    def settings_drift():
+        """Liest die Modell-Settings per Admin-API und meldet Abweichungen vom Soll."""
+        if not expect:
+            return []
+        try:
+            key = os.environ["OMLX_API_KEY"]
+            cj = __import__("http.cookiejar").cookiejar.CookieJar()
+            op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+            op.open(urllib.request.Request(f"{API}/admin/api/login",
+                    data=json.dumps({"api_key": key}).encode(),
+                    headers={"Content-Type": "application/json"}, method="POST"))
+            ms = json.loads(op.open(f"{API}/admin/api/models", timeout=30).read())
+            ms = ms.get("models", ms)
+            cur = next((m for m in ms if isinstance(m, dict) and m.get("id") == args.model), {})
+            # Settings haengen je nach omlx-Version direkt am Modell oder unter 'settings'
+            cur = cur.get("settings", cur)
+            return [f"{k}: soll={v!r} ist={cur.get(k)!r}" for k, v in expect.items()
+                    if cur.get(k) != v]
+        except Exception as exc:  # Drift-Check darf den Lauf nie selbst stoppen
+            return [f"(Drift-Check fehlgeschlagen: {exc})"]
 
     # Vorab-Gate: opencode bricht bei unbekanntem Modell pro Fixture in ~1s ab
     # ("Model not found") — ohne diesen Check verbrennt ein Tippfehler den ganzen Batch.
@@ -107,10 +143,19 @@ def main():
                 slug = f"king-{args.label}-{fx}-{int(time.time())}"
                 log(fh, f"--> {fx} (slug={slug}, Versuch {attempt})")
                 t = time.time()
+                extra = []
+                if fx in prefix_map:
+                    # Praefix + Original-Prompt in eine Datei, die run_opencode_test.py per
+                    # --prompt-file statt fixtures/<fx>/prompt.md liest. Original bleibt unberuehrt.
+                    orig = (RUNNER.parent / "fixtures" / fx / "prompt.md").read_text()
+                    pf = out_dir / f"{fx}.prompt.md"
+                    pf.write_text(prefix_map[fx] + "\n\n" + orig)
+                    extra = ["--prompt-file", str(pf)]
+                    log(fh, f"    Prompt-Praefix: {prefix_map[fx]!r}")
                 try:
                     proc = subprocess.run(
                         [sys.executable, str(RUNNER), "--model", f"omlx/{args.model}",
-                         "--fixture", fx, "--job-slug", slug],
+                         "--fixture", fx, "--job-slug", slug, *extra],
                         cwd=str(RUNNER.parent), capture_output=True, text=True,
                         timeout=args.timeout)
                     tail = (proc.stdout or "")[-600:]
@@ -118,6 +163,9 @@ def main():
                 except subprocess.TimeoutExpired:
                     tail, rc = "TIMEOUT", -9
                 dur = time.time() - t
+                drift = settings_drift()
+                if drift:
+                    log(fh, f"    SETTINGS-DRIFT nach {fx}: {'; '.join(drift)} — Fixture nicht belastbar")
 
                 src = RESULT_SRC / short / "results" / f"{datetime.now(timezone.utc).strftime('%Y-%m-%d')}-opencode-{fx}.json"
                 probe = json.loads(src.read_text()) if src.exists() else {}

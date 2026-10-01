@@ -1,0 +1,35 @@
+{
+  "model": "omlx/Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-solstice-think-profiles-min-a2-bugfix-1790863071",
+  "timestamp": "2026-10-01T14:01:14.492591+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 201.12,
+    "steps": 4,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16073,
+      "cache_read_sum": 47216,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f083e249dffexFTEElC7cyt8YT"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-solstice-think-profiles-min-a2-bugfix-1790863071",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

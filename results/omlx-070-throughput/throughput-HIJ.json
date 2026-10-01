@@ -1,0 +1,126 @@
+{
+  "omlx": "omlx 0.7.0",
+  "measured": "2026-10-01T15:49:46.052662",
+  "cells": [
+    {
+      "cell": "H",
+      "model": "Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M",
+      "mtp": null,
+      "median_tok_s": 12.65,
+      "runs": [
+        {
+          "s": 76.0,
+          "completion_tokens": 903,
+          "tok_s": 12.48,
+          "wall_tok_s": 11.88,
+          "generation_duration": 72.34,
+          "ttft": 3.66,
+          "prompt_tok_s": 84.09
+        },
+        {
+          "s": 92.38,
+          "completion_tokens": 1139,
+          "tok_s": 12.88,
+          "wall_tok_s": 12.33,
+          "generation_duration": 88.46,
+          "ttft": 3.91,
+          "prompt_tok_s": 78.68
+        },
+        {
+          "s": 61.85,
+          "completion_tokens": 732,
+          "tok_s": 12.65,
+          "wall_tok_s": 11.84,
+          "generation_duration": 57.88,
+          "ttft": 3.97,
+          "prompt_tok_s": 77.57
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK"
+    },
+    {
+      "cell": "I",
+      "model": "Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M",
+      "mtp": null,
+      "median_tok_s": 13.83,
+      "runs": [
+        {
+          "s": 72.84,
+          "completion_tokens": 954,
+          "tok_s": 13.86,
+          "wall_tok_s": 13.1,
+          "generation_duration": 68.85,
+          "ttft": 3.98,
+          "prompt_tok_s": 77.3
+        },
+        {
+          "s": 27.88,
+          "completion_tokens": 335,
+          "tok_s": 13.83,
+          "wall_tok_s": 12.02,
+          "generation_duration": 24.22,
+          "ttft": 3.65,
+          "prompt_tok_s": 84.32
+        },
+        {
+          "s": 70.61,
+          "completion_tokens": 916,
+          "tok_s": 13.7,
+          "wall_tok_s": 12.97,
+          "generation_duration": 66.87,
+          "ttft": 3.74,
+          "prompt_tok_s": 82.35
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK"
+    },
+    {
+      "cell": "J",
+      "model": "chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp",
+      "mtp": null,
+      "median_tok_s": 10.94,
+      "runs": [
+        {
+          "s": 73.45,
+          "completion_tokens": 1044,
+          "tok_s": 14.43,
+          "wall_tok_s": 14.21,
+          "generation_duration": 72.33,
+          "ttft": 1.12,
+          "prompt_tok_s": 48.05
+        },
+        {
+          "s": 122.45,
+          "completion_tokens": 1328,
+          "tok_s": 10.94,
+          "wall_tok_s": 10.84,
+          "generation_duration": 121.43,
+          "ttft": 1.02,
+          "prompt_tok_s": 53.03
+        },
+        {
+          "s": 105.56,
+          "completion_tokens": 1028,
+          "tok_s": 9.89,
+          "wall_tok_s": 9.74,
+          "generation_duration": 103.96,
+          "ttft": 1.59,
+          "prompt_tok_s": 33.86
+        }
+      ],
+      "rc1_reference": null,
+      "mtp_active": null,
+      "mtp_acceptance_pct": null,
+      "mtp_note": "",
+      "status": "OK"
+    }
+  ]
+}

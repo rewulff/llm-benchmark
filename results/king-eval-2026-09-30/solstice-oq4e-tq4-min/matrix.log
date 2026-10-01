@@ -1,0 +1,21 @@
+[15:29:58] === START solstice-oq4e-tq4-min | model=Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M | 3 fixtures ===
+[15:29:59] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[15:29:59] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":0,"distributed_ranks":0}
+[15:30:12] Warmup: HTTP 200 | load=8.75s | wall=12.7s
+[15:30:12] --> a2-bugfix (slug=king-solstice-oq4e-tq4-min-a2-bugfix-1790861412, Versuch 1)
+[15:31:27] <-- a2-bugfix: FAIL | rc=0 | 76s | steps=1 tools=0 oracle=1
+[15:31:27] --> v6-custom-constraint (slug=king-solstice-oq4e-tq4-min-v6-custom-constraint-1790861487, Versuch 1)
+[15:33:32]     steps=0 — kein Modellergebnis (507/Speicher, unbekanntes Modell, oder Engine-Pool-Reset durch /admin/api/reload waehrend des Laufs), Warmup + zweiter Versuch
+[15:33:32]     Warmup vor Retry fehlgeschlagen: HTTP Error 409: Conflict
+[15:33:32] --> v6-custom-constraint (slug=king-solstice-oq4e-tq4-min-v6-custom-constraint-1790861612, Versuch 2)
+[15:34:10] <-- v6-custom-constraint: NO_RESULT | rc=-9 | 38s | steps=None tools=None oracle=None
+[15:34:10]     stdout-tail: 
+[15:34:10] --> a5-long-edit (slug=king-solstice-oq4e-tq4-min-a5-long-edit-1790861650, Versuch 1)
+[15:35:05]     steps=0 — kein Modellergebnis (507/Speicher, unbekanntes Modell, oder Engine-Pool-Reset durch /admin/api/reload waehrend des Laufs), Warmup + zweiter Versuch
+[15:35:14]     Warmup vor Retry fehlgeschlagen: IncompleteRead(1 bytes read)
+[15:35:14] --> a5-long-edit (slug=king-solstice-oq4e-tq4-min-a5-long-edit-1790861714, Versuch 2)
+[15:35:14] <-- a5-long-edit: NO_RESULT | rc=1 | 0s | steps=None tools=None oracle=None
+[15:35:14]     stdout-tail: [opencode-test] model=omlx/Solstice-AI--Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NM-DAU-mlx-oQ4e-1M fixture=a5-long-edit
+
+[15:35:14] === ENDE solstice-oq4e-tq4-min: 0/3 PASS ===
+[15:35:14] Unload FEHLER: <urlopen error [Errno 61] Connection refused>

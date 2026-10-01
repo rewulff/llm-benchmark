@@ -169,9 +169,81 @@ heißen. TTS-Smoke nach dem Upgrade: PASS (HTTP 200, 161 KB WAV, omlx-Load beleg
 TTS-Modell ist seit 01.10. omlx-Default (`is_default`), damit nach jedem Unload 3 GB statt
 22 GB nachgeladen werden; real belegt es 3,16 GB, omlx schätzt 1,0.
 
+## Nachtrag Solstice Qwen3.8-27B-TURBO (16:00–17:13 Uhr): Modellkarte, Modus, MTP-Tiefe
+
+Kandidat für den Mac mini M6 (rwu): `Solstice-AI/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-…-oQ4e-1M`.
+Die Modellkarte verspricht 58–72 tok/s und empfiehlt TurboQuant-KV, kein MTP, kein Thinking.
+
+**Was davon stimmt, geprüft:**
+- oQ4e ist echt (`mode: affine, bits 4, g64` + Overrides, identisch mit scottlowry/chriswessels).
+- Die Benchmark-Tabelle der Karte ist aus der Alibaba-Qwen3.8-Karte kopiert, die tok/s-Zahlen
+  stammen aus „Anvil" (Solstice-Labs) — ein llama.cpp-Build (770× ggml, 0× mlx), der MLX gar
+  nicht laden kann; 1 Contributor, 8 Stars. Für unseren Stack sind die Zahlen ohne Aussage.
+- „kein MTP" ist falsch: der safetensors-Index enthält 29 `language_model.mtp.*`-Tensoren.
+  (Unser erster Check suchte Dateinamen statt Tensoren und meldete „kein Head" — Fehler,
+  rwu fand ihn per WebUI: „ich sehe sofort mehr t/s".)
+- Das Chat-Template setzt `enable_thinking` **an** mit `reasoning_effort` Default `xhigh` und
+  kennt zehn Profile per In-Chat-Tag (`{REASON:apollo}` … `{REASON:oracle}`); die
+  Profil-Instruktion wird auch bei Thinking aus injiziert (Prompt 54 Token off, 257 low,
+  306 xhigh). omlx kennt kein `reasoning_effort`-Setting, nur `chat_template_kwargs` im
+  Request; opencode sendet keines und zählt omlx' `reasoning_content`-Delta nicht
+  (`reasoning: 0` ist blind, nicht „denkt nicht").
+
+**Durchsatz (nothink, 2048 Token, Prosa-Prompt, Ceiling ≥ 25,6 GiB, keine Drosselung):**
+
+| Zelle | Modus | tok/s | Acceptance |
+|---|---|---|---|
+| H | ohne MTP, TQ-KV 4-bit (Karte) | 12,7 | – |
+| I | ohne MTP, TQ aus | 13,8 | – |
+| N | MTP fest 3 | 24,6 | 67,6 % |
+| O | **MTP fest 4** | **27,1** | 66,0 % |
+| P | MTP fest 5 | 24,6 | 63,5 % |
+| Q | MTP fest 6 | 23,4 | 62,1 % |
+| R | MTP fest 8 | 13,2 | 61,7 % |
+| S | adaptiv, omlx-Default (27B ⇒ Ceiling 4) | 25,4 | 66,4 % |
+| T | adaptiv ≤ 6 | 26,3 | 67,2 % |
+| U | adaptiv ≤ 8 | 26,2 | 68,2 % |
+
+Referenz ThinkingCap (gleiche Basis): Zelle D 22,6 mit MTP fest 3. Daten:
+`throughput-HIJ.json`, `throughput-N.json`, `throughput-OPQRSTU.json`.
+
+**Befund MTP-Tiefe — das übersehene Setting.** Fest d3 stammte aus dem rc1-Sweep vom 30.09.
+und war auf 0.7.0 eine Altlast: omlx wählt die Tiefe standardmäßig **adaptiv** je Sequenz aus
+der laufenden Acceptance und erzwingt für Qwen 27B (hidden 5120, 64 Layer) einen Ceiling von
+mindestens 4 (`utils/model_loading.py`, „Qwen 27B keeps an adaptive ceiling of at least
+four"); `mtp_fixed_depth` schaltet diesen Regler ab. Maximum ist 8. Die 27,7 tok/s aus rwus
+WebUI-Lauf („adaptiv ≤ 3", intern auf 4 gehoben) sind damit vollständig erklärt. TQ-KV kostet
+8 % und konvertiert nur 15/64 Layer — für Tempo kontraproduktiv, in der Karte für 16/24-GB-
+Geräte gedacht.
+
+Tiefer als 4 lohnt bei Prosa nicht: die Stufen-Acceptance fällt auf 50–65 %
+(`d4=50/90, d5=19/38`), d8 verschenkt sechs Drafts pro Zyklus. Beim **Code-Fixture** lag sie
+bei 82–90 % (`d3=116/142`, tok/cycle 3,4 von max 4; 26,5–28,9 tok/s je Request) — dort ist
+die Tiefe der Deckel. Der adaptive Regler löst das: bei ≤ 8 nutzte er auf Prosa von selbst
+nie d6–d8 (`d6=0/0`). Vorschlag Betriebsmodus: `mtp_enabled`, `mtp_fixed_depth: null`,
+`mtp_adaptive_max_depth: 8`; der Code-Beleg (Fixtures mit adaptiv) steht noch aus.
+
+**Fixtures „jedes Modell in seinem Modus"** (Thinking an, Profile per Tag, Drift-Check nach
+jeder Fixture, `run_mode_fixtures.sh`):
+
+| Lauf | Modus | a2-bugfix | v6-custom | a5-long-edit |
+|---|---|---|---|---|
+| solstice-think-profiles-min | Thinking, ohne MTP | PASS 203 s | PASS 324 s | FAIL 370 s |
+| solstice-think-profiles-mtp-min | Thinking, MTP d3 | PASS 179 s | PASS 235 s | FAIL 246 s |
+| thinkingcap-think-xhigh-mtp-min | Thinking xhigh, MTP d3 | PASS 214 s | PASS 170 s | FAIL 321 s |
+| thinkingcap-oq4e-mtp-d3-min | nothink, MTP d3 | PASS 195 s | PASS 137 s | FAIL 257 s |
+
+`solstice-oq4e-tq4-min` ist ungültig (Runner-Abbruch, NO_RESULT). a5-long-edit fällt in
+allen fünf Läufen identisch (7/8, `calculate_discount`) — bevor das als Modellschwäche
+gilt, ist die Fixture selbst zu prüfen. Thinking kostet Solstice bei a2/v6 nichts Messbares
+gegenüber ThinkingCap; MTP spart 12–28 % Laufzeit.
+
 ## Offen
 
 - Prefill-Durchsatz messen (unser bekannter Schwachpunkt: ~121 tok/s auf M4 Pro; die
   Release-Notes melden gerade dort +46 %, überwiegend M5-gebunden)
 - Concurrent > 1 auf beiden Stacks — beantwortet zugleich, ob llama.cpp noch einen Vorteil hat
 - ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll
+- Solstice/ThinkingCap-Fixtures mit adaptivem MTP (≤ 8) statt fest d3 — Code-Beleg für die
+  Tiefenwahl; ThinkingCap-Gegenprobe adaptiv
+- a5-long-edit-Fixture prüfen (identischer FAIL in fünf Läufen)
