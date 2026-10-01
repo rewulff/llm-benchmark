@@ -60,7 +60,7 @@ erwartete Bandbreitenlogik: Decode liest pro Token die Gewichte, kleinere Gewich
 schneller. **oQ4e ist das Format, in dem omlx selbst misst und optimiert** — wir hatten
 nvfp4 bzw. affine-6bit verwendet.
 
-### 3. MTP: bei dense ja, bei MoE nein — jetzt dreifach belegt
+### 3. MTP: bei dense ja, bei MoE nur adaptiv und nur bei Code — Befund am Abend korrigiert
 
 | | ohne MTP | mit MTP d3 | Acceptance |
 |---|---|---|---|
@@ -71,7 +71,40 @@ nvfp4 bzw. affine-6bit verwendet.
 Die Acceptance stammt aus den `accept=`-Zeilen des Serverlogs, nicht aus einem Settings-Feld.
 Zellen ohne Beleg wären als MTP-inaktiv markiert worden; alle drei MTP-Zellen sind belegt.
 
-**MoE profitiert nicht von Spekulation.** Das steht jetzt auf drei unabhängigen Beinen:
+> **Korrektur 18:05 Uhr — die folgende Schlussfolgerung war zu eng.** Alle drei „Beine" liefen
+> mit **fester Tiefe 3** und **Prosa-Prompt**. rwu beobachtete live 87 tok/s auf Ornith
+> (adaptiv ≤ 4, Thinking, HTML-Shop-Prompt, 10 089 Token, Acceptance 93 %). Die Nachmessung
+> (Zellen C0–C4, echte Request-Temperatur 0) trennt die Faktoren:
+>
+> | Zelle | Prompt | MTP | Thinking | tok/s | Acceptance Stufe 1 |
+> |---|---|---|---|---|---|
+> | C2 | Code | aus | aus | 77,8 | – |
+> | **C1** | **Code** | **adaptiv ≤ 4** | aus | **103,1 (+33 %)** | **88 %** |
+> | C4 | Code | aus | an | 78,2 | – |
+> | C3 | Code | adaptiv ≤ 4 | an | 101,0 | 89 % |
+> | X | Prosa | aus | aus | 77,2 | – |
+> | C0 | Prosa | adaptiv ≤ 4 | aus | 77,5 | 21 % (Regler parkt) |
+> | Y | Prosa | fest 1 | aus | 62,8 | 19 % |
+> | G | Prosa | fest 3 | aus | 51,2 | 16 % |
+>
+> Der A3B-Head trifft nur die **erste** Draft-Stufe (`d2=18/72`), und das nur bei
+> vorhersagbarem Output (HTML/CSS, Code). Bei Prosa liegt Stufe 1 bei ~20 %; feste Tiefe
+> verschwendet dann jeden Zyklus, der adaptive Regler **parkt** MTP nach 128 Token und
+> probiert periodisch neu — Ergebnis ±0 statt −35 %. Thinking ändert am Durchsatz nichts
+> (C3/C4 ≈ C1/C2); rwus 93 % kamen vom Prompt-Typ. Die Basis ist prompt-unabhängig
+> (77,2 / 77,8). **Knecht-Konsequenz:** Ornith mit `mtp_fixed_depth: null`,
+> `mtp_adaptive_max_depth: 4` — bei Code +33 %, bei Prosa kein Verlust; die 9/10 der
+> Fixtures sind damit noch nicht nachgewiesen (Lightning MTP ist als „exact" gebaut, der
+> Beleg steht aus). Daten: `throughput-C0C1C2C3C4.json`, `throughput-VWXY.json`,
+> `throughput-ZZ2.json` (V–Z2 liefen wegen eines Runner-Fehlers bei Request-Temperatur
+> 0,6 statt 0 — untereinander vergleichbar, die Temperatur-Trennung leistet erst C0).
+>
+> Methodisch: Ein Durchsatz-Benchmark mit Prosa-Prompt unterschätzt MTP für Code-Arbeit
+> systematisch (auch Solstice: Code 27–29 vs. Prosa 24,6). Der Runner führt deshalb seit
+> 18:00 Uhr einen Code-Prompt (`_prompt: "code"`) als zweite Standardzelle.
+
+**MoE profitiert nicht von Spekulation** (ursprünglicher Text, gilt nur für feste Tiefe ≥ 3 und
+Prosa). Das stand auf drei Beinen:
 llama.cpp mit nativem GGUF-Head (34,9 gegen 48,2 tok/s, Acceptance 38,2 %), omlx 0.7.0 mit
 nativem oQ4e-Head (51,2 gegen 78,9, Acceptance 15,7 %), und in beiden Fällen dieselbe
 Richtung. Die Sorge, der Befund sei ein Artefakt der rc1-Implementierung, ist ausgeräumt —
@@ -246,4 +279,5 @@ gegenüber ThinkingCap; MTP spart 12–28 % Laufzeit.
 - ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll
 - Solstice/ThinkingCap-Fixtures mit adaptivem MTP (≤ 8) statt fest d3 — Code-Beleg für die
   Tiefenwahl; ThinkingCap-Gegenprobe adaptiv
+- Ornith-Fixtures (10) mit adaptivem MTP ≤ 4 — Qualitätsnachweis vor Umstellung des Knechts
 - a5-long-edit-Fixture prüfen (identischer FAIL in fünf Läufen)

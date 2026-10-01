@@ -99,10 +99,34 @@ CELLS = [
     ("S", SOLSTICE, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": None, "_mtp_label": "adaptiv omlx-Default (27B => Ceiling 4)"}),
     ("T", SOLSTICE, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 6, "_mtp_label": "adaptiv<=6"}),
     ("U", SOLSTICE, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 8, "_mtp_label": "adaptiv<=8"}),
+    # Ornith (MoE) A/B nach rwus Live-Befund 17:30 (87 tok/s, adaptiv <=4, temp 0, Thinking):
+    # Zelle G (fest 3, temp 0.6) hatte 16 % Acceptance auf Stufe 1, rwu 93 %. Hypothese:
+    # Temperatur (Argmax-Verify vs. Rejection-Sampling), nicht der Head. Knecht laeuft bei temp 0.
+    ("V", OR_OQ4E, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 4, "temperature": 0.0, "_mtp_label": "adaptiv<=4 temp0"}),
+    ("W", OR_OQ4E, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 4, "temperature": 0.6, "_mtp_label": "adaptiv<=4 temp0.6"}),
+    ("X", OR_OQ4E, None, None, {"temperature": 0.0, "_mtp_label": "aus temp0"}),
+    ("Y", OR_OQ4E, 1, None, {"temperature": 0.0, "_mtp_label": "fixed 1 temp0"}),
+    # Zelle V (temp 0, nothink) ergab 0-20 % Acceptance -> Temperatur ist NICHT die Ursache.
+    # Verbleibende Differenz zu rwus 93 %: Thinking AN. Hypothese: der Head ist auf
+    # Thinking-Ausgaben trainiert, im nothink-Modus passt seine Verteilung nicht.
+    ("Z", OR_OQ4E, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 4, "temperature": 0.0, "enable_thinking": True, "_mtp_label": "adaptiv<=4 temp0 THINK"}),
+    ("Z2", OR_OQ4E, None, None, {"temperature": 0.0, "enable_thinking": True, "_mtp_label": "aus temp0 THINK"}),
+    # Wiederholung mit ECHTER Request-Temperatur 0 + Code-Prompt (rwus Live-Fall)
+    ("C0", OR_OQ4E, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 4, "temperature": 0.0, "_mtp_label": "adaptiv<=4", "_prompt": "prosa"}),
+    ("C1", OR_OQ4E, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 4, "temperature": 0.0, "_mtp_label": "adaptiv<=4", "_prompt": "code"}),
+    ("C2", OR_OQ4E, None, None, {"temperature": 0.0, "_mtp_label": "aus", "_prompt": "code"}),
+    ("C3", OR_OQ4E, None, None, {"mtp_enabled": True, "mtp_fixed_depth": None, "mtp_adaptive_max_depth": 4, "temperature": 0.0, "enable_thinking": True, "_mtp_label": "adaptiv<=4 THINK", "_prompt": "code"}),
+    ("C4", OR_OQ4E, None, None, {"temperature": 0.0, "enable_thinking": True, "_mtp_label": "aus THINK", "_prompt": "code"}),
 ]
 
 PROMPT = ("Erklaere in zusammenhaengendem Fliesstext, wie ein Schichtwaermetauscher "
           "funktioniert. Schreibe mindestens 600 Woerter und hoere nicht vorher auf.")
+# Zweite Standardzelle "Code": rwus Live-Prompt vom 01.10. (10k Token HTML/CSS, 93 % MTP-
+# Acceptance). Der Knecht schreibt Code, nicht Prosa — ein Prosa-Prompt unterschaetzt MTP
+# fuer seinen Betrieb systematisch (Solstice: Code 27-29 vs. Prosa 24,6 tok/s).
+CODE_PROMPT = ("Erstelle mir ein HTML-Template eines Onlineshops fuer Handyhuellen, der nach "
+               "der Apple-Store-Seite aussieht. Vollstaendige Datei mit eingebettetem CSS.")
+PROMPTS = {"prosa": PROMPT, "code": CODE_PROMPT}
 
 
 def log(msg):
@@ -166,7 +190,7 @@ class Admin:
             log(f"  Health nach Entladen nicht lesbar: {exc}")
 
 
-def chat(mid, max_tokens, timeout=1800, effort=None):
+def chat(mid, max_tokens, timeout=1800, effort=None, prompt=PROMPT, temperature=0.6):
     """Ein Completion-Request. Gibt (Sekunden, usage-Dict) zurueck.
 
     Der Bearer-Token ist Pflicht — ohne ihn antwortet 0.7.0 mit 401, und zwar
@@ -176,8 +200,10 @@ def chat(mid, max_tokens, timeout=1800, effort=None):
     usage wird um reasoning_tokens/reasoning_chars ergaenzt, damit die Thinking-Menge
     als Messwert erscheint und nicht nur die Zeit.
     """
-    body = {"model": mid, "messages": [{"role": "user", "content": PROMPT}],
-            "max_tokens": max_tokens, "temperature": 0.6, "top_p": 0.95, "top_k": 20}
+    # Request-Sampling ueberstimmt die Model-Settings — Temperatur muss hier mitgegeben werden,
+    # sonst misst eine "temp 0"-Zelle still bei 0.6 (Fehler in V/X/Y/Z am 01.10., 17:43-17:53).
+    body = {"model": mid, "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": max_tokens, "temperature": temperature, "top_p": 0.95, "top_k": 20}
     if effort:
         body["chat_template_kwargs"] = {"reasoning_effort": effort}
     req = urllib.request.Request(
@@ -317,7 +343,7 @@ def main():
     results = []
     for cell, mid, depth, ref, extra in cells:
         mtp_label = extra.get("_mtp_label") or (f"fixed {depth}" if depth else "aus")
-        label = f"{cell}: {mid.split('--')[-1][:48]} MTP={mtp_label}" + (f" +{[k for k in extra if not k.startswith('_')]}" if extra else "") + (f" effort={extra.get('_effort')}" if extra.get("_effort") else "")
+        label = f"{cell}: {mid.split('--')[-1][:48]} MTP={mtp_label} prompt={extra.get('_prompt','prosa')} T={extra.get('temperature',0.6)}" + (f" +{[k for k in extra if not k.startswith('_')]}" if extra else "") + (f" effort={extra.get('_effort')}" if extra.get("_effort") else "")
         log(f"=== {label} ===")
         params = {"enable_thinking": False, "max_tokens": 2048,
                   "max_context_window": 32768, "temperature": 0.6, "top_p": 0.95,
@@ -330,7 +356,9 @@ def main():
         extra = dict(extra)
         effort = extra.pop("_effort", None)   # kein omlx-Setting, geht per Request
         extra.pop("_mtp_label", None)         # nur Beschriftung
+        prompt_kind = extra.pop("_prompt", "prosa")
         params.update(extra)
+        req_kw = {"prompt": PROMPTS[prompt_kind], "temperature": params["temperature"]}
         mtp_on = bool(params.get("mtp_enabled"))   # auch adaptiv (ohne fixed depth)
         try:
             applied = adm.settings(mid, params)
@@ -358,7 +386,7 @@ def main():
         usage = None
         for attempt in range(1, 4):
             try:
-                dur, usage = chat(mid, 64, effort=effort)
+                dur, usage = chat(mid, 64, effort=effort, **req_kw)
                 break
             except (urllib.error.HTTPError, urllib.error.URLError,
                     http.client.HTTPException, ConnectionError) as exc:
@@ -382,7 +410,7 @@ def main():
         for i in range(REPS):
             adm.clear_caches()
             try:
-                dur, usage = chat(mid, 4096 if params.get("enable_thinking") else 2048, effort=effort)
+                dur, usage = chat(mid, 4096 if params.get("enable_thinking") else 2048, effort=effort, **req_kw)
             except (urllib.error.HTTPError, urllib.error.URLError,
                     http.client.HTTPException, ConnectionError) as exc:
                 log(f"  Lauf {i+1}/{REPS} abgebrochen ({type(exc).__name__}) — verworfen")
@@ -417,7 +445,8 @@ def main():
             log(f"  DROSSELUNG: omlx meldete '{pressure[:90]}' — Median ungueltig, "
                 f"Einzellaeufe {vals} bleiben zur Einsicht")
 
-        row = {"cell": cell, "model": mid, "mtp": depth, "mtp_mode": mtp_label,
+        row = {"cell": cell, "model": mid, "mtp": depth, "mtp_mode": mtp_label, "prompt": prompt_kind,
+               "temperature": params["temperature"], "thinking": bool(params.get("enable_thinking")),
                "median_tok_s": median, "runs": runs, "rc1_reference": ref,
                "mtp_active": active, "mtp_acceptance_pct": quote, "mtp_note": note,
                "pressure": pressure, "prompt_tokens": runs[0].get("prompt_tokens") if runs else None,
