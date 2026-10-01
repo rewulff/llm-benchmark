@@ -1,0 +1,26 @@
+[19:12:27] === START ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k | model=ornith15-oq4e-lowthink | 10 fixtures ===
+[19:12:27] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[19:12:27] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":60,"distributed_ranks":0}
+[19:12:36] Warmup: HTTP 200 | load=7.69s | wall=8.5s
+[19:12:36] --> a2-bugfix (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-a2-bugfix-1790874756, Versuch 1)
+[19:13:04] <-- a2-bugfix: PASS | rc=0 | 28s | steps=3 tools=2 oracle=0
+[19:13:04] --> v6-quick-nqueens (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-v6-quick-nqueens-1790874784, Versuch 1)
+[19:13:29] <-- v6-quick-nqueens: PASS | rc=0 | 25s | steps=2 tools=1 oracle=0
+[19:13:29] --> v6-debug-unmarked (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-v6-debug-unmarked-1790874809, Versuch 1)
+[19:13:54] <-- v6-debug-unmarked: PASS | rc=0 | 24s | steps=4 tools=3 oracle=0
+[19:13:54] --> c1-dependent-pipeline (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-c1-dependent-pipeline-1790874834, Versuch 1)
+[19:14:38] <-- c1-dependent-pipeline: PASS | rc=0 | 44s | steps=9 tools=12 oracle=0
+[19:14:38] --> v6-custom-constraint (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-v6-custom-constraint-1790874878, Versuch 1)
+[19:14:57] <-- v6-custom-constraint: PASS | rc=0 | 20s | steps=2 tools=1 oracle=0
+[19:14:57] --> v6-ambiguity-probe (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-v6-ambiguity-probe-1790874897, Versuch 1)
+[19:15:20] <-- v6-ambiguity-probe: PASS | rc=0 | 23s | steps=3 tools=2 oracle=0
+[19:15:20] --> v6-produktiv-fqdn-bug (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-v6-produktiv-fqdn-bug-1790874920, Versuch 1)
+[19:16:13] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 53s | steps=6 tools=5 oracle=0
+[19:16:13] --> r1-offline-research (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-r1-offline-research-1790874973, Versuch 1)
+[19:17:09] <-- r1-offline-research: FAIL | rc=0 | 56s | steps=6 tools=15 oracle=1
+[19:17:09] --> v6-architecture-choice (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-v6-architecture-choice-1790875029, Versuch 1)
+[19:18:03] <-- v6-architecture-choice: PASS | rc=0 | 54s | steps=2 tools=1 oracle=0
+[19:18:03] --> a5-long-edit (slug=king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-a5-long-edit-1790875083, Versuch 1)
+[19:18:48] <-- a5-long-edit: PASS | rc=0 | 45s | steps=3 tools=9 oracle=0
+[19:18:48] === ENDE ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k: 9/10 PASS ===
+[19:18:49] Unload: HTTP 200

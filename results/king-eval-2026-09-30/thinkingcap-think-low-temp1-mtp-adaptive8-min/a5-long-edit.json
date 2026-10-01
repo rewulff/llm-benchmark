@@ -1,0 +1,33 @@
+{
+  "model": "omlx/chriswessels--ThinkingCap-Qwen3.8-27B-oQ4e-mtp",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-thinkingcap-think-low-temp1-mtp-adaptive8-min-a5-long-edit-1790874512",
+  "timestamp": "2026-10-01T17:11:55.879688+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 201.13,
+    "steps": 4,
+    "tool_calls": 10,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22741,
+      "cache_read_sum": 65044,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f078f8ff8ffeUb7gZGOZHjIxQm"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-think-low-temp1-mtp-adaptive8-min-a5-long-edit-1790874512"
+}

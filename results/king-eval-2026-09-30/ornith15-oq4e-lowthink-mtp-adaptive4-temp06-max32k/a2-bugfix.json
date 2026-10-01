@@ -1,0 +1,32 @@
+{
+  "model": "omlx/ornith15-oq4e-lowthink",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-a2-bugfix-1790874756",
+  "timestamp": "2026-10-01T17:13:04.336745+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 26.22,
+    "steps": 3,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15895,
+      "cache_read_sum": 30953,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f078bd841ffeMlxNw67k9g0g3E"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-lowthink-mtp-adaptive4-temp06-max32k-a2-bugfix-1790874756"
+}

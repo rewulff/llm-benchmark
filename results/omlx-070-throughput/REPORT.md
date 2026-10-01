@@ -271,6 +271,58 @@ allen fünf Läufen identisch (7/8, `calculate_discount`) — bevor das als Mode
 gilt, ist die Fixture selbst zu prüfen. Thinking kostet Solstice bei a2/v6 nichts Messbares
 gegenüber ThinkingCap; MTP spart 12–28 % Laufzeit.
 
+## Nachtrag Abend (18:08–19:19 Uhr): Ornith-Betriebsmodus, ThinkingCap Effort low, Denkbremse
+
+Nach dem MoE-MTP-Befund wurde Ornith in fünf Modi durch alle zehn Fixtures gefahren, ThinkingCap
+mit Effort low, und die alte Idee „Denkbremse im Template" (`ornith15-6bit-lowthink`, 01.10. früh)
+auf oQ4e übertragen (`/Users/rwu/omlx-test-models/ornith15-oq4e-lowthink`, Symlinks auf den
+oQ4e-Snapshot, `<think>`-Prefix „Reasoning effort is low. Keep this reasoning brief …").
+
+| Ornith-Lauf | Thinking | temp | MTP | Limits | PASS | Zeit | FAIL |
+|---|---|---|---|---|---|---|---|
+| `ornith15-oq4e-nomtp-temp0` (14:16) | aus | 0 | aus | 16k/64k | 9/10 | 6,1 min | r1 |
+| `…-mtp-adaptive4-nothink-temp0-max32k` | aus | 0 | adaptiv ≤4 | 32k/128k | 9/10 | 6,3 min | r1 |
+| `…-mtp-adaptive4-think-temp0` | an | 0 | adaptiv ≤4 | 16k/64k | 9/10 | 15,2 min | fqdn (16k-Deckel, Denkschleife) |
+| `…-mtp-adaptive4-think-temp06-max32k` (Karte) | an | 0,6 | adaptiv ≤4 | 32k/128k | 8/10 | 12,7 min | nqueens (Vorzeichen), ambiguity (Pfad halluziniert) |
+| `ornith15-oq4e-lowthink-…-temp06-max32k` | **Denkbremse** | 0,6 | adaptiv ≤4 | 32k/128k | **9/10** | **6,2 min** | r1 |
+
+Token-Volumen der echten Agenten-Requests (omlx-Log): nothink 10 023, Thinking voll 35 754,
+Denkbremse **9 442** — die Bremse drückt das Denken praktisch auf null, bei sampelndem
+Betrieb (0,6) und ohne die beiden Sampling-Fehler des Vollthinking-Laufs. Einzellauf, also
+Richtung, kein Urteil.
+
+**MTP adaptiv in der Fixture-Praxis:** greift (Median 83,3 statt 62,3 tok/s auf Requests
+≥ 200 Token, Acceptance 83 %), spart aber **keine Wandzeit** (6,1 → 6,3 min): der mediane
+Agenten-Request ist 29 Token lang und dauert 2 s bei ~16k Prompt — die Zeit steckt im
+Prefill, der bekannten M4-Pro-Schwäche. MTP zahlt sich bei langen Ausgaben aus.
+
+**Thinking bei Ornith:** binär (Template kennt nur `enable_thinking`, kein Effort, kein Budget
+— byte-identisch mit dem Original von ornith-ai), 4–5× Token-Volumen, 2–2,5× Laufzeit, kein
+messbarer Qualitätsgewinn (9/9/8 innerhalb der Streuung); rettet r1, verliert anderswo. Die
+Karte empfiehlt temp 0,6 (Benchmarks 1,0), `generation_config` temp 1,0 / top_p 0,95 /
+top_k 20; Qwen warnt im Thinking-Modus vor Greedy (Endlosschleifen). Die eine 16k-Denkschleife
+(18:19) trat in drei Folgeläufen nicht wieder auf — Deckel vs. Greedy unentschieden.
+
+**Zwei Deckel, die ich gesetzt hatte:** `max_tokens 16384` / `max_context_window 65536` in
+jedem Settings-Block **und** `limit.output 16384` in `opencode.json` — opencode sendet
+`max_tokens` im Request und omlx lässt den Request gewinnen (`server.py:1837`); das
+omlx-Setting war für Agentenläufe irrelevant. Beide auf 32k/128k (Ornith: 10 echte
+KV-Layer, ~20 KB/Token → 128k ≈ 2,6 GB). Qwen3.8 empfiehlt für Agentik bis 262k
+Reasoning-/131k Antwort-Token.
+
+**ThinkingCap-Qwen3.8 mit Effort low** (über omlx-Setting `chat_template_kwargs:
+{"reasoning_effort":"low"}` — opencode kann es nicht senden; Prüfstein: 9 Prompt-Token
+weniger im ersten a2-Request), temp 1,0/top_p 0,95/top_k 20 (Karte), MTP adaptiv ≤ 8,
+32k/128k, Min-Fixtures: **3/3** (a2 170 s, v6-custom 117 s, **a5 203 s PASS** — erstes
+dense-PASS auf a5). Der Durchsatz-Hebel ist auch hier der adaptive Regler: Median **42,0
+tok/s** gegen 21,4 mit fest d3; bei Code geht er auf Tiefe 5–6 (`tok/cycle 5,31`,
+Acceptance 91 %).
+
+**Betriebsfalle des Abends:** `POST /admin/api/global-settings {model_dirs}` entlädt alle
+Modelle und bricht laufende Requests ab (ThinkingCap-Lauf 18:58 gekillt, opencode hing an
+der offenen Verbindung). Re-Discovery nur bei geänderter Liste; `omlx-test-models` ist
+seit 19:00 persistent zweites `model_dir`.
+
 ## Offen
 
 - Prefill-Durchsatz messen (unser bekannter Schwachpunkt: ~121 tok/s auf M4 Pro; die
@@ -279,5 +331,7 @@ gegenüber ThinkingCap; MTP spart 12–28 % Laufzeit.
 - ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll
 - Solstice/ThinkingCap-Fixtures mit adaptivem MTP (≤ 8) statt fest d3 — Code-Beleg für die
   Tiefenwahl; ThinkingCap-Gegenprobe adaptiv
-- Ornith-Fixtures (10) mit adaptivem MTP ≤ 4 — Qualitätsnachweis vor Umstellung des Knechts
+- Knecht-Entscheid (rwu): nothink/temp 0 (reproduzierbar, 6 min) vs. Denkbremse/0,6 (gleiche Zahlen, sampelnd) — beide mit MTP adaptiv ≤ 4 und 32k/128k; dann `lib/local-llm` + opencode umstellen
+- ThinkingCap Effort low: Vollmatrix (10) und n ≥ 3 auf a5, bevor „a5 gelöst" gilt
+- Denkbremse n ≥ 3 (temp 0,6 streut) und Prüfung, ob `<think>` wirklich leer bleibt (reasoning_content-Länge direkt an omlx messen)
 - a5-long-edit-Fixture prüfen (identischer FAIL in fünf Läufen)

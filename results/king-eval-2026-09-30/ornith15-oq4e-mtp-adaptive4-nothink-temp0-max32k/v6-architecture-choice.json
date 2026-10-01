@@ -1,0 +1,30 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-nothink-temp0-max32k-v6-architecture-choice-1790873736",
+  "timestamp": "2026-10-01T16:56:44.822450+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 66.94,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 18553,
+      "cache_read_sum": 20480,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f079b68dfffehOOGdvgoIMkaDf"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-nothink-temp0-max32k-v6-architecture-choice-1790873736"
+}

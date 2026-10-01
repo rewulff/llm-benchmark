@@ -1,0 +1,33 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-think-temp06-max32k-a5-long-edit-1790873028",
+  "timestamp": "2026-10-01T16:44:42.221603+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 51.78,
+    "steps": 4,
+    "tool_calls": 10,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE\n\nAll 8 bugs fixed and verified (no `BUG:` comments remain, all example cases pass):\n- `calculate_discount` (large_module.py:71) — subtracts discount\n- `is_palindrome` (large_module.py:121) — co",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22812,
+      "cache_read_sum": 65873,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f07a63496ffek22A3tihiV2b1e"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-think-temp06-max32k-a5-long-edit-1790873028"
+}

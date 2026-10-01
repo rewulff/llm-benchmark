@@ -1,0 +1,34 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-ambiguity-probe-1790871257",
+  "timestamp": "2026-10-01T16:14:54.088694+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 35.09,
+    "steps": 5,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17073,
+      "cache_read_sum": 69863,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f07c13d3effejDshAM8uMHKdr0"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-ambiguity-probe-1790871257"
+}

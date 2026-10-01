@@ -1,0 +1,34 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-ambiguity-probe",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-think-temp06-max32k-v6-ambiguity-probe-1790872556",
+  "timestamp": "2026-10-01T16:37:31.476374+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 93.95,
+    "steps": 12,
+    "tool_calls": 11,
+    "tools_breakdown": {
+      "read": 3,
+      "bash": 6,
+      "glob": 1,
+      "write": 1
+    },
+    "final_text": "\n\nOutput matches the original exactly (`832040`, `[2, 3]`, `{'name': 'item_6', 'score': 6}`), and performance is now feasible — e.g. bubble sort and the O(n²) duplicate scan that would take hours on 1",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 21522,
+      "cache_read_sum": 199518,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f07ad6b78ffeBTPRE89mZwLWgh"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-think-temp06-max32k-v6-ambiguity-probe-1790872556"
+}

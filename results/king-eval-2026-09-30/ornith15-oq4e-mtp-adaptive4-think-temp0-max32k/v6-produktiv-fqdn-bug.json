@@ -1,0 +1,34 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-produktiv-fqdn-bug",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-think-temp0-max32k-v6-produktiv-fqdn-bug-1790871954",
+  "timestamp": "2026-10-01T16:28:02.253707+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 126.31,
+    "steps": 8,
+    "tool_calls": 7,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 2,
+      "bash": 3,
+      "write": 1
+    },
+    "final_text": "\n\nDONE.\n\nFix in `main.py`:\n- `push_commits` (`main.py:118`) nutzt jetzt `FORGEJO_INTERNAL_HOST` als Override, sonst `_remote_host()` (`main.py:91`) — Host aus `git remote get-url origin` per `urlparse",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 27772,
+      "cache_read_sum": 172669,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f07b69a03ffeM3wFGnt06Jq9bK"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-think-temp0-max32k-v6-produktiv-fqdn-bug-1790871954"
+}

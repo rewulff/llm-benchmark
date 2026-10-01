@@ -1,0 +1,32 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "r1-offline-research",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-nothink-temp0-max32k-r1-offline-research-1790873679",
+  "timestamp": "2026-10-01T16:55:36.267872+00:00",
+  "status": "FAIL",
+  "parser_output": {
+    "duration_s": 55.59,
+    "steps": 5,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "bash": 1,
+      "read": 13,
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 25128,
+      "cache_read_sum": 83376,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f079c48bdffeK7LCbnQ30dKusP"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 1,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-nothink-temp0-max32k-r1-offline-research-1790873679"
+}

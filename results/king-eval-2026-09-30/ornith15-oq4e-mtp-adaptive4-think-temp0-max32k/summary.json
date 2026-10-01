@@ -1,0 +1,17 @@
+{
+  "label": "ornith15-oq4e-mtp-adaptive4-think-temp0-max32k",
+  "model": "scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "finished_utc": "2026-10-01T16:28:02.318263+00:00",
+  "runs": [
+    {
+      "fixture": "v6-produktiv-fqdn-bug",
+      "status": "PASS",
+      "rc": 0,
+      "duration_s": 127.9,
+      "steps": 8,
+      "tool_calls": 7,
+      "oracle_exit": 0,
+      "reasoning_tokens": 0
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-nothink-temp0-max32k-c1-dependent-pipeline-1790873551",
+  "timestamp": "2026-10-01T16:53:09.855061+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 36.99,
+    "steps": 9,
+    "tool_calls": 12,
+    "tools_breakdown": {
+      "read": 5,
+      "bash": 4,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 19975,
+      "cache_read_sum": 158947,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f079e3bc0ffeXcHUVDFmrh0Pwc"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-nothink-temp0-max32k-c1-dependent-pipeline-1790873551"
+}

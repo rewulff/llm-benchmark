@@ -1,0 +1,34 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-think-temp0-a2-bugfix-1790870909",
+  "timestamp": "2026-10-01T16:09:04.984044+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 33.47,
+    "steps": 6,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "edit": 1,
+      "bash": 2
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16276,
+      "cache_read_sum": 78640,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f07c68a6cffepIjJM53Zbr39WL"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-think-temp0-a2-bugfix-1790870909"
+}

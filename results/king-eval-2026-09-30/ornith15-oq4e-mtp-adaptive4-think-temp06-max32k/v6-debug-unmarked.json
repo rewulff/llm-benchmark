@@ -1,0 +1,33 @@
+{
+  "model": "omlx/scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "king-ornith15-oq4e-mtp-adaptive4-think-temp06-max32k-v6-debug-unmarked-1790872407",
+  "timestamp": "2026-10-01T16:33:58.028081+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 29.33,
+    "steps": 5,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "bash": 2,
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17776,
+      "cache_read_sum": 72061,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f07afb163ffeVL4AZ2iVfztiOo"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-oq4e-mtp-adaptive4-think-temp06-max32k-v6-debug-unmarked-1790872407"
+}

@@ -1,0 +1,8 @@
+[18:25:54] === START ornith15-oq4e-mtp-adaptive4-think-temp0-max32k | model=scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp | 1 fixtures ===
+[18:25:54] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":10,"bytes_reclaimed":0,"distributed_ranks":0}
+[18:25:54] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":21,"distributed_ranks":0}
+[18:25:54] Warmup: HTTP 200 | load=Nones | wall=0.2s
+[18:25:54] --> v6-produktiv-fqdn-bug (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-max32k-v6-produktiv-fqdn-bug-1790871954, Versuch 1)
+[18:28:02] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 128s | steps=8 tools=7 oracle=0
+[18:28:02] === ENDE ornith15-oq4e-mtp-adaptive4-think-temp0-max32k: 1/1 PASS ===
+[18:28:03] Unload: HTTP 200

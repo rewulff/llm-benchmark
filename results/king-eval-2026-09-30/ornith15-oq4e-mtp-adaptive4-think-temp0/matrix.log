@@ -1,0 +1,26 @@
+[18:08:14] === START ornith15-oq4e-mtp-adaptive4-think-temp0 | model=scottlowry--Ornith-1.5-35B-A3B-oQ4e-mtp | 10 fixtures ===
+[18:08:14] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[18:08:14] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":2,"distributed_ranks":0}
+[18:08:29] Warmup: HTTP 200 | load=14.0s | wall=14.6s
+[18:08:29] --> a2-bugfix (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-a2-bugfix-1790870909, Versuch 1)
+[18:09:05] <-- a2-bugfix: PASS | rc=0 | 36s | steps=6 tools=5 oracle=0
+[18:09:05] --> v6-quick-nqueens (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-quick-nqueens-1790870945, Versuch 1)
+[18:10:42] <-- v6-quick-nqueens: PASS | rc=0 | 97s | steps=2 tools=1 oracle=0
+[18:10:42] --> v6-debug-unmarked (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-debug-unmarked-1790871042, Versuch 1)
+[18:11:08] <-- v6-debug-unmarked: PASS | rc=0 | 26s | steps=3 tools=3 oracle=0
+[18:11:08] --> c1-dependent-pipeline (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-c1-dependent-pipeline-1790871068, Versuch 1)
+[18:13:32] <-- c1-dependent-pipeline: PASS | rc=0 | 145s | steps=9 tools=12 oracle=0
+[18:13:32] --> v6-custom-constraint (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-custom-constraint-1790871212, Versuch 1)
+[18:14:17] <-- v6-custom-constraint: PASS | rc=0 | 44s | steps=2 tools=1 oracle=0
+[18:14:17] --> v6-ambiguity-probe (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-ambiguity-probe-1790871257, Versuch 1)
+[18:14:54] <-- v6-ambiguity-probe: PASS | rc=0 | 37s | steps=5 tools=4 oracle=0
+[18:14:54] --> v6-produktiv-fqdn-bug (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-produktiv-fqdn-bug-1790871294, Versuch 1)
+[18:19:19] <-- v6-produktiv-fqdn-bug: FAIL | rc=0 | 265s | steps=2 tools=1 oracle=1
+[18:19:19] --> r1-offline-research (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-r1-offline-research-1790871559, Versuch 1)
+[18:20:49] <-- r1-offline-research: PASS | rc=0 | 90s | steps=5 tools=15 oracle=0
+[18:20:49] --> v6-architecture-choice (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-v6-architecture-choice-1790871649, Versuch 1)
+[18:22:43] <-- v6-architecture-choice: PASS | rc=0 | 114s | steps=3 tools=2 oracle=0
+[18:22:43] --> a5-long-edit (slug=king-ornith15-oq4e-mtp-adaptive4-think-temp0-a5-long-edit-1790871763, Versuch 1)
+[18:23:43] <-- a5-long-edit: PASS | rc=0 | 60s | steps=12 tools=11 oracle=0
+[18:23:43] === ENDE ornith15-oq4e-mtp-adaptive4-think-temp0: 9/10 PASS ===
+[18:23:45] Unload: HTTP 200
