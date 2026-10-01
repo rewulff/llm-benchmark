@@ -284,12 +284,16 @@ oQ4e-Snapshot, `<think>`-Prefix „Reasoning effort is low. Keep this reasoning 
 | `…-mtp-adaptive4-nothink-temp0-max32k` | aus | 0 | adaptiv ≤4 | 32k/128k | 9/10 | 6,3 min | r1 |
 | `…-mtp-adaptive4-think-temp0` | an | 0 | adaptiv ≤4 | 16k/64k | 9/10 | 15,2 min | fqdn (16k-Deckel, Denkschleife) |
 | `…-mtp-adaptive4-think-temp06-max32k` (Karte) | an | 0,6 | adaptiv ≤4 | 32k/128k | 8/10 | 12,7 min | nqueens (Vorzeichen), ambiguity (Pfad halluziniert) |
-| `ornith15-oq4e-lowthink-…-temp06-max32k` | **Denkbremse** | 0,6 | adaptiv ≤4 | 32k/128k | **9/10** | **6,2 min** | r1 |
+| `ornith15-oq4e-lowthink-…-temp06-max32k` | „Denkbremse" = **faktisch aus** | 0,6 | adaptiv ≤4 | 32k/128k | 9/10 | 6,2 min | r1 |
 
 Token-Volumen der echten Agenten-Requests (omlx-Log): nothink 10 023, Thinking voll 35 754,
-Denkbremse **9 442** — die Bremse drückt das Denken praktisch auf null, bei sampelndem
-Betrieb (0,6) und ohne die beiden Sampling-Fehler des Vollthinking-Laufs. Einzellauf, also
-Richtung, kein Urteil.
+Denkbremse **9 442**. **Rohmessung 19:30 (rwu: „sicher, dass das Modell wirklich gedacht hat?"):**
+über `/v1/completions` mit dem Template-Prefix `<think>\nReasoning effort is low. …` ist das
+**erste generierte Token `</think>`** — 0 Zeichen Denkteil, bei Rechen- wie Code-Prompt;
+ohne Prefix denkt dasselbe Modell 233 bzw. > 1 193 Zeichen. Die „Denkbremse" ist also
+**kein leichtes Thinking, sondern nothink mit Sampling** — der Lauf belegt nur, dass Ornith
+auch bei temp 0,6 ohne Thinking 9/10 schafft. Ein Denk-Dosierer für Ornith existiert damit
+nicht (Template binär, Prefix kippt auf null, omlx-Budget wäre der einzige Hebel).
 
 **MTP adaptiv in der Fixture-Praxis:** greift (Median 83,3 statt 62,3 tok/s auf Requests
 ≥ 200 Token, Acceptance 83 %), spart aber **keine Wandzeit** (6,1 → 6,3 min): der mediane
@@ -333,5 +337,5 @@ seit 19:00 persistent zweites `model_dir`.
   Tiefenwahl; ThinkingCap-Gegenprobe adaptiv
 - Knecht-Entscheid (rwu): nothink/temp 0 (reproduzierbar, 6 min) vs. Denkbremse/0,6 (gleiche Zahlen, sampelnd) — beide mit MTP adaptiv ≤ 4 und 32k/128k; dann `lib/local-llm` + opencode umstellen
 - ThinkingCap Effort low: Vollmatrix (10) und n ≥ 3 auf a5, bevor „a5 gelöst" gilt
-- Denkbremse n ≥ 3 (temp 0,6 streut) und Prüfung, ob `<think>` wirklich leer bleibt (reasoning_content-Länge direkt an omlx messen)
+- Denkbremse: erledigt — `<think>` bleibt leer (Rohmessung); Variante ist nothink/0,6. Falls dosiertes Thinking gewünscht: omlx `thinking_budget` testen (einziger Hebel)
 - a5-long-edit-Fixture prüfen (identischer FAIL in fünf Läufen)
