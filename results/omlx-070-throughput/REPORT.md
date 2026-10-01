@@ -296,9 +296,24 @@ auch bei temp 0,6 ohne Thinking 9/10 schafft. Ein Denk-Dosierer für Ornith exis
 nicht (Template binär, Prefix kippt auf null, omlx-Budget wäre der einzige Hebel).
 
 **MTP adaptiv in der Fixture-Praxis:** greift (Median 83,3 statt 62,3 tok/s auf Requests
-≥ 200 Token, Acceptance 83 %), spart aber **keine Wandzeit** (6,1 → 6,3 min): der mediane
-Agenten-Request ist 29 Token lang und dauert 2 s bei ~16k Prompt — die Zeit steckt im
-Prefill, der bekannten M4-Pro-Schwäche. MTP zahlt sich bei langen Ausgaben aus.
+≥ 200 Token, Acceptance 83 %), spart aber **keine Wandzeit** (6,1 → 6,3 min). **Korrektur
+21:45 (rwu: „Agentenarbeit ist Prefill und ab da Cache"):** Die Zeit steckt nicht im Prefill
+je Turn, sondern im **Erst-Prefill je Session** — und den misst die Suite künstlich oft:
+Jede Fixture ist eine neue Session, der Runner leert vorher den Cache. Zerlegung der
+Request-Zeiten (omlx-Log, `stream_model_ttft`):
+
+| Lauf | Request-Zeit | Erst-Prefills (Cache-Miss) | TTFT Folge-Turn (Median) | Decode |
+|---|---|---|---|---|
+| Ornith nothink + MTP (10 Fixtures) | 371 s | 13 × ≈ 14 s = **183 s** | 0,76 s | 132 s @ 75 tok/s |
+| Ornith Thinking 0,6 | 793 s | 14 × = 209 s | 0,89 s | 444 s @ 78 tok/s |
+| ThinkingCap low + MTP (3 Fixtures) | 533 s | 5 × ≈ 80 s = **402 s** | 2,7 s | 65 s @ 42 tok/s |
+
+Mit warmem Prefix-Cache (identischer 15k-System-Prompt in Produktion) fällt der Erst-Prefill
+weg; dann ist ThinkingCap im Agentenloop nicht 6×, sondern grob **2× langsamer** als Ornith
+(Decode 42 vs. 75 tok/s, Folge-TTFT 2,7 vs. 0,8 s). Sein Kaltstart ist allerdings **4× teurer**
+(dense: 15k Token in ~80 s ≈ 190 tok/s Prefill; MoE ≈ 750 tok/s) — und Cache-Misses sind
+real (13 in 10 Fixtures: Session-Wechsel, Pool-Druck, Modellwechsel). Für Vergleiche im
+Steady-State braucht die Suite einen Modus **ohne Cache-Reset** zwischen Fixtures.
 
 **Thinking bei Ornith:** binär (Template kennt nur `enable_thinking`, kein Effort, kein Budget
 — byte-identisch mit dem Original von ornith-ai), 4–5× Token-Volumen, 2–2,5× Laufzeit, kein
@@ -335,7 +350,8 @@ seit 19:00 persistent zweites `model_dir`.
 - ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll
 - Solstice/ThinkingCap-Fixtures mit adaptivem MTP (≤ 8) statt fest d3 — Code-Beleg für die
   Tiefenwahl; ThinkingCap-Gegenprobe adaptiv
-- Knecht-Entscheid (rwu): nothink/temp 0 (reproduzierbar, 6 min) vs. Denkbremse/0,6 (gleiche Zahlen, sampelnd) — beide mit MTP adaptiv ≤ 4 und 32k/128k; dann `lib/local-llm` + opencode umstellen
+- Knecht-Entscheid (rwu, 01.10. 21:35): nothink/temp 0 + MTP adaptiv ≤ 4 + 32k/128k als Profil `knecht-nothink`, Fallback `knecht-think` (`…:think`) — umgesetzt in omlx/lib/local-llm/opencode
+- Suite: Steady-State-Modus ohne Cache-Reset zwischen Fixtures (Erst-Prefill dominiert sonst 50–80 % der Zeit, dense 4× stärker)
 - ThinkingCap Effort low: Vollmatrix (10) und n ≥ 3 auf a5, bevor „a5 gelöst" gilt
 - Denkbremse: erledigt — `<think>` bleibt leer (Rohmessung); Variante ist nothink/0,6. Falls dosiertes Thinking gewünscht: omlx `thinking_budget` testen (einziger Hebel)
 - a5-long-edit-Fixture prüfen (identischer FAIL in fünf Läufen)
