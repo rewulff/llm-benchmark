@@ -30,5 +30,10 @@
   "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-v6-quick-nqueens-1790790411",
   "oracle_rerun_exit": 1,
   "oracle_output": "FAIL: Erwartete Ausgabe '18', erhalten '0'\n  Full Output: 0\n",
-  "failed_checks": []
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
 }

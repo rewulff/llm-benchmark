@@ -1,0 +1,44 @@
+{
+  "model": "omlx/JetBrains--Qwen3.8-3.6-27B-blend-MLX-4bit",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "king-jetbrains-blend-27b-plain-v6-debug-unmarked-1790816304",
+  "timestamp": "2026-10-01T01:01:19.380860+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 173.15,
+    "steps": 3,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17346,
+      "cache_read_sum": 38669,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b07bf65ffeJDiE2X6Hs6dC8Q"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-jetbrains-blend-27b-plain-v6-debug-unmarked-1790816304",
+  "lint_delta": {
+    "baseline": {
+      "DTZ003": 1
+    },
+    "after_run": {
+      "DTZ003": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: off-by-one in get_top_n gefixt (sorted_items[:n])\n",
+  "failed_checks": []
+}

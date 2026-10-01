@@ -31,5 +31,10 @@
   "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-a2-bugfix-1790790375",
   "oracle_rerun_exit": 0,
   "oracle_output": "PASS: alle 3 Bugs gefixt\n",
-  "failed_checks": []
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
 }

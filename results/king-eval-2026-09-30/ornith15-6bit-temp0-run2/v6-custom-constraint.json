@@ -1,0 +1,39 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-custom-constraint",
+  "job_slug": "king-ornith15-6bit-temp0-run2-v6-custom-constraint-1790820049",
+  "timestamp": "2026-10-01T02:01:15.635169+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 24.91,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15789,
+      "cache_read_sum": 21635,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ace9c6affey8Ye8E98xQRbHC"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-temp0-run2-v6-custom-constraint-1790820049",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: find_sequences(4, 30, 5) count == 32\n",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  }
+}

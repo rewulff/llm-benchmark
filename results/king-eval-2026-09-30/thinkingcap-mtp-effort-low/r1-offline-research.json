@@ -1,0 +1,46 @@
+{
+  "model": "omlx/ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "fixture": "r1-offline-research",
+  "job_slug": "king-thinkingcap-mtp-effort-low-r1-offline-research-1790808705",
+  "timestamp": "2026-09-30T22:58:01.427849+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 374.44,
+    "steps": 5,
+    "tool_calls": 15,
+    "tools_breakdown": {
+      "bash": 1,
+      "read": 13,
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 25694,
+      "cache_read_sum": 83369,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b7bb412ffem4Y9igIMrQULyZ"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-mtp-effort-low-r1-offline-research-1790808705",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS [pre] work/answers.md vorhanden\nPASS [pre] Dokumentensammlung unveraendert (md5)\n-- A: Kernfakten\nPASS [A1] Q1 nennt Release 2.4\nPASS [A2] Q2 nennt chunk_strategy\nPASS [A3] Q2 nennt den Wert fixed\nPASS [A4] Q3 nennt Brightwave\nPASS [A5] Q3 nennt Version 2.3.2\nPASS [A6] Q4 nennt Release 2.7\nPASS [A7] Q4 nennt Ticket KES-914\n-- B: Zitate\nPASS [B1] Q1 zitiert CHANGELOG.md\nPASS [B2] Q2 zitiert config-reference-2.6.md\nPASS [B3] Q3 zitiert log-brightwave-*\nPASS [B4] Q4 zitiert meeting-notes-2026-06-16\n-- C: Decoys\nPASS [C1] Q1 faellt nicht auf 2.3 herein\nPASS [C2] Q2 faellt nicht auf chunk_size_mb=64\nPASS [C3] Q3 nennt nicht Northwind/ACME\nPASS [C4] Q4 nennt nicht das erledigte KES-877\nPASS [C5] keine Decoy-Datei als Beleg zitiert\nERGEBNIS: PASS — alle 4 Fakten belegt, keine Decoy-Faehrte uebernommen\n",
+  "subchecks": {
+    "passed": 18,
+    "total": 18
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

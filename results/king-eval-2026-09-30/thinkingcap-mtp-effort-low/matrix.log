@@ -1,0 +1,26 @@
+[00:18:28] === START thinkingcap-mtp-effort-low | model=ThinkingCap-Qwen3.8-27B-mlx-nvfp4 | 10 fixtures ===
+[00:18:28] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[00:18:28] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":264,"distributed_ranks":0}
+[00:18:39] Warmup: HTTP 200 | load=7.67s | wall=11.2s
+[00:18:39] --> a2-bugfix (slug=king-thinkingcap-mtp-effort-low-a2-bugfix-1790806719, Versuch 1)
+[00:22:09] <-- a2-bugfix: PASS | rc=0 | 210s | steps=7 tools=6 oracle=0
+[00:22:09] --> v6-quick-nqueens (slug=king-thinkingcap-mtp-effort-low-v6-quick-nqueens-1790806929, Versuch 1)
+[00:25:16] <-- v6-quick-nqueens: PASS | rc=0 | 187s | steps=3 tools=2 oracle=0
+[00:25:16] --> v6-debug-unmarked (slug=king-thinkingcap-mtp-effort-low-v6-debug-unmarked-1790807116, Versuch 1)
+[00:27:31] <-- v6-debug-unmarked: PASS | rc=0 | 136s | steps=3 tools=3 oracle=0
+[00:27:31] --> c1-dependent-pipeline (slug=king-thinkingcap-mtp-effort-low-c1-dependent-pipeline-1790807251, Versuch 1)
+[00:31:08] <-- c1-dependent-pipeline: PASS | rc=0 | 216s | steps=4 tools=9 oracle=0
+[00:31:08] --> v6-custom-constraint (slug=king-thinkingcap-mtp-effort-low-v6-custom-constraint-1790807468, Versuch 1)
+[00:33:36] <-- v6-custom-constraint: PASS | rc=0 | 148s | steps=2 tools=1 oracle=0
+[00:33:36] --> v6-ambiguity-probe (slug=king-thinkingcap-mtp-effort-low-v6-ambiguity-probe-1790807616, Versuch 1)
+[00:36:21] <-- v6-ambiguity-probe: PASS | rc=0 | 165s | steps=5 tools=4 oracle=0
+[00:36:21] --> v6-produktiv-fqdn-bug (slug=king-thinkingcap-mtp-effort-low-v6-produktiv-fqdn-bug-1790807781, Versuch 1)
+[00:51:45] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 924s | steps=11 tools=10 oracle=0
+[00:51:45] --> r1-offline-research (slug=king-thinkingcap-mtp-effort-low-r1-offline-research-1790808705, Versuch 1)
+[00:58:01] <-- r1-offline-research: PASS | rc=0 | 376s | steps=5 tools=15 oracle=0
+[00:58:01] --> v6-architecture-choice (slug=king-thinkingcap-mtp-effort-low-v6-architecture-choice-1790809081, Versuch 1)
+[01:05:22] <-- v6-architecture-choice: PASS | rc=0 | 441s | steps=2 tools=1 oracle=0
+[01:05:22] --> a5-long-edit (slug=king-thinkingcap-mtp-effort-low-a5-long-edit-1790809522, Versuch 1)
+[01:10:31] <-- a5-long-edit: FAIL | rc=0 | 309s | steps=11 tools=10 oracle=1
+[01:10:31] === ENDE thinkingcap-mtp-effort-low: 9/10 PASS ===
+[01:10:33] Unload: HTTP 200

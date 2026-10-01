@@ -40,6 +40,22 @@ for f in sorted(BASE.glob("*/*.json")):
     old_status = rec.get("status")
     oe = rec.get("oracle_exit")
     rec["status"] = "PASS" if oe == 0 else ("FAIL" if oe is not None else "NO_ORACLE")
+
+    # Infrastruktur-Abweisungen sind keine Modellergebnisse: der omlx-Prefill-Guard und
+    # 507-Ablehnungen brechen den Agent-Loop ab, oft nach 1-2 Steps (entgeht dem
+    # steps=0-Filter). Erkannt am Fehlerobjekt im run.jsonl. Vorfall 30.09.
+    jsonl = Path(job) / "output" / "run.jsonl"
+    if rec["status"] != "PASS" and jsonl.exists():
+        blob = jsonl.read_text(errors="replace")
+        for marker, why in (("memory guard rejected", "omlx Prefill-Memory-Guard hat den Prompt "
+                             "abgewiesen (iogpu.wired_limit_mb zu klein) — kein Modellergebnis"),
+                            ("Insufficient Storage", "omlx 507: Modell nicht ladbar — kein Modellergebnis"),
+                            ("memory ceiling", "omlx Memory-Ceiling erreicht — kein Modellergebnis"),
+                            ("Model not found", "Modell fehlt im omlx-Provider der opencode.json — kein Modellergebnis")):
+            if marker in blob:
+                rec["status"] = "INVALID"
+                rec["invalid_reason"] = why
+                break
     rec["lint_delta"] = {"baseline": base, "after_run": got, "new_violations": new_v}
     f.write_text(json.dumps(rec, indent=2, ensure_ascii=False))
     if old_status != rec["status"] or new_v:

@@ -1,0 +1,41 @@
+{
+  "model": "omlx/JetBrains--Qwen3.8-3.6-27B-blend-MLX-4bit",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-jetbrains-blend-27b-vlmmtp-a2-bugfix-1790812911",
+  "timestamp": "2026-10-01T00:05:15.155629+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 201.85,
+    "steps": 7,
+    "tool_calls": 6,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 2,
+      "edit": 3
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16633,
+      "cache_read_sum": 95116,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b3b8576ffengNp6pr7d2odGr"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-jetbrains-blend-27b-vlmmtp-a2-bugfix-1790812911",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

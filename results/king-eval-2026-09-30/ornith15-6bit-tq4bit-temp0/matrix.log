@@ -1,0 +1,26 @@
+[09:19:12] === START ornith15-6bit-tq4bit-temp0 | model=ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit | 10 fixtures ===
+[09:19:12] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":1048576,"distributed_ranks":0
+[09:19:12] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":254,"distributed_ranks":0}
+[09:19:26] Warmup: HTTP 200 | load=13.0s | wall=13.4s
+[09:19:26] --> a2-bugfix (slug=king-ornith15-6bit-tq4bit-temp0-a2-bugfix-1790839166, Versuch 1)
+[09:20:00] <-- a2-bugfix: PASS | rc=0 | 34s | steps=3 tools=2 oracle=0
+[09:20:00] --> v6-quick-nqueens (slug=king-ornith15-6bit-tq4bit-temp0-v6-quick-nqueens-1790839200, Versuch 1)
+[09:20:34] <-- v6-quick-nqueens: PASS | rc=0 | 34s | steps=2 tools=1 oracle=0
+[09:20:34] --> v6-debug-unmarked (slug=king-ornith15-6bit-tq4bit-temp0-v6-debug-unmarked-1790839234, Versuch 1)
+[09:21:12] <-- v6-debug-unmarked: PASS | rc=0 | 38s | steps=4 tools=5 oracle=0
+[09:21:12] --> c1-dependent-pipeline (slug=king-ornith15-6bit-tq4bit-temp0-c1-dependent-pipeline-1790839272, Versuch 1)
+[09:22:14] <-- c1-dependent-pipeline: PASS | rc=0 | 62s | steps=9 tools=12 oracle=0
+[09:22:14] --> v6-custom-constraint (slug=king-ornith15-6bit-tq4bit-temp0-v6-custom-constraint-1790839334, Versuch 1)
+[09:22:45] <-- v6-custom-constraint: PASS | rc=0 | 30s | steps=2 tools=1 oracle=0
+[09:22:45] --> v6-ambiguity-probe (slug=king-ornith15-6bit-tq4bit-temp0-v6-ambiguity-probe-1790839365, Versuch 1)
+[09:23:23] <-- v6-ambiguity-probe: PASS | rc=0 | 38s | steps=4 tools=3 oracle=0
+[09:23:23] --> v6-produktiv-fqdn-bug (slug=king-ornith15-6bit-tq4bit-temp0-v6-produktiv-fqdn-bug-1790839403, Versuch 1)
+[09:24:41] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 78s | steps=6 tools=5 oracle=0
+[09:24:41] --> r1-offline-research (slug=king-ornith15-6bit-tq4bit-temp0-r1-offline-research-1790839481, Versuch 1)
+[09:26:07] <-- r1-offline-research: PASS | rc=0 | 86s | steps=7 tools=20 oracle=0
+[09:26:07] --> v6-architecture-choice (slug=king-ornith15-6bit-tq4bit-temp0-v6-architecture-choice-1790839567, Versuch 1)
+[09:27:09] <-- v6-architecture-choice: PASS | rc=0 | 61s | steps=2 tools=1 oracle=0
+[09:27:09] --> a5-long-edit (slug=king-ornith15-6bit-tq4bit-temp0-a5-long-edit-1790839629, Versuch 1)
+[09:28:17] <-- a5-long-edit: PASS | rc=0 | 68s | steps=3 tools=9 oracle=0
+[09:28:17] === ENDE ornith15-6bit-tq4bit-temp0: 10/10 PASS ===
+[09:28:19] Unload: HTTP 200

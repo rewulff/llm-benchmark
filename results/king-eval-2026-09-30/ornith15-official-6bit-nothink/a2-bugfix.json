@@ -1,0 +1,40 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-ornith15-official-6bit-nothink-a2-bugfix-1790805393",
+  "timestamp": "2026-09-30T21:56:59.729116+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 24.52,
+    "steps": 3,
+    "tool_calls": 2,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 15829,
+      "cache_read_sum": 30969,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0bae3df8ffe9MUrMy96nh6uv1"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-official-6bit-nothink-a2-bugfix-1790805393",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

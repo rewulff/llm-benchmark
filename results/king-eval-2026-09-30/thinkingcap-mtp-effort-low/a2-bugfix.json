@@ -1,0 +1,42 @@
+{
+  "model": "omlx/ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "fixture": "a2-bugfix",
+  "job_slug": "king-thinkingcap-mtp-effort-low-a2-bugfix-1790806719",
+  "timestamp": "2026-09-30T22:22:09.573871+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 207.82,
+    "steps": 7,
+    "tool_calls": 6,
+    "tools_breakdown": {
+      "glob": 1,
+      "read": 1,
+      "edit": 3,
+      "bash": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 16559,
+      "cache_read_sum": 95106,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b99ff62ffeqf95M6k05beDvL"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-mtp-effort-low-a2-bugfix-1790806719",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: alle 3 Bugs gefixt\n",
+  "failed_checks": []
+}

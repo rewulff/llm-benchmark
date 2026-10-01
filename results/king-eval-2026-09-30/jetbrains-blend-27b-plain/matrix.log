@@ -1,0 +1,26 @@
+[02:43:44] === START jetbrains-blend-27b-plain | model=JetBrains--Qwen3.8-3.6-27B-blend-MLX-4bit | 10 fixtures ===
+[02:43:45] Cache-Reset /admin/api/hot-cache/clear: HTTP 200 {"status":"ok","total_cleared":0,"bytes_reclaimed":0,"distributed_ranks":0}
+[02:43:45] Cache-Reset /admin/api/ssd-cache/clear: HTTP 200 {"status":"ok","total_deleted":244,"distributed_ranks":0}
+[02:43:51] Warmup: HTTP 200 | load=4.37s | wall=5.8s
+[02:43:51] --> a2-bugfix (slug=king-jetbrains-blend-27b-plain-a2-bugfix-1790815431, Versuch 1)
+[02:47:10] <-- a2-bugfix: PASS | rc=0 | 200s | steps=4 tools=3 oracle=0
+[02:47:10] --> v6-quick-nqueens (slug=king-jetbrains-blend-27b-plain-v6-quick-nqueens-1790815630, Versuch 1)
+[02:58:24] <-- v6-quick-nqueens: PASS | rc=0 | 674s | steps=2 tools=1 oracle=0
+[02:58:24] --> v6-debug-unmarked (slug=king-jetbrains-blend-27b-plain-v6-debug-unmarked-1790816304, Versuch 1)
+[03:01:19] <-- v6-debug-unmarked: PASS | rc=0 | 175s | steps=3 tools=3 oracle=0
+[03:01:19] --> c1-dependent-pipeline (slug=king-jetbrains-blend-27b-plain-c1-dependent-pipeline-1790816479, Versuch 1)
+[03:08:13] <-- c1-dependent-pipeline: PASS | rc=0 | 414s | steps=9 tools=12 oracle=0
+[03:08:13] --> v6-custom-constraint (slug=king-jetbrains-blend-27b-plain-v6-custom-constraint-1790816893, Versuch 1)
+[03:11:12] <-- v6-custom-constraint: PASS | rc=0 | 179s | steps=2 tools=1 oracle=0
+[03:11:12] --> v6-ambiguity-probe (slug=king-jetbrains-blend-27b-plain-v6-ambiguity-probe-1790817072, Versuch 1)
+[03:14:26] <-- v6-ambiguity-probe: PASS | rc=0 | 194s | steps=4 tools=3 oracle=0
+[03:14:26] --> v6-produktiv-fqdn-bug (slug=king-jetbrains-blend-27b-plain-v6-produktiv-fqdn-bug-1790817266, Versuch 1)
+[03:25:03] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 636s | steps=8 tools=7 oracle=0
+[03:25:03] --> r1-offline-research (slug=king-jetbrains-blend-27b-plain-r1-offline-research-1790817903, Versuch 1)
+[03:32:47] <-- r1-offline-research: PASS | rc=0 | 465s | steps=5 tools=14 oracle=0
+[03:32:47] --> v6-architecture-choice (slug=king-jetbrains-blend-27b-plain-v6-architecture-choice-1790818367, Versuch 1)
+[03:42:29] <-- v6-architecture-choice: PASS | rc=0 | 582s | steps=2 tools=1 oracle=0
+[03:42:29] --> a5-long-edit (slug=king-jetbrains-blend-27b-plain-a5-long-edit-1790818949, Versuch 1)
+[03:49:37] <-- a5-long-edit: FAIL | rc=0 | 428s | steps=4 tools=10 oracle=1
+[03:49:37] === ENDE jetbrains-blend-27b-plain: 9/10 PASS ===
+[03:49:58] Unload: HTTP 200

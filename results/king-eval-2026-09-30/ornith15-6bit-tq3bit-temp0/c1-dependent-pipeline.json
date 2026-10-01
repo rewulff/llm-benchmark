@@ -1,0 +1,44 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "c1-dependent-pipeline",
+  "job_slug": "king-ornith15-6bit-tq3bit-temp0-c1-dependent-pipeline-1790838653",
+  "timestamp": "2026-10-01T07:12:51.408673+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 116.63,
+    "steps": 7,
+    "tool_calls": 16,
+    "tools_breakdown": {
+      "read": 10,
+      "bash": 3,
+      "edit": 3
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 37250,
+      "cache_read_sum": 161474,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f09b2bcf1ffek4fhAF2gxcPFXE"
+  },
+  "python_lint": {
+    "checked": 4,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-tq3bit-temp0-c1-dependent-pipeline-1790838653",
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "after_run": {
+      "EXE001": 1,
+      "BLE001": 1
+    },
+    "new_violations": {}
+  }
+}

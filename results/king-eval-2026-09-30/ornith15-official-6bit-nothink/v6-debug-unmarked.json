@@ -1,0 +1,44 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "king-ornith15-official-6bit-nothink-v6-debug-unmarked-1790805446",
+  "timestamp": "2026-09-30T21:57:49.827354+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 21.34,
+    "steps": 3,
+    "tool_calls": 3,
+    "tools_breakdown": {
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17246,
+      "cache_read_sum": 38592,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0bad6c92ffeuyWWMQvY7p0giu"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-official-6bit-nothink-v6-debug-unmarked-1790805446",
+  "lint_delta": {
+    "baseline": {
+      "DTZ003": 1
+    },
+    "after_run": {
+      "DTZ003": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: off-by-one in get_top_n gefixt (sorted_items[:n])\n",
+  "failed_checks": []
+}

@@ -1,0 +1,50 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-ornith15-official-6bit-nothink-a5-long-edit-1790805842",
+  "timestamp": "2026-09-30T22:04:52.454545+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 48.62,
+    "steps": 4,
+    "tool_calls": 10,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8,
+      "bash": 1
+    },
+    "final_text": "No `# BUG:` comments remain, and all 8 functions return the expected values from their docstring examples.\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22378,
+      "cache_read_sum": 67681,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ba76536ffe5tUxY5Xde0JhKI"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-official-6bit-nothink-a5-long-edit-1790805842",
+  "lint_delta": {
+    "baseline": {
+      "I001": 1,
+      "PLR0124": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "after_run": {
+      "I001": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "A5 Oracle: 8 / 8 bugs fixed\nPASS: alle 8 Bugs gefixt\n",
+  "failed_checks": []
+}

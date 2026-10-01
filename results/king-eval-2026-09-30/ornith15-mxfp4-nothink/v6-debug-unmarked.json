@@ -28,5 +28,17 @@
     "ruff_exit": 0
   },
   "oracle_exit": 0,
-  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-v6-debug-unmarked-1790790455"
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-mxfp4-nothink-v6-debug-unmarked-1790790455",
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: off-by-one in get_top_n gefixt (sorted_items[:n])\n",
+  "failed_checks": [],
+  "lint_delta": {
+    "baseline": {
+      "DTZ003": 1
+    },
+    "after_run": {
+      "DTZ003": 1
+    },
+    "new_violations": {}
+  }
 }

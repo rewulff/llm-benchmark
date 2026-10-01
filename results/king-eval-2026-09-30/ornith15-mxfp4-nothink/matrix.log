@@ -11,3 +11,25 @@
 [19:50:17] --> v6-custom-constraint (slug=king-ornith15-mxfp4-nothink-v6-custom-constraint-1790790617)
 [19:51:33] <-- v6-custom-constraint: FAIL | rc=0 | 76s | steps=0 tools=0 oracle=1
 [19:51:33] --> v6-ambiguity-probe (slug=king-ornith15-mxfp4-nothink-v6-ambiguity-probe-1790790693)
+[20:28:03] === START ornith15-mxfp4-nothink | model=Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4 | 7 fixtures ===
+[20:28:03] Warmup FEHLER: HTTP Error 507: Insufficient Storage — Abbruch
+[20:29:43] === START ornith15-mxfp4-nothink | model=Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4 | 7 fixtures ===
+[20:29:43] Warmup FEHLER: HTTP Error 507: Insufficient Storage — Abbruch
+[20:35:34] === START ornith15-mxfp4-nothink | model=Ornith-1.5-35B-A3B-uncensored-MLX-MXFP4 | 7 fixtures ===
+[20:35:53] Warmup: HTTP 200 | load=13.16s | wall=18.7s
+[20:35:53] --> c1-dependent-pipeline (slug=king-ornith15-mxfp4-nothink-c1-dependent-pipeline-1790793353, Versuch 1)
+[20:36:46] <-- c1-dependent-pipeline: PASS | rc=0 | 53s | steps=9 tools=12 oracle=0
+[20:36:46] --> v6-custom-constraint (slug=king-ornith15-mxfp4-nothink-v6-custom-constraint-1790793406, Versuch 1)
+[20:37:08] <-- v6-custom-constraint: PASS | rc=0 | 22s | steps=2 tools=1 oracle=0
+[20:37:08] --> v6-ambiguity-probe (slug=king-ornith15-mxfp4-nothink-v6-ambiguity-probe-1790793428, Versuch 1)
+[20:37:34] <-- v6-ambiguity-probe: PASS | rc=0 | 26s | steps=3 tools=2 oracle=0
+[20:37:34] --> v6-produktiv-fqdn-bug (slug=king-ornith15-mxfp4-nothink-v6-produktiv-fqdn-bug-1790793454, Versuch 1)
+[20:38:38] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 65s | steps=5 tools=4 oracle=0
+[20:38:38] --> r1-offline-research (slug=king-ornith15-mxfp4-nothink-r1-offline-research-1790793518, Versuch 1)
+[20:39:46] <-- r1-offline-research: FAIL | rc=0 | 67s | steps=5 tools=15 oracle=1
+[20:39:46] --> v6-architecture-choice (slug=king-ornith15-mxfp4-nothink-v6-architecture-choice-1790793586, Versuch 1)
+[20:40:44] <-- v6-architecture-choice: PASS | rc=0 | 59s | steps=3 tools=2 oracle=0
+[20:40:44] --> a5-long-edit (slug=king-ornith15-mxfp4-nothink-a5-long-edit-1790793644, Versuch 1)
+[20:42:00] <-- a5-long-edit: PASS | rc=0 | 76s | steps=11 tools=10 oracle=0
+[20:42:00] === ENDE ornith15-mxfp4-nothink: 6/7 PASS ===
+[20:42:02] Unload: HTTP 200

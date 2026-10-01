@@ -1,0 +1,49 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-produktiv-fqdn-bug",
+  "job_slug": "king-ornith15-6bit-tq3bit-temp0-v6-produktiv-fqdn-bug-1790838833",
+  "timestamp": "2026-10-01T07:15:11.158825+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 75.68,
+    "steps": 5,
+    "tool_calls": 4,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 1,
+      "write": 1,
+      "bash": 1
+    },
+    "final_text": "DONE.\n\nFix in `main.py:90` — neue Helper `_resolve_forgejo_host()` (ca. `main.py:90`) ersetzt die hardcoded LAN-IP. Override via `FORGEJO_INTERNAL_HOST`, sonst Host aus `origin`-Remote extrahiert (HTT",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 23615,
+      "cache_read_sum": 91480,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f09affb2fffeleolFaKOw6RoLa"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-tq3bit-temp0-v6-produktiv-fqdn-bug-1790838833",
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "PLW1510": 6
+    },
+    "after_run": {
+      "EXE001": 1,
+      "PLW1510": 7,
+      "PIE810": 1
+    },
+    "new_violations": {
+      "PLW1510": 1,
+      "PIE810": 1
+    }
+  }
+}

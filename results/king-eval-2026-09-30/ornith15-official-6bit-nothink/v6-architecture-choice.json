@@ -1,0 +1,44 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "v6-architecture-choice",
+  "job_slug": "king-ornith15-official-6bit-nothink-v6-architecture-choice-1790805781",
+  "timestamp": "2026-09-30T22:04:02.073889+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 59.51,
+    "steps": 2,
+    "tool_calls": 1,
+    "tools_breakdown": {
+      "write": 1
+    },
+    "final_text": "DONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 18109,
+      "cache_read_sum": 22528,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0ba85384ffe63MxVrj0LscR6I"
+  },
+  "python_lint": {
+    "checked": 0,
+    "violations": [],
+    "passed": true
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-official-6bit-nothink-v6-architecture-choice-1790805781",
+  "lint_delta": {
+    "baseline": {},
+    "after_run": {},
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS (Stub): design.md existiert mit      117 Zeilen und adressiert alle 5 Constraints.\n  HINWEIS: Inhaltliche Qualitaet (Konsistenz, Tiefe, ASCII-Diagramm) wurde NICHT geprueft.\n  Fuer vollstaendige Bewertung: LLM-as-judge implementieren (siehe README.md TODO).\n",
+  "subchecks": {
+    "passed": 1,
+    "total": 1
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

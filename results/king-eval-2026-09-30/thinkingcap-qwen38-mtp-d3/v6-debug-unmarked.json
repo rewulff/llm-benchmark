@@ -1,0 +1,45 @@
+{
+  "model": "omlx/ThinkingCap-Qwen3.8-27B-mlx-nvfp4",
+  "fixture": "v6-debug-unmarked",
+  "job_slug": "king-thinkingcap-qwen38-mtp-d3-v6-debug-unmarked-1790799361",
+  "timestamp": "2026-09-30T20:18:55.689983+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 173.06,
+    "steps": 5,
+    "tool_calls": 5,
+    "tools_breakdown": {
+      "bash": 2,
+      "read": 2,
+      "edit": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 17599,
+      "cache_read_sum": 71730,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0c0a49b2ffe22sbVHX1vWTsX1"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-thinkingcap-qwen38-mtp-d3-v6-debug-unmarked-1790799361",
+  "lint_delta": {
+    "baseline": {
+      "DTZ003": 1
+    },
+    "after_run": {
+      "DTZ003": 1
+    },
+    "new_violations": {}
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "PASS: off-by-one in get_top_n gefixt (sorted_items[:n])\n",
+  "failed_checks": []
+}

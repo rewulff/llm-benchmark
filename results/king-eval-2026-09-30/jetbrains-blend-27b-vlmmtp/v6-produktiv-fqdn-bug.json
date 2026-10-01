@@ -1,0 +1,56 @@
+{
+  "model": "omlx/JetBrains--Qwen3.8-3.6-27B-blend-MLX-4bit",
+  "fixture": "v6-produktiv-fqdn-bug",
+  "job_slug": "king-jetbrains-blend-27b-vlmmtp-v6-produktiv-fqdn-bug-1790813974",
+  "timestamp": "2026-10-01T00:27:29.791063+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 473.43,
+    "steps": 9,
+    "tool_calls": 8,
+    "tools_breakdown": {
+      "read": 3,
+      "edit": 2,
+      "bash": 2,
+      "write": 1
+    },
+    "final_text": "\n\nDONE",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 27931,
+      "cache_read_sum": 201963,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f0b2b4d1dffegCMDdhoplsL204"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-jetbrains-blend-27b-vlmmtp-v6-produktiv-fqdn-bug-1790813974",
+  "lint_delta": {
+    "baseline": {
+      "EXE001": 1,
+      "PLW1510": 6
+    },
+    "after_run": {
+      "EXE001": 1,
+      "PLW1510": 7
+    },
+    "new_violations": {
+      "PLW1510": 1
+    }
+  },
+  "oracle_rerun_exit": 0,
+  "oracle_output": "  PASS 1: py_compile OK\n  PASS 2: Kein Hardcoded-Fallback 10.0.167.253\n  PASS 3: git remote get-url Aufruf vorhanden\n  PASS 4: Token-Injection-Pattern (formin:TOKEN@host)\n  PASS 5: FORGEJO_INTERNAL_HOST als Option vorhanden\n  PASS 6: ruff F-Rules OK\n  PASS 7: Keine grossen Kommentar-Bloecke (kein Pseudo-Code-Rumbrueten)\n\nv6-produktiv-fqdn-bug: 7 / 7 checks\n",
+  "subchecks": {
+    "passed": 7,
+    "total": 7
+  },
+  "quality_score": 1.0,
+  "verdict_v2": "PASS",
+  "failed_checks": []
+}

@@ -1,0 +1,29 @@
+[20:46:54] === START thinkingcap-qwen38-27b | model=ThinkingCap-Qwen3.8-27B-mlx-nvfp4 | 10 fixtures ===
+[20:47:08] Warmup: HTTP 200 | load=9.68s | wall=14.2s
+[20:47:08] --> a2-bugfix (slug=king-thinkingcap-qwen38-27b-a2-bugfix-1790794028, Versuch 1)
+[20:51:12] <-- a2-bugfix: PASS | rc=0 | 244s | steps=5 tools=4 oracle=0
+[20:51:12] --> v6-quick-nqueens (slug=king-thinkingcap-qwen38-27b-v6-quick-nqueens-1790794272, Versuch 1)
+[20:56:28] <-- v6-quick-nqueens: PASS | rc=0 | 316s | steps=2 tools=1 oracle=0
+[20:56:28] --> v6-debug-unmarked (slug=king-thinkingcap-qwen38-27b-v6-debug-unmarked-1790794588, Versuch 1)
+[20:59:53] <-- v6-debug-unmarked: PASS | rc=0 | 205s | steps=3 tools=3 oracle=0
+[20:59:53] --> c1-dependent-pipeline (slug=king-thinkingcap-qwen38-27b-c1-dependent-pipeline-1790794793, Versuch 1)
+[21:05:33] <-- c1-dependent-pipeline: PASS | rc=0 | 340s | steps=4 tools=9 oracle=0
+[21:05:33] --> v6-custom-constraint (slug=king-thinkingcap-qwen38-27b-v6-custom-constraint-1790795133, Versuch 1)
+[21:08:49] <-- v6-custom-constraint: PASS | rc=0 | 196s | steps=2 tools=1 oracle=0
+[21:08:49] --> v6-ambiguity-probe (slug=king-thinkingcap-qwen38-27b-v6-ambiguity-probe-1790795329, Versuch 1)
+[21:11:10] <-- v6-ambiguity-probe: FAIL | rc=0 | 141s | steps=2 tools=1 oracle=1
+[21:11:10] --> v6-produktiv-fqdn-bug (slug=king-thinkingcap-qwen38-27b-v6-produktiv-fqdn-bug-1790795470, Versuch 1)
+[21:34:44] <-- v6-produktiv-fqdn-bug: PASS | rc=0 | 1414s | steps=8 tools=10 oracle=0
+[21:34:44] --> r1-offline-research (slug=king-thinkingcap-qwen38-27b-r1-offline-research-1790796884, Versuch 1)
+[21:43:49] <-- r1-offline-research: PASS | rc=0 | 546s | steps=5 tools=15 oracle=0
+[21:43:49] --> v6-architecture-choice (slug=king-thinkingcap-qwen38-27b-v6-architecture-choice-1790797429, Versuch 1)
+[21:54:30] <-- v6-architecture-choice: PASS | rc=0 | 640s | steps=2 tools=1 oracle=0
+[21:54:30] --> a5-long-edit (slug=king-thinkingcap-qwen38-27b-a5-long-edit-1790798070, Versuch 1)
+[22:01:03] <-- a5-long-edit: PASS | rc=0 | 393s | steps=4 tools=10 oracle=0
+[22:01:03] === ENDE thinkingcap-qwen38-27b: 9/10 PASS ===
+[22:01:05] Unload: HTTP 200
+[22:01:54] === START thinkingcap-qwen38-27b | model=ThinkingCap-Qwen3.8-27B-mlx-nvfp4 | 1 fixtures ===
+[22:01:56] Warmup: HTTP 200 | load=Nones | wall=1.5s
+[22:01:56] --> v6-ambiguity-probe (slug=king-thinkingcap-qwen38-27b-v6-ambiguity-probe-1790798516, Versuch 1)
+[22:05:03] <-- v6-ambiguity-probe: PASS | rc=0 | 188s | steps=4 tools=3 oracle=0
+[22:05:03] === ENDE thinkingcap-qwen38-27b: 1/1 PASS ===

@@ -1,0 +1,46 @@
+{
+  "model": "omlx/ornith-ai--Ornith-1.5-35B-A3B-MLX-6bit",
+  "fixture": "a5-long-edit",
+  "job_slug": "king-ornith15-6bit-tq4bit-temp0-a5-long-edit-1790839629",
+  "timestamp": "2026-10-01T07:28:17.040600+00:00",
+  "status": "PASS",
+  "parser_output": {
+    "duration_s": 66.41,
+    "steps": 3,
+    "tool_calls": 9,
+    "tools_breakdown": {
+      "read": 1,
+      "edit": 8
+    },
+    "final_text": "All 8 bugs fixed:\n\n1. `calculate_discount` (72): `price + percentage` → `price * (1 - percentage / 100)`\n2. `is_palindrome` (122): `s == s` → `s == s[::-1]`\n3. `flatten_list` (187): returns nested → r",
+    "stop_reason": "stop",
+    "tokens": {
+      "total_final_step": 22354,
+      "cache_read_sum": 43492,
+      "reasoning_sum": 0
+    },
+    "session_id": "ses_f09a3d8a8ffeT1vn0YvaHWTiXn"
+  },
+  "python_lint": {
+    "checked": 1,
+    "violations": [],
+    "passed": true,
+    "ruff_exit": 0
+  },
+  "oracle_exit": 0,
+  "scratch_path": "/Users/rwu/opencode-jobs/king-ornith15-6bit-tq4bit-temp0-a5-long-edit-1790839629",
+  "lint_delta": {
+    "baseline": {
+      "I001": 1,
+      "PLR0124": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "after_run": {
+      "I001": 1,
+      "PLR1730": 4,
+      "PIE810": 1
+    },
+    "new_violations": {}
+  }
+}
