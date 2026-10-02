@@ -179,8 +179,33 @@ Wert, der für den Knecht gilt. ThinkingCap-Fixtures laufen 5–10 % schneller a
 - **Ein Prompt, 2048 Token, kurzer Kontext.** Langkontext-Verhalten ist nicht erfasst; der
   dort gemessene Einbruch (M3 Ultra: 70,3 bei 64K gegen 74,6 bei 4K) ist nicht nachgefahren.
 - **Die dense-Acceptance-Differenz zu rc1 ist kein sauberer A/B** (anderer Prompt).
-- Prefill wurde nicht gemessen, obwohl die Release-Notes dort die größten Gewinne melden —
-  und zwar ebenfalls überwiegend M5-gebunden.
+- **Prefill wurde nie ausgewertet — und das war der blinde Fleck der ganzen Serie
+  (Korrektur 02.10., rwu: „haben wir ignoriert, dass dense und MoE wesentlich
+  unterschiedliche Prefill-Speeds haben?").** Der Runner erfasst `prompt_tok_s`
+  (omlx' `prompt_tokens_per_second`) seit der ersten Matrix in jeder Lauf-Zeile; keine
+  Report-Zeile hat den Wert benutzt. Jede „schneller"-Aussage dieses Reports ist damit
+  eine **Decode**-Aussage. Was in den erfassten Daten steht:
+
+  | Zellen | Modell | Prompt | `prompt_tok_s` (Median) |
+  |---|---|---|---|
+  | C0–Z2, V–Y | Ornith 1.5 35B-**A3B** (MoE, 3B aktiv/Token) | 49–54 Tok | **254–303** |
+  | E | Ornith 6bit (MoE) | ~40 Tok | 232 |
+  | A–D, J | ThinkingCap Qwen3.8-27B (**dense**) | ~40 Tok | **48–64** |
+  | N–U | Solstice Qwen3.8-27B (dense) | 308 Tok | 101–112 |
+
+  Diese Zahlen sind durch den Fixkosten-Anteil bei 40–300 Token stark gestaucht und
+  **kein sauberer Prefill-Benchmark**; sie zeigen nur die Richtung. Die belastbaren
+  Werte stammen aus der Live-Session 02.10. (jeb-cockpit, 15k–114k Prompt):
+  **Ornith ~1000 tok/s gegen ThinkingCap ~110 tok/s (nvfp4 121) — Faktor ≈ 9**, genau
+  das Verhältnis der aktiven Parameter (27B dense / 3B aktiv MoE). Prefill ist
+  compute-bound, Decode bandwidth-bound — deshalb ist derselbe Vergleich im Decode nur
+  ~2× (42 gegen 78 tok/s). Ein echter Prefill-Benchmark (Prompt-Längen 1k/15k/60k, kalt,
+  je Architektur) fehlt weiter.
+- **Die 121 tok/s waren als Maschinen-Schwäche verbucht**, nicht als Architektur-Effekt:
+  „unser bekannter Schwachpunkt ~121 tok/s auf M4 Pro" (GPU-Eval 13.08.) war eine
+  **dense**-Messung an thinkingcap; Ornith's 250–1000 tok/s stand nie daneben. Für
+  Hardware-Entscheidungen (#353, M6-Service-Knoten) heißt das: ein dense 27B zahlt den
+  Faktor 9 auf jeder Maschine, nicht nur auf dieser.
 
 - **Die Hochrechnung „23,6 erwartet, 22,6 gemessen"** vergleicht die M3-Ultra-Zahl von
   `Qwen3.8-27B-oQ4e` mit unserem `ThinkingCap-Qwen3.8-27B-oQ4e` — ein Finetune auf derselben
@@ -344,8 +369,9 @@ seit 19:00 persistent zweites `model_dir`.
 
 ## Offen
 
-- Prefill-Durchsatz messen (unser bekannter Schwachpunkt: ~121 tok/s auf M4 Pro; die
-  Release-Notes melden gerade dort +46 %, überwiegend M5-gebunden)
+- **Prefill-Benchmark je Architektur** (Prompt 1k/15k/60k, kalt, n≥3, MoE vs dense) — die
+  bisherigen `prompt_tok_s`-Werte sind zu kurzprompt-lastig; Faktor 9 ist nur aus der
+  Live-Session belegt. Dazu: wirkt `--with-custom-kernel`/ANE-Prefill nur bei dense?
 - Concurrent > 1 auf beiden Stacks — beantwortet zugleich, ob llama.cpp noch einen Vorteil hat
 - ThinkingCap-Vollmatrix auf oQ4e, falls der dense-Kandidat je produktiv werden soll
 - Solstice/ThinkingCap-Fixtures mit adaptivem MTP (≤ 8) statt fest d3 — Code-Beleg für die
