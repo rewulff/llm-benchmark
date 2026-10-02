@@ -204,9 +204,20 @@ Wert, der für den Knecht gilt. ThinkingCap-Fixtures laufen 5–10 % schneller a
   |---|---|---|
   | ~1k | – | 115 tok/s (n=1, fixkostenlastig) |
   | ~15k | 631–1215, Median ~1030 (n=6) | **110 tok/s (n=1)** → Faktor ≈ 9 |
+  | ~190k | **161 tok/s** (WebUI, 190,1k Token, 20 min für den vollen Re-Prefill, 02.10. 20:0x) | – |
   | ~55k | **424–501, Median 485 (n=5)** | **nicht gemessen** — der Lauf 18:35 wurde beim Modellwechsel abgebrochen; die 121 tok/s waren eine Zwischenanzeige, keine abgeschlossene Messung |
 
-  **Korrektur meiner eigenen Zahl (02.10., nach rwus Gegenprobe):** „Faktor 9" gilt nur
+  **Die Prefill-Rate selbst fällt mit dem Kontext** (Ornith, kalt): ~1030 tok/s @15k →
+485 @55k → **161 @190k**. Das ist der quadratische Anteil der Full-Attention-Layer. Praktisch
+heißt das: Ein Cache-Miss bei 190k kostet **20 Minuten**, bevor das erste Token kommt — nicht
+der Speicher ist bei 250k die Grenze (den hat TurboQuant-KV entschärft), sondern der
+Re-Prefill nach jedem Verlust des Prefix-Caches (Session-Neustart, Modellwechsel,
+Settings-Änderung, Verdrängung). Offener Hebel: omlx hat einen SSD-Prefix-Cache
+(`PagedSSDCacheManager`, Logzeilen „Flushed N hot cache blocks to SSD"); ob der einen
+190k-Prefix über einen Neustart rettet, ist ungeprüft und wäre der größte Gewinn für den
+Langkontext-Workflow.
+
+**Korrektur meiner eigenen Zahl (02.10., nach rwus Gegenprobe):** „Faktor 9" gilt nur
   bei ~15k und steht dense-seitig auf **einer** Messung. Die Prefill-Rate fällt bei
   beiden Architekturen mit der Kontextlänge (Ornith 1030 → 485 tok/s von 15k auf 55k),
   weil die Attention-Arbeit über den schon prefillten Kontext wächst und omlx zusätzlich
