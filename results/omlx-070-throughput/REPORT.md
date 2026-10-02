@@ -382,8 +382,42 @@ Modelle und bricht laufende Requests ab (ThinkingCap-Lauf 18:58 gekillt, opencod
 der offenen Verbindung). Re-Discovery nur bei geänderter Liste; `omlx-test-models` ist
 seit 19:00 persistent zweites `model_dir`.
 
+## Decode bricht mit dem Kontext ein — und TurboQuant-KV ist deshalb bei Langkontext ein Gewinn, kein Preis
+
+Messung 01./02.10. aus dem Serverlog, Ornith oQ4e, alle Antworten ≥ 50 Token (rwu:
+„mit vollem kontext bricht die inferenz ein"):
+
+| Prompt-Kontext | Decode (Median) | n |
+|---|---|---|
+| 5–20k | **79,2 tok/s** | 127 |
+| 20–40k | 73,1 | 104 |
+| 40–60k | 46,8 | 18 |
+| 60–80k | 40,2 | 16 |
+| > 80k | **22,5 tok/s** | 26 |
+
+Also **−72 %** von 15k auf >80k. Die Ursache ist Bandbreite, nicht Rechenleistung: Ornith
+hält KV in 10 von 40 Layern (kv_heads 2, head_dim 256) → **20 KB pro Token**, die bei
+jedem dekodierten Token zusätzlich gelesen werden:
+
+| Kontext | KV-Lesemenge je Token (bf16) | mit TQ-KV 4-bit |
+|---|---|---|
+| 15k | 0,29 GiB | 0,07 GiB |
+| 55k | 1,05 GiB | 0,26 GiB |
+| 114k | 2,17 GiB | 0,54 GiB |
+| **250k** | **4,77 GiB** | 1,19 GiB |
+
+Bei 250k liest der Decode pro Token mehr KV als aktive Gewichte — das ist die Decke.
+**Konsequenz für die 8-%-Regel:** Der gemessene TurboQuant-KV-Preis von ~8 % Decode
+stammt aus Zellen mit ~300 Token Prompt (H/I, Solstice). Dort ist der KV-Anteil
+vernachlässigbar, also sieht man nur die Quantisierungs-Kosten. Bei 55k–250k dreht
+sich das Vorzeichen: die Rechnung legt **2–3× Decode** nahe (114k: 2,17 → 0,54 GiB je
+Token), plus weniger Speicherdruck und damit weniger Prefill-Throttling. Das ist eine
+Hochrechnung, keine Messung — der A/B (Ornith bei ~60k, TQ an/aus, n ≥ 3) steht aus und
+ist der direkte Hebel für den 250k-Workflow in jeb-cockpit.
+
 ## Offen
 
+- **TQ-KV bei Langkontext messen** (Ornith ~60k, TQ an/aus, n≥3, Decode + Prefill-Throttle) — Hochrechnung sagt 2–3× Decode statt −8 %
 - **Prefill-Benchmark je Architektur** (Prompt 1k/15k/60k, kalt, n≥3, MoE vs dense) — die
   bisherigen `prompt_tok_s`-Werte sind zu kurzprompt-lastig; Faktor 9 ist nur aus der
   Live-Session belegt. Dazu: wirkt `--with-custom-kernel`/ANE-Prefill nur bei dense?
