@@ -194,13 +194,28 @@ Wert, der für den Knecht gilt. ThinkingCap-Fixtures laufen 5–10 % schneller a
   | N–U | Solstice Qwen3.8-27B (dense) | 308 Tok | 101–112 |
 
   Diese Zahlen sind durch den Fixkosten-Anteil bei 40–300 Token stark gestaucht und
-  **kein sauberer Prefill-Benchmark**; sie zeigen nur die Richtung. Die belastbaren
-  Werte stammen aus der Live-Session 02.10. (jeb-cockpit, 15k–114k Prompt):
-  **Ornith ~1000 tok/s gegen ThinkingCap ~110 tok/s (nvfp4 121) — Faktor ≈ 9**, genau
-  das Verhältnis der aktiven Parameter (27B dense / 3B aktiv MoE). Prefill ist
-  compute-bound, Decode bandwidth-bound — deshalb ist derselbe Vergleich im Decode nur
-  ~2× (42 gegen 78 tok/s). Ein echter Prefill-Benchmark (Prompt-Längen 1k/15k/60k, kalt,
-  je Architektur) fehlt weiter.
+  **kein sauberer Prefill-Benchmark**; sie zeigen nur die Richtung.
+
+  Die belastbaren Werte stammen aus der Live-Session 02.10. (jeb-cockpit) — nur
+  **erste Anfrage einer Session** (voller Prefill; Folge-Turns prefillen nur das Delta
+  und sind 5–50× schneller):
+
+  | Prompt, kalt | Ornith 1.5 A3B (MoE, 3B aktiv) | dense Qwen3.8-27B |
+  |---|---|---|
+  | ~1k | – | 115 tok/s (n=1, fixkostenlastig) |
+  | ~15k | 631–1215, Median ~1030 (n=6) | **110 tok/s (n=1)** → Faktor ≈ 9 |
+  | ~55k | **424–501, Median 485 (n=5)** | **nicht gemessen** — der Lauf 18:35 wurde beim Modellwechsel abgebrochen; die 121 tok/s waren eine Zwischenanzeige, keine abgeschlossene Messung |
+
+  **Korrektur meiner eigenen Zahl (02.10., nach rwus Gegenprobe):** „Faktor 9" gilt nur
+  bei ~15k und steht dense-seitig auf **einer** Messung. Die Prefill-Rate fällt bei
+  beiden Architekturen mit der Kontextlänge (Ornith 1030 → 485 tok/s von 15k auf 55k),
+  weil die Attention-Arbeit über den schon prefillten Kontext wächst und omlx zusätzlich
+  drosselt (Chunk 2048 → 1536 bei Ornith/55k). Ein Verhältnis bei 55k+ ist damit
+  **offen**; die Architektur-Obergrenze bleibt 27B/3B ≈ 9 für den reinen Matmul-Anteil.
+  Im Decode liegt derselbe Vergleich nur bei ~2× (42 gegen 78 tok/s bei 15k) — Prefill
+  ist compute-bound, Decode bandwidth-bound. Ein kontrollierter Benchmark
+  (1k/15k/60k, kalt, n≥3 je Architektur) fehlt weiter und ist die Voraussetzung für
+  jede Faktor-Aussage.
 - **Die 121 tok/s waren als Maschinen-Schwäche verbucht**, nicht als Architektur-Effekt:
   „unser bekannter Schwachpunkt ~121 tok/s auf M4 Pro" (GPU-Eval 13.08.) war eine
   **dense**-Messung an thinkingcap; Ornith's 250–1000 tok/s stand nie daneben. Für
