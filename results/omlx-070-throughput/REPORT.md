@@ -406,18 +406,27 @@ jedem dekodierten Token zusätzlich gelesen werden:
 | 114k | 2,17 GiB | 0,54 GiB |
 | **250k** | **4,77 GiB** | 1,19 GiB |
 
-Bei 250k liest der Decode pro Token mehr KV als aktive Gewichte — das ist die Decke.
-**Konsequenz für die 8-%-Regel:** Der gemessene TurboQuant-KV-Preis von ~8 % Decode
-stammt aus Zellen mit ~300 Token Prompt (H/I, Solstice). Dort ist der KV-Anteil
-vernachlässigbar, also sieht man nur die Quantisierungs-Kosten. Bei 55k–250k dreht
-sich das Vorzeichen: die Rechnung legt **2–3× Decode** nahe (114k: 2,17 → 0,54 GiB je
-Token), plus weniger Speicherdruck und damit weniger Prefill-Throttling. Das ist eine
-Hochrechnung, keine Messung — der A/B (Ornith bei ~60k, TQ an/aus, n ≥ 3) steht aus und
-ist der direkte Hebel für den 250k-Workflow in jeb-cockpit.
+**Bandbreite erklärt den Einbruch aber nur zu einem Viertel.** Von 15k (79,2 tok/s =
+12,6 ms/Token) auf >80k (22,5 tok/s = 44,4 ms/Token) kommen 31,8 ms dazu; die zusätzliche
+KV-Lesemenge (1,88 GiB bei 273 GB/s) erklärt davon **~7,4 ms**. Die übrigen ~24 ms sind
+nicht Bandbreite und auch nicht Attention-FLOPs (bei 114k < 0,5 ms/Token) — sie passen zu
+dem, was das Log zeigt: Speicherdruck mit `insufficient_headroom`, Buffer-Reclaim und
+Prefill-Throttling, also Verdrängung statt Rechnen.
+
+**Konsequenz für die 8-%-Regel:** Der gemessene TurboQuant-KV-Preis von ~8 % Decode stammt
+aus Zellen mit ~300 Token Prompt (H/I, Solstice) — dort ist der KV-Anteil vernachlässigbar,
+man sieht nur die Quantisierungskosten. Bei Langkontext kehrt sich das Vorzeichen, aber die
+Größenordnung ist **offen**: rein über die Bandbreite gerechnet bringt TQ-KV bei 114k nur
+~15 % (5,4 ms von 44 ms); wenn der Speicherdruck die eigentliche Ursache ist, deutlich mehr,
+weil 9 von 10 KV-Layern auf ein Viertel schrumpfen (20 → 6,5 KB/Token, `skip_last` lässt
+einen Layer in bf16). Seit 02.10. ist TQ bei allen vier Modellen/Profilen an (Ornith 4-bit,
+ThinkingCap 3,5-bit; Logzeile `TurboQuant: converted 9/40 cache layers to 4.0-bit`). Der A/B
+(Ornith ~60k, TQ an/aus, n ≥ 3, Decode + Throttle-Zeilen) steht aus und ist der direkte
+Hebel für den 250k-Workflow in jeb-cockpit.
 
 ## Offen
 
-- **TQ-KV bei Langkontext messen** (Ornith ~60k, TQ an/aus, n≥3, Decode + Prefill-Throttle) — Hochrechnung sagt 2–3× Decode statt −8 %
+- **TQ-KV bei Langkontext messen** (Ornith ~60k, TQ an/aus, n≥3, Decode + Prefill-Throttle) — Bandbreite allein sagt nur ~15 % bei 114k; wenn Speicherdruck die Ursache ist, mehr — offen
 - **Prefill-Benchmark je Architektur** (Prompt 1k/15k/60k, kalt, n≥3, MoE vs dense) — die
   bisherigen `prompt_tok_s`-Werte sind zu kurzprompt-lastig; Faktor 9 ist nur aus der
   Live-Session belegt. Dazu: wirkt `--with-custom-kernel`/ANE-Prefill nur bei dense?
